@@ -3,16 +3,48 @@ package NewcastleConnections;
 
 import java.net.URISyntaxException;
 import java.sql.*;
+import java.util.List;
 
 
 public class DatabaseConnectionManager {
 
-    private static final String JDBC_driver = "com.mysql.jdbc.Driver"; //org.postgresql.Driver
-
-    public DatabaseConnectionManager() {
+    private static final String JDBC_driver = "com.mysql.jdbc.Driver";
 
 
+
+
+    private static Connection getConnection() throws URISyntaxException, SQLException, ClassNotFoundException {
+
+        Class.forName(JDBC_driver);
+
+        String username = "dzsk0iuaa2ljqu9z";
+        String password = "hdswnog7t1ily38b";
+        String port = "3306";
+        String host = "op2hpcwcbxb1t4z9.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
+        String path = "/vn424fecfcpcyxxz";
+        String jdbUrl = "jdbc:mysql://" + host + ":" + port + path;
+
+        return DriverManager.getConnection(jdbUrl, username, password);
     }
+
+
+
+
+    public List<Item> getAllAccommodation() {
+        // TODO
+        return null;
+    }
+
+    public List<Item> getAllTransport() {
+        // TODO
+        return null;
+    }
+
+    public List<Item> getAllEvents() {
+        // TODO
+        return null;
+    }
+
 
 
     public String test() {
@@ -48,19 +80,6 @@ public class DatabaseConnectionManager {
 
     }
 
-    private static Connection getConnection() throws URISyntaxException, SQLException, ClassNotFoundException {
-
-        Class.forName(JDBC_driver);
-
-        String username = "dzsk0iuaa2ljqu9z";
-        String password = "hdswnog7t1ily38b";
-        String port = "3306";
-        String host = "op2hpcwcbxb1t4z9.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
-        String path = "/vn424fecfcpcyxxz";
-        String jdbUrl = "jdbc:mysql://" + host + ":" + port + path;
-
-        return DriverManager.getConnection(jdbUrl, username, password);
-    }
 
 /*
 postgresql config

@@ -1,6 +1,5 @@
 package NewcastleConnections.Actions;
 
-import NewcastleConnections.DatabaseConnection;
 import NewcastleConnections.DatabaseConnectionManager;
 import com.opensymphony.xwork2.ActionSupport;
 

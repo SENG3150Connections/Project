@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context>
     <Resource
-        name="jdbc/postgres"
+        name="jdbc/mysql"
         auth="Container"
         type="javax.sql.DataSource"
-        driverClassName="org.postgresql.Driver"
+        driverClassName="com.mysql.jdbc.Driver"
 
         description="Database Connection"
-        url="jdbc:postgresql://localhost:3306/PackageDeals"
+        url="jdbc:mysql://localhost:3306/PackageDeals"
         username="root"
         password=""
 

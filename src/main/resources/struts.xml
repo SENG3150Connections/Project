@@ -13,6 +13,10 @@
             <result>/WEB-INF/jsp/home.jsp</result>
         </action>
 
+        <action name="dbTest" class="NewcastleConnections.Actions.DBTest">
+            <result>/WEB-INF/jsp/databaseTest.jsp</result>
+        </action>
+
     </package>
 
 

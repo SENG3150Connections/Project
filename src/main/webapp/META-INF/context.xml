@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+    <Resource
+        name="jdbc/postgres"
+        auth="Container"
+        type="javax.sql.DataSource"
+        driverClassName="org.postgresql.Driver"
+
+        description="Database Connection"
+        url="jdbc:postgresql://localhost:3306/PackageDeals"
+        username="root"
+        password=""
+
+        maxActive="20"
+        maxIdle="3"
+        maxWait="10000"
+    />
+</Context>

@@ -24,7 +24,7 @@
         </action>
 
         <!-- Example authentication -->
-        <action name="p">
+        <action name="private">
             <interceptor-ref name="authentication" />
             <result name="success">/WEB-INF/jsp/private.jsp</result>
         </action>

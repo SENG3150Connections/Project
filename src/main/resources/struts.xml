@@ -9,12 +9,40 @@
 
     <!-- Default package -->
     <package name="default" extends="struts-default">
+
+
+        <interceptors>
+            <interceptor name="authentication" class="NewcastleConnections.Authentication.AuthenticationInterceptor" />
+        </interceptors>
+
+        <global-results>
+            <result name="login" type="redirect">/login</result>
+        </global-results>
+
         <action name="home">
             <result>/WEB-INF/jsp/home.jsp</result>
         </action>
 
+        <!-- Example authentication -->
+        <action name="p">
+            <interceptor-ref name="authentication" />
+            <result name="success">/WEB-INF/jsp/private.jsp</result>
+        </action>
+
         <action name="dbTest" class="NewcastleConnections.Actions.DBTest">
             <result>/WEB-INF/jsp/databaseTest.jsp</result>
+        </action>
+
+        <action name="login" class="NewcastleConnections.Authentication.LoginAction">
+            <result>/WEB-INF/jsp/home.jsp</result>
+        </action>
+
+        <action name="callback" class="NewcastleConnections.Authentication.CallbackAction">
+            <result>/WEB-INF/jsp/home.jsp</result>
+        </action>
+
+        <action name="logout" class="NewcastleConnections.Authentication.LogoutAction">
+            <result>/WEB-INF/jsp/home.jsp</result>
         </action>
 
     </package>

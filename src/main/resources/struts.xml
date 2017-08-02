@@ -20,7 +20,7 @@
         </global-results>
 
         <action name="home">
-            <result>/home.html</result>
+            <result>WEB-INF/jsp/home.jsp</result>
         </action>
 
         <!-- Example authentication -->
@@ -34,15 +34,15 @@
         </action>
 
         <action name="login" class="NewcastleConnections.Authentication.LoginAction">
-            <result>/WEB-INF/jsp/home.jsp</result>
+            <result>WEB-INF/jsp/home.jsp</result>
         </action>
 
         <action name="callback" class="NewcastleConnections.Authentication.CallbackAction">
-            <result>/WEB-INF/jsp/home.jsp</result>
+            <result>WEB-INF/jsp/home.jsp</result>
         </action>
 
         <action name="logout" class="NewcastleConnections.Authentication.LogoutAction">
-            <result>/WEB-INF/jsp/home.jsp</result>
+            <result>WEB-INF/jsp/home.jsp</result>
         </action>
 
     </package>

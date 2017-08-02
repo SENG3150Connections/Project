@@ -10,7 +10,7 @@
     <!-- Default package -->
     <package name="default" extends="struts-default">
         <action name="home">
-            <result>/WEB-INF/jsp/home.jsp</result>
+            <result>/home.html</result>
         </action>
 
         <action name="dbTest" class="NewcastleConnections.Actions.DBTest">

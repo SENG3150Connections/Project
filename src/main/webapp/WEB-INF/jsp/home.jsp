@@ -1,4 +1,7 @@
 
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+
 <html class="no-js" lang="">
 <head>
     <meta charset="utf-8">
@@ -9,12 +12,12 @@
 
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../font-awesome-4.7.0/css/font-awesome.min.css">
     <!-- Place favicon.ico in the root directory -->
 
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/main.css">
-    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    <link rel="stylesheet" href="../../css/normalize.css">
+    <link rel="stylesheet" href="../../css/main.css">
+    <script src="../../js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
 <!--[if lt IE 8]>
@@ -33,7 +36,9 @@
             <div id="nav">
                 <ul>
                     <li>
-                        <a href="#">Login</a>
+                        <form action="/login">
+                            <button type="submit">Login</button>
+                        </form>
                     </li>
                     <li>
                         <a href="#">Help</a>
@@ -106,8 +111,8 @@
 </footer>
 
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
-<script src="js/plugins.js"></script>
+<script>window.jQuery || document.write('<script src="../../js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+<script src="../../js/plugins.js"></script>
 <script src="js/main.js"></script>
 
 </body>

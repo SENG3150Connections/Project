@@ -26,9 +26,21 @@ public class LoginAction extends ActionSupport {
             HttpServletResponse response = ServletActionContext.getResponse();
 
 
-           // String redirectUri = request.getScheme() + "://" + request.getServerName() + "/callback";
-                String redirectUri = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/callback";
+           /* Awkward fix for a weird caviat of Auth0 where the port number is needed for local instances
+            but not for instances running on Heroku.
+                */
 
+            int portNumber = request.getServerPort();
+            String redirectUri = "";
+            if (portNumber == 8080) {
+                // Local instance
+                redirectUri = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/callback";
+
+            } else {
+                // Deployed to Heroku, discard the port number
+                redirectUri = request.getScheme() + "://" + request.getServerName() + "/callback";
+
+            }
             String authorizeUrl = authenticationController.buildAuthorizeUrl(request, redirectUri).build();
 
             response.sendRedirect(authorizeUrl);

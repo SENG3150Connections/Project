@@ -17,11 +17,11 @@ public class DatabaseConnectionManager {
 
         Class.forName(JDBC_driver);
 
-        String username = "dzsk0iuaa2ljqu9z";
-        String password = "hdswnog7t1ily38b";
+        String username = "newcastle";
+        String password = "connections";
         String port = "3306";
-        String host = "op2hpcwcbxb1t4z9.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
-        String path = "/vn424fecfcpcyxxz";
+        String host = "203.9.224.192";
+        String path = "/PackageDeals";
         String jdbUrl = "jdbc:mysql://" + host + ":" + port + path;
 
         return DriverManager.getConnection(jdbUrl, username, password);

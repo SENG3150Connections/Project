@@ -16,8 +16,16 @@
 
 
 Database test:
+<table>
 
-<h1><s:property value="testOutput"/></h1>
+ <s:iterator value="results" var="hotel">
+    <tr>
+        <td>${hotel.id}</td>
+        <td>${hotel.name}</td>
+        <td>${hotel.address}</td>
+    </tr>
+</s:iterator>
+    </table>
 
 </body>
 </html>

@@ -38,7 +38,9 @@
         </action>
 
         <action name="callback" class="NewcastleConnections.Authentication.CallbackAction">
-            <result>WEB-INF/jsp/home.jsp</result>
+            <result name="normal">/WEB-INF/jsp/home.jsp</result>
+            <result name="admin">/WEB-INF/jsp/private.jsp</result>
+
         </action>
 
         <action name="logout" class="NewcastleConnections.Authentication.LogoutAction">

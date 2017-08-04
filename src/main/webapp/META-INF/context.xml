@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context>
     <Resource
-        name="jdbc/mysql"
+        name="SiteDatabase"
         auth="Container"
         type="javax.sql.DataSource"
         driverClassName="com.mysql.jdbc.Driver"
 
         description="Database Connection"
-        url="jdbc:mysql://localhost:3306/PackageDeals"
-        username="root"
-        password=""
+        url="jdbc:mysql://203.9.224.192:3306/PackageDeals"
+        username="newcastle"
+        password="connections"
 
         maxActive="20"
         maxIdle="3"

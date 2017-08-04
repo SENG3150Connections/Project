@@ -6,6 +6,7 @@ import com.auth0.SessionUtils;
 import com.auth0.Tokens;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
+import org.jooq.util.derby.sys.Sys;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

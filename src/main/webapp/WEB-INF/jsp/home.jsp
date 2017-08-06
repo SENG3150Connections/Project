@@ -36,6 +36,9 @@
         </div>
         <header id="header-container" class="grad">
             <div class="header">
+                <div class="homepage-menu">
+                    <p class="fa" style="cursor: pointer">&#xf0c9;</p>
+                </div>
                 <div class="homepage-logo">
                     <h1><a href="#">NewcastleConnections</a></h1>
                 </div>

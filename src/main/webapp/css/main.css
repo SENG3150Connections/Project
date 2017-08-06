@@ -96,173 +96,78 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-
-#container-homepage {
-    min-height: 825px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-#jumbotron, .bg-cover {
-    width: 100%;
-    min-height: 950px;
+main {
+    font-family: Roboto;
 }
 
-#jumbotron {
-    min-height: 86vh;
+/*Main DisplayView*/
+#homepage-container {
     display: flex;
     flex-direction: column;
-    position: relative;
-}
-
-.jumbotron-image {
-    -webkit-box-flex: 1;
-    flex: 1 1 auto;
     justify-content: center;
-    -webkit-box-align: center;
-    align-items: center;
+    height: 86vh;
+    max-height: 860px;
 }
 
+/*Homepage Image*/
 #homepage-image {
     position: absolute;
     top: 0px;
     left: 0px;
     z-index: -99;
     width: 100%;
-    height: 100%;
+    height: 86vh;
+    max-height: 860px;
 }
-
-.homepage-maintext {
-    color: #ffffff;
-    font-size: 76px;
-}
-
-@media all and (max-width:800px) {
-    .homepage-maintext{display: none}
-}
-
 .bg-cover {
-    background-image: url("../img/large.jpg");
+    height: 100%;
+    background-image: url("../img/large2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: top;
-    margin-top: -120px;
+    background-position: center;
+}
+.cover-overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0,0,0,.4);
 }
 
-header {
-    min-height: 96px;
-    width: 100%;
+/*Header*/
+#header-container {
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
 }
-#header-logo {
-    padding-left:10px;
-    color: #ffffff;
-    float: left;
+.header {
+    width: 95%;
+    height: 96px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-#header-logo h1 {
-    font-size: 32px;
+.homepage-logo{margin-left: 20px;}
+.homepage-social{margin-left: auto;}
+.homepage-login{margin-left: 20px;}
+.homepage-help{margin-left: 20px;}
+.homepage-login button {
+    color: #FFFFFF;
+    text-decoration: none;
+    background: none;
+    border: none;
 }
-
-#nav {
-    float: right;
-}
-#nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
-#nav li {
-    float: left;
-}
-#nav li a {
-    display: block;
-    color: #ffffff;
-    text-align: center;
-    padding: 34px 26px;
+.header a {
+    color: #FFFFFF;
     text-decoration: none;
 }
-
-.container {
-    height:100px;
-    width: 100%;
-    margin-top: auto;
-}
-.benefits {
-    width: 100%;
-    display:flex;
-    flex-wrap:wrap;
-    flex-direction:row;
-    justify-content:flex-start;
-    align-items:stretch;
-    color: #ffffff;
-}
-.left {order:1; flex-basis:100%; height:100px;}
-.middle {order:2; flex-basis:100%; height:100px;}
-.right {order:3; flex-basis:100%; height:100px;}
-@media screen and (min-width:800px) {
-    .container {
-        flex-wrap:nowrap;
-    }
-    .left {
-        flex-basis:33.3333333333%;
-        order:1;
-    }
-    .middle {
-        flex-basis:33.3333333333%;
-        order:2;
-    }
-    .right {
-        flex-basis:33.3333333333%;
-        order:3;
-    }
-}
-@media all and (max-width: 800px) {
-    /* We tell both sidebars to share a row */
-    .container {display: none !important;}
-}
-
-#slider {
-    height:300px;
-    width: 100%;
-    margin-top: auto;
-}
-#options {
-    width: 100%;
-    display:flex;
-    flex-wrap:wrap;
-    flex-direction:row;
-    justify-content:flex-start;
-    align-items:stretch;
-    color: #ffffff;
-}
-.slider-1 {order:1; background: red; flex-basis:100%; height:200px;}
-.slider-2 {order:2; background: blue; flex-basis:100%; height:200px;}
-.slider-3 {order:3; background: yellow; flex-basis:100%; height:200px;}
-.slider-4 {order:4; background: green; flex-basis:100%; height:200px;}
-@media screen and (min-width:800px) {
-    .slider {
-        flex-wrap:nowrap;
-    }
-    .slider-1 {
-        flex-basis:25%;
-        order:1;
-    }
-    .slider-2 {
-        flex-basis:25%;
-        order:2;
-    }
-    .slider-3 {
-        flex-basis:25%;
-        order:3;
-    }
-    .slider-4 {
-        flex-basis:25%;
-        order:4;
-    }
-}
-
-.text-center {
-    text-align: center;
-}
-
 .grad {
     background: #000000; /* For browsers that do not support gradients */
     background: -webkit-linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0)); /*Safari 5.1-6*/
@@ -271,62 +176,115 @@ header {
     background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0)); /*Standard*/
 }
 
-#searchbox {
-    min-height: 64px;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
+/*Homepage Maintext*/
+.homepage-maintext {
+    color: #ffffff;
+    font-size: 76px;
+    text-shadow: 10px 10px 10px #202020;
+}
+
+/*Homepage Collection Elements*/
+.container {
     display: flex;
-    -webkit-box-pack: center;
-    -webkit-justify-content: center;
-    -ms-flex-pack: center;
+    flex:1 1 auto;
+    justify-content: center;
+    align-items: flex-end;
+    color: #FFFFFF;
+}
+.benefits {
+    width: 100%;
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    text-align: center;
+    color: #ffffff;
+}
+.benefits div {
+    margin: 15px 30px;
+}
+
+/*Slider Elements*/
+#slider {
+    display: flex;
     justify-content: center;
 }
+#options {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    flex-basis: 100%;
+}
+.slider-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+#options img {
+    width: 100%;
+}
 
-#searchbox form {
-    position: absolute;
-    bottom:200px;
+.threebox {
+    width: 100%;
+    min-width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+.threebox-item {
+    display: flex;
+    justify-content: center;
+    margin:0 25px;
+}
+.threebox img {
+    width: 100%;
+}
+
+/*SearchForm*/
+.flexform {
+    width: 90%;
+    min-width: 400px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
     border-radius: 4px;
     margin: 0 auto;
-    max-width: 1000px;
-    padding: 10px 10px 0;
+    padding: 8px 8px;
     background: rgba(0,0,0,.2);
 }
-
-legend {
-    display: block;
-    -webkit-padding-start: 2px;
-    -webkit-padding-end: 2px;
-    border-width: initial;
-    border-style: none;
-    border-color: initial;
-    border-image: initial;
+/*Input Styling*/
+input {
+    margin: 0 5px;
+    cursor: pointer;
+    color: #555555;
 }
-
 input[type=search] {
-    background-image: url('../img/searchicon.png');
-    width: 350px;
+    width: 30%;
+    cursor: auto;
 }
-
 input[type=date],input[type=text] {
     width: 15%;
 }
-
 input[type=date], input[type=search],input[type=text] {
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
-    background-color: white;
+    background-color: #FFFFFF;
     background-position: 10px 10px;
     background-repeat: no-repeat;
-    padding: 12px 20px 12px 40px;
+    padding: 12px 20px 12px 5px;
 }
-
-input[type=text]:focus {
+input[type=text]:focus,input[type=search]:focus {
     border: 3px solid #2a6ebb;
 }
-
 input[type=submit] {
     border-radius: 30px;
     min-height: 58px;
@@ -334,18 +292,13 @@ input[type=submit] {
     padding-right: 30px;
     background-color: #2a6ebb;
     border-color: #2a6ebb;
-    color: #fff;
-    font-weight: 500;
 }
-
-input[type=submit]:focus {
-    background-color: #b3d4fc;
-    border-color: #b3d4fc;
+input[type=submit]:hover {
+    background-color: #0067db;
+    border-color: #0067db;
 }
-
 .btn {
     display: inline-block;
-    font-weight: 400;
     -ms-touch-action: manipulation;
     touch-action: manipulation;
     cursor: pointer;
@@ -354,10 +307,12 @@ input[type=submit]:focus {
     border-radius: 100px;
     padding: 15px 30px;
     line-height: 24px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+    color: #FFFFFF;
+}
+
+footer {
+    background: #555555;
+    text-align: center;
 }
 
 
@@ -440,9 +395,26 @@ input[type=submit]:focus {
    These examples override the primary ('mobile first') styles.
    Modify as content requires.
    ========================================================================== */
-
-@media only screen and (min-width: 35em) {
-    /* Style adjustments for viewports that meet the condition */
+@media only screen and (min-width: 45em) {
+    #options {
+        flex-wrap:nowrap;
+        flex-direction: row;
+    }
+    .slider-item {
+        flex:1;
+        flex-basis:100%;
+    }
+}
+@media only screen and (max-width: 45em) {
+    .benefits {display: none !important;}
+    .homepage-maintext{font-size: 42px}
+    .homepage-logo{margin: auto}
+    .homepage-login{display: none}
+    .homepage-help{display: none}
+    .flexform{flex-wrap: wrap;}
+    .flexform input[name=search]{flex: 0 1 100%;margin:10px 5px;}
+    .flexform input[name=start]{flex: 1 0 0}
+    .flexform input[name=finish]{flex: 1 0 0}
 }
 
 @media print,

@@ -68,7 +68,7 @@
             <div class="benefits">
                 <div>
                     <h3>Your perfect holiday starts here</h3>
-                    <div class="benefit-blurb">Choose a dream holiday from Newcastle's best selection</div>
+                    <div class="benefit-blurb">Create your dream holiday from Newcastle's best selection</div>
                 </div>
                 <div>
                     <h3>Book and stay with confidence</h3>

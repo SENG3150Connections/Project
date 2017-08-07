@@ -1,12 +1,16 @@
 package NewcastleConnections.Actions;
 
 import NewcastleConnections.DatabaseConnection;
+import NewcastleConnections.packagedeals.tables.records.ExperiencesRecord;
+import NewcastleConnections.packagedeals.tables.records.ResturantsRecord;
 import com.opensymphony.xwork2.ActionSupport;
 import NewcastleConnections.packagedeals.tables.records.HotelsRecord;
 import org.jooq.Result;
 
-import static NewcastleConnections.packagedeals.Tables.*;
+import javax.naming.NamingException;
+import java.sql.SQLException;
 
+import static NewcastleConnections.packagedeals.Tables.*;
 
 /**
  * Created by seb on 1/8/17.
@@ -15,41 +19,40 @@ public class DBTest extends ActionSupport {
 
 
     // Results property (to be shared with the JSP page)
-    private Result<HotelsRecord> results;
+    private Result<HotelsRecord> hotels;
+    private Result<ResturantsRecord> restaurants;
+    private Result<ExperiencesRecord> experiences;
 
-    public Result<HotelsRecord> getResults() {
+    public Result<HotelsRecord> getHotels() {
+        return hotels;
+    }
 
+    public Result<ResturantsRecord> getRestaurants() {
+        return restaurants;
+    }
 
+    public Result<ExperiencesRecord> getExperiences() {
+        return experiences;
+    }
+
+    @Override
+    public String execute() {
         try {
-
             // Get connection
             DatabaseConnection connection = new DatabaseConnection();
-
             // query
-            Result<HotelsRecord> results = connection.getDSL().selectFrom(HOTELS).fetch();
-
-            this.results = results;
-
+            hotels = connection.getDSL().selectFrom(HOTELS).fetch();
+            restaurants = connection.getDSL().selectFrom(RESTURANTS).fetch();
+            experiences = connection.getDSL().selectFrom(EXPERIENCES).fetch();
             // Close connection
             connection.close();
 
-        } catch (Exception e) {
-
+        } catch (SQLException | NamingException e) {
             e.printStackTrace();
+            return ERROR;
         }
-
-        return results;
-    }
-
-
-
-    @Override
-    public String execute() throws Exception {
-
 
         // Return Success
         return SUCCESS;
     }
-
-
 }

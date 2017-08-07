@@ -15,17 +15,39 @@
 <body>
 
 
-Database test:
+<h1>HOTELS</h1>
 <table>
-
- <s:iterator value="results" var="hotel">
+ <s:iterator value="hotels" var="hotel">
     <tr>
         <td>${hotel.id}</td>
         <td>${hotel.name}</td>
         <td>${hotel.address}</td>
     </tr>
 </s:iterator>
-    </table>
+</table>
+
+<h1>RESTAURANTS</h1>
+<table>
+    <s:iterator value="restaurants" var="r">
+        <tr>
+            <td>${r.id}</td>
+            <td>${r.name}</td>
+            <td>${r.address}</td>
+            <td>${r.contact}</td>
+        </tr>
+    </s:iterator>
+</table>
+
+<h1>EXPERIENCES</h1>
+<table>
+    <s:iterator value="experiences" var="e">
+        <tr>
+            <td>${e.id}</td>
+            <td>${e.name}</td>
+            <td>${e.location}</td>
+        </tr>
+    </s:iterator>
+</table>
 
 </body>
 </html>

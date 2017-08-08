@@ -30,7 +30,8 @@
         </action>
 
         <action name="dbTest" class="NewcastleConnections.Actions.DBTest">
-            <result>/WEB-INF/jsp/databaseTest.jsp</result>
+            <result name="success">/WEB-INF/jsp/databaseTest.jsp</result>
+            <result name="error">/WEB-INF/jsp/exception.jsp</result>
         </action>
 
         <action name="login" class="NewcastleConnections.Authentication.LoginAction">

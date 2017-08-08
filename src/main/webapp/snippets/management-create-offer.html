@@ -1,0 +1,97 @@
+
+<link href="css/normalize.css" rel="stylesheet">
+
+<div class="create-offer">
+    <div class="title">
+        <label class="prev-dir">Manage Products/</label><label class="current-dir"> Add Offer</label>
+        
+        <div class="pull-right">
+            <button class="btn btn-default" onclick="loadSection('management-display-products', this)">Cancel</button>
+            <button class="btn btn-default">Preview</button>
+            <button class="btn btn-info">Save Product</button>
+        </div>
+    </div>
+    <div class="row">
+        <form>
+            <!-- Main container -->
+            <div class="col-md-8">
+                <div class="management-container">
+                        <div class="form-group float-label-control">
+                            <label for="">Title</label>
+                            <input type="text" name="title" class="form-control" placeholder="Product Title"></input>
+                        </div>
+                    
+                        <div class="form-group float-label-control">
+                            <label for="">Description - Rich text editor</label>
+                            <textarea class="form-control" placeholder="Product Description" rows="5"></textarea>
+                        </div>
+                </div>
+                    
+                <div class="management-container" style="height: 480px;">
+                    <label>Images</label>
+                    <div style="text-align: center;">
+                        <img src="images/drag-drop-upload.png"></img>    
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sidebar - Right -->
+            <div class="col-md-4">
+                <div class="management-sidebar">
+                    <label class="heading">Visibility</label>
+                    <hr></hr>
+                    
+                    <!-- List group -->
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            Publicly Visible
+                            <div class="material-switch pull-right">
+                                <input id="publiclyVisible" name="publiclyVisible" type="checkbox"/>
+                                <label for="publiclyVisible" class="label-info"></label>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            Release on Date
+                            <div class="material-switch pull-right">
+                                <input id="delayedRelease" name="delayedRelease" type="checkbox"/>
+                                <label for="delayedRelease" class="label-info"></label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="management-sidebar">
+                    <label class="heading">Organisation</label> 
+                    <hr></hr>
+                    
+                    <div class="form-group float-label-control">
+                        <label for="">Price</label>
+                        <input type="text" name="title" class="form-control" placeholder="$###.##"></input>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Category</label>
+                        <select id="subject" name="subject" class="form-control" required="required">
+                            <option value="na" selected="">Choose One:</option>
+                            <option value="accomidation">Accomidation</option>
+                            <option value="event">Event</option>
+                            <option value="food">Food</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group float-label-control">
+                        <label for="">Location</label>
+                        <input type="text" name="title" class="form-control" placeholder="42 Wallaby Way Sydney "></input>
+                    </div>
+                    
+                    <div class="form-group float-label-control">
+                        <label for="">Tags</label>
+                        <input type="text" name="title" class="form-control" placeholder="Tag 1, Tag 2, Tag 3, Etc"></input>
+                    </div>
+                    
+                </div>
+            </div>
+        </form>
+        
+    </div>
+</div>

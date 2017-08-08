@@ -17,6 +17,7 @@ import javax.sql.DataSource;
 import javax.swing.plaf.synth.SynthTextAreaUI;
 import javax.xml.crypto.Data;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 
 import static NewcastleConnections.packagedeals.Tables.*;
@@ -41,9 +42,12 @@ public class DatabaseConnection {
 
     public DatabaseConnection() throws SQLException, NamingException, ClassNotFoundException {
 
-        Context ctx = new InitialContext();
-        DataSource ds = (DataSource) ctx.lookup("java:jdbc/SiteDatabase");
-        connection = ds.getConnection();
+        //Context ctx = new InitialContext();
+        //DataSource ds = (DataSource) ctx.lookup("java:/comp/env/SiteDatabase");
+        //connection = ds.getConnection();
+
+        Class.forName("com.mysql.jdbc.Driver");
+        connection = DriverManager.getConnection("jdbc:mysql://203.9.224.192:3306/PackageDeals","newcastle","connections");
 
     }
 

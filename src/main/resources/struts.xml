@@ -50,7 +50,7 @@
             <result name="error">/WEB-INF/jsp/exception.jsp</result>
         </action>
 
-        <action name="editOffer" class="NewcastleConnections.Actions.GetData">
+        <action name="editOffer" class="NewcastleConnections.Actions.GetDataSingleOffer">
             <result name="success">/WEB-INF/jsp/managementPortal-edit-offer.jsp</result>
             <result name="error">/WEB-INF/jsp/exception.jsp</result>
         </action>

@@ -23,12 +23,48 @@
             <result>WEB-INF/jsp/home.jsp</result>
         </action>
 
+        <action name="managementPortal">
+            <result>WEB-INF/jsp/managementPortal.jsp</result>
+        </action>
+
         <!-- Example authentication -->
         <action name="private">
             <interceptor-ref name="authentication" />
             <result name="success">/WEB-INF/jsp/private.jsp</result>
         </action>
 
+
+        <!-- Management Portal -->
+        <action name="managementPortal" class="NewcastleConnections.Actions.GetData">
+            <result name="success">/WEB-INF/jsp/managementPortal.jsp</result>
+            <result name="error">/WEB-INF/jsp/exception.jsp</result>
+        </action>
+
+        <action name="displayProducts" class="NewcastleConnections.Actions.GetData">
+            <result name="success">/WEB-INF/jsp/managementPortal-display-products.jsp</result>
+            <result name="error">/WEB-INF/jsp/exception.jsp</result>
+        </action>
+
+        <action name="createOffer" class="NewcastleConnections.Actions.GetData">
+            <result name="success">/WEB-INF/jsp/managementPortal-create-offer.jsp</result>
+            <result name="error">/WEB-INF/jsp/exception.jsp</result>
+        </action>
+
+        <action name="editOffer" class="NewcastleConnections.Actions.GetData">
+            <result name="success">/WEB-INF/jsp/managementPortal-edit-offer.jsp</result>
+            <result name="error">/WEB-INF/jsp/exception.jsp</result>
+        </action>
+
+        <action name="analytics">
+            <result>WEB-INF/jsp/managementPortal-analytics.jsp</result>
+        </action>
+
+        <action name="invoice">
+            <result>WEB-INF/jsp/managementPortal-invoice.jsp</result>
+        </action>
+
+        <!-- End Management Portal -->
+        
         <action name="dbTest" class="NewcastleConnections.Actions.DBTest">
             <result name="success">/WEB-INF/jsp/databaseTest.jsp</result>
             <result name="error">/WEB-INF/jsp/exception.jsp</result>

@@ -8,6 +8,7 @@ import NewcastleConnections.packagedeals.Keys;
 import NewcastleConnections.packagedeals.Packagedeals;
 import NewcastleConnections.packagedeals.tables.records.ResturantsRecord;
 
+import java.sql.Date;
 import java.util.Arrays;
 import java.util.List;
 
@@ -36,7 +37,7 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Resturants extends TableImpl<ResturantsRecord> {
 
-    private static final long serialVersionUID = -1879724668;
+    private static final long serialVersionUID = 954839055;
 
     /**
      * The reference instance of <code>PackageDeals.Resturants</code>
@@ -105,6 +106,36 @@ public class Resturants extends TableImpl<ResturantsRecord> {
      * The column <code>PackageDeals.Resturants.latitude</code>.
      */
     public final TableField<ResturantsRecord, Double> LATITUDE = createField("latitude", org.jooq.impl.SQLDataType.FLOAT.nullable(false), this, "");
+
+    /**
+     * The column <code>PackageDeals.Resturants.imageID</code>.
+     */
+    public final TableField<ResturantsRecord, String> IMAGEID = createField("imageID", org.jooq.impl.SQLDataType.VARCHAR.length(100), this, "");
+
+    /**
+     * The column <code>PackageDeals.Resturants.price</code>.
+     */
+    public final TableField<ResturantsRecord, String> PRICE = createField("price", org.jooq.impl.SQLDataType.VARCHAR.length(50), this, "");
+
+    /**
+     * The column <code>PackageDeals.Resturants.category</code>.
+     */
+    public final TableField<ResturantsRecord, String> CATEGORY = createField("category", org.jooq.impl.SQLDataType.VARCHAR.length(100), this, "");
+
+    /**
+     * The column <code>PackageDeals.Resturants.publicallyVisible</code>.
+     */
+    public final TableField<ResturantsRecord, Byte> PUBLICALLYVISIBLE = createField("publicallyVisible", org.jooq.impl.SQLDataType.TINYINT, this, "");
+
+    /**
+     * The column <code>PackageDeals.Resturants.releaseOnDate</code>.
+     */
+    public final TableField<ResturantsRecord, Byte> RELEASEONDATE = createField("releaseOnDate", org.jooq.impl.SQLDataType.TINYINT, this, "");
+
+    /**
+     * The column <code>PackageDeals.Resturants.releaseDate</code>.
+     */
+    public final TableField<ResturantsRecord, Date> RELEASEDATE = createField("releaseDate", org.jooq.impl.SQLDataType.DATE, this, "");
 
     /**
      * Create a <code>PackageDeals.Resturants</code> table reference

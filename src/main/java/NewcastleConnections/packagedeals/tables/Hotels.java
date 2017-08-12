@@ -8,6 +8,7 @@ import NewcastleConnections.packagedeals.Keys;
 import NewcastleConnections.packagedeals.Packagedeals;
 import NewcastleConnections.packagedeals.tables.records.HotelsRecord;
 
+import java.sql.Date;
 import java.util.Arrays;
 import java.util.List;
 
@@ -36,7 +37,7 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Hotels extends TableImpl<HotelsRecord> {
 
-    private static final long serialVersionUID = 1397591042;
+    private static final long serialVersionUID = -890020027;
 
     /**
      * The reference instance of <code>PackageDeals.Hotels</code>
@@ -95,6 +96,36 @@ public class Hotels extends TableImpl<HotelsRecord> {
      * The column <code>PackageDeals.Hotels.longitude</code>.
      */
     public final TableField<HotelsRecord, Double> LONGITUDE = createField("longitude", org.jooq.impl.SQLDataType.FLOAT.nullable(false), this, "");
+
+    /**
+     * The column <code>PackageDeals.Hotels.publicallyVisible</code>.
+     */
+    public final TableField<HotelsRecord, Byte> PUBLICALLYVISIBLE = createField("publicallyVisible", org.jooq.impl.SQLDataType.TINYINT, this, "");
+
+    /**
+     * The column <code>PackageDeals.Hotels.releaseOnDate</code>.
+     */
+    public final TableField<HotelsRecord, Byte> RELEASEONDATE = createField("releaseOnDate", org.jooq.impl.SQLDataType.TINYINT, this, "");
+
+    /**
+     * The column <code>PackageDeals.Hotels.releaseDate</code>.
+     */
+    public final TableField<HotelsRecord, Date> RELEASEDATE = createField("releaseDate", org.jooq.impl.SQLDataType.DATE, this, "");
+
+    /**
+     * The column <code>PackageDeals.Hotels.imageID</code>.
+     */
+    public final TableField<HotelsRecord, String> IMAGEID = createField("imageID", org.jooq.impl.SQLDataType.VARCHAR.length(100), this, "");
+
+    /**
+     * The column <code>PackageDeals.Hotels.price</code>.
+     */
+    public final TableField<HotelsRecord, String> PRICE = createField("price", org.jooq.impl.SQLDataType.VARCHAR.length(50), this, "");
+
+    /**
+     * The column <code>PackageDeals.Hotels.category</code>.
+     */
+    public final TableField<HotelsRecord, String> CATEGORY = createField("category", org.jooq.impl.SQLDataType.VARCHAR.length(100), this, "");
 
     /**
      * Create a <code>PackageDeals.Hotels</code> table reference

@@ -4,7 +4,6 @@
 package NewcastleConnections;
 
 
-import NewcastleConnections.information_schema.InformationSchema;
 import NewcastleConnections.packagedeals.Packagedeals;
 
 import java.util.ArrayList;
@@ -38,11 +37,6 @@ public class DefaultCatalog extends CatalogImpl {
     public static final DefaultCatalog DEFAULT_CATALOG = new DefaultCatalog();
 
     /**
-     * The schema <code>information_schema</code>.
-     */
-    public final InformationSchema INFORMATION_SCHEMA = NewcastleConnections.information_schema.InformationSchema.INFORMATION_SCHEMA;
-
-    /**
      * The schema <code>PackageDeals</code>.
      */
     public final Packagedeals PACKAGEDEALS = NewcastleConnections.packagedeals.Packagedeals.PACKAGEDEALS;
@@ -52,18 +46,5 @@ public class DefaultCatalog extends CatalogImpl {
      */
     private DefaultCatalog() {
         super("");
-    }
-
-    @Override
-    public final List<Schema> getSchemas() {
-        List result = new ArrayList();
-        result.addAll(getSchemas0());
-        return result;
-    }
-
-    private final List<Schema> getSchemas0() {
-        return Arrays.<Schema>asList(
-            InformationSchema.INFORMATION_SCHEMA,
-            Packagedeals.PACKAGEDEALS);
     }
 }

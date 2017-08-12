@@ -35,6 +35,11 @@
 
 
         <!-- Management Portal -->
+        <action name="submitOffer" class="NewcastleConnections.Actions.SubmitOffer">
+            <result name="success">/WEB-INF/jsp/managementPortal.jsp</result>
+            <result name="error">/WEB-INF/jsp/exception.jsp</result>
+        </action>
+
         <action name="managementPortal" class="NewcastleConnections.Actions.GetData">
             <result name="success">/WEB-INF/jsp/managementPortal.jsp</result>
             <result name="error">/WEB-INF/jsp/exception.jsp</result>

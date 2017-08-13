@@ -25,7 +25,7 @@ public class SubmitOffer extends ActionSupport {
     private byte releaseondate = (byte)0;
     private Date releasedate = new Date(2017, 1, 1);
     private String imageid = "";
-    private String price = "Free!";
+    private Double price = 0.0;
     private String category = "";
 
     @Override
@@ -114,7 +114,7 @@ public class SubmitOffer extends ActionSupport {
         this.imageid = imageid;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

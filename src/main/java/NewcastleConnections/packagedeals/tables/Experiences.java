@@ -38,7 +38,7 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Experiences extends TableImpl<ExperiencesRecord> {
 
-    private static final long serialVersionUID = -574522683;
+    private static final long serialVersionUID = 1209391093;
 
     /**
      * The reference instance of <code>PackageDeals.Experiences</code>
@@ -76,32 +76,32 @@ public class Experiences extends TableImpl<ExperiencesRecord> {
     /**
      * The column <code>PackageDeals.Experiences.location</code>.
      */
-    public final TableField<ExperiencesRecord, String> LOCATION = createField("location", org.jooq.impl.SQLDataType.CLOB.nullable(false), this, "");
+    public final TableField<ExperiencesRecord, String> LOCATION = createField("location", org.jooq.impl.SQLDataType.CLOB, this, "");
 
     /**
      * The column <code>PackageDeals.Experiences.info</code>.
      */
-    public final TableField<ExperiencesRecord, String> INFO = createField("info", org.jooq.impl.SQLDataType.CLOB.nullable(false), this, "");
+    public final TableField<ExperiencesRecord, String> INFO = createField("info", org.jooq.impl.SQLDataType.CLOB, this, "");
 
     /**
      * The column <code>PackageDeals.Experiences.guidelines</code>.
      */
-    public final TableField<ExperiencesRecord, String> GUIDELINES = createField("guidelines", org.jooq.impl.SQLDataType.CLOB.nullable(false), this, "");
+    public final TableField<ExperiencesRecord, String> GUIDELINES = createField("guidelines", org.jooq.impl.SQLDataType.CLOB, this, "");
 
     /**
      * The column <code>PackageDeals.Experiences.experienceProviderId</code>.
      */
-    public final TableField<ExperiencesRecord, UInteger> EXPERIENCEPROVIDERID = createField("experienceProviderId", org.jooq.impl.SQLDataType.INTEGERUNSIGNED.nullable(false), this, "");
+    public final TableField<ExperiencesRecord, UInteger> EXPERIENCEPROVIDERID = createField("experienceProviderId", org.jooq.impl.SQLDataType.INTEGERUNSIGNED, this, "");
 
     /**
      * The column <code>PackageDeals.Experiences.latitude</code>.
      */
-    public final TableField<ExperiencesRecord, Double> LATITUDE = createField("latitude", org.jooq.impl.SQLDataType.FLOAT.nullable(false), this, "");
+    public final TableField<ExperiencesRecord, Double> LATITUDE = createField("latitude", org.jooq.impl.SQLDataType.FLOAT, this, "");
 
     /**
      * The column <code>PackageDeals.Experiences.longitude</code>.
      */
-    public final TableField<ExperiencesRecord, Double> LONGITUDE = createField("longitude", org.jooq.impl.SQLDataType.FLOAT.nullable(false), this, "");
+    public final TableField<ExperiencesRecord, Double> LONGITUDE = createField("longitude", org.jooq.impl.SQLDataType.FLOAT, this, "");
 
     /**
      * The column <code>PackageDeals.Experiences.imageID</code>.
@@ -111,7 +111,7 @@ public class Experiences extends TableImpl<ExperiencesRecord> {
     /**
      * The column <code>PackageDeals.Experiences.price</code>.
      */
-    public final TableField<ExperiencesRecord, String> PRICE = createField("price", org.jooq.impl.SQLDataType.VARCHAR.length(50), this, "");
+    public final TableField<ExperiencesRecord, Double> PRICE = createField("price", org.jooq.impl.SQLDataType.DOUBLE.nullable(false), this, "");
 
     /**
      * The column <code>PackageDeals.Experiences.category</code>.
@@ -121,7 +121,7 @@ public class Experiences extends TableImpl<ExperiencesRecord> {
     /**
      * The column <code>PackageDeals.Experiences.publicallyVisible</code>.
      */
-    public final TableField<ExperiencesRecord, Byte> PUBLICALLYVISIBLE = createField("publicallyVisible", org.jooq.impl.SQLDataType.TINYINT, this, "");
+    public final TableField<ExperiencesRecord, Byte> PUBLICALLYVISIBLE = createField("publicallyVisible", org.jooq.impl.SQLDataType.TINYINT.nullable(false), this, "");
 
     /**
      * The column <code>PackageDeals.Experiences.releaseOnDate</code>.

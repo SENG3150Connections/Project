@@ -37,7 +37,7 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Hotels extends TableImpl<HotelsRecord> {
 
-    private static final long serialVersionUID = -890020027;
+    private static final long serialVersionUID = -749962765;
 
     /**
      * The reference instance of <code>PackageDeals.Hotels</code>
@@ -65,12 +65,12 @@ public class Hotels extends TableImpl<HotelsRecord> {
     /**
      * The column <code>PackageDeals.Hotels.contact</code>.
      */
-    public final TableField<HotelsRecord, String> CONTACT = createField("contact", org.jooq.impl.SQLDataType.CLOB.nullable(false), this, "");
+    public final TableField<HotelsRecord, String> CONTACT = createField("contact", org.jooq.impl.SQLDataType.CLOB, this, "");
 
     /**
      * The column <code>PackageDeals.Hotels.email</code>.
      */
-    public final TableField<HotelsRecord, String> EMAIL = createField("email", org.jooq.impl.SQLDataType.CLOB.nullable(false), this, "");
+    public final TableField<HotelsRecord, String> EMAIL = createField("email", org.jooq.impl.SQLDataType.CLOB, this, "");
 
     /**
      * The column <code>PackageDeals.Hotels.address</code>.
@@ -100,7 +100,7 @@ public class Hotels extends TableImpl<HotelsRecord> {
     /**
      * The column <code>PackageDeals.Hotels.publicallyVisible</code>.
      */
-    public final TableField<HotelsRecord, Byte> PUBLICALLYVISIBLE = createField("publicallyVisible", org.jooq.impl.SQLDataType.TINYINT, this, "");
+    public final TableField<HotelsRecord, Byte> PUBLICALLYVISIBLE = createField("publicallyVisible", org.jooq.impl.SQLDataType.TINYINT.nullable(false), this, "");
 
     /**
      * The column <code>PackageDeals.Hotels.releaseOnDate</code>.
@@ -120,7 +120,7 @@ public class Hotels extends TableImpl<HotelsRecord> {
     /**
      * The column <code>PackageDeals.Hotels.price</code>.
      */
-    public final TableField<HotelsRecord, String> PRICE = createField("price", org.jooq.impl.SQLDataType.VARCHAR.length(50), this, "");
+    public final TableField<HotelsRecord, Double> PRICE = createField("price", org.jooq.impl.SQLDataType.DOUBLE.nullable(false), this, "");
 
     /**
      * The column <code>PackageDeals.Hotels.category</code>.

@@ -54,7 +54,7 @@ header {
     flex-direction: row;
     margin: 15px;
     width: 95%;
-    height: 200px;
+    min-height: 200px;
     box-shadow: 2px 2px 3px #AFAFAF;
 }
 .img-tile {

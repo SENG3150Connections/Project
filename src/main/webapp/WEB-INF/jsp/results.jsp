@@ -22,6 +22,137 @@
 
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style>
+    html {
+           overflow-y: hidden;
+       }
+       main {
+           /*border: solid 1px #000000;*/
+           display: flex;
+           flex-direction: column;
+       }
+       #results-container {
+           display: inline-flex;
+           flex-direction: row;
+           justify-content: center;
+           min-height: 18vh;
+           border: inherit;
+       }
+       header a {
+           color: #005da9;
+       }
+       header {
+           border: inherit;
+           box-shadow: 1px 1px 1px #AFAFAF;
+       }
+       .results-form {
+           width: 95%;
+           min-width: 400px;
+           flex-wrap: wrap;
+       }
+       #selector {
+           border: inherit;
+           min-height: 18vh;
+           -webkit-box-flex: flex;
+           display: flex;
+           justify-content: center;
+           box-shadow: 2px 2px 3px #AFAFAF;
+       }
+       #results {
+           margin-top: 2px;
+           height: 80vh;
+           flex-grow: 1;
+           -webkit-box-flex: flex;
+           display: flex;
+           flex-direction: column;
+           align-items: center;
+           border: inherit;
+           overflow-y: scroll;
+       }
+       #package-info {
+           min-width: 25%;
+           max-height: 70vh;
+           flex-grow: 0.5;
+           border: inherit;
+       }
+       .offer-tile {
+           -webkit-box-flex: flex;
+           display: flex;
+           flex-direction: row;
+           margin: 15px;
+           width: 95%;
+           min-height: 200px;
+           height: 200px;
+           box-shadow: 2px 2px 3px #AFAFAF;
+       }
+       .img-tile {
+           -webkit-box-flex: flex;
+           display: flex;
+           flex-direction: row;
+           width: 50%;
+       }
+       .img-tile-item {
+           -webkit-box-flex: flex;
+           display: flex;
+           flex-direction: column;
+           width: 40%;
+       }
+       .img-tile-item img {
+           border-style: solid;
+           border-color: #FFFFFF;
+           border-width: 0px 1px 1px 1px;
+           height: 50%;
+       }
+       .img-tile-item-initial {
+           border-style: solid;
+           border-color: #FFFFFF;
+           border-width: 0px 0px 1px 1px;
+           width: 60%;
+       }
+       .cover {
+           height: 100%;
+           width: 100%;
+           object-fit: cover;
+       }
+       .offer-info {
+           border: none;
+           -webkit-box-flex: flex;
+           display: flex;
+           flex-direction: row;
+           width: 50%;
+       }
+       .offer-info-left {
+           font-size: 22px;
+           padding: 15px;
+           flex: 0.7;
+           border: inherit;
+           -webkit-box-flex: flex;
+           display: flex;
+           flex-direction: column;
+       }
+       .offer-info-left .name {
+           font-size: 40px;
+           color: #005da9;
+           margin-bottom: 15px;
+       }
+       .offer-info-right {
+           font-size: 32px;
+           padding: 15px;
+           flex: 0.3;
+           border: inherit;
+           -webkit-box-flex: flex;
+           display: flex;
+           flex-direction: column;
+           align-items: flex-end;
+       }
+       .offer-info-right .price {
+           font-size: 40px;
+       }
+       .offer-info-right .offer-heart {
+           margin-top: 35px;
+           font-size: 40px;
+       }
+    </style>
 </head>
 <body>
 <!--[if lt IE 8]>

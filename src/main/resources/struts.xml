@@ -93,6 +93,11 @@
             <result name="error">/WEB-INF/jsp/exception.jsp</result>
         </action>
 
+        <action name="results" class="NewcastleConnections.Actions.DBTest">
+            <result name="success">/WEB-INF/jsp/results.jsp</result>
+            <result name="error">/WEB-INF/jsp/exception.jsp</result>
+        </action>
+
         <action name="login" class="NewcastleConnections.Authentication.LoginAction">
             <result>WEB-INF/jsp/home.jsp</result>
         </action>

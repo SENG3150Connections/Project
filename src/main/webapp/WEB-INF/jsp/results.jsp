@@ -166,7 +166,7 @@
                 <p class="fa" style="cursor: pointer;">&#xf0c9;</p>
             </div>
             <div class="homepage-logo">
-                <h1><a href="#">NewcastleConnections</a></h1>
+                <h1><a href="/home">NewcastleConnections</a></h1>
             </div>
             <div class="homepage-social">
                 <img src="../../img/social-icons.svg" />
@@ -196,6 +196,9 @@
     </div>
     <div id="results-container">
         <div id="results">
+            <s:if test="%{parameters.search[0]=='test'}">
+                <p>search returned true</p>
+            </s:if>
             <s:iterator value="hotels" var="hotel">
                 <div class="offer-tile">
                     <div class="img-tile">
@@ -220,16 +223,6 @@
                     </div>
                 </div>
             </s:iterator>
-            <h1>HOTELS</h1>
-            <table>
-             <s:iterator value="hotels" var="hotel">
-                <tr>
-                    <td>${hotel.id}</td>
-                    <td>${hotel.name}</td>
-                    <td>${hotel.address}</td>
-                </tr>
-            </s:iterator>
-            </table>
         </div>
         <div id="package-info">package information</div>
     </div>

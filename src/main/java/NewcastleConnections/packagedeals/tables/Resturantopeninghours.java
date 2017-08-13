@@ -38,7 +38,7 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Resturantopeninghours extends TableImpl<ResturantopeninghoursRecord> {
 
-    private static final long serialVersionUID = 1247543168;
+    private static final long serialVersionUID = -92816413;
 
     /**
      * The reference instance of <code>PackageDeals.ResturantOpeningHours</code>
@@ -147,7 +147,7 @@ public class Resturantopeninghours extends TableImpl<ResturantopeninghoursRecord
      */
     @Override
     public List<ForeignKey<ResturantopeninghoursRecord, ?>> getReferences() {
-        return Arrays.<ForeignKey<ResturantopeninghoursRecord, ?>>asList(Keys.FK_RESTURANTOPENINGHOURS_WEEKDAY, Keys.FK_RESTURANTOPENINGHOURS_RESTURANTS);
+        return Arrays.<ForeignKey<ResturantopeninghoursRecord, ?>>asList(Keys.FK_RESTURANTOPENINGHOURS_WEEKDAY);
     }
 
     /**

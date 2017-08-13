@@ -27,28 +27,15 @@
     
 </head>
 <body>
-  
-    <! -- Nav bar -->
-    <div id="management-navbar" class="management-navbar">
-        <script>
-            $( ".management-navbar" ).load( "snippets/management-navbar.html" );
-        </script>
-    
-    </div>
-    
     <!-- Sidebar -->
     <div id="sidebar" class="sidebar">
-        <script>
-            $( ".sidebar" ).load( "snippets/management-sidebar-nav.html" );
-        </script>
+        <jsp:include page="management-sidebar-nav.jsp" />
     </div>
     
     <!-- Main Body -->
     <div class="management-mainbody">
         <div class="menuContent">
-            <script>
-                loadDisplayProducts();
-            </script>
+
         </div>
     </div>
     

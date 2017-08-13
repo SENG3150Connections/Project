@@ -16,7 +16,6 @@ import java.util.List;
 import javax.annotation.Generated;
 
 import org.jooq.Field;
-import org.jooq.ForeignKey;
 import org.jooq.Identity;
 import org.jooq.Schema;
 import org.jooq.Table;
@@ -39,7 +38,7 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Resturantopeninghoursoverrides extends TableImpl<ResturantopeninghoursoverridesRecord> {
 
-    private static final long serialVersionUID = -309814063;
+    private static final long serialVersionUID = -526154800;
 
     /**
      * The reference instance of <code>PackageDeals.ResturantOpeningHoursOverrides</code>
@@ -141,14 +140,6 @@ public class Resturantopeninghoursoverrides extends TableImpl<Resturantopeningho
     @Override
     public List<UniqueKey<ResturantopeninghoursoverridesRecord>> getKeys() {
         return Arrays.<UniqueKey<ResturantopeninghoursoverridesRecord>>asList(Keys.KEY_RESTURANTOPENINGHOURSOVERRIDES_PRIMARY, Keys.KEY_RESTURANTOPENINGHOURSOVERRIDES_UQ_RESTURANTID_DATE);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public List<ForeignKey<ResturantopeninghoursoverridesRecord, ?>> getReferences() {
-        return Arrays.<ForeignKey<ResturantopeninghoursoverridesRecord, ?>>asList(Keys.FK_RESTURANTOPENINGHOURSOVERRIDES_RESTURANTS);
     }
 
     /**

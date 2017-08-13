@@ -70,7 +70,7 @@ hr {
     border-radius: 8px;
     content: '';
     height: 16px;
-    margin-top: -8px;
+    margin-top: 4px;
     position:absolute;
     opacity: 0.3;
     transition: all 0.4s ease-in-out;
@@ -83,9 +83,9 @@ hr {
     content: '';
     height: 24px;
     left: -4px;
-    margin-top: -8px;
+    margin-top: 0px;
     position: absolute;
-    top: -4px;
+    top: 0px;
     transition: all 0.3s ease-in-out;
     width: 24px;
 }

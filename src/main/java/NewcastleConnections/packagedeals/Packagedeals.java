@@ -12,16 +12,22 @@ import NewcastleConnections.packagedeals.tables.Experienceproviders;
 import NewcastleConnections.packagedeals.tables.Experiences;
 import NewcastleConnections.packagedeals.tables.Experiencevoucherofferings;
 import NewcastleConnections.packagedeals.tables.Hotels;
+import NewcastleConnections.packagedeals.tables.Invoiceexperience;
+import NewcastleConnections.packagedeals.tables.Invoicehotel;
+import NewcastleConnections.packagedeals.tables.Invoicerestaurant;
+import NewcastleConnections.packagedeals.tables.Invoices;
+import NewcastleConnections.packagedeals.tables.Invoicestatus;
+import NewcastleConnections.packagedeals.tables.Restaurants;
 import NewcastleConnections.packagedeals.tables.Resturantopeninghours;
 import NewcastleConnections.packagedeals.tables.Resturantopeninghoursoverrides;
 import NewcastleConnections.packagedeals.tables.Resturantreservationofferingoverrides;
 import NewcastleConnections.packagedeals.tables.Resturantreservationofferings;
-import NewcastleConnections.packagedeals.tables.Resturants;
 import NewcastleConnections.packagedeals.tables.Roomofferingallocations;
 import NewcastleConnections.packagedeals.tables.Roomofferingrateoverrides;
 import NewcastleConnections.packagedeals.tables.Roomofferingrates;
 import NewcastleConnections.packagedeals.tables.Roomofferings;
 import NewcastleConnections.packagedeals.tables.Roomtypes;
+import NewcastleConnections.packagedeals.tables.Tags;
 import NewcastleConnections.packagedeals.tables.Weekday;
 
 import java.util.ArrayList;
@@ -48,7 +54,7 @@ import org.jooq.impl.SchemaImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Packagedeals extends SchemaImpl {
 
-    private static final long serialVersionUID = -1105317724;
+    private static final long serialVersionUID = 112037768;
 
     /**
      * The reference instance of <code>PackageDeals</code>
@@ -91,6 +97,36 @@ public class Packagedeals extends SchemaImpl {
     public final Hotels HOTELS = NewcastleConnections.packagedeals.tables.Hotels.HOTELS;
 
     /**
+     * The table <code>PackageDeals.InvoiceExperience</code>.
+     */
+    public final Invoiceexperience INVOICEEXPERIENCE = NewcastleConnections.packagedeals.tables.Invoiceexperience.INVOICEEXPERIENCE;
+
+    /**
+     * The table <code>PackageDeals.InvoiceHotel</code>.
+     */
+    public final Invoicehotel INVOICEHOTEL = NewcastleConnections.packagedeals.tables.Invoicehotel.INVOICEHOTEL;
+
+    /**
+     * The table <code>PackageDeals.InvoiceRestaurant</code>.
+     */
+    public final Invoicerestaurant INVOICERESTAURANT = NewcastleConnections.packagedeals.tables.Invoicerestaurant.INVOICERESTAURANT;
+
+    /**
+     * The table <code>PackageDeals.Invoices</code>.
+     */
+    public final Invoices INVOICES = NewcastleConnections.packagedeals.tables.Invoices.INVOICES;
+
+    /**
+     * The table <code>PackageDeals.InvoiceStatus</code>.
+     */
+    public final Invoicestatus INVOICESTATUS = NewcastleConnections.packagedeals.tables.Invoicestatus.INVOICESTATUS;
+
+    /**
+     * The table <code>PackageDeals.Restaurants</code>.
+     */
+    public final Restaurants RESTAURANTS = NewcastleConnections.packagedeals.tables.Restaurants.RESTAURANTS;
+
+    /**
      * The table <code>PackageDeals.ResturantOpeningHours</code>.
      */
     public final Resturantopeninghours RESTURANTOPENINGHOURS = NewcastleConnections.packagedeals.tables.Resturantopeninghours.RESTURANTOPENINGHOURS;
@@ -109,11 +145,6 @@ public class Packagedeals extends SchemaImpl {
      * The table <code>PackageDeals.ResturantReservationOfferings</code>.
      */
     public final Resturantreservationofferings RESTURANTRESERVATIONOFFERINGS = NewcastleConnections.packagedeals.tables.Resturantreservationofferings.RESTURANTRESERVATIONOFFERINGS;
-
-    /**
-     * The table <code>PackageDeals.Resturants</code>.
-     */
-    public final Resturants RESTURANTS = NewcastleConnections.packagedeals.tables.Resturants.RESTURANTS;
 
     /**
      * The table <code>PackageDeals.RoomOfferingAllocations</code>.
@@ -139,6 +170,11 @@ public class Packagedeals extends SchemaImpl {
      * The table <code>PackageDeals.RoomTypes</code>.
      */
     public final Roomtypes ROOMTYPES = NewcastleConnections.packagedeals.tables.Roomtypes.ROOMTYPES;
+
+    /**
+     * The table <code>PackageDeals.Tags</code>.
+     */
+    public final Tags TAGS = NewcastleConnections.packagedeals.tables.Tags.TAGS;
 
     /**
      * The table <code>PackageDeals.Weekday</code>.
@@ -177,16 +213,22 @@ public class Packagedeals extends SchemaImpl {
             Experiences.EXPERIENCES,
             Experiencevoucherofferings.EXPERIENCEVOUCHEROFFERINGS,
             Hotels.HOTELS,
+            Invoiceexperience.INVOICEEXPERIENCE,
+            Invoicehotel.INVOICEHOTEL,
+            Invoicerestaurant.INVOICERESTAURANT,
+            Invoices.INVOICES,
+            Invoicestatus.INVOICESTATUS,
+            Restaurants.RESTAURANTS,
             Resturantopeninghours.RESTURANTOPENINGHOURS,
             Resturantopeninghoursoverrides.RESTURANTOPENINGHOURSOVERRIDES,
             Resturantreservationofferingoverrides.RESTURANTRESERVATIONOFFERINGOVERRIDES,
             Resturantreservationofferings.RESTURANTRESERVATIONOFFERINGS,
-            Resturants.RESTURANTS,
             Roomofferingallocations.ROOMOFFERINGALLOCATIONS,
             Roomofferingrateoverrides.ROOMOFFERINGRATEOVERRIDES,
             Roomofferingrates.ROOMOFFERINGRATES,
             Roomofferings.ROOMOFFERINGS,
             Roomtypes.ROOMTYPES,
+            Tags.TAGS,
             Weekday.WEEKDAY);
     }
 }

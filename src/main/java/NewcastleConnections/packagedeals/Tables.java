@@ -11,16 +11,22 @@ import NewcastleConnections.packagedeals.tables.Experienceproviders;
 import NewcastleConnections.packagedeals.tables.Experiences;
 import NewcastleConnections.packagedeals.tables.Experiencevoucherofferings;
 import NewcastleConnections.packagedeals.tables.Hotels;
+import NewcastleConnections.packagedeals.tables.Invoiceexperience;
+import NewcastleConnections.packagedeals.tables.Invoicehotel;
+import NewcastleConnections.packagedeals.tables.Invoicerestaurant;
+import NewcastleConnections.packagedeals.tables.Invoices;
+import NewcastleConnections.packagedeals.tables.Invoicestatus;
+import NewcastleConnections.packagedeals.tables.Restaurants;
 import NewcastleConnections.packagedeals.tables.Resturantopeninghours;
 import NewcastleConnections.packagedeals.tables.Resturantopeninghoursoverrides;
 import NewcastleConnections.packagedeals.tables.Resturantreservationofferingoverrides;
 import NewcastleConnections.packagedeals.tables.Resturantreservationofferings;
-import NewcastleConnections.packagedeals.tables.Resturants;
 import NewcastleConnections.packagedeals.tables.Roomofferingallocations;
 import NewcastleConnections.packagedeals.tables.Roomofferingrateoverrides;
 import NewcastleConnections.packagedeals.tables.Roomofferingrates;
 import NewcastleConnections.packagedeals.tables.Roomofferings;
 import NewcastleConnections.packagedeals.tables.Roomtypes;
+import NewcastleConnections.packagedeals.tables.Tags;
 import NewcastleConnections.packagedeals.tables.Weekday;
 
 import javax.annotation.Generated;
@@ -75,6 +81,36 @@ public class Tables {
     public static final Hotels HOTELS = NewcastleConnections.packagedeals.tables.Hotels.HOTELS;
 
     /**
+     * The table <code>PackageDeals.InvoiceExperience</code>.
+     */
+    public static final Invoiceexperience INVOICEEXPERIENCE = NewcastleConnections.packagedeals.tables.Invoiceexperience.INVOICEEXPERIENCE;
+
+    /**
+     * The table <code>PackageDeals.InvoiceHotel</code>.
+     */
+    public static final Invoicehotel INVOICEHOTEL = NewcastleConnections.packagedeals.tables.Invoicehotel.INVOICEHOTEL;
+
+    /**
+     * The table <code>PackageDeals.InvoiceRestaurant</code>.
+     */
+    public static final Invoicerestaurant INVOICERESTAURANT = NewcastleConnections.packagedeals.tables.Invoicerestaurant.INVOICERESTAURANT;
+
+    /**
+     * The table <code>PackageDeals.Invoices</code>.
+     */
+    public static final Invoices INVOICES = NewcastleConnections.packagedeals.tables.Invoices.INVOICES;
+
+    /**
+     * The table <code>PackageDeals.InvoiceStatus</code>.
+     */
+    public static final Invoicestatus INVOICESTATUS = NewcastleConnections.packagedeals.tables.Invoicestatus.INVOICESTATUS;
+
+    /**
+     * The table <code>PackageDeals.Restaurants</code>.
+     */
+    public static final Restaurants RESTAURANTS = NewcastleConnections.packagedeals.tables.Restaurants.RESTAURANTS;
+
+    /**
      * The table <code>PackageDeals.ResturantOpeningHours</code>.
      */
     public static final Resturantopeninghours RESTURANTOPENINGHOURS = NewcastleConnections.packagedeals.tables.Resturantopeninghours.RESTURANTOPENINGHOURS;
@@ -93,11 +129,6 @@ public class Tables {
      * The table <code>PackageDeals.ResturantReservationOfferings</code>.
      */
     public static final Resturantreservationofferings RESTURANTRESERVATIONOFFERINGS = NewcastleConnections.packagedeals.tables.Resturantreservationofferings.RESTURANTRESERVATIONOFFERINGS;
-
-    /**
-     * The table <code>PackageDeals.Resturants</code>.
-     */
-    public static final Resturants RESTURANTS = NewcastleConnections.packagedeals.tables.Resturants.RESTURANTS;
 
     /**
      * The table <code>PackageDeals.RoomOfferingAllocations</code>.
@@ -123,6 +154,11 @@ public class Tables {
      * The table <code>PackageDeals.RoomTypes</code>.
      */
     public static final Roomtypes ROOMTYPES = NewcastleConnections.packagedeals.tables.Roomtypes.ROOMTYPES;
+
+    /**
+     * The table <code>PackageDeals.Tags</code>.
+     */
+    public static final Tags TAGS = NewcastleConnections.packagedeals.tables.Tags.TAGS;
 
     /**
      * The table <code>PackageDeals.Weekday</code>.

@@ -15,7 +15,6 @@ import java.util.List;
 import javax.annotation.Generated;
 
 import org.jooq.Field;
-import org.jooq.ForeignKey;
 import org.jooq.Identity;
 import org.jooq.Schema;
 import org.jooq.Table;
@@ -38,7 +37,7 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Resturantreservationofferingoverrides extends TableImpl<ResturantreservationofferingoverridesRecord> {
 
-    private static final long serialVersionUID = -1497982241;
+    private static final long serialVersionUID = 752994013;
 
     /**
      * The reference instance of <code>PackageDeals.ResturantReservationOfferingOverrides</code>
@@ -145,14 +144,6 @@ public class Resturantreservationofferingoverrides extends TableImpl<Resturantre
     @Override
     public List<UniqueKey<ResturantreservationofferingoverridesRecord>> getKeys() {
         return Arrays.<UniqueKey<ResturantreservationofferingoverridesRecord>>asList(Keys.KEY_RESTURANTRESERVATIONOFFERINGOVERRIDES_PRIMARY);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public List<ForeignKey<ResturantreservationofferingoverridesRecord, ?>> getReferences() {
-        return Arrays.<ForeignKey<ResturantreservationofferingoverridesRecord, ?>>asList(Keys.FK_RESTURANTRESERVATIONOFFERINGOVERRIDES_RESTURANTS);
     }
 
     /**

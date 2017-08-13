@@ -15,7 +15,7 @@ import static NewcastleConnections.packagedeals.Tables.*;
 /**
  * Created by seb on 1/8/17.
  */
-public class DBTest extends ActionSupport {
+public class GetData extends ActionSupport {
 
 
     // Results property (to be shared with the JSP page)

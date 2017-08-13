@@ -36,7 +36,6 @@ public class DefaultCatalog extends CatalogImpl {
      */
     public static final DefaultCatalog DEFAULT_CATALOG = new DefaultCatalog();
 
-
     /**
      * The schema <code>PackageDeals</code>.
      */
@@ -47,17 +46,5 @@ public class DefaultCatalog extends CatalogImpl {
      */
     private DefaultCatalog() {
         super("");
-    }
-
-    @Override
-    public final List<Schema> getSchemas() {
-        List result = new ArrayList();
-        result.addAll(getSchemas0());
-        return result;
-    }
-
-    private final List<Schema> getSchemas0() {
-        return Arrays.<Schema>asList(
-            Packagedeals.PACKAGEDEALS);
     }
 }

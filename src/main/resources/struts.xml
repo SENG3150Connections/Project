@@ -23,9 +23,10 @@
             <result>WEB-INF/jsp/home.jsp</result>
         </action>
             
-        <action name="results">
-            <result>WEB-INF/jsp/results.jsp</result>
-        </action>    
+        <action name="results" class="NewcastleConnections.Actions.Results">
+            <result name="success">/WEB-INF/jsp/results.jsp</result>
+            <result name="error">/WEB-INF/jsp/exception.jsp</result>
+        </action>
 
         <!-- Example authentication -->
         <action name="private">

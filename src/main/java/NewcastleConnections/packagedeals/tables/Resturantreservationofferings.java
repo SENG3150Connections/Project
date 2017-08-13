@@ -38,7 +38,7 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Resturantreservationofferings extends TableImpl<ResturantreservationofferingsRecord> {
 
-    private static final long serialVersionUID = -491298880;
+    private static final long serialVersionUID = 2084439751;
 
     /**
      * The reference instance of <code>PackageDeals.ResturantReservationOfferings</code>
@@ -152,7 +152,7 @@ public class Resturantreservationofferings extends TableImpl<Resturantreservatio
      */
     @Override
     public List<ForeignKey<ResturantreservationofferingsRecord, ?>> getReferences() {
-        return Arrays.<ForeignKey<ResturantreservationofferingsRecord, ?>>asList(Keys.FK_RESTURANTRESERVATIONOFFERINGS_WEEKDAY);
+        return Arrays.<ForeignKey<ResturantreservationofferingsRecord, ?>>asList(Keys.FK_RESTURANTRESERVATIONOFFERINGS_WEEKDAY, Keys.FK_RESTURANTRESERVATIONOFFERINGS_RESTURANTS);
     }
 
     /**

@@ -16,16 +16,17 @@ import NewcastleConnections.packagedeals.tables.Invoicehotel;
 import NewcastleConnections.packagedeals.tables.Invoicerestaurant;
 import NewcastleConnections.packagedeals.tables.Invoices;
 import NewcastleConnections.packagedeals.tables.Invoicestatus;
-import NewcastleConnections.packagedeals.tables.Restaurants;
 import NewcastleConnections.packagedeals.tables.Resturantopeninghours;
 import NewcastleConnections.packagedeals.tables.Resturantopeninghoursoverrides;
 import NewcastleConnections.packagedeals.tables.Resturantreservationofferingoverrides;
 import NewcastleConnections.packagedeals.tables.Resturantreservationofferings;
+import NewcastleConnections.packagedeals.tables.Resturants;
 import NewcastleConnections.packagedeals.tables.Roomofferingallocations;
 import NewcastleConnections.packagedeals.tables.Roomofferingrateoverrides;
 import NewcastleConnections.packagedeals.tables.Roomofferingrates;
 import NewcastleConnections.packagedeals.tables.Roomofferings;
 import NewcastleConnections.packagedeals.tables.Roomtypes;
+import NewcastleConnections.packagedeals.tables.Tagallocations;
 import NewcastleConnections.packagedeals.tables.Tags;
 import NewcastleConnections.packagedeals.tables.Weekday;
 
@@ -106,11 +107,6 @@ public class Tables {
     public static final Invoicestatus INVOICESTATUS = NewcastleConnections.packagedeals.tables.Invoicestatus.INVOICESTATUS;
 
     /**
-     * The table <code>PackageDeals.Restaurants</code>.
-     */
-    public static final Restaurants RESTAURANTS = NewcastleConnections.packagedeals.tables.Restaurants.RESTAURANTS;
-
-    /**
      * The table <code>PackageDeals.ResturantOpeningHours</code>.
      */
     public static final Resturantopeninghours RESTURANTOPENINGHOURS = NewcastleConnections.packagedeals.tables.Resturantopeninghours.RESTURANTOPENINGHOURS;
@@ -129,6 +125,11 @@ public class Tables {
      * The table <code>PackageDeals.ResturantReservationOfferings</code>.
      */
     public static final Resturantreservationofferings RESTURANTRESERVATIONOFFERINGS = NewcastleConnections.packagedeals.tables.Resturantreservationofferings.RESTURANTRESERVATIONOFFERINGS;
+
+    /**
+     * The table <code>PackageDeals.Resturants</code>.
+     */
+    public static final Resturants RESTURANTS = NewcastleConnections.packagedeals.tables.Resturants.RESTURANTS;
 
     /**
      * The table <code>PackageDeals.RoomOfferingAllocations</code>.
@@ -154,6 +155,11 @@ public class Tables {
      * The table <code>PackageDeals.RoomTypes</code>.
      */
     public static final Roomtypes ROOMTYPES = NewcastleConnections.packagedeals.tables.Roomtypes.ROOMTYPES;
+
+    /**
+     * The table <code>PackageDeals.TagAllocations</code>.
+     */
+    public static final Tagallocations TAGALLOCATIONS = NewcastleConnections.packagedeals.tables.Tagallocations.TAGALLOCATIONS;
 
     /**
      * The table <code>PackageDeals.Tags</code>.

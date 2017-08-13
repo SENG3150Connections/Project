@@ -25,7 +25,6 @@ public class SubmitOffer extends ActionSupport {
     private byte releaseondate = (byte)0;
     private Date releasedate = new Date(2017, 1, 1);
     private String imageid = "";
-    private Double price = 0.0;
     private String category = "";
 
     @Override
@@ -50,7 +49,6 @@ public class SubmitOffer extends ActionSupport {
             hotel.setReleaseondate(releaseondate);
             hotel.setReleasedate(releasedate);
             hotel.setImageid(imageid);
-            hotel.setPrice(price);
             hotel.setCategory(category);
             hotel.store();
 
@@ -112,10 +110,6 @@ public class SubmitOffer extends ActionSupport {
 
     public void setImageid(String imageid) {
         this.imageid = imageid;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
     }
 
     public void setCategory(String category) {

@@ -8,6 +8,7 @@ import NewcastleConnections.packagedeals.Keys;
 import NewcastleConnections.packagedeals.Packagedeals;
 import NewcastleConnections.packagedeals.tables.records.InvoicehotelRecord;
 
+import java.sql.Timestamp;
 import java.util.Arrays;
 import java.util.List;
 
@@ -36,7 +37,7 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Invoicehotel extends TableImpl<InvoicehotelRecord> {
 
-    private static final long serialVersionUID = -1504498114;
+    private static final long serialVersionUID = -1145554498;
 
     /**
      * The reference instance of <code>PackageDeals.InvoiceHotel</code>
@@ -57,9 +58,34 @@ public class Invoicehotel extends TableImpl<InvoicehotelRecord> {
     public final TableField<InvoicehotelRecord, UInteger> INVOICEID = createField("invoiceId", org.jooq.impl.SQLDataType.INTEGERUNSIGNED.nullable(false), this, "");
 
     /**
-     * The column <code>PackageDeals.InvoiceHotel.hotelId</code>.
+     * The column <code>PackageDeals.InvoiceHotel.roomId</code>.
      */
-    public final TableField<InvoicehotelRecord, UInteger> HOTELID = createField("hotelId", org.jooq.impl.SQLDataType.INTEGERUNSIGNED.nullable(false), this, "");
+    public final TableField<InvoicehotelRecord, UInteger> ROOMID = createField("roomId", org.jooq.impl.SQLDataType.INTEGERUNSIGNED.nullable(false), this, "");
+
+    /**
+     * The column <code>PackageDeals.InvoiceHotel.adults</code>.
+     */
+    public final TableField<InvoicehotelRecord, Integer> ADULTS = createField("adults", org.jooq.impl.SQLDataType.INTEGER.nullable(false), this, "");
+
+    /**
+     * The column <code>PackageDeals.InvoiceHotel.children</code>.
+     */
+    public final TableField<InvoicehotelRecord, Integer> CHILDREN = createField("children", org.jooq.impl.SQLDataType.INTEGER.nullable(false), this, "");
+
+    /**
+     * The column <code>PackageDeals.InvoiceHotel.checkIn</code>.
+     */
+    public final TableField<InvoicehotelRecord, Timestamp> CHECKIN = createField("checkIn", org.jooq.impl.SQLDataType.TIMESTAMP.nullable(false), this, "");
+
+    /**
+     * The column <code>PackageDeals.InvoiceHotel.checkOut</code>.
+     */
+    public final TableField<InvoicehotelRecord, Timestamp> CHECKOUT = createField("checkOut", org.jooq.impl.SQLDataType.TIMESTAMP.nullable(false), this, "");
+
+    /**
+     * The column <code>PackageDeals.InvoiceHotel.price</code>.
+     */
+    public final TableField<InvoicehotelRecord, Double> PRICE = createField("price", org.jooq.impl.SQLDataType.DOUBLE.nullable(false), this, "");
 
     /**
      * Create a <code>PackageDeals.InvoiceHotel</code> table reference
@@ -112,7 +138,7 @@ public class Invoicehotel extends TableImpl<InvoicehotelRecord> {
      */
     @Override
     public List<ForeignKey<InvoicehotelRecord, ?>> getReferences() {
-        return Arrays.<ForeignKey<InvoicehotelRecord, ?>>asList(Keys.IHINVOICE, Keys.IHHOTEL);
+        return Arrays.<ForeignKey<InvoicehotelRecord, ?>>asList(Keys.IHINVOICE, Keys.IHROOM);
     }
 
     /**

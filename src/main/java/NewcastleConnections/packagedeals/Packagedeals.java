@@ -17,16 +17,17 @@ import NewcastleConnections.packagedeals.tables.Invoicehotel;
 import NewcastleConnections.packagedeals.tables.Invoicerestaurant;
 import NewcastleConnections.packagedeals.tables.Invoices;
 import NewcastleConnections.packagedeals.tables.Invoicestatus;
-import NewcastleConnections.packagedeals.tables.Restaurants;
 import NewcastleConnections.packagedeals.tables.Resturantopeninghours;
 import NewcastleConnections.packagedeals.tables.Resturantopeninghoursoverrides;
 import NewcastleConnections.packagedeals.tables.Resturantreservationofferingoverrides;
 import NewcastleConnections.packagedeals.tables.Resturantreservationofferings;
+import NewcastleConnections.packagedeals.tables.Resturants;
 import NewcastleConnections.packagedeals.tables.Roomofferingallocations;
 import NewcastleConnections.packagedeals.tables.Roomofferingrateoverrides;
 import NewcastleConnections.packagedeals.tables.Roomofferingrates;
 import NewcastleConnections.packagedeals.tables.Roomofferings;
 import NewcastleConnections.packagedeals.tables.Roomtypes;
+import NewcastleConnections.packagedeals.tables.Tagallocations;
 import NewcastleConnections.packagedeals.tables.Tags;
 import NewcastleConnections.packagedeals.tables.Weekday;
 
@@ -54,7 +55,7 @@ import org.jooq.impl.SchemaImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Packagedeals extends SchemaImpl {
 
-    private static final long serialVersionUID = 112037768;
+    private static final long serialVersionUID = 1392801930;
 
     /**
      * The reference instance of <code>PackageDeals</code>
@@ -122,11 +123,6 @@ public class Packagedeals extends SchemaImpl {
     public final Invoicestatus INVOICESTATUS = NewcastleConnections.packagedeals.tables.Invoicestatus.INVOICESTATUS;
 
     /**
-     * The table <code>PackageDeals.Restaurants</code>.
-     */
-    public final Restaurants RESTAURANTS = NewcastleConnections.packagedeals.tables.Restaurants.RESTAURANTS;
-
-    /**
      * The table <code>PackageDeals.ResturantOpeningHours</code>.
      */
     public final Resturantopeninghours RESTURANTOPENINGHOURS = NewcastleConnections.packagedeals.tables.Resturantopeninghours.RESTURANTOPENINGHOURS;
@@ -145,6 +141,11 @@ public class Packagedeals extends SchemaImpl {
      * The table <code>PackageDeals.ResturantReservationOfferings</code>.
      */
     public final Resturantreservationofferings RESTURANTRESERVATIONOFFERINGS = NewcastleConnections.packagedeals.tables.Resturantreservationofferings.RESTURANTRESERVATIONOFFERINGS;
+
+    /**
+     * The table <code>PackageDeals.Resturants</code>.
+     */
+    public final Resturants RESTURANTS = NewcastleConnections.packagedeals.tables.Resturants.RESTURANTS;
 
     /**
      * The table <code>PackageDeals.RoomOfferingAllocations</code>.
@@ -170,6 +171,11 @@ public class Packagedeals extends SchemaImpl {
      * The table <code>PackageDeals.RoomTypes</code>.
      */
     public final Roomtypes ROOMTYPES = NewcastleConnections.packagedeals.tables.Roomtypes.ROOMTYPES;
+
+    /**
+     * The table <code>PackageDeals.TagAllocations</code>.
+     */
+    public final Tagallocations TAGALLOCATIONS = NewcastleConnections.packagedeals.tables.Tagallocations.TAGALLOCATIONS;
 
     /**
      * The table <code>PackageDeals.Tags</code>.
@@ -218,16 +224,17 @@ public class Packagedeals extends SchemaImpl {
             Invoicerestaurant.INVOICERESTAURANT,
             Invoices.INVOICES,
             Invoicestatus.INVOICESTATUS,
-            Restaurants.RESTAURANTS,
             Resturantopeninghours.RESTURANTOPENINGHOURS,
             Resturantopeninghoursoverrides.RESTURANTOPENINGHOURSOVERRIDES,
             Resturantreservationofferingoverrides.RESTURANTRESERVATIONOFFERINGOVERRIDES,
             Resturantreservationofferings.RESTURANTRESERVATIONOFFERINGS,
+            Resturants.RESTURANTS,
             Roomofferingallocations.ROOMOFFERINGALLOCATIONS,
             Roomofferingrateoverrides.ROOMOFFERINGRATEOVERRIDES,
             Roomofferingrates.ROOMOFFERINGRATES,
             Roomofferings.ROOMOFFERINGS,
             Roomtypes.ROOMTYPES,
+            Tagallocations.TAGALLOCATIONS,
             Tags.TAGS,
             Weekday.WEEKDAY);
     }

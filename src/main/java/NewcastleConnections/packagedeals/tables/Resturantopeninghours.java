@@ -38,7 +38,7 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Resturantopeninghours extends TableImpl<ResturantopeninghoursRecord> {
 
-    private static final long serialVersionUID = -92816413;
+    private static final long serialVersionUID = -1889215634;
 
     /**
      * The reference instance of <code>PackageDeals.ResturantOpeningHours</code>
@@ -84,9 +84,9 @@ public class Resturantopeninghours extends TableImpl<ResturantopeninghoursRecord
     public final TableField<ResturantopeninghoursRecord, Timestamp> PAUSEENDTIME = createField("pauseEndTime", org.jooq.impl.SQLDataType.TIMESTAMP, this, "");
 
     /**
-     * The column <code>PackageDeals.ResturantOpeningHours.resturantId</code>.
+     * The column <code>PackageDeals.ResturantOpeningHours.restaurantId</code>.
      */
-    public final TableField<ResturantopeninghoursRecord, UInteger> RESTURANTID = createField("resturantId", org.jooq.impl.SQLDataType.INTEGERUNSIGNED.nullable(false), this, "");
+    public final TableField<ResturantopeninghoursRecord, UInteger> RESTAURANTID = createField("restaurantId", org.jooq.impl.SQLDataType.INTEGERUNSIGNED.nullable(false), this, "");
 
     /**
      * Create a <code>PackageDeals.ResturantOpeningHours</code> table reference

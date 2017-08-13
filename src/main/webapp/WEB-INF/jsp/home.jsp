@@ -117,7 +117,7 @@
         </div>
     </div>
     <div class="container" style="height: 650px;overflow: hidden">
-        <img src="../../img/large.jpg" style="overflow:hidden"/></h2>
+        <img src="../../img/large.jpg" style="overflow:hidden; object-fit: cover;"/></h2>
     </div>
     <div class="container" style="margin: 25px;padding: 25px;color: #555555;flex-direction: column;justify-content: center;align-items: center">
         <h2 class="text-center" style="margin: 15px 15px">

@@ -100,8 +100,8 @@
                     </div>
                     <div class="offer-info">
                         <div class="offer-info-left">
-                            <span class="name">$(hotel.name)</span>
-                            <span class="blurb">$(hotel.address)</span>
+                            <span class="name">${hotel.name}</span>
+                            <span class="blurb">${hotel.address}</span>
                         </div>
                         <div class="offer-info-right">
                             <span class="price">$100</span>

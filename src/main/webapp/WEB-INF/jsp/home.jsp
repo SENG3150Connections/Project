@@ -5,14 +5,13 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Newcastle Connections</title>
+    <title>Discover Newcastle</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link href="//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="../../font-awesome-4.7.0/css/font-awesome.min.css">
-    <!-- Place favicon.ico in the root directory -->
 
     <link rel="stylesheet" href="../../css/normalize.css">
     <link rel="stylesheet" href="../../css/main.css">
@@ -59,7 +58,7 @@
             <h1 class="text-center homepage-maintext">Discover Newcastle</h1>
         </div>
         <div class="container">
-            <form class="flexform">
+            <form class="flexform search-form" action="/results">
                 <input type="search" class="fa" name="search" placeholder="&#xf002; Search..">
                 <input type="text" class="fa" name="start" id="start" placeholder="&#xf073; Arrive">
                 <input type="text" class="fa" name="finish" id="end" placeholder="&#xf073; Leave">

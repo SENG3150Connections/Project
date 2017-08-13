@@ -38,12 +38,17 @@
 
 
         <!-- Management Portal -->
+        <action name="createOffer" class="NewcastleConnections.Actions.CreateOffer">
+            <result name="success">/WEB-INF/jsp/managementPortal-create-offer.jsp</result>
+            <result name="error">/WEB-INF/jsp/exception.jsp</result>
+        </action>
+
         <action name="submitOffer" class="NewcastleConnections.Actions.SubmitOffer">
             <result name="success">/WEB-INF/jsp/managementPortal.jsp</result>
             <result name="error">/WEB-INF/jsp/exception.jsp</result>
         </action>
 
-        <action name="managementPortal" class="NewcastleConnections.Actions.GetData">
+        <action name="managementPortal">
             <result name="success">/WEB-INF/jsp/managementPortal.jsp</result>
             <result name="error">/WEB-INF/jsp/exception.jsp</result>
         </action>
@@ -53,8 +58,18 @@
             <result name="error">/WEB-INF/jsp/exception.jsp</result>
         </action>
 
-        <action name="createOffer" class="NewcastleConnections.Actions.GetData">
-            <result name="success">/WEB-INF/jsp/managementPortal-create-offer.jsp</result>
+        <action name="createRestaurant">
+            <result name="success">/WEB-INF/jsp/managementPortal-create-restaurant.jsp</result>
+            <result name="error">/WEB-INF/jsp/exception.jsp</result>
+        </action>
+
+        <action name="createHotel">
+            <result name="success">/WEB-INF/jsp/managementPortal-create-hotel.jsp</result>
+            <result name="error">/WEB-INF/jsp/exception.jsp</result>
+        </action>
+
+        <action name="createExperience">
+            <result name="success">/WEB-INF/jsp/managementPortal-create-experience.jsp</result>
             <result name="error">/WEB-INF/jsp/exception.jsp</result>
         </action>
 

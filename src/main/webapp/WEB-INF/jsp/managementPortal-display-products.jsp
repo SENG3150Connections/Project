@@ -38,11 +38,6 @@
             <div class="create-offer">
                 <div class="title">
                     <label class="prev-dir">Manage Products/</label><label class="current-dir"> Add Offer</label>
-
-                    <div class="pull-right">
-                        <button class="btn btn-default">Cancel</button>
-                        <button class="btn btn-info">Save Product</button>
-                    </div>
                 </div>
                 <div class="row">
                     <form>

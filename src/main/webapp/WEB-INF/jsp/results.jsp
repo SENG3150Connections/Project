@@ -196,7 +196,7 @@
     </div>
     <div id="results-container">
         <div id="results">
-            <s:if test="%{parameters.search[0]=='test'}">
+            <s:if test="%{#parameters.search[0]=='test'}">
                 <p>search returned true</p>
             </s:if>
             <s:iterator value="hotels" var="hotel">

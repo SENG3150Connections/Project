@@ -186,6 +186,28 @@
     </div>
     <div id="results-container">
         <div id="results">
+            <div class="offer-tile">
+                <div class="img-tile">
+                    <div class="img-tile-item-initial">
+                        <img src='../../img/tile-img.jpg' class="cover"/>
+                    </div>
+                    <div class="img-tile-item">
+                        <img src='../../img/tile-img-2.jpg' class="cover"/>
+                        <img src='../../img/tile-img-3.jpg' class="cover"/>
+                    </div>
+                </div>
+                <div class="offer-info">
+                    <div class="offer-info-left">
+                        <span class="name">Hotel 1</span>
+                        <span class="blurb">5 this place sucks, Newcastle</span>
+                    </div>
+                    <div class="offer-info-right">
+                        <span class="price">$100</span>
+                        <span class="fa icons">&#xf0f5;</span>
+                        <span class="fa offer-heart">&#xf08a;</span>
+                    </div>
+                </div>
+            </div>
             <s:iterator value="hotels" var="hotel">
                 <div class="offer-tile">
                     <div class="img-tile">

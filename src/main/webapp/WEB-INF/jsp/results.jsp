@@ -232,6 +232,16 @@
                     </div>
                 </div>
             </s:iterator>
+            <h1>HOTELS</h1>
+            <table>
+             <s:iterator value="hotels" var="hotel">
+                <tr>
+                    <td>${hotel.id}</td>
+                    <td>${hotel.name}</td>
+                    <td>${hotel.address}</td>
+                </tr>
+            </s:iterator>
+            </table>
         </div>
         <div id="package-info">package information</div>
     </div>

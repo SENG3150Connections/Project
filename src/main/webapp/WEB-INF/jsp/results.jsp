@@ -186,7 +186,7 @@
     </div>
     <div id="results-container">
         <div id="results">
-            <s:iterator value="hotels" var="hotel"
+            <s:iterator value="hotels" var="hotel">
                 <div class="offer-tile">
                     <div class="img-tile">
                         <div class="img-tile-item-initial">

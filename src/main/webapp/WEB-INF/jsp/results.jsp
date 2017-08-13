@@ -60,7 +60,7 @@
        }
        #results {
            margin-top: 2px;
-           height: 80vh;
+           height: 72vh;
            flex-grow: 1;
            -webkit-box-flex: flex;
            display: flex;
@@ -196,7 +196,7 @@
     </div>
     <div id="results-container">
         <div id="results">
-            <s:if test="%{#parameters.search[0]=='test'}">
+            <s:if test="%{#parameters.results[0]=='test'}">
                 <p>search returned true</p>
             </s:if>
             <s:iterator value="hotels" var="hotel">

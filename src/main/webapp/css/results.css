@@ -35,13 +35,13 @@ header {
 }
 #results {
     margin-top: 2px;
-    min-height: 80vh;
+    height: 80vh;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     border: inherit;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 #package-info {
     min-width: 25%;

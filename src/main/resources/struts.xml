@@ -10,7 +10,6 @@
     <!-- Default package -->
     <package name="default" extends="struts-default">
 
-
         <interceptors>
             <interceptor name="authentication" class="NewcastleConnections.Authentication.AuthenticationInterceptor" />
         </interceptors>
@@ -21,6 +20,10 @@
 
         <action name="home">
             <result>WEB-INF/jsp/home.jsp</result>
+        </action>
+
+        <action name="countdown">
+            <result>WEB-INF/jsp/countdown.jsp</result>
         </action>
 
         <action name="managementPortal">

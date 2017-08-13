@@ -165,7 +165,6 @@ main {
     border: none;
 }
 .header a {
-    color: #FFFFFF;
     text-decoration: none;
 }
 .grad {
@@ -247,16 +246,18 @@ main {
 
 /*SearchForm*/
 .flexform {
-    width: 70%;
-    min-width: 400px;
+    margin: 0;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
     align-items: center;
-    border-radius: 4px;
-    margin: 0;
+}
+.search-form {
+    width: 70%;
     padding: 8px 8px;
+    min-width: 400px;
+    border-radius: 4px;
     background: rgba(0,0,0,.2);
 }
 /*Input Styling*/

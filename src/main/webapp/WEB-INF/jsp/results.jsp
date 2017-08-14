@@ -318,7 +318,7 @@
                                 <span class="blurb">${hotel.address}</span>
                             </div>
                             <div class="offer-info-right">
-                                <span class="price">$${hotel.price}</span>
+                                <span class="price">$DB TBA</span>
                                 <span class="fa icons">&#xf236;</span>
                                 <span class="fa offer-heart">&#xf08a;</span>
                             </div>

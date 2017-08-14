@@ -6,6 +6,8 @@
 
 <struts>
 
+    <constant name="struts.actionProxyFactory" value="NewcastleConnections.Session.ActionProxyFactory"/>
+    <bean name="cart" class="NewcastleConnections.Cart" scope="session" />
 
     <!-- Default package -->
     <package name="default" extends="struts-default">
@@ -91,6 +93,14 @@
         <action name="dbTest" class="NewcastleConnections.Actions.DBTest">
             <result name="success">/WEB-INF/jsp/databaseTest.jsp</result>
             <result name="error">/WEB-INF/jsp/exception.jsp</result>
+        </action>
+
+        <action name="cartTest" class="NewcastleConnections.Actions.Cart.ViewCart">
+            <result>/WEB-INF/jsp/cartTest.jsp</result>
+        </action>
+
+        <action name="cartTest2" class="NewcastleConnections.Actions.Cart.UpdateCart">
+            <result type="redirect">cartTest</result>
         </action>
 
         <action name="login" class="NewcastleConnections.Authentication.LoginAction">

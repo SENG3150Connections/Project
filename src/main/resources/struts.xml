@@ -113,6 +113,10 @@
 
         </action>
 
+        <action name="payment">
+            <result>WEB-INF/jsp/payment.jsp</result>
+        </action>
+
         <action name="logout" class="NewcastleConnections.Authentication.LogoutAction">
             <result>WEB-INF/jsp/home.jsp</result>
         </action>

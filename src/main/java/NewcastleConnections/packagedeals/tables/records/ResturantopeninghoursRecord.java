@@ -31,7 +31,7 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class ResturantopeninghoursRecord extends UpdatableRecordImpl<ResturantopeninghoursRecord> implements Record7<UInteger, UInteger, Timestamp, Timestamp, Timestamp, Timestamp, UInteger> {
 
-    private static final long serialVersionUID = -1981447240;
+    private static final long serialVersionUID = -2012065879;
 
     /**
      * Setter for <code>PackageDeals.ResturantOpeningHours.id</code>.
@@ -118,16 +118,16 @@ public class ResturantopeninghoursRecord extends UpdatableRecordImpl<Resturantop
     }
 
     /**
-     * Setter for <code>PackageDeals.ResturantOpeningHours.resturantId</code>.
+     * Setter for <code>PackageDeals.ResturantOpeningHours.restaurantId</code>.
      */
-    public void setResturantid(UInteger value) {
+    public void setRestaurantid(UInteger value) {
         set(6, value);
     }
 
     /**
-     * Getter for <code>PackageDeals.ResturantOpeningHours.resturantId</code>.
+     * Getter for <code>PackageDeals.ResturantOpeningHours.restaurantId</code>.
      */
-    public UInteger getResturantid() {
+    public UInteger getRestaurantid() {
         return (UInteger) get(6);
     }
 
@@ -216,7 +216,7 @@ public class ResturantopeninghoursRecord extends UpdatableRecordImpl<Resturantop
      */
     @Override
     public Field<UInteger> field7() {
-        return Resturantopeninghours.RESTURANTOPENINGHOURS.RESTURANTID;
+        return Resturantopeninghours.RESTURANTOPENINGHOURS.RESTAURANTID;
     }
 
     /**
@@ -272,7 +272,7 @@ public class ResturantopeninghoursRecord extends UpdatableRecordImpl<Resturantop
      */
     @Override
     public UInteger value7() {
-        return getResturantid();
+        return getRestaurantid();
     }
 
     /**
@@ -334,7 +334,7 @@ public class ResturantopeninghoursRecord extends UpdatableRecordImpl<Resturantop
      */
     @Override
     public ResturantopeninghoursRecord value7(UInteger value) {
-        setResturantid(value);
+        setRestaurantid(value);
         return this;
     }
 
@@ -367,7 +367,7 @@ public class ResturantopeninghoursRecord extends UpdatableRecordImpl<Resturantop
     /**
      * Create a detached, initialised ResturantopeninghoursRecord
      */
-    public ResturantopeninghoursRecord(UInteger id, UInteger weekday, Timestamp opentime, Timestamp closetime, Timestamp pausestarttime, Timestamp pauseendtime, UInteger resturantid) {
+    public ResturantopeninghoursRecord(UInteger id, UInteger weekday, Timestamp opentime, Timestamp closetime, Timestamp pausestarttime, Timestamp pauseendtime, UInteger restaurantid) {
         super(Resturantopeninghours.RESTURANTOPENINGHOURS);
 
         set(0, id);
@@ -376,6 +376,6 @@ public class ResturantopeninghoursRecord extends UpdatableRecordImpl<Resturantop
         set(3, closetime);
         set(4, pausestarttime);
         set(5, pauseendtime);
-        set(6, resturantid);
+        set(6, restaurantid);
     }
 }

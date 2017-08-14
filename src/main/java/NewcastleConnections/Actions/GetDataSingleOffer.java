@@ -3,7 +3,7 @@ package NewcastleConnections.Actions;
 import NewcastleConnections.DatabaseConnection;
 import NewcastleConnections.packagedeals.tables.records.ExperiencesRecord;
 import NewcastleConnections.packagedeals.tables.records.HotelsRecord;
-import NewcastleConnections.packagedeals.tables.records.RestaurantsRecord;
+import NewcastleConnections.packagedeals.tables.records.ResturantsRecord;
 import com.opensymphony.xwork2.ActionSupport;
 import org.jooq.Result;
 

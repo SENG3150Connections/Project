@@ -36,7 +36,7 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Invoiceexperience extends TableImpl<InvoiceexperienceRecord> {
 
-    private static final long serialVersionUID = 1553372170;
+    private static final long serialVersionUID = -1909033767;
 
     /**
      * The reference instance of <code>PackageDeals.InvoiceExperience</code>
@@ -57,9 +57,14 @@ public class Invoiceexperience extends TableImpl<InvoiceexperienceRecord> {
     public final TableField<InvoiceexperienceRecord, UInteger> INVOICEID = createField("invoiceId", org.jooq.impl.SQLDataType.INTEGERUNSIGNED.nullable(false), this, "");
 
     /**
-     * The column <code>PackageDeals.InvoiceExperience.experienceId</code>.
+     * The column <code>PackageDeals.InvoiceExperience.experienceVoucherId</code>.
      */
-    public final TableField<InvoiceexperienceRecord, UInteger> EXPERIENCEID = createField("experienceId", org.jooq.impl.SQLDataType.INTEGERUNSIGNED.nullable(false), this, "");
+    public final TableField<InvoiceexperienceRecord, UInteger> EXPERIENCEVOUCHERID = createField("experienceVoucherId", org.jooq.impl.SQLDataType.INTEGERUNSIGNED.nullable(false), this, "");
+
+    /**
+     * The column <code>PackageDeals.InvoiceExperience.price</code>.
+     */
+    public final TableField<InvoiceexperienceRecord, Double> PRICE = createField("price", org.jooq.impl.SQLDataType.DOUBLE.nullable(false), this, "");
 
     /**
      * Create a <code>PackageDeals.InvoiceExperience</code> table reference
@@ -112,7 +117,7 @@ public class Invoiceexperience extends TableImpl<InvoiceexperienceRecord> {
      */
     @Override
     public List<ForeignKey<InvoiceexperienceRecord, ?>> getReferences() {
-        return Arrays.<ForeignKey<InvoiceexperienceRecord, ?>>asList(Keys.IEINVOICE, Keys.IEEXPERIENCE);
+        return Arrays.<ForeignKey<InvoiceexperienceRecord, ?>>asList(Keys.IEINVOICE, Keys.IEVOUCHER);
     }
 
     /**

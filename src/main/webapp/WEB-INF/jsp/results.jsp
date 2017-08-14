@@ -345,7 +345,7 @@
                                 <span class="blurb">${r.address}</span>
                             </div>
                             <div class="offer-info-right">
-                                <span class="price">$${r.price}</span>
+                                <span class="price">$DB TBA</span>
                                 <span class="fa icons">&#xf0f5;</span>
                                 <span class="fa offer-heart">&#xf08a;</span>
                             </div>
@@ -372,7 +372,7 @@
                                 <span class="blurb">${e.location}</span>
                             </div>
                             <div class="offer-info-right">
-                                <span class="price">$${e.price}</span>
+                                <span class="price">$DB TBA</span>
                                 <span class="fa icons">&#xf209;</span>
                                 <span class="fa offer-heart">&#xf08a;</span>
                             </div>

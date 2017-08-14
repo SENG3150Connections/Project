@@ -12,9 +12,7 @@ import java.sql.SQLException;
 
 import static NewcastleConnections.packagedeals.Tables.*;
 
-/**
- * Created by seb on 1/8/17.
- */
+
 public class DBTest extends ActionSupport {
 
 

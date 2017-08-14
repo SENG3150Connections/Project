@@ -4,6 +4,8 @@
 
 <html class="no-js" lang="">
 <head>
+
+    <jsp:include page="helpers/tracking.jsp"/>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Newcastle Connections</title>

@@ -8,6 +8,7 @@ import NewcastleConnections.packagedeals.Keys;
 import NewcastleConnections.packagedeals.Packagedeals;
 import NewcastleConnections.packagedeals.tables.records.InvoicerestaurantRecord;
 
+import java.sql.Timestamp;
 import java.util.Arrays;
 import java.util.List;
 
@@ -36,7 +37,7 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Invoicerestaurant extends TableImpl<InvoicerestaurantRecord> {
 
-    private static final long serialVersionUID = -1158343380;
+    private static final long serialVersionUID = 826786751;
 
     /**
      * The reference instance of <code>PackageDeals.InvoiceRestaurant</code>
@@ -60,6 +61,21 @@ public class Invoicerestaurant extends TableImpl<InvoicerestaurantRecord> {
      * The column <code>PackageDeals.InvoiceRestaurant.restaurantId</code>.
      */
     public final TableField<InvoicerestaurantRecord, UInteger> RESTAURANTID = createField("restaurantId", org.jooq.impl.SQLDataType.INTEGERUNSIGNED.nullable(false), this, "");
+
+    /**
+     * The column <code>PackageDeals.InvoiceRestaurant.time</code>.
+     */
+    public final TableField<InvoicerestaurantRecord, Timestamp> TIME = createField("time", org.jooq.impl.SQLDataType.TIMESTAMP, this, "");
+
+    /**
+     * The column <code>PackageDeals.InvoiceRestaurant.seats</code>.
+     */
+    public final TableField<InvoicerestaurantRecord, Integer> SEATS = createField("seats", org.jooq.impl.SQLDataType.INTEGER, this, "");
+
+    /**
+     * The column <code>PackageDeals.InvoiceRestaurant.voucherPrice</code>.
+     */
+    public final TableField<InvoicerestaurantRecord, Double> VOUCHERPRICE = createField("voucherPrice", org.jooq.impl.SQLDataType.DOUBLE, this, "");
 
     /**
      * Create a <code>PackageDeals.InvoiceRestaurant</code> table reference
@@ -112,7 +128,7 @@ public class Invoicerestaurant extends TableImpl<InvoicerestaurantRecord> {
      */
     @Override
     public List<ForeignKey<InvoicerestaurantRecord, ?>> getReferences() {
-        return Arrays.<ForeignKey<InvoicerestaurantRecord, ?>>asList(Keys.IRINVOICE);
+        return Arrays.<ForeignKey<InvoicerestaurantRecord, ?>>asList(Keys.IRINVOICE, Keys.IRRESTAURANT);
     }
 
     /**

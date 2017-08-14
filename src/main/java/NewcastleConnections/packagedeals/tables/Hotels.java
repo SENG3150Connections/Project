@@ -37,7 +37,7 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Hotels extends TableImpl<HotelsRecord> {
 
-    private static final long serialVersionUID = -749962765;
+    private static final long serialVersionUID = 1739034088;
 
     /**
      * The reference instance of <code>PackageDeals.Hotels</code>
@@ -116,11 +116,6 @@ public class Hotels extends TableImpl<HotelsRecord> {
      * The column <code>PackageDeals.Hotels.imageID</code>.
      */
     public final TableField<HotelsRecord, String> IMAGEID = createField("imageID", org.jooq.impl.SQLDataType.VARCHAR.length(100), this, "");
-
-    /**
-     * The column <code>PackageDeals.Hotels.price</code>.
-     */
-    public final TableField<HotelsRecord, Double> PRICE = createField("price", org.jooq.impl.SQLDataType.DOUBLE.nullable(false), this, "");
 
     /**
      * The column <code>PackageDeals.Hotels.category</code>.

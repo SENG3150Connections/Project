@@ -1,8 +1,8 @@
 package NewcastleConnections;
 
-import NewcastleConnections.packagedeals.tables.records.InvoiceexperienceRecord;
-import NewcastleConnections.packagedeals.tables.records.InvoicehotelRecord;
-import NewcastleConnections.packagedeals.tables.records.InvoicerestaurantRecord;
+import NewcastleConnections.packagedeals.tables.records.ExperiencevoucherofferingsRecord;
+import NewcastleConnections.packagedeals.tables.records.ResturantsRecord;
+import NewcastleConnections.packagedeals.tables.records.RoomofferingsRecord;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,27 +12,27 @@ import java.util.Set;
  */
 public class Cart {
 
-    private Set<InvoiceexperienceRecord> experiences;
-    private Set<InvoicehotelRecord> hotels;
-    private Set<InvoicerestaurantRecord> restaurants;
+    private Set<ExperiencevoucherofferingsRecord> experiences;
+    private Set<RoomofferingsRecord> rooms;
+    private Set<ResturantsRecord> restaurants;
 
     private String name = "";
 
     public Cart() {
-        experiences = new HashSet<>();
-        hotels = new HashSet<>();
-        restaurants = new HashSet<>();
+        experiences = new HashSet<ExperiencevoucherofferingsRecord>();
+        rooms = new HashSet<RoomofferingsRecord>();
+        restaurants = new HashSet<ResturantsRecord>();
     }
 
-    public Set<InvoiceexperienceRecord> getExperiences() {
+    public Set<ExperiencevoucherofferingsRecord> getExperiences() {
         return experiences;
     }
 
-    public Set<InvoicehotelRecord> getHotels() {
-        return hotels;
+    public Set<RoomofferingsRecord> getRooms() {
+        return rooms;
     }
 
-    public Set<InvoicerestaurantRecord> getRestaurants() {
+    public Set<ResturantsRecord> getRestaurants() {
         return restaurants;
     }
 

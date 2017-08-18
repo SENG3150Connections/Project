@@ -20,11 +20,6 @@ header {
     border: inherit;
     box-shadow: 1px 1px 1px #AFAFAF;
 }
-.results-form {
-    width: 95%;
-    min-width: 400px;
-    flex-wrap: wrap;
-}
 #selector {
     border: inherit;
     min-height: 18vh;
@@ -33,24 +28,74 @@ header {
     justify-content: center;
     box-shadow: 2px 2px 3px #AFAFAF;
 }
+.results-form {
+    width: 95%;
+    min-width: 400px;
+    flex-flow: row wrap;
+}
+.results-form > * {
+    flex: 0 1 auto;
+}
+.results-form .options {
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.results-form .options span {
+    flex: 1 0 auto;
+}
+.results-form .options .flex-divider {
+    flex: 3 0 auto;
+}
+#filters {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 0px;
+    background-color: #FFFFFF;
+    padding: 0 100px;
+}
+#filters div {
+    display: flex;
+    flex-direction: column;
+}
+#filters div > * {
+    margin: 5px;
+}
+#filters > * {
+    flex: 1 0 25%;
+}
+#filters > *:last-child {
+    flex: 0 1 100%;
+}
+.content-toggle {
+    background-color: #eee;
+    padding: 10px 10px;
+    display: inline-block;
+    cursor: pointer;
+    margin-left: 20px;
+    width:120px;
+    text-align: center;
+}
 #results {
     margin-top: 2px;
-    height: 80vh;
+    height: 72vh;
     flex-grow: 1;
     -webkit-box-flex: flex;
     display: flex;
     flex-direction: column;
     align-items: center;
     border: inherit;
-    overflow-y: auto;
-}
-#package-info {
-    min-width: 25%;
-    max-height: 70vh;
-    flex-grow: 0.5;
-    border: inherit;
+    overflow-y: scroll;
+    background: #F5F5F5;
 }
 .offer-tile {
+    position: relative;
     -webkit-box-flex: flex;
     display: flex;
     flex-direction: row;
@@ -58,7 +103,12 @@ header {
     width: 95%;
     min-height: 200px;
     height: 200px;
-    box-shadow: 2px 2px 3px #AFAFAF;
+    box-shadow: 2px 2px 8px #AFAFAF;
+    background-color: #FFFFFF;
+}
+.offer-tile:hover {
+    box-shadow: 10px 10px 15px #AFAFAF;
+    cursor: pointer;
 }
 .img-tile {
     -webkit-box-flex: flex;
@@ -106,12 +156,12 @@ header {
     flex-direction: column;
 }
 .offer-info-left .name {
-    font-size: 40px;
+    font-size: 28px;
     color: #005da9;
     margin-bottom: 15px;
 }
 .offer-info-right {
-    font-size: 32px;
+    font-size: 24px;
     padding: 15px;
     flex: 0.3;
     border: inherit;
@@ -121,9 +171,113 @@ header {
     align-items: flex-end;
 }
 .offer-info-right .price {
-    font-size: 40px;
+    font-size: 30px;
 }
-.offer-info-right .offer-heart {
-    margin-top: 35px;
-    font-size: 40px;
+.offer-heart {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 40px;
+    height: 40px;
+    padding-top: 6px;
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    font-size: 30px;
+    text-align: center;
+}
+.offer-heart:hover {
+    color: #FF0000;
+}
+.offer-add {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    padding-top: 6px;
+    font-size: 30px;
+    text-align: center;
+}
+.offer-add:hover {
+    color: #0067db;
+}
+.offer-add:hover .tooltiptext {
+    visibility: visible;
+}
+.tooltiptext {
+    visibility: hidden;
+    width: 125px;
+    background-color: #0067db;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px 0;
+    font-size: 16px;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 105%;
+}
+#package-info {
+    min-width: 35%;
+    max-height: 70vh;
+    flex-grow: 0.5;
+    display: flex;
+    flex-direction: column;
+    border: inherit;
+    justify-content: center;
+    align-items: center;
+}
+#package-info > * {
+    color: #555555;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+#package-info #package-header {
+    height: 10vh;
+    box-shadow: 1px 2px 2px #AFAFAF;
+}
+#package-info #package-contents {
+    color: #AFAFAF;
+    height: 80vh;
+    flex-direction: column;
+}
+#package-info #package-confirmation {
+    height: 10vh;
+    box-shadow: 1px -2px 2px #AFAFAF;
+}
+.left {
+    display: flex;
+    flex-direction: column;
+}
+.right {
+    display: flex;
+    flex-direction: column;
+}
+.center {
+    justify-content: center;
+    align-items: center;
+}
+.red {
+    color: #FF0000;
+}
+
+.fa-chevron-right-after:after {
+    font-family: FontAwesome;
+    content: "\f054";
+    display: inline-block;
+    padding-left: 8px;
+    vertical-align: middle;
+}
+.fa-chevron-down-after:after {
+    font-family: FontAwesome;
+    content: "\f078";
+    display: inline-block;
+    padding-left: 3px;
+    vertical-align: middle;
 }

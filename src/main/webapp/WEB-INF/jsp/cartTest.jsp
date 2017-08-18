@@ -16,10 +16,10 @@
 
     <h1>ExperienceVouchers</h1>
     <table>
-        <tr><td>ID</td><td>Price</td></tr>
+        <tr><td>ExpVouchID</td><td>Price</td></tr>
     <s:iterator value="cart.experiences" var="e">
         <tr>
-            <td>${e.id}</td>
+            <td>${e.experiencevoucherid}</td>
             <td>${e.price}</td>
         </tr>
     </s:iterator>
@@ -27,22 +27,28 @@
 
     <h1>RoomOfferings</h1>
     <table>
-        <tr><td>ID</td><td>NoGuestMax</td></tr>
+        <tr><td>RoomID</td><td>Adults</td><td>Children</td> ... </tr>
         <s:iterator value="cart.rooms" var="e">
             <tr>
-                <td>${e.id}</td>
-                <td>${e.noguestmax}</td>
+                <td>${e.roomid}</td>
+                <td>${e.adults}</td>
+                <td>${e.children}</td>
+                <td>${e.checkin}</td>
+                <td>${e.checkout}</td>
+                <td>${e.price}</td>
             </tr>
         </s:iterator>
     </table>
 
     <h1>Restaurants</h1>
     <table>
-        <tr><td>ID</td><td>Name</td></tr>
+        <tr><td>RestID</td><td>Time</td> ... </tr>
         <s:iterator value="cart.restaurants" var="e">
             <tr>
-                <td>${e.id}</td>
-                <td>${e.name}</td>
+                <td>${e.restaurantid}</td>
+                <td>${e.time}</td>
+                <td>${e.seats}</td>
+                <td>${e.voucherprice}</td>
             </tr>
         </s:iterator>
     </table>

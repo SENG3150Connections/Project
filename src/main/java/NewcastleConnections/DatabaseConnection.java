@@ -2,12 +2,9 @@ package NewcastleConnections;
 
 import org.jooq.*;
 import org.jooq.impl.DSL;
-import javax.naming.NamingException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
-import static NewcastleConnections.packagedeals.Tables.*;
 
 /**
  * DatabaseConnection
@@ -23,6 +20,7 @@ import static NewcastleConnections.packagedeals.Tables.*;
 
 public class DatabaseConnection {
 
+    private static final SQLDialect DIALECT = SQLDialect.MYSQL;
     private Connection connection;
 
     public DatabaseConnection() throws SQLException, ClassNotFoundException {
@@ -35,7 +33,7 @@ public class DatabaseConnection {
     }
 
     public DSLContext getDSL() {
-        return DSL.using(connection, SQLDialect.MYSQL);
+        return DSL.using(connection, DIALECT);
     }
 
     public void close() throws SQLException {

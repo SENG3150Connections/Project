@@ -2,16 +2,15 @@ package NewcastleConnections.Actions.Cart;
 
 import NewcastleConnections.Cart;
 import NewcastleConnections.DatabaseConnection;
-import NewcastleConnections.packagedeals.tables.Resturants;
-import NewcastleConnections.packagedeals.tables.records.ExperiencevoucherofferingsRecord;
-import NewcastleConnections.packagedeals.tables.records.ResturantsRecord;
-import NewcastleConnections.packagedeals.tables.records.RoomofferingsRecord;
+import NewcastleConnections.packagedeals.tables.Invoicerestaurant;
+import NewcastleConnections.packagedeals.tables.records.*;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.inject.Inject;
 import org.jooq.Record;
 import org.jooq.Result;
 import org.jooq.SelectWhereStep;
 import org.jooq.Table;
+import org.jooq.types.UInteger;
 
 import java.sql.SQLException;
 
@@ -36,19 +35,21 @@ public class UpdateCart extends ActionSupport {
             getCart().setName("CART - ADD");
             switch(getType().toLowerCase()) {
                 case "experience":
-                    ExperiencevoucherofferingsRecord e = fetchSingle(EXPERIENCEVOUCHEROFFERINGS, "id = " + id)
-                            .get(0).into(ExperiencevoucherofferingsRecord.class);
-                    getCart().getExperiences().add(e);
+                    InvoiceexperienceRecord ier = new InvoiceexperienceRecord();
+                    ier.setExperiencevoucherid(UInteger.valueOf(id));
+                    getCart().getExperiences().add(ier);
                     break;
+
                 case "room":
-                    RoomofferingsRecord r = fetchSingle(ROOMOFFERINGS, "id = " + id)
-                            .get(0).into(RoomofferingsRecord.class);
-                    getCart().getRooms().add(r);
+                    InvoicehotelRecord ihr = new InvoicehotelRecord();
+                    ihr.setRoomid(UInteger.valueOf(id));
+                    getCart().getRooms().add(ihr);
                     break;
+
                 case "restaurant":
-                    ResturantsRecord re = fetchSingle(RESTURANTS, "id = " + id)
-                            .get(0).into(ResturantsRecord.class);
-                    getCart().getRestaurants().add(re);
+                    InvoicerestaurantRecord irr = new InvoicerestaurantRecord();
+                    irr.setRestaurantid(UInteger.valueOf(id));
+                    getCart().getRestaurants().add(irr);
                     break;
                 default:
                     break;
@@ -59,24 +60,21 @@ public class UpdateCart extends ActionSupport {
             getCart().setName("CART - REMOVE");
             switch(getType().toLowerCase()) {
                 case "experience":
-                    ExperiencevoucherofferingsRecord e = fetchSingle(EXPERIENCEVOUCHEROFFERINGS, "id = " + id)
-                            .get(0).into(ExperiencevoucherofferingsRecord.class);
-                    getCart().getExperiences().remove(e);
+                    getCart().removeExperience(id);
                     break;
                 case "room":
-                    RoomofferingsRecord r = fetchSingle(ROOMOFFERINGS, "id = " + id)
-                            .get(0).into(RoomofferingsRecord.class);
-                    getCart().getRooms().remove(r);
+                    getCart().removeRoom(id);
                     break;
                 case "restaurant":
-                    ResturantsRecord re = fetchSingle(RESTURANTS, "id = " + id)
-                            .get(0).into(ResturantsRecord.class);
-                    getCart().getRestaurants().remove(re);
+                    getCart().removeRestaurant(id);
                     break;
                 default:
                     break;
 
             }
+        }
+        else if (getMethod().equalsIgnoreCase("create")) {
+            getCart().createInvoice();
         }
         return SUCCESS;
     }

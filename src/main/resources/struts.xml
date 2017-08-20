@@ -123,6 +123,16 @@
             <result>WEB-INF/jsp/home.jsp</result>
         </action>
 
+        <!-- User Management Portal -->
+
+        <action name="customerPortal">
+            <result>WEB-INF/jsp/customerPortal.jsp</result>
+        </action>
+
+        <action name="customerPortal-bookings" class="NewcastleConnections.Actions.GetUserInvoices">
+            <result>WEB-INF/jsp/customerPortal-bookings.jsp</result>
+        </action>
+
     </package>
 
 

@@ -44,11 +44,25 @@
                 <div class="homepage-social">
                     <img src="../../img/social-icons.svg" />
                 </div>
-                <div class="homepage-login">
-                    <form action="/login">
-                        <button type="submit">Login</button>
-                    </form>
-                </div>
+                <s:if test="%{#session.userNickname == null}">
+                    <div class="homepage-login">
+                        <form action="/login">
+                            <button type="submit">Login</button>
+                        </form>
+                    </div>
+                </s:if>
+                <s:else>
+                    <div class="homepage-login">
+                        <form action="/customerPortal">
+                            <button type="submit">Your Account</button>
+                        </form>
+                    </div>
+                    <div class="homepage-login">
+                        <form action="/logout">
+                            <button type="submit">Logout</button>
+                        </form>
+                    </div>
+                </s:else>
                 <div class="homepage-help">
                     <a href="#">Help</a>
                 </div>

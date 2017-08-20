@@ -15,6 +15,7 @@
 
     <link rel="stylesheet" href="../../css/normalize.css">
     <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/home.css">
     <link rel="stylesheet" href="../../css/pikaday.css">
 
     <script src="../../js/vendor/modernizr-2.8.3.min.js"></script>
@@ -29,28 +30,39 @@
 
 <main>
     <div id="homepage-container">
+        <div id="menu">
+            <div class="menu-close menu-toggle hidden">
+                <span class="fa fa-3x fa-times pointer"></span>
+                <a href="/login">Login</a>
+            </div>
+            <div class="menu-social hidden">
+                <a href="#"><img src="../../img/fb-social.png" class="pointer"/></a>
+                <a href="#"><img src="../../img/tw-social.png" class="pointer"/></a>
+                <a href="#"><img src="../../img/ig-social.png" class="pointer"/></a>
+            </div>
+        </div>
         <div id="homepage-image">
             <div class="bg-cover"></div>
             <div class="cover-overlay"></div>
         </div>
         <header id="header-container" class="grad">
             <div class="header">
-                <div class="homepage-menu">
-                    <p class="fa" style="cursor: pointer">&#xf0c9;</p>
+                <div class="homepage-menu menu-toggle">
+                    <p class="fa pointer">&#xf0c9;</p>
                 </div>
                 <div class="homepage-logo">
                     <h1><a href="#">NewcastleConnections</a></h1>
                 </div>
-                <div class="homepage-social">
-                    <img src="../../img/social-icons.svg" />
+                <div class="homepage-social ">
+                    <a href="#"><img src="../../img/fb-social.png" class="pointer hover"/></a>
+                    <a href="#"><img src="../../img/tw-social.png" class="pointer hover"/></a>
+                    <a href="#"><img src="../../img/ig-social.png" class="pointer hover"/></a>
                 </div>
                 <div class="homepage-login">
-                    <form action="/login">
-                        <button type="submit">Login</button>
-                    </form>
+                    <a href="/login">Login</>
                 </div>
                 <div class="homepage-help">
-                    <a href="#">Help</a>
+                    <a href="#help">Help</a>
                 </div>
             </div>
         </header>
@@ -85,60 +97,101 @@
     </div>
 
     <div id="slider">
-        <div id="options">
+        <div id="options" class="pointer">
             <div class="slider-item">
-                <img src='../../img/one.svg'/>
+                <img src='../../img/events.png' class="cover"/>
+                <p>Events</p>
             </div>
             <div class="slider-item">
-                <img src='../../img/two.svg'/>
+                <img src='../../img/restaurant.jpg' class="cover"/>
+                <p>Restaurants</p>
             </div>
             <div class="slider-item">
-                <img src='../../img/three.svg'/>
+                <img src='../../img/hotels.png' class="cover"/>
+                <p>Hotels</p>
             </div>
             <div class="slider-item last-item">
-                <img src='../../img/four.svg'/>
+                <img src='../../img/transport.jpg' class="cover"/>
+                <p>Transport</p>
             </div>
         </div>
     </div>
-    <div class="container" style="margin: 25px;padding: 25px;color: #555555;flex-direction: column;justify-content: center;align-items: center">
+    <div id="help" class="container" style="margin: 25px;padding: 25px;color: #555555;flex-direction: column;justify-content: center;align-items: center">
         <h2 class="text-center" style="margin: 15px 15px">
             How to organise the perfect holiday
         </h2>
         <div class="threebox">
             <div class="threebox-item">
-                <img src='../../img/one.svg'/>
+                <p class="fa fa-5x fa-search"></p>
+                <h2>Explore</h2>
+                <p>Enter your travel dates or destination to search<br />
+                    thousands of popular Newcastle destinations. We<br />
+                    recommend looking at a wide range of compatible<br />
+                    options to create your perfect experience.
+                </p>
             </div>
             <div class="threebox-item">
-                <img src='../../img/two.svg'/>
+                <p class="fa fa-5x fa-handshake-o"></p>
+                <h2>Create</h2>
+                <p>After you've found the perfect activities, combine<br />
+                    them with your selected accommodation, transport,<br />
+                    and favourite places to eat to create your custom<br />
+                    package. Your holiday your way with massive savings!
+                </p>
             </div>
             <div class="threebox-item last-item">
-                <img src='../../img/three.svg'/>
+                <p class="fa fa-5x fa-suitcase"></p>
+                <h2>Confirm</h2>
+                <p>You're all set! Confirmations will be sent to the<br />
+                    places you selected all at once. All you have to<br />
+                    do now is get ready, check in, and enjoy a truly<br />
+                    unforgettable getaway.
+                </p>
             </div>
         </div>
     </div>
-    <div class="container" style="height: 650px;overflow: hidden">
-        <img src="../../img/large.jpg" style="overflow:hidden; object-fit: cover;"/></h2>
+    <div class="container" style="height: 650px;overflow: hidden; background-color: #000">
+        <img src="../../img/large.jpg" class="opacity-5"/>
+        <div class="text-overlay">
+            <h2>Own a business? Get involved and open your door to travellers from around the globe.</h2>
+            <a href="#">List Your Business</a>
+        </div>
     </div>
     <div class="container" style="margin: 25px;padding: 25px;color: #555555;flex-direction: column;justify-content: center;align-items: center">
         <h2 class="text-center" style="margin: 15px 15px">
             Most Popular Upcoming Events
         </h2>
         <div class="threebox">
-            <div class="threebox-item">
-                <img src='../../img/one.svg'/>
+            <div class="threebox-item pointer hover-shadow" style="background-color: #000000">
+                <img src='../../img/bitter-and-twisted.jpg' class="cover opacity-5"/>
+                <div class="text-overlay">
+                    <h2>Bitter & Twisted</h2>
+                </div>
             </div>
-            <div class="threebox-item">
-                <img src='../../img/two.svg'/>
+            <div class="threebox-item pointer hover-shadow" style="background-color: #000000">
+                <img src='../../img/newcastle-supermoto.jpg' class="cover opacity-5"/>
+                <div class="text-overlay">
+                    <h2>Newcastle SuperMoto</h2>
+                </div>
             </div>
-            <div class="threebox-item last-item">
-                <img src='../../img/three.svg'/>
+            <div class="threebox-item last-item pointer hover-shadow" style="background-color: #000000">
+                <img src='../../img/Newcastlemuseum.jpg' class="cover opacity-5"/>
+                <div class="text-overlay">
+                    <h2>Newcastle Museum</h2>
+                </div>
             </div>
         </div>
     </div>
 
     <footer id="footer-container">
         <div class="container" style="height: 250px; flex-direction: column;justify-content: center;align-items: center">
-            <img src="../../img/social-icons.svg" />
+            <div>
+                <div class="homepage-social ">
+                    <a href="#"><img src="../../img/fb-social.png" class="pointer hover"/></a>
+                    <a href="#"><img src="../../img/tw-social.png" class="pointer hover"/></a>
+                    <a href="#"><img src="../../img/ig-social.png" class="pointer hover"/></a>
+                </div>
+            </div>
             <p id="terms-and-conditions">
                 Use of this Web site constitutes acceptance of the Newcastle Connections Terms and Conditions and Privacy Policy</a>.
             </p>
@@ -154,6 +207,13 @@
 <script src="../../js/pikaday.js"></script>
 <script src="../../js/plugins.js"></script>
 <script src="js/main.js"></script>
+<script>
+    $(".menu-toggle").click(function() {
+        $('#menu').animate({width: ($('#menu').width() === 0) ? 300 : 0});
+        $('#menu>div').toggleClass('hidden');
+        $('main').toggleClass('noScrolling');
+    });
+</script>
 
 </body>
 </html>

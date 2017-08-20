@@ -102,36 +102,6 @@ textarea {
     box-sizing: border-box;
 }
 
-main {
-    font-family: Roboto;
-}
-
-/*Main DisplayView*/
-#homepage-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 86vh;
-    max-height: 860px;
-}
-
-/*Homepage Image*/
-#homepage-image {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    z-index: -99;
-    width: 100%;
-    height: 86vh;
-    max-height: 860px;
-}
-.bg-cover {
-    height: 100%;
-    background-image: url("../img/large2.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-}
 .cover-overlay {
     position: absolute;
     left: 0;
@@ -140,108 +110,12 @@ main {
     right: 0;
     background-color: rgba(0,0,0,.4);
 }
-
-/*Header*/
-#header-container {
-    color: #FFFFFF;
-    display: flex;
-    justify-content: center;
-}
-.header {
-    width: 95%;
-    height: 96px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.homepage-logo{margin-left: 20px;}
-.homepage-social{margin-left: auto;}
-.homepage-login{margin-left: 20px;}
-.homepage-help{margin-left: 20px;}
-.homepage-login button {
-    color: #FFFFFF;
-    text-decoration: none;
-    background: none;
-    border: none;
-}
-.header a {
-    text-decoration: none;
-}
 .grad {
     background: #000000; /* For browsers that do not support gradients */
     background: -webkit-linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0)); /*Safari 5.1-6*/
     background: -o-linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0)); /*Opera 11.1-12*/
     background: -moz-linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0)); /*Fx 3.6-15*/
     background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0)); /*Standard*/
-}
-
-/*Homepage Maintext*/
-.homepage-maintext {
-    color: #ffffff;
-    font-size: 76px;
-    text-shadow: 10px 10px 10px #202020;
-}
-
-/*Homepage Collection Elements*/
-.container {
-    display: flex;
-    flex:1 1 auto;
-    justify-content: center;
-    align-items: flex-end;
-    color: #FFFFFF;
-}
-.benefits {
-    width: 100%;
-    display:flex;
-    flex-direction:row;
-    justify-content:center;
-    text-align: center;
-    color: #ffffff;
-}
-.benefits div {
-    margin: 15px 30px;
-}
-
-/*Slider Elements*/
-#slider {
-    display: flex;
-    justify-content: center;
-}
-#options {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    flex-direction: row;
-    flex-basis: 100%;
-}
-.slider-item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50%;
-}
-#options img {
-    width: 100%;
-}
-
-.threebox {
-    width: 100%;
-    min-width: 400px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    flex-direction: row;
-}
-.threebox-item {
-    display: flex;
-    justify-content: center;
-    margin:0 25px;
-}
-.threebox img {
-    width: 100%;
 }
 
 /*SearchForm*/
@@ -253,69 +127,67 @@ main {
     justify-content: space-between;
     align-items: center;
 }
-.search-form {
-    width: 70%;
-    padding: 8px 8px;
-    min-width: 400px;
-    border-radius: 4px;
-    background: rgba(0,0,0,.2);
+
+.noScrolling {
+    height: 100%;
+    overflow: hidden;
 }
-/*Input Styling*/
-input {
-    margin: 0 5px;
+.pointer {
     cursor: pointer;
+}
+.cover {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.hover:hover {
+    opacity: 0.8;
+}
+.hover-shadow:hover {
+    box-shadow: 2px 2px 2px #AFAFAF;
+}
+.opacity-5 {
+    opacity: 0.5;
+}
+#menu {
+    z-index: 100;
+    height:100vh;
+    width: 0;
+    background-color: #ffffff;
+    position: absolute;
+    top: 0;
+    left: 0;
     color: #555555;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
-input[type=search] {
-    width: 40%;
-    cursor: auto;
+#menu > div {
+    margin: 25px 25px;
 }
-input[type=date],input[type=text] {
-    width: 17%;
+#menu > .menu-close > a {
+    color: inherit;
+    text-decoration: none;
+    margin: 100px;
 }
-input[type=date], input[type=search],input[type=text] {
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    background-color: #FFFFFF;
-    background-position: 10px 10px;
-    background-repeat: no-repeat;
-    padding: 12px 20px 12px 5px;
+#menu > .menu-social {
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
 }
-input[type=text]:focus,input[type=search]:focus {
-    border: 3px solid #2a6ebb;
+#menu > .menu-social > a:hover{
+    opacity:0.8;
 }
-input[type=submit] {
-    border-radius: 30px;
-    min-height: 58px;
-    padding-left: 30px;
-    padding-right: 30px;
-    background-color: #2a6ebb;
-    border-color: #2a6ebb;
+.menu-close {
+    position: relative;
+    width: 80%;
 }
-input[type=submit]:hover {
-    background-color: #0067db;
-    border-color: #0067db;
+.menu-close > span {
+    position: absolute;
+    top: -15px;
+    right: 0;
 }
-.btn {
-    display: inline-block;
-    -ms-touch-action: manipulation;
-    touch-action: manipulation;
-    cursor: pointer;
-    border: 1px solid transparent;
-    white-space: nowrap;
-    border-radius: 100px;
-    padding: 15px 30px;
-    line-height: 24px;
-    color: #FFFFFF;
-}
-
-footer {
-    background: #555555;
-    text-align: center;
-}
-
 
 /* ==========================================================================
    Helper classes
@@ -390,58 +262,6 @@ footer {
 .clearfix:after {
     clear: both;
 }
-
-/* ==========================================================================
-   EXAMPLE Media Queries for Responsive Design.
-   These examples override the primary ('mobile first') styles.
-   Modify as content requires.
-   ========================================================================== */
-@media only screen and (min-width: 45em) {
-    #options {
-        flex-wrap:nowrap;
-        flex-direction: row;
-    }
-    .slider-item {
-        flex:1;
-        flex-basis:100%;
-    }
-    .homepage-menu{visibility: hidden}
-}
-@media only screen and (max-width: 35em) {
-    .flexform{flex-wrap: wrap;}
-    .flexform input[name=search]{flex: 0 1 100%;margin:10px 5px;}
-    .flexform input[name=start],input[name=finish],input[name=people],input[name=submit]{display: none}
-}
-@media only screen and (max-width: 45em) {
-    .benefits {display: none !important;}
-    .homepage-maintext{font-size: 42px}
-    .homepage-logo{margin: auto}
-    .homepage-login,.homepage-help,.homepage-social{display: none}
-    .homepage-menu{visibility:visible}
-    .flexform{flex-wrap: wrap;}
-    .flexform input[name=search]{flex: 0 1 100%;margin:10px 5px;}
-    .flexform input[name=start]{flex: 1 0 0}
-    .flexform input[name=finish]{flex: 1 0 0}
-}
-@media only screen and (max-width: 60em) {
-    .flexform{flex-wrap: wrap;}
-    .flexform input[name=search]{flex: 0 1 100%;margin:10px 5px;}
-    .flexform input[name=start]{flex: 1 0 0}
-    .flexform input[name=finish]{flex: 1 0 0}
-}
-
-@media print,
-       (-webkit-min-device-pixel-ratio: 1.25),
-       (min-resolution: 1.25dppx),
-       (min-resolution: 120dpi) {
-    /* Style adjustments for high resolution devices */
-}
-
-/* ==========================================================================
-   Print styles.
-   Inlined to avoid the additional HTTP request:
-   http://www.phpied.com/delay-loading-your-print-css/
-   ========================================================================== */
 
 @media print {
     *,

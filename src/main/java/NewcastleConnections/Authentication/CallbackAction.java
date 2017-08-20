@@ -1,23 +1,25 @@
 package NewcastleConnections.Authentication;
 
+import NewcastleConnections.DatabaseConnection;
+import NewcastleConnections.packagedeals.tables.Users;
 import com.auth0.AuthenticationController;
-import com.auth0.IdentityVerificationException;
 import com.auth0.SessionUtils;
 import com.auth0.Tokens;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
-import org.jooq.util.derby.sys.Sys;
+import org.jooq.Result;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
-import javax.net.ssl.HttpsURLConnection;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Base64;
+import NewcastleConnections.packagedeals.tables.records.UsersRecord;
+
+import static NewcastleConnections.packagedeals.Tables.*;
+
 
 
 public class CallbackAction extends ActionSupport {
@@ -58,8 +60,6 @@ public class CallbackAction extends ActionSupport {
         SessionUtils.set(request, "accessToken", tokens.getAccessToken());
         SessionUtils.set(request, "idToken", tokens.getIdToken());
 
-        System.out.println(getUserInfo(tokens.getAccessToken()));
-
         // Now parse the string to a json object and get the value of role attribute (if it exists)
         JSONParser parser = new JSONParser();
         JSONObject json = (JSONObject) parser.parse(getUserInfo(tokens.getAccessToken()));
@@ -71,6 +71,33 @@ public class CallbackAction extends ActionSupport {
         SessionUtils.set(request, "userEmail", json.get("email"));
 
 
+        // Check to see if there is a user in the DB with a matching ID
+        try {
+            DatabaseConnection connection = new DatabaseConnection();
+            Result<UsersRecord> users = connection.getDSL().selectFrom(USERS).where("userId= '" + json.get("user_id") + "'").fetch();
+
+
+            if (users.isEmpty()) { // If there is not, store one.
+
+                UsersRecord newUser = new UsersRecord();
+                connection.getDSL().attach(newUser);
+
+                newUser.setUserid(json.get("user_id").toString());
+                newUser.setEmail(json.get("email").toString());
+                //TODO add more attributes to this.
+                newUser.store();
+
+            }
+
+            connection.close();
+
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
         // If role is set, store it as session attribute.
         String role = "0";
         if (json.get("role") != null) {
@@ -79,6 +106,7 @@ public class CallbackAction extends ActionSupport {
         } else {
             SessionUtils.set(request, "userPermissions", 0);
         }
+
 
 
         return getRedirectOnSuccess(role);

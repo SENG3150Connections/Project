@@ -47,7 +47,7 @@ public class GetData extends ActionSupport {
             // Close connection
             connection.close();
 
-        } catch (SQLException | NamingException | ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
             return ERROR;
         }

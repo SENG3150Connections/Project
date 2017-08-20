@@ -29,6 +29,8 @@ import NewcastleConnections.packagedeals.tables.Roomofferings;
 import NewcastleConnections.packagedeals.tables.Roomtypes;
 import NewcastleConnections.packagedeals.tables.Tagallocations;
 import NewcastleConnections.packagedeals.tables.Tags;
+import NewcastleConnections.packagedeals.tables.Transport;
+import NewcastleConnections.packagedeals.tables.Users;
 import NewcastleConnections.packagedeals.tables.Weekday;
 
 import java.util.ArrayList;
@@ -55,7 +57,7 @@ import org.jooq.impl.SchemaImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Packagedeals extends SchemaImpl {
 
-    private static final long serialVersionUID = 1392801930;
+    private static final long serialVersionUID = -290129248;
 
     /**
      * The reference instance of <code>PackageDeals</code>
@@ -183,6 +185,16 @@ public class Packagedeals extends SchemaImpl {
     public final Tags TAGS = NewcastleConnections.packagedeals.tables.Tags.TAGS;
 
     /**
+     * The table <code>PackageDeals.Transport</code>.
+     */
+    public final Transport TRANSPORT = NewcastleConnections.packagedeals.tables.Transport.TRANSPORT;
+
+    /**
+     * The table <code>PackageDeals.Users</code>.
+     */
+    public final Users USERS = NewcastleConnections.packagedeals.tables.Users.USERS;
+
+    /**
      * The table <code>PackageDeals.Weekday</code>.
      */
     public final Weekday WEEKDAY = NewcastleConnections.packagedeals.tables.Weekday.WEEKDAY;
@@ -236,6 +248,8 @@ public class Packagedeals extends SchemaImpl {
             Roomtypes.ROOMTYPES,
             Tagallocations.TAGALLOCATIONS,
             Tags.TAGS,
+            Transport.TRANSPORT,
+            Users.USERS,
             Weekday.WEEKDAY);
     }
 }

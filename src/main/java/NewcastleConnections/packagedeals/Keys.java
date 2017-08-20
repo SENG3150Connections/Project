@@ -27,6 +27,8 @@ import NewcastleConnections.packagedeals.tables.Roomofferingrates;
 import NewcastleConnections.packagedeals.tables.Roomofferings;
 import NewcastleConnections.packagedeals.tables.Roomtypes;
 import NewcastleConnections.packagedeals.tables.Tags;
+import NewcastleConnections.packagedeals.tables.Transport;
+import NewcastleConnections.packagedeals.tables.Users;
 import NewcastleConnections.packagedeals.tables.Weekday;
 import NewcastleConnections.packagedeals.tables.records.ExperiencebookingofferingRecord;
 import NewcastleConnections.packagedeals.tables.records.ExperienceofferingdatesRecord;
@@ -51,6 +53,8 @@ import NewcastleConnections.packagedeals.tables.records.RoomofferingratesRecord;
 import NewcastleConnections.packagedeals.tables.records.RoomofferingsRecord;
 import NewcastleConnections.packagedeals.tables.records.RoomtypesRecord;
 import NewcastleConnections.packagedeals.tables.records.TagsRecord;
+import NewcastleConnections.packagedeals.tables.records.TransportRecord;
+import NewcastleConnections.packagedeals.tables.records.UsersRecord;
 import NewcastleConnections.packagedeals.tables.records.WeekdayRecord;
 
 import javax.annotation.Generated;
@@ -129,6 +133,8 @@ public class Keys {
     public static final UniqueKey<RoomofferingsRecord> KEY_ROOMOFFERINGS_PRIMARY = UniqueKeys0.KEY_ROOMOFFERINGS_PRIMARY;
     public static final UniqueKey<RoomtypesRecord> KEY_ROOMTYPES_PRIMARY = UniqueKeys0.KEY_ROOMTYPES_PRIMARY;
     public static final UniqueKey<TagsRecord> KEY_TAGS_PRIMARY = UniqueKeys0.KEY_TAGS_PRIMARY;
+    public static final UniqueKey<TransportRecord> KEY_TRANSPORT_PRIMARY = UniqueKeys0.KEY_TRANSPORT_PRIMARY;
+    public static final UniqueKey<UsersRecord> KEY_USERS_PRIMARY = UniqueKeys0.KEY_USERS_PRIMARY;
     public static final UniqueKey<WeekdayRecord> KEY_WEEKDAY_PRIMARY = UniqueKeys0.KEY_WEEKDAY_PRIMARY;
     public static final UniqueKey<WeekdayRecord> KEY_WEEKDAY_DAY_UNIQUE = UniqueKeys0.KEY_WEEKDAY_DAY_UNIQUE;
 
@@ -210,6 +216,8 @@ public class Keys {
         public static final UniqueKey<RoomofferingsRecord> KEY_ROOMOFFERINGS_PRIMARY = createUniqueKey(Roomofferings.ROOMOFFERINGS, "KEY_RoomOfferings_PRIMARY", Roomofferings.ROOMOFFERINGS.ID);
         public static final UniqueKey<RoomtypesRecord> KEY_ROOMTYPES_PRIMARY = createUniqueKey(Roomtypes.ROOMTYPES, "KEY_RoomTypes_PRIMARY", Roomtypes.ROOMTYPES.ID);
         public static final UniqueKey<TagsRecord> KEY_TAGS_PRIMARY = createUniqueKey(Tags.TAGS, "KEY_Tags_PRIMARY", Tags.TAGS.ID);
+        public static final UniqueKey<TransportRecord> KEY_TRANSPORT_PRIMARY = createUniqueKey(Transport.TRANSPORT, "KEY_Transport_PRIMARY", Transport.TRANSPORT.ID);
+        public static final UniqueKey<UsersRecord> KEY_USERS_PRIMARY = createUniqueKey(Users.USERS, "KEY_Users_PRIMARY", Users.USERS.USERID);
         public static final UniqueKey<WeekdayRecord> KEY_WEEKDAY_PRIMARY = createUniqueKey(Weekday.WEEKDAY, "KEY_Weekday_PRIMARY", Weekday.WEEKDAY.ID);
         public static final UniqueKey<WeekdayRecord> KEY_WEEKDAY_DAY_UNIQUE = createUniqueKey(Weekday.WEEKDAY, "KEY_Weekday_day_UNIQUE", Weekday.WEEKDAY.DAY);
     }

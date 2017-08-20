@@ -28,6 +28,8 @@ import NewcastleConnections.packagedeals.tables.Roomofferings;
 import NewcastleConnections.packagedeals.tables.Roomtypes;
 import NewcastleConnections.packagedeals.tables.Tagallocations;
 import NewcastleConnections.packagedeals.tables.Tags;
+import NewcastleConnections.packagedeals.tables.Transport;
+import NewcastleConnections.packagedeals.tables.Users;
 import NewcastleConnections.packagedeals.tables.Weekday;
 
 import javax.annotation.Generated;
@@ -165,6 +167,16 @@ public class Tables {
      * The table <code>PackageDeals.Tags</code>.
      */
     public static final Tags TAGS = NewcastleConnections.packagedeals.tables.Tags.TAGS;
+
+    /**
+     * The table <code>PackageDeals.Transport</code>.
+     */
+    public static final Transport TRANSPORT = NewcastleConnections.packagedeals.tables.Transport.TRANSPORT;
+
+    /**
+     * The table <code>PackageDeals.Users</code>.
+     */
+    public static final Users USERS = NewcastleConnections.packagedeals.tables.Users.USERS;
 
     /**
      * The table <code>PackageDeals.Weekday</code>.

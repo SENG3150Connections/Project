@@ -84,8 +84,9 @@
             <result>WEB-INF/jsp/managementPortal-analytics.jsp</result>
         </action>
 
-        <action name="invoice">
-            <result>WEB-INF/jsp/managementPortal-invoice.jsp</result>
+        <action name="invoice" class="NewcastleConnections.Actions.GetInvoices">
+            <result name="success">WEB-INF/jsp/managementPortal-invoice.jsp</result>
+            <result name="error">/WEB-INF/jsp/exception.jsp</result>
         </action>
 
         <!-- End Management Portal -->

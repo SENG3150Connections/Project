@@ -244,7 +244,6 @@
                         </div>
                     </s:if>
                 </s:iterator>
-                <p id="testp">poop</p>
             </div>
             <div id="offer-info-large" class="hidden">
                 <div id="offer-image">
@@ -284,11 +283,6 @@
 <script src="js/plugins.js"></script>
 <script src="js/main.js"></script>
 <script>
-    $(".menu-toggle").click(function() {
-        $('#menu').animate({width: ($('#menu').width() === 0) ? 300 : 0});
-        $('#menu>div').toggleClass('hidden');
-        $('main').toggleClass('noScrolling');
-    });
     $("a.content-toggle").click(function() {
         $('#filters').animate({height: ($('#filters').height() == 0) ? $(window).height()-250 : 0}, 200);
         $('#filters>div').toggleClass('invisible');
@@ -308,14 +302,14 @@
         $('#results').addClass('flex-row').removeClass('flex-col');
         $('.offer-list').toggleClass('offer-tile').toggleClass('offer-list');
     });
-    $(".offer-list").click(function() {
+    $(".offer-list").on('click', function() {
         $('#results').addClass('hidden');
         $('#display-type').addClass('hidden');
         $('.offer-list').addClass('hidden');
         $('#offer-info-large').removeClass('hidden');
         $(this).find(".offer-info").find(".offer-info-left").find(".name").clone().appendTo('#offer-name');
     });
-    $("#show-results").click(function() {
+    $("#show-results").on('click', function() {
         $('#offer-info-large').addClass('hidden');
         $('#results').removeClass('hidden');
         $('#display-type').removeClass('hidden');

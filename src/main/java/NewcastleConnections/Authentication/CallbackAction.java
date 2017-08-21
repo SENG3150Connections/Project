@@ -91,7 +91,7 @@ public class CallbackAction extends ActionSupport {
 
                 // User does exist, get role.
 
-               
+
 
 
 

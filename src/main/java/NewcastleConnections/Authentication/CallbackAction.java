@@ -8,6 +8,7 @@ import com.auth0.Tokens;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 import org.jooq.Result;
+import org.jooq.util.derby.sys.Sys;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
@@ -72,7 +73,6 @@ public class CallbackAction extends ActionSupport {
 
 
         // Check to see if there is a user in the DB with a matching ID
-        try {
             DatabaseConnection connection = new DatabaseConnection();
             Result<UsersRecord> users = connection.getDSL().selectFrom(USERS).where("userId= '" + json.get("user_id") + "'").fetch();
 
@@ -87,15 +87,21 @@ public class CallbackAction extends ActionSupport {
                 //TODO add more attributes to this.
                 newUser.store();
 
+            } else {
+
+                // User does exist, get role.
+
+
+
+
+
+
             }
 
             connection.close();
 
 
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
 
         // If role is set, store it as session attribute.

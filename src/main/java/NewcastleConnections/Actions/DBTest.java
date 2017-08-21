@@ -20,21 +20,11 @@ public class DBTest extends ActionSupport {
     private Result<ExperiencesRecord> experiences;
     private Result<TransportRecord> transport;
 
-    public Result<HotelsRecord> getHotels() {
-        return hotels;
-    }
-
-    public Result<ResturantsRecord> getRestaurants() {
-        return restaurants;
-    }
-
-    public Result<ExperiencesRecord> getExperiences() {
-        return experiences;
-    }
-
-    public Result<TransportRecord> getTransport() {
-        return transport;
-    }
+    private int hotelCount;
+    private int restaurantCount;
+    private int experienceCount;
+    private int transportCount;
+    private int totalCount;
 
     @Override
     public String execute() {
@@ -54,7 +44,50 @@ public class DBTest extends ActionSupport {
             return ERROR;
         }
 
+        hotelCount = hotels.size();
+        restaurantCount = restaurants.size();
+        experienceCount = experiences.size();
+        transportCount = transport.size();
+
+        totalCount = hotelCount + restaurantCount + experienceCount + transportCount;
+
         // Return Success
         return SUCCESS;
+    }
+
+    public Result<HotelsRecord> getHotels() {
+        return hotels;
+    }
+
+    public Result<ResturantsRecord> getRestaurants() {
+        return restaurants;
+    }
+
+    public Result<ExperiencesRecord> getExperiences() {
+        return experiences;
+    }
+
+    public Result<TransportRecord> getTransport() {
+        return transport;
+    }
+
+    public int getHotelCount() {
+        return hotelCount;
+    }
+
+    public int getRestaurantCount() {
+        return restaurantCount;
+    }
+
+    public int getExperienceCount() {
+        return experienceCount;
+    }
+
+    public int getTransportCount() {
+        return transportCount;
+    }
+
+    public int getTotalCount() {
+        return totalCount;
     }
 }

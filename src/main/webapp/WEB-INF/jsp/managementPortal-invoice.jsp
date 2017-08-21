@@ -40,7 +40,6 @@
                 <label class="prev-dir">Manage Products/</label><label class="current-dir">Invoice</label>
 
                 <div class="pull-right">
-                    <button class="btn btn-default">Cancel</button>
                     <button class="btn btn-info">Print Invoice</button>
                 </div>
             </div>
@@ -59,23 +58,29 @@
 
                         <hr>
 
-                        <div class="row" style="width:100%">
-                            <div class="col-md-2"><label>Processing</label></div>
-                            <div class="col-md-2"><label>John Smith</label></div>
-                            <div class="col-md-2"><label>Offer 1</label></div>
-                            <div class="col-md-2"><label>04/07/17</label></div>
-                            <div class="col-md-2"><label>$59.90</label></div>
-                            <div class="col-md-2"><label>View Order</label></div>
-                        </div>
 
-                        <div class="row" style="width:100%">
-                            <div class="col-md-2"><label>Canceled</label></div>
-                            <div class="col-md-2"><label>Nick K</label></div>
-                            <div class="col-md-2"><label>Offer 2</label></div>
-                            <div class="col-md-2"><label>01/07/17</label></div>
-                            <div class="col-md-2"><label>$15.90</label></div>
-                            <div class="col-md-2"><label>View Order</label></div>
-                        </div>
+                        <s:iterator value="invoices" var="invoice">
+                            <div class="row" style="width:100%">
+                                <div class="col-md-2">
+                                    <label>
+                                        <s:if test="%{#invoice.status==0}">
+                                            Processing
+                                        </s:if>
+                                        <s:elseif test="%{#invoice.status==1}">
+                                            Complete
+                                        </s:elseif>
+                                        <s:elseif test="%{#invoice.status==2}">
+                                            Canceled
+                                        </s:elseif>
+                                    </label>
+                                </div>
+                                <div class="col-md-2"><label>${invoice.id}</label></div>
+                                <div class="col-md-2"><label>${invoice.customerid}</label></div>
+                                <div class="col-md-2"><label>${invoice.purchasedate}</label></div>
+                                <div class="col-md-2"><label>$${invoice.price}</label></div>
+                                <div class="col-md-2"><a href="#">View</a></div>
+                            </div>
+                        </s:iterator>
 
                     </div>
                 </div>

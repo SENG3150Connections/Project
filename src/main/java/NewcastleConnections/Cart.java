@@ -1,5 +1,6 @@
 package NewcastleConnections;
 
+import NewcastleConnections.packagedeals.tables.Invoicetransport;
 import NewcastleConnections.packagedeals.tables.records.*;
 import org.jooq.types.UInteger;
 
@@ -17,6 +18,7 @@ public class Cart {
     private Set<InvoiceexperienceRecord> experiences;
     private Set<InvoicehotelRecord> rooms;
     private Set<InvoicerestaurantRecord> restaurants;
+    private Set<InvoicetransportRecord> transport;
 
     private String name = "";
 
@@ -24,6 +26,7 @@ public class Cart {
         experiences = new HashSet<>();
         rooms = new HashSet<>();
         restaurants = new HashSet<>();
+        transport = new HashSet<>();
     }
 
     public UInteger createInvoice() {
@@ -70,6 +73,11 @@ public class Cart {
             r.setInvoiceid(id);
             r.store();
         }
+        for (InvoicetransportRecord r : transport) {
+            connection.getDSL().attach(r);
+            r.setInvoiceid(id);
+            r.store();
+        }
     }
 
     public void removeExperience(int id) {
@@ -100,6 +108,15 @@ public class Cart {
         }
     }
 
+    public void removeTransport(int id) {
+        for (InvoicetransportRecord e : transport) {
+            if (e.getTransportid().intValue() == id) {
+                transport.remove(e);
+                return;
+            }
+        }
+    }
+
     // -- Getters, Setters, etc --
 
     public void addExperience(InvoiceexperienceRecord r) {
@@ -114,6 +131,10 @@ public class Cart {
         restaurants.add(r);
     }
 
+    public void addTransport(InvoicetransportRecord r) {
+        transport.add(r);
+    }
+
     public void removeExperience(InvoiceexperienceRecord r) {
         experiences.remove(r);
     }
@@ -126,6 +147,10 @@ public class Cart {
         restaurants.remove(r);
     }
 
+    public void removeTransport(InvoicetransportRecord r) {
+        transport.remove(r);
+    }
+
     public Set<InvoiceexperienceRecord> getExperiences() {
         return experiences;
     }
@@ -136,6 +161,10 @@ public class Cart {
 
     public Set<InvoicerestaurantRecord> getRestaurants() {
         return restaurants;
+    }
+
+    public Set<InvoicetransportRecord> getTransport() {
+        return transport;
     }
 
     public String getName() {

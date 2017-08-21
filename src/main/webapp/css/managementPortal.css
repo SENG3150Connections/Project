@@ -52,6 +52,11 @@ hr {
     font-size: 20px;
 }
 
+.subHeading {
+    font-size: 12px;
+    color: #999999;
+}
+
 /* ---- This is the check boxes in the side bar ---- */
 .material-switch > input[type="checkbox"] {
     display: none;   
@@ -96,4 +101,11 @@ hr {
 .material-switch > input[type="checkbox"]:checked + label::after {
     background: inherit;
     left: 20px;
+}
+
+.analyticsGraphDetails {
+    border-style: solid;
+    border-width: 0px 0px 1px 1px;
+    border-color: #999;
+    border-right: 4px solid;
 }

@@ -52,5 +52,16 @@
             </tr>
         </s:iterator>
     </table>
+
+    <h1>Transport</h1>
+    <table>
+        <tr><td>TransID</td><td>Time</td></tr>
+        <s:iterator value="cart.transport" var="e">
+            <tr>
+                <td>${e.transportid}</td>
+                <td>${e.time}</td>
+            </tr>
+        </s:iterator>
+    </table>
 </body>
 </html>

@@ -84,14 +84,21 @@
             <result>WEB-INF/jsp/managementPortal-analytics.jsp</result>
         </action>
 
-        <action name="invoice">
-            <result>WEB-INF/jsp/managementPortal-invoice.jsp</result>
+        <action name="invoice" class="NewcastleConnections.Actions.GetInvoices">
+            <result name="success">WEB-INF/jsp/managementPortal-invoice.jsp</result>
+            <result name="error">/WEB-INF/jsp/exception.jsp</result>
         </action>
 
         <!-- End Management Portal -->
         
         <action name="dbTest" class="NewcastleConnections.Actions.DBTest">
             <result name="success">/WEB-INF/jsp/databaseTest.jsp</result>
+            <result name="error">/WEB-INF/jsp/exception.jsp</result>
+        </action>
+
+
+        <action name="results" class="NewcastleConnections.Actions.DBTest">
+            <result name="success">/WEB-INF/jsp/results.jsp</result>
             <result name="error">/WEB-INF/jsp/exception.jsp</result>
         </action>
 
@@ -119,6 +126,16 @@
 
         <action name="logout" class="NewcastleConnections.Authentication.LogoutAction">
             <result>WEB-INF/jsp/home.jsp</result>
+        </action>
+
+        <!-- User Management Portal -->
+
+        <action name="customerPortal">
+            <result>WEB-INF/jsp/customerPortal.jsp</result>
+        </action>
+
+        <action name="customerPortal-bookings" class="NewcastleConnections.Actions.GetUserInvoices">
+            <result>WEB-INF/jsp/customerPortal-bookings.jsp</result>
         </action>
 
     </package>

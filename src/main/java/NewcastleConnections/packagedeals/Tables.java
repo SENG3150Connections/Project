@@ -16,6 +16,7 @@ import NewcastleConnections.packagedeals.tables.Invoicehotel;
 import NewcastleConnections.packagedeals.tables.Invoicerestaurant;
 import NewcastleConnections.packagedeals.tables.Invoices;
 import NewcastleConnections.packagedeals.tables.Invoicestatus;
+import NewcastleConnections.packagedeals.tables.Invoicetransport;
 import NewcastleConnections.packagedeals.tables.Resturantopeninghours;
 import NewcastleConnections.packagedeals.tables.Resturantopeninghoursoverrides;
 import NewcastleConnections.packagedeals.tables.Resturantreservationofferingoverrides;
@@ -107,6 +108,11 @@ public class Tables {
      * The table <code>PackageDeals.InvoiceStatus</code>.
      */
     public static final Invoicestatus INVOICESTATUS = NewcastleConnections.packagedeals.tables.Invoicestatus.INVOICESTATUS;
+
+    /**
+     * The table <code>PackageDeals.InvoiceTransport</code>.
+     */
+    public static final Invoicetransport INVOICETRANSPORT = NewcastleConnections.packagedeals.tables.Invoicetransport.INVOICETRANSPORT;
 
     /**
      * The table <code>PackageDeals.ResturantOpeningHours</code>.

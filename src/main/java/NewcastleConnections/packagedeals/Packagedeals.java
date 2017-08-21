@@ -4,7 +4,6 @@
 package NewcastleConnections.packagedeals;
 
 
-import NewcastleConnections.DefaultCatalog;
 import NewcastleConnections.packagedeals.tables.Experiencebookingoffering;
 import NewcastleConnections.packagedeals.tables.Experienceofferingdates;
 import NewcastleConnections.packagedeals.tables.Experienceofferingsdatetime;
@@ -58,7 +57,7 @@ import org.jooq.impl.SchemaImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Packagedeals extends SchemaImpl {
 
-    private static final long serialVersionUID = 979245772;
+    private static final long serialVersionUID = 635945641;
 
     /**
      * The reference instance of <code>PackageDeals</code>

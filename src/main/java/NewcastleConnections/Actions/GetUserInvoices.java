@@ -42,8 +42,6 @@ public class GetUserInvoices extends ActionSupport {
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
             return ERROR;
-        } catch (NamingException e) {
-            e.printStackTrace();
         }
 
         // Return Success

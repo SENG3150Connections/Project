@@ -51,6 +51,12 @@ public class UpdateCart extends ActionSupport {
                     irr.setRestaurantid(UInteger.valueOf(id));
                     getCart().getRestaurants().add(irr);
                     break;
+
+                case "transport":
+                    InvoicetransportRecord itr = new InvoicetransportRecord();
+                    itr.setTransportid(UInteger.valueOf(id));
+                    getCart().getTransport().add(itr);
+
                 default:
                     break;
 
@@ -67,6 +73,9 @@ public class UpdateCart extends ActionSupport {
                     break;
                 case "restaurant":
                     getCart().removeRestaurant(id);
+                    break;
+                case "transport":
+                    getCart().removeTransport(id);
                     break;
                 default:
                     break;

@@ -17,6 +17,7 @@ import NewcastleConnections.packagedeals.tables.Invoicehotel;
 import NewcastleConnections.packagedeals.tables.Invoicerestaurant;
 import NewcastleConnections.packagedeals.tables.Invoices;
 import NewcastleConnections.packagedeals.tables.Invoicestatus;
+import NewcastleConnections.packagedeals.tables.Invoicetransport;
 import NewcastleConnections.packagedeals.tables.Resturantopeninghours;
 import NewcastleConnections.packagedeals.tables.Resturantopeninghoursoverrides;
 import NewcastleConnections.packagedeals.tables.Resturantreservationofferingoverrides;
@@ -57,7 +58,7 @@ import org.jooq.impl.SchemaImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Packagedeals extends SchemaImpl {
 
-    private static final long serialVersionUID = -290129248;
+    private static final long serialVersionUID = 979245772;
 
     /**
      * The reference instance of <code>PackageDeals</code>
@@ -123,6 +124,11 @@ public class Packagedeals extends SchemaImpl {
      * The table <code>PackageDeals.InvoiceStatus</code>.
      */
     public final Invoicestatus INVOICESTATUS = NewcastleConnections.packagedeals.tables.Invoicestatus.INVOICESTATUS;
+
+    /**
+     * The table <code>PackageDeals.InvoiceTransport</code>.
+     */
+    public final Invoicetransport INVOICETRANSPORT = NewcastleConnections.packagedeals.tables.Invoicetransport.INVOICETRANSPORT;
 
     /**
      * The table <code>PackageDeals.ResturantOpeningHours</code>.
@@ -236,6 +242,7 @@ public class Packagedeals extends SchemaImpl {
             Invoicerestaurant.INVOICERESTAURANT,
             Invoices.INVOICES,
             Invoicestatus.INVOICESTATUS,
+            Invoicetransport.INVOICETRANSPORT,
             Resturantopeninghours.RESTURANTOPENINGHOURS,
             Resturantopeninghoursoverrides.RESTURANTOPENINGHOURSOVERRIDES,
             Resturantreservationofferingoverrides.RESTURANTRESERVATIONOFFERINGOVERRIDES,

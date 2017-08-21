@@ -16,6 +16,7 @@ import NewcastleConnections.packagedeals.tables.Invoicehotel;
 import NewcastleConnections.packagedeals.tables.Invoicerestaurant;
 import NewcastleConnections.packagedeals.tables.Invoices;
 import NewcastleConnections.packagedeals.tables.Invoicestatus;
+import NewcastleConnections.packagedeals.tables.Invoicetransport;
 import NewcastleConnections.packagedeals.tables.Resturantopeninghours;
 import NewcastleConnections.packagedeals.tables.Resturantopeninghoursoverrides;
 import NewcastleConnections.packagedeals.tables.Resturantreservationofferingoverrides;
@@ -42,6 +43,7 @@ import NewcastleConnections.packagedeals.tables.records.InvoicehotelRecord;
 import NewcastleConnections.packagedeals.tables.records.InvoicerestaurantRecord;
 import NewcastleConnections.packagedeals.tables.records.InvoicesRecord;
 import NewcastleConnections.packagedeals.tables.records.InvoicestatusRecord;
+import NewcastleConnections.packagedeals.tables.records.InvoicetransportRecord;
 import NewcastleConnections.packagedeals.tables.records.ResturantopeninghoursRecord;
 import NewcastleConnections.packagedeals.tables.records.ResturantopeninghoursoverridesRecord;
 import NewcastleConnections.packagedeals.tables.records.ResturantreservationofferingoverridesRecord;
@@ -103,6 +105,7 @@ public class Keys {
     public static final Identity<RoomofferingsRecord, UInteger> IDENTITY_ROOMOFFERINGS = Identities0.IDENTITY_ROOMOFFERINGS;
     public static final Identity<RoomtypesRecord, UInteger> IDENTITY_ROOMTYPES = Identities0.IDENTITY_ROOMTYPES;
     public static final Identity<TagsRecord, Integer> IDENTITY_TAGS = Identities0.IDENTITY_TAGS;
+    public static final Identity<TransportRecord, UInteger> IDENTITY_TRANSPORT = Identities0.IDENTITY_TRANSPORT;
     public static final Identity<WeekdayRecord, UInteger> IDENTITY_WEEKDAY = Identities0.IDENTITY_WEEKDAY;
 
     // -------------------------------------------------------------------------
@@ -121,6 +124,7 @@ public class Keys {
     public static final UniqueKey<InvoicerestaurantRecord> KEY_INVOICERESTAURANT_PRIMARY = UniqueKeys0.KEY_INVOICERESTAURANT_PRIMARY;
     public static final UniqueKey<InvoicesRecord> KEY_INVOICES_PRIMARY = UniqueKeys0.KEY_INVOICES_PRIMARY;
     public static final UniqueKey<InvoicestatusRecord> KEY_INVOICESTATUS_PRIMARY = UniqueKeys0.KEY_INVOICESTATUS_PRIMARY;
+    public static final UniqueKey<InvoicetransportRecord> KEY_INVOICETRANSPORT_PRIMARY = UniqueKeys0.KEY_INVOICETRANSPORT_PRIMARY;
     public static final UniqueKey<ResturantopeninghoursRecord> KEY_RESTURANTOPENINGHOURS_PRIMARY = UniqueKeys0.KEY_RESTURANTOPENINGHOURS_PRIMARY;
     public static final UniqueKey<ResturantopeninghoursoverridesRecord> KEY_RESTURANTOPENINGHOURSOVERRIDES_PRIMARY = UniqueKeys0.KEY_RESTURANTOPENINGHOURSOVERRIDES_PRIMARY;
     public static final UniqueKey<ResturantopeninghoursoverridesRecord> KEY_RESTURANTOPENINGHOURSOVERRIDES_UQ_RESTURANTID_DATE = UniqueKeys0.KEY_RESTURANTOPENINGHOURSOVERRIDES_UQ_RESTURANTID_DATE;
@@ -153,6 +157,8 @@ public class Keys {
     public static final ForeignKey<InvoicehotelRecord, RoomofferingsRecord> IHROOM = ForeignKeys0.IHROOM;
     public static final ForeignKey<InvoicerestaurantRecord, InvoicesRecord> IRINVOICE = ForeignKeys0.IRINVOICE;
     public static final ForeignKey<InvoicerestaurantRecord, ResturantsRecord> IRRESTAURANT = ForeignKeys0.IRRESTAURANT;
+    public static final ForeignKey<InvoicetransportRecord, InvoicesRecord> ITINVOICE = ForeignKeys0.ITINVOICE;
+    public static final ForeignKey<InvoicetransportRecord, TransportRecord> ITTRANSPORT = ForeignKeys0.ITTRANSPORT;
     public static final ForeignKey<ResturantopeninghoursRecord, WeekdayRecord> FK_RESTURANTOPENINGHOURS_WEEKDAY = ForeignKeys0.FK_RESTURANTOPENINGHOURS_WEEKDAY;
     public static final ForeignKey<ResturantopeninghoursoverridesRecord, ResturantsRecord> FK_RESTURANTOPENINGHOURSOVERRIDES_RESTURANTS = ForeignKeys0.FK_RESTURANTOPENINGHOURSOVERRIDES_RESTURANTS;
     public static final ForeignKey<ResturantreservationofferingoverridesRecord, ResturantsRecord> FK_RESTURANTRESERVATIONOFFERINGOVERRIDES_RESTURANTS = ForeignKeys0.FK_RESTURANTRESERVATIONOFFERINGOVERRIDES_RESTURANTS;
@@ -188,6 +194,7 @@ public class Keys {
         public static Identity<RoomofferingsRecord, UInteger> IDENTITY_ROOMOFFERINGS = createIdentity(Roomofferings.ROOMOFFERINGS, Roomofferings.ROOMOFFERINGS.ID);
         public static Identity<RoomtypesRecord, UInteger> IDENTITY_ROOMTYPES = createIdentity(Roomtypes.ROOMTYPES, Roomtypes.ROOMTYPES.ID);
         public static Identity<TagsRecord, Integer> IDENTITY_TAGS = createIdentity(Tags.TAGS, Tags.TAGS.ID);
+        public static Identity<TransportRecord, UInteger> IDENTITY_TRANSPORT = createIdentity(Transport.TRANSPORT, Transport.TRANSPORT.ID);
         public static Identity<WeekdayRecord, UInteger> IDENTITY_WEEKDAY = createIdentity(Weekday.WEEKDAY, Weekday.WEEKDAY.ID);
     }
 
@@ -204,6 +211,7 @@ public class Keys {
         public static final UniqueKey<InvoicerestaurantRecord> KEY_INVOICERESTAURANT_PRIMARY = createUniqueKey(Invoicerestaurant.INVOICERESTAURANT, "KEY_InvoiceRestaurant_PRIMARY", Invoicerestaurant.INVOICERESTAURANT.INVOICEID, Invoicerestaurant.INVOICERESTAURANT.RESTAURANTID);
         public static final UniqueKey<InvoicesRecord> KEY_INVOICES_PRIMARY = createUniqueKey(Invoices.INVOICES, "KEY_Invoices_PRIMARY", Invoices.INVOICES.ID);
         public static final UniqueKey<InvoicestatusRecord> KEY_INVOICESTATUS_PRIMARY = createUniqueKey(Invoicestatus.INVOICESTATUS, "KEY_InvoiceStatus_PRIMARY", Invoicestatus.INVOICESTATUS.ID);
+        public static final UniqueKey<InvoicetransportRecord> KEY_INVOICETRANSPORT_PRIMARY = createUniqueKey(Invoicetransport.INVOICETRANSPORT, "KEY_InvoiceTransport_PRIMARY", Invoicetransport.INVOICETRANSPORT.INVOICEID, Invoicetransport.INVOICETRANSPORT.TRANSPORTID);
         public static final UniqueKey<ResturantopeninghoursRecord> KEY_RESTURANTOPENINGHOURS_PRIMARY = createUniqueKey(Resturantopeninghours.RESTURANTOPENINGHOURS, "KEY_ResturantOpeningHours_PRIMARY", Resturantopeninghours.RESTURANTOPENINGHOURS.ID);
         public static final UniqueKey<ResturantopeninghoursoverridesRecord> KEY_RESTURANTOPENINGHOURSOVERRIDES_PRIMARY = createUniqueKey(Resturantopeninghoursoverrides.RESTURANTOPENINGHOURSOVERRIDES, "KEY_ResturantOpeningHoursOverrides_PRIMARY", Resturantopeninghoursoverrides.RESTURANTOPENINGHOURSOVERRIDES.ID);
         public static final UniqueKey<ResturantopeninghoursoverridesRecord> KEY_RESTURANTOPENINGHOURSOVERRIDES_UQ_RESTURANTID_DATE = createUniqueKey(Resturantopeninghoursoverrides.RESTURANTOPENINGHOURSOVERRIDES, "KEY_ResturantOpeningHoursOverrides_uq_resturantId_date", Resturantopeninghoursoverrides.RESTURANTOPENINGHOURSOVERRIDES.DATE, Resturantopeninghoursoverrides.RESTURANTOPENINGHOURSOVERRIDES.RESTURANTID);
@@ -234,6 +242,8 @@ public class Keys {
         public static final ForeignKey<InvoicehotelRecord, RoomofferingsRecord> IHROOM = createForeignKey(NewcastleConnections.packagedeals.Keys.KEY_ROOMOFFERINGS_PRIMARY, Invoicehotel.INVOICEHOTEL, "IHRoom", Invoicehotel.INVOICEHOTEL.ROOMID);
         public static final ForeignKey<InvoicerestaurantRecord, InvoicesRecord> IRINVOICE = createForeignKey(NewcastleConnections.packagedeals.Keys.KEY_INVOICES_PRIMARY, Invoicerestaurant.INVOICERESTAURANT, "IRInvoice", Invoicerestaurant.INVOICERESTAURANT.INVOICEID);
         public static final ForeignKey<InvoicerestaurantRecord, ResturantsRecord> IRRESTAURANT = createForeignKey(NewcastleConnections.packagedeals.Keys.KEY_RESTURANTS_PRIMARY, Invoicerestaurant.INVOICERESTAURANT, "IRRestaurant", Invoicerestaurant.INVOICERESTAURANT.RESTAURANTID);
+        public static final ForeignKey<InvoicetransportRecord, InvoicesRecord> ITINVOICE = createForeignKey(NewcastleConnections.packagedeals.Keys.KEY_INVOICES_PRIMARY, Invoicetransport.INVOICETRANSPORT, "ITInvoice", Invoicetransport.INVOICETRANSPORT.INVOICEID);
+        public static final ForeignKey<InvoicetransportRecord, TransportRecord> ITTRANSPORT = createForeignKey(NewcastleConnections.packagedeals.Keys.KEY_TRANSPORT_PRIMARY, Invoicetransport.INVOICETRANSPORT, "ITTransport", Invoicetransport.INVOICETRANSPORT.TRANSPORTID);
         public static final ForeignKey<ResturantopeninghoursRecord, WeekdayRecord> FK_RESTURANTOPENINGHOURS_WEEKDAY = createForeignKey(NewcastleConnections.packagedeals.Keys.KEY_WEEKDAY_PRIMARY, Resturantopeninghours.RESTURANTOPENINGHOURS, "fk_ResturantOpeningHours_Weekday", Resturantopeninghours.RESTURANTOPENINGHOURS.WEEKDAY);
         public static final ForeignKey<ResturantopeninghoursoverridesRecord, ResturantsRecord> FK_RESTURANTOPENINGHOURSOVERRIDES_RESTURANTS = createForeignKey(NewcastleConnections.packagedeals.Keys.KEY_RESTURANTS_PRIMARY, Resturantopeninghoursoverrides.RESTURANTOPENINGHOURSOVERRIDES, "fk_ResturantOpeningHoursOverrides_Resturants", Resturantopeninghoursoverrides.RESTURANTOPENINGHOURSOVERRIDES.RESTURANTID);
         public static final ForeignKey<ResturantreservationofferingoverridesRecord, ResturantsRecord> FK_RESTURANTRESERVATIONOFFERINGOVERRIDES_RESTURANTS = createForeignKey(NewcastleConnections.packagedeals.Keys.KEY_RESTURANTS_PRIMARY, Resturantreservationofferingoverrides.RESTURANTRESERVATIONOFFERINGOVERRIDES, "fk_ResturantReservationOfferingOverrides_Resturants", Resturantreservationofferingoverrides.RESTURANTRESERVATIONOFFERINGOVERRIDES.RESTURANTID);

@@ -14,11 +14,13 @@ import java.util.List;
 import javax.annotation.Generated;
 
 import org.jooq.Field;
+import org.jooq.Identity;
 import org.jooq.Schema;
 import org.jooq.Table;
 import org.jooq.TableField;
 import org.jooq.UniqueKey;
 import org.jooq.impl.TableImpl;
+import org.jooq.types.UInteger;
 
 
 /**
@@ -34,7 +36,7 @@ import org.jooq.impl.TableImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Transport extends TableImpl<TransportRecord> {
 
-    private static final long serialVersionUID = 110482414;
+    private static final long serialVersionUID = -1050232661;
 
     /**
      * The reference instance of <code>PackageDeals.Transport</code>
@@ -52,7 +54,7 @@ public class Transport extends TableImpl<TransportRecord> {
     /**
      * The column <code>PackageDeals.Transport.id</code>.
      */
-    public final TableField<TransportRecord, Integer> ID = createField("id", org.jooq.impl.SQLDataType.INTEGER.nullable(false), this, "");
+    public final TableField<TransportRecord, UInteger> ID = createField("id", org.jooq.impl.SQLDataType.INTEGERUNSIGNED.nullable(false), this, "");
 
     /**
      * The column <code>PackageDeals.Transport.name</code>.
@@ -122,6 +124,14 @@ public class Transport extends TableImpl<TransportRecord> {
     @Override
     public Schema getSchema() {
         return Packagedeals.PACKAGEDEALS;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Identity<TransportRecord, UInteger> getIdentity() {
+        return Keys.IDENTITY_TRANSPORT;
     }
 
     /**

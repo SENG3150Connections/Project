@@ -42,6 +42,7 @@ import javax.annotation.Generated;
 import org.jooq.Catalog;
 import org.jooq.Table;
 import org.jooq.impl.SchemaImpl;
+import org.jooq.util.mysql.mysql.DefaultCatalog;
 
 
 /**

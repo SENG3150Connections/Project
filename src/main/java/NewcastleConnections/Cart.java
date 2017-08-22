@@ -15,15 +15,15 @@ import java.util.Set;
 public class Cart {
 
     private Set<CartExperience> experiences;
-    private Set<InvoicehotelRecord> rooms;
-    private Set<InvoicerestaurantRecord> restaurants;
-    private Set<InvoicetransportRecord> transport;
+    private Set<CartHotel> hotels;
+    private Set<CartRestaurant> restaurants;
+    private Set<CartTransport> transport;
 
     private String name = "";
 
     public Cart() {
         experiences = new HashSet<>();
-        rooms = new HashSet<>();
+        hotels = new HashSet<>();
         restaurants = new HashSet<>();
         transport = new HashSet<>();
     }
@@ -63,17 +63,20 @@ public class Cart {
             r.setInvoiceid(id);
             r.store();
         }
-        for (InvoicehotelRecord r : rooms) {
+        for (CartHotel c : hotels) {
+            InvoicehotelRecord r = c.getInvoice();
             connection.getDSL().attach(r);
             r.setInvoiceid(id);
             r.store();
         }
-        for (InvoicerestaurantRecord r : restaurants) {
+        for (CartRestaurant c : restaurants) {
+            InvoicerestaurantRecord r = c.getInvoice();
             connection.getDSL().attach(r);
             r.setInvoiceid(id);
             r.store();
         }
-        for (InvoicetransportRecord r : transport) {
+        for (CartTransport c : transport) {
+            InvoicetransportRecord r = c.getInvoice();
             connection.getDSL().attach(r);
             r.setInvoiceid(id);
             r.store();
@@ -90,18 +93,18 @@ public class Cart {
         }
     }
 
-    public void removeRoom(int id) {
-        for (InvoicehotelRecord e : rooms) {
-            if (e.getRoomid().intValue() == id) {
-                rooms.remove(e);
+    public void removeHotel(int id) {
+        for (CartHotel e : hotels) {
+            if (e.getHotel().getId().intValue() == id) {
+                hotels.remove(e);
                 return;
             }
         }
     }
 
     public void removeRestaurant(int id) {
-        for (InvoicerestaurantRecord e : restaurants) {
-            if (e.getRestaurantid().intValue() == id) {
+        for (CartRestaurant e : restaurants) {
+            if (e.getRestaurant().getId().intValue() == id) {
                 restaurants.remove(e);
                 return;
             }
@@ -109,8 +112,8 @@ public class Cart {
     }
 
     public void removeTransport(int id) {
-        for (InvoicetransportRecord e : transport) {
-            if (e.getTransportid().intValue() == id) {
+        for (CartTransport e : transport) {
+            if (e.getTransport().getId().intValue() == id) {
                 transport.remove(e);
                 return;
             }
@@ -123,15 +126,15 @@ public class Cart {
         experiences.add(c);
     }
 
-    public void addRoom(InvoicehotelRecord r) {
-        rooms.add(r);
+    public void addRoom(CartHotel r) {
+        hotels.add(r);
     }
 
-    public void addRestaurant(InvoicerestaurantRecord r) {
+    public void addRestaurant(CartRestaurant r) {
         restaurants.add(r);
     }
 
-    public void addTransport(InvoicetransportRecord r) {
+    public void addTransport(CartTransport r) {
         transport.add(r);
     }
 
@@ -139,15 +142,15 @@ public class Cart {
         experiences.remove(c);
     }
 
-    public void removeRoom(InvoicehotelRecord r) {
-        rooms.remove(r);
+    public void removeHotel(CartHotel r) {
+        hotels.remove(r);
     }
 
-    public void removeRestaurant(InvoicerestaurantRecord r) {
+    public void removeRestaurant(CartRestaurant r) {
         restaurants.remove(r);
     }
 
-    public void removeTransport(InvoicetransportRecord r) {
+    public void removeTransport(CartTransport r) {
         transport.remove(r);
     }
 
@@ -155,15 +158,15 @@ public class Cart {
         return experiences;
     }
 
-    public Set<InvoicehotelRecord> getRooms() {
-        return rooms;
+    public Set<CartHotel> getHotels() {
+        return hotels;
     }
 
-    public Set<InvoicerestaurantRecord> getRestaurants() {
+    public Set<CartRestaurant> getRestaurants() {
         return restaurants;
     }
 
-    public Set<InvoicetransportRecord> getTransport() {
+    public Set<CartTransport> getTransport() {
         return transport;
     }
 

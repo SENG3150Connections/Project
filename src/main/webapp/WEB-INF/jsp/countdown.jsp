@@ -44,16 +44,16 @@
     </div>
 
     <script>
-        // Set the date we're counting down to
+        // Set the time we're counting down to
         var countDownDate = new Date("Sep 4, 2017 09:00:00").getTime();
 
         // Update the count down every 1 second
         var x = setInterval(function() {
 
-            // Get todays date and time
+            // Get todays time and time
             var now = new Date().getTime();
 
-            // Find the distance between now an the count down date
+            // Find the distance between now an the count down time
             var distance = countDownDate - now;
 
             // Time calculations for days, hours, minutes and seconds

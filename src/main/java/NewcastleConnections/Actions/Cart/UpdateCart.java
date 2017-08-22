@@ -1,9 +1,6 @@
 package NewcastleConnections.Actions.Cart;
 
-import NewcastleConnections.Cart;
-import NewcastleConnections.CartExperience;
-import NewcastleConnections.DatabaseConnection;
-import NewcastleConnections.packagedeals.tables.Invoicerestaurant;
+import NewcastleConnections.*;
 import NewcastleConnections.packagedeals.tables.records.*;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.inject.Inject;
@@ -14,10 +11,6 @@ import org.jooq.Table;
 import org.jooq.types.UInteger;
 
 import java.sql.SQLException;
-
-import static NewcastleConnections.packagedeals.Tables.EXPERIENCEVOUCHEROFFERINGS;
-import static NewcastleConnections.packagedeals.Tables.RESTURANTS;
-import static NewcastleConnections.packagedeals.Tables.ROOMOFFERINGS;
 
 /**
  * Created by Scott on 14/08/2017.
@@ -40,21 +33,15 @@ public class UpdateCart extends ActionSupport {
                     break;
 
                 case "room":
-                    InvoicehotelRecord ihr = new InvoicehotelRecord();
-                    ihr.setRoomid(UInteger.valueOf(id));
-                    getCart().getRooms().add(ihr);
+                    getCart().getHotels().add(new CartHotel(id));
                     break;
 
                 case "restaurant":
-                    InvoicerestaurantRecord irr = new InvoicerestaurantRecord();
-                    irr.setRestaurantid(UInteger.valueOf(id));
-                    getCart().getRestaurants().add(irr);
+                    getCart().getRestaurants().add(new CartRestaurant(id));
                     break;
 
                 case "transport":
-                    InvoicetransportRecord itr = new InvoicetransportRecord();
-                    itr.setTransportid(UInteger.valueOf(id));
-                    getCart().getTransport().add(itr);
+                    getCart().getTransport().add(new CartTransport(id));
 
                 default:
                     break;
@@ -68,7 +55,7 @@ public class UpdateCart extends ActionSupport {
                     getCart().removeExperience(id);
                     break;
                 case "room":
-                    getCart().removeRoom(id);
+                    getCart().removeHotel(id);
                     break;
                 case "restaurant":
                     getCart().removeRestaurant(id);

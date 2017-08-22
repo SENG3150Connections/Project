@@ -55,8 +55,8 @@
                 </div>
 
                 <div class="input-field col s6">
-                    <input id="date" type="text"   name="expiry"/>
-                    <label for="date" style="color: #000000" >Expiry Date</label>
+                    <input id="time" type="text"   name="expiry"/>
+                    <label for="time" style="color: #000000" >Expiry Date</label>
 
                 </div>
 

@@ -32,14 +32,14 @@ public class RecommendationTest extends ActionSupport {
     @Override
     public String execute() {
 
-       generateRecomendations(151.784775,-32.928368,5);
+       generateRecommendations(151.784775,-32.928368,5);
         coordinates = "151.784775,-32.928368";
 
 
         return SUCCESS;
     }
 
-    private void generateRecomendations(double searchLongitude, double searchLattitude, int numberOfResults) {
+    private void generateRecommendations(double searchLongitude, double searchLattitude, int numberOfResults) {
 
         try {
 

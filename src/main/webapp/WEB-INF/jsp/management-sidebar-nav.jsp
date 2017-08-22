@@ -5,7 +5,7 @@
         <div class="menu-list">
   
             <ul id="menu-content" class="menu-content collapse out">
-                <li class="active">
+                <li class="active" onclick="location.href='managementPortal';">
                     <a href="#">
                         <i class="fa fa-dashboard fa-lg"></i> Dashboard
                     </a>

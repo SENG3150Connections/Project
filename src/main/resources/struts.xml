@@ -67,7 +67,7 @@
             <result name="error">/WEB-INF/jsp/exception.jsp</result>
         </action>
 
-        <action name="managementPortal">
+        <action name="managementPortal" class="NewcastleConnections.Actions.GetWeeklyStats">
             <result name="success">/WEB-INF/jsp/managementPortal.jsp</result>
             <result name="error">/WEB-INF/jsp/exception.jsp</result>
         </action>

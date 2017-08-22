@@ -1,14 +1,13 @@
 package NewcastleConnections.Actions.Cart;
 
 import NewcastleConnections.*;
-import NewcastleConnections.packagedeals.tables.records.*;
+import NewcastleConnections.Cart.*;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.inject.Inject;
 import org.jooq.Record;
 import org.jooq.Result;
 import org.jooq.SelectWhereStep;
 import org.jooq.Table;
-import org.jooq.types.UInteger;
 
 import java.sql.SQLException;
 

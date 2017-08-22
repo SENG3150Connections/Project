@@ -1,6 +1,6 @@
 package NewcastleConnections.Actions.Cart;
 
-import NewcastleConnections.Cart;
+import NewcastleConnections.Cart.Cart;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.inject.Inject;
 

@@ -1,5 +1,6 @@
-package NewcastleConnections;
+package NewcastleConnections.Cart;
 
+import NewcastleConnections.DatabaseConnection;
 import NewcastleConnections.packagedeals.tables.records.InvoicetransportRecord;
 import NewcastleConnections.packagedeals.tables.records.TransportRecord;
 import org.jooq.types.UInteger;

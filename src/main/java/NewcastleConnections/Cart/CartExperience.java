@@ -1,5 +1,6 @@
-package NewcastleConnections;
+package NewcastleConnections.Cart;
 
+import NewcastleConnections.DatabaseConnection;
 import NewcastleConnections.packagedeals.tables.records.ExperiencesRecord;
 import NewcastleConnections.packagedeals.tables.records.ExperiencevoucherofferingsRecord;
 import NewcastleConnections.packagedeals.tables.records.InvoiceexperienceRecord;

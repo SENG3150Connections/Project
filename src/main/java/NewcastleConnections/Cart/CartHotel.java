@@ -1,5 +1,6 @@
-package NewcastleConnections;
+package NewcastleConnections.Cart;
 
+import NewcastleConnections.DatabaseConnection;
 import NewcastleConnections.packagedeals.tables.records.HotelsRecord;
 import NewcastleConnections.packagedeals.tables.records.InvoicehotelRecord;
 import NewcastleConnections.packagedeals.tables.records.RoomofferingsRecord;

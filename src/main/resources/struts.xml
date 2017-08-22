@@ -7,7 +7,7 @@
 <struts>
 
     <constant name="struts.actionProxyFactory" value="NewcastleConnections.Session.ActionProxyFactory"/>
-    <bean name="cart" class="NewcastleConnections.Cart" scope="session" />
+    <bean name="cart" class="NewcastleConnections.Cart.Cart" scope="session" />
 
     <!-- Default package -->
     <package name="default" extends="struts-default">

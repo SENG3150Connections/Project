@@ -13,7 +13,7 @@ import java.sql.SQLException;
 
 import static NewcastleConnections.packagedeals.Tables.*;
 
-public class DBTest extends ActionSupport {
+public class Results extends ActionSupport {
 
     // Results property (to be shared with the JSP page)
     private Result<HotelsRecord> hotels;

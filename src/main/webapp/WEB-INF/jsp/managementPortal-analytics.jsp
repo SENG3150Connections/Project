@@ -30,6 +30,12 @@
     <jsp:include page="management-sidebar-nav.jsp" />
 </div>
 
+
+<s:set var="netProffit" value="0.0"/>
+<s:iterator value="invoices" var="invoice">
+    netProffit += ${invoice.price}
+</s:iterator>
+
 <!-- Main Body -->
 <div class="management-mainbody">
     <div class="menuContent">
@@ -48,18 +54,9 @@
                         <label class="heading">Report</label>
 
                         <div class="row">
-                            <div>
-                                <a class="btn btn-default">Year</a>
-                                <a class="btn btn-default">Last Month</a>
-                                <a class="btn btn-default">This Month</a>
-                                <a class="btn btn-default">Last 7 Days</a>
-                                <a class="btn btn-default">Custom</a>
-                            </div>
-                            <br>
-                            <br>
                             <div class="col-md-2">
                                 <div class="col-md-12 analyticsGraphDetails" style="border-right-color: #c00;">
-                                    <label class="heading">$0.00</label><br>
+                                    <label class="heading">$<s:property value="#netProffit"/></label><br>
                                     <label class="subHeading">Gross Sales in this period</label>
                                 </div>
                                 <div class="col-md-12 analyticsGraphDetails" style="border-right-color: #cc0;">

@@ -97,8 +97,9 @@
             <result name="error">/WEB-INF/jsp/exception.jsp</result>
         </action>
 
-        <action name="analytics">
+        <action name="analytics" class="NewcastleConnections.Actions.GetInvoices">
             <result>WEB-INF/jsp/managementPortal-analytics.jsp</result>
+            <result name="error">/WEB-INF/jsp/exception.jsp</result>
         </action>
 
         <action name="invoice" class="NewcastleConnections.Actions.GetInvoices">

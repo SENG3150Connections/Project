@@ -63,13 +63,13 @@
                             <div class="row" style="width:100%">
                                 <div class="col-md-2">
                                     <label>
-                                        <s:if test="%{#invoice.status==0}">
+                                        <s:if test="%{#invoice.status==1}">
                                             Processing
                                         </s:if>
-                                        <s:elseif test="%{#invoice.status==1}">
+                                        <s:elseif test="%{#invoice.status==2}">
                                             Complete
                                         </s:elseif>
-                                        <s:elseif test="%{#invoice.status==2}">
+                                        <s:elseif test="%{#invoice.status==3}">
                                             Canceled
                                         </s:elseif>
                                     </label>
@@ -88,13 +88,8 @@
                 <!-- Sidebar - Right -->
                 <div class="col-md-4">
                     <div class="management-sidebar">
-                        <label class="heading">Title</label>
-                    </div>
-
-                    <div class="management-sidebar">
-                        <label class="heading">Organisation</label>
-
-
+                        <label class="heading">Sorting</label>
+                        <label></label>
                     </div>
                 </div>
                 </form>

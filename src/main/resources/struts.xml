@@ -115,8 +115,8 @@
         </action>
 
         <action name="callback" class="NewcastleConnections.Authentication.CallbackAction">
-            <result name="normal">/WEB-INF/jsp/home.jsp</result>
-            <result name="admin">/WEB-INF/jsp/private.jsp</result>
+            <result name="normal" type="redirectAction">home</result>
+            <result name="admin" type="redirectAction">managementPortal</result>
 
         </action>
 
@@ -125,7 +125,7 @@
         </action>
 
         <action name="logout" class="NewcastleConnections.Authentication.LogoutAction">
-            <result>WEB-INF/jsp/home.jsp</result>
+            <result type="redirectAction">home</result>
         </action>
 
         <!-- User Management Portal -->
@@ -136,6 +136,12 @@
 
         <action name="customerPortal-bookings" class="NewcastleConnections.Actions.GetUserInvoices">
             <result>WEB-INF/jsp/customerPortal-bookings.jsp</result>
+        </action>
+
+
+        <action name="rec" class="NewcastleConnections.Actions.RecommendationTest">
+            <result name="success">/WEB-INF/jsp/recommendationTest.jsp</result>
+            <result name="error">/WEB-INF/jsp/exception.jsp</result>
         </action>
 
     </package>

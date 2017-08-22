@@ -25,12 +25,6 @@ public class LogoutAction extends ActionSupport {
         //populate the struts session
         session.entrySet();
 
-        try {
-            response.sendRedirect("/login");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
         return SUCCESS;
     }
 }

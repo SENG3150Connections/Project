@@ -234,10 +234,10 @@
                         <div class="offer-info">
                             <div class="offer-info-left">
                                 <span class="name">${e.name}</span>
-                                <span class="blurb">address</span>
+                                <span class="blurb">${e.info}</span>
                             </div>
                             <div class="offer-info-right">
-                                <span class="price">$DB TBA</span>
+                                <span class="price">${e.price}</span>
                                 <span class="fa icons">&#xf290&nbsp;&#xf083</span>
                             </div>
                         </div>

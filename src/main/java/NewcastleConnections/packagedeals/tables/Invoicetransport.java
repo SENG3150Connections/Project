@@ -37,7 +37,7 @@ import org.jooq.types.UInteger;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Invoicetransport extends TableImpl<InvoicetransportRecord> {
 
-    private static final long serialVersionUID = -77072270;
+    private static final long serialVersionUID = -957220940;
 
     /**
      * The reference instance of <code>PackageDeals.InvoiceTransport</code>
@@ -66,6 +66,11 @@ public class Invoicetransport extends TableImpl<InvoicetransportRecord> {
      * The column <code>PackageDeals.InvoiceTransport.time</code>.
      */
     public final TableField<InvoicetransportRecord, Timestamp> TIME = createField("time", org.jooq.impl.SQLDataType.TIMESTAMP, this, "");
+
+    /**
+     * The column <code>PackageDeals.InvoiceTransport.price</code>.
+     */
+    public final TableField<InvoicetransportRecord, Double> PRICE = createField("price", org.jooq.impl.SQLDataType.DOUBLE, this, "");
 
     /**
      * Create a <code>PackageDeals.InvoiceTransport</code> table reference

@@ -38,6 +38,23 @@
             <result name="success">/WEB-INF/jsp/private.jsp</result>
         </action>
 
+        <!-- Cart updaters -->
+        <action name="update-experience" class="NewcastleConnections.Actions.Cart.UpdateCartExperience">
+            <result type="redirect">cartTest</result>
+            <result name="error">/WEB-INF/jsp/exception.jsp</result>
+        </action>
+        <action name="update-hotel" class="NewcastleConnections.Actions.Cart.UpdateCartHotel">
+            <result type="redirect">cartTest</result>
+            <result name="error">/WEB-INF/jsp/exception.jsp</result>
+        </action>
+        <action name="update-restaurant" class="NewcastleConnections.Actions.Cart.UpdateCartRestaurant">
+            <result type="redirect">cartTest</result>
+            <result name="error">/WEB-INF/jsp/exception.jsp</result>
+        </action>
+        <action name="update-transport" class="NewcastleConnections.Actions.Cart.UpdateCartTransport">
+            <result type="redirect">cartTest</result>
+            <result name="error">/WEB-INF/jsp/exception.jsp</result>
+        </action>
 
         <!-- Management Portal -->
         <action name="createOffer" class="NewcastleConnections.Actions.CreateOffer">

@@ -26,26 +26,6 @@ public class CartExperience {
         }
     }
 
-    public CartExperience(int expID, int vouchID) {
-        try {
-            DatabaseConnection connection = new DatabaseConnection();
-            experience = connection.getDSL().selectFrom(EXPERIENCES).where(EXPERIENCES.ID.eq(UInteger.valueOf(expID))).fetch().get(0);
-            voucher = connection.getDSL().selectFrom(EXPERIENCEVOUCHEROFFERINGS).where(EXPERIENCEVOUCHEROFFERINGS.ID.eq(UInteger.valueOf(vouchID))).fetch().get(0);
-            connection.close();
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public CartExperience(ExperiencesRecord exp) {
-        experience = exp;
-    }
-
-    public CartExperience(ExperiencesRecord exp, ExperiencevoucherofferingsRecord vouch) {
-        experience = exp;
-        voucher = vouch;
-    }
-
     public boolean isPrepared() {
         return voucher != null;
     }

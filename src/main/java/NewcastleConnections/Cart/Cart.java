@@ -8,27 +8,25 @@ import org.jooq.types.UInteger;
 import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
 import java.sql.Timestamp;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by Scott on 14/08/2017.
  */
 public class Cart {
 
-    private Set<CartExperience> experiences;
-    private Set<CartHotel> hotels;
-    private Set<CartRestaurant> restaurants;
-    private Set<CartTransport> transport;
+    private List<CartExperience> experiences;
+    private List<CartHotel> hotels;
+    private List<CartRestaurant> restaurants;
+    private List<CartTransport> transport;
 
     private String name = "";
 
     public Cart() {
-        experiences = new HashSet<>();
-        hotels = new HashSet<>();
-        restaurants = new HashSet<>();
-        transport = new HashSet<>();
+        experiences = new ArrayList<>();
+        hotels = new ArrayList<>();
+        restaurants = new ArrayList<>();
+        transport = new ArrayList<>();
     }
 
     public UInteger createInvoice() {
@@ -51,6 +49,7 @@ public class Cart {
             record.store();
 
             price = storeSubInvoices(connection, record.getId());
+            record.setPrice(price);
             record.store();
 
             connection.close();
@@ -169,19 +168,19 @@ public class Cart {
         transport.remove(r);
     }
 
-    public Set<CartExperience> getExperiences() {
+    public List<CartExperience> getExperiences() {
         return experiences;
     }
 
-    public Set<CartHotel> getHotels() {
+    public List<CartHotel> getHotels() {
         return hotels;
     }
 
-    public Set<CartRestaurant> getRestaurants() {
+    public List<CartRestaurant> getRestaurants() {
         return restaurants;
     }
 
-    public Set<CartTransport> getTransport() {
+    public List<CartTransport> getTransport() {
         return transport;
     }
 

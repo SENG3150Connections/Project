@@ -17,6 +17,7 @@ public class CartTransport {
 
     private TransportRecord transport = null;
     private InvoicetransportRecord invoice = null;
+    private int tickets = 0;
     private Timestamp time = null;
 
     public CartTransport(int transportID) {
@@ -30,7 +31,7 @@ public class CartTransport {
     }
 
     public boolean isPrepared() {
-        return time != null;
+        return tickets > 0 && time != null;
     }
 
     public InvoicetransportRecord getInvoice() {
@@ -43,7 +44,7 @@ public class CartTransport {
         }
 
         invoice.setTransportid(transport.getId());
-        invoice.setPrice(transport.getTicketprice());
+        invoice.setPrice(tickets * transport.getTicketprice());
         invoice.setTime(time);
 
         return invoice;
@@ -57,6 +58,14 @@ public class CartTransport {
 
     public void setTransport(TransportRecord transport) {
         this.transport = transport;
+    }
+
+    public int getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(int tickets) {
+        this.tickets = tickets;
     }
 
     public Timestamp getTime() {

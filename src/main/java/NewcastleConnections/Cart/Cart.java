@@ -2,8 +2,10 @@ package NewcastleConnections.Cart;
 
 import NewcastleConnections.DatabaseConnection;
 import NewcastleConnections.packagedeals.tables.records.*;
+import org.apache.struts2.ServletActionContext;
 import org.jooq.types.UInteger;
 
+import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.Date;
@@ -30,9 +32,10 @@ public class Cart {
     }
 
     public UInteger createInvoice() {
-        String customerId = "TESTING-ID";
+        HttpServletRequest request = ServletActionContext.getRequest();
+        String customerId = (String) request.getSession().getAttribute("userId");
         Timestamp date = new Timestamp(new Date().getTime());
-        double price = 10.20;
+        double price = 0.0;
         int status = 1; // Preparing
 
         InvoicesRecord record = new InvoicesRecord();
@@ -47,7 +50,8 @@ public class Cart {
             connection.getDSL().attach(record);
             record.store();
 
-            storeSubInvoices(connection, record.getId());
+            price = storeSubInvoices(connection, record.getId());
+            record.store();
 
             connection.close();
         } catch (SQLException | ClassNotFoundException e) {
@@ -57,31 +61,41 @@ public class Cart {
         return record.getId();
     }
 
-    private void storeSubInvoices(DatabaseConnection connection, UInteger id) {
+    private double storeSubInvoices(DatabaseConnection connection, UInteger id) {
+        double price = 0.0;
         for (CartExperience c : experiences) {
             InvoiceexperienceRecord r = c.getInvoice();
             connection.getDSL().attach(r);
             r.setInvoiceid(id);
             r.store();
+
+            if (r.getPrice() != null) price += r.getPrice();
         }
         for (CartHotel c : hotels) {
             InvoicehotelRecord r = c.getInvoice();
             connection.getDSL().attach(r);
             r.setInvoiceid(id);
             r.store();
+
+            if (r.getPrice() != null) price += r.getPrice();
         }
         for (CartRestaurant c : restaurants) {
             InvoicerestaurantRecord r = c.getInvoice();
             connection.getDSL().attach(r);
             r.setInvoiceid(id);
             r.store();
+
+            if (r.getVoucherprice() != null) price += r.getVoucherprice();
         }
         for (CartTransport c : transport) {
             InvoicetransportRecord r = c.getInvoice();
             connection.getDSL().attach(r);
             r.setInvoiceid(id);
             r.store();
+
+            if (r.getPrice() != null) price += r.getPrice();
         }
+        return price;
     }
 
     public void removeExperience(int id) {

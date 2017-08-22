@@ -124,6 +124,10 @@
             <result>WEB-INF/jsp/payment.jsp</result>
         </action>
 
+        <action name="complete" class="NewcastleConnections.Actions.Complete">
+            <result>WEB-INF/jsp/complete.jsp</result>
+        </action>
+
         <action name="logout" class="NewcastleConnections.Authentication.LogoutAction">
             <result type="redirectAction">home</result>
         </action>

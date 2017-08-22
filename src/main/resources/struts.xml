@@ -152,11 +152,11 @@
 
         <!-- User Management Portal -->
 
-        <action name="customerPortal">
+        <action name="customerPortal" class="NewcastleConnections.Actions.GetUserInvoices">
             <result>WEB-INF/jsp/customerPortal.jsp</result>
         </action>
 
-        <action name="customerPortal-bookings" class="NewcastleConnections.Actions.GetUserInvoices">
+        <action name="customerPortal-bookings" class="NewcastleConnections.Actions.GetUserBooking">
             <result>WEB-INF/jsp/customerPortal-bookings.jsp</result>
         </action>
 

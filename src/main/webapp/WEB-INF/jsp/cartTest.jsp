@@ -16,13 +16,13 @@
 
     <h1>ExperienceVouchers</h1>
     <table>
-        <tr><td>ExpVouchID</td><td>Price</td></tr>
-    <s:iterator value="cart.experiences" var="e">
+        <tr><td>ExpID</td><td>Price</td></tr>
+        <s:iterator value="cart.experiences" var="e">
         <tr>
-            <td>${e.experiencevoucherid}</td>
-            <td>${e.price}</td>
+            <td>${e.experience.id}</td>
+            <td>${e.experience.name}</td>
         </tr>
-    </s:iterator>
+        </s:iterator>
     </table>
 
     <h1>RoomOfferings</h1>

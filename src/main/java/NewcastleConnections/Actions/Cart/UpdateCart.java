@@ -1,6 +1,7 @@
 package NewcastleConnections.Actions.Cart;
 
 import NewcastleConnections.Cart;
+import NewcastleConnections.CartExperience;
 import NewcastleConnections.DatabaseConnection;
 import NewcastleConnections.packagedeals.tables.Invoicerestaurant;
 import NewcastleConnections.packagedeals.tables.records.*;
@@ -35,9 +36,7 @@ public class UpdateCart extends ActionSupport {
             getCart().setName("CART - ADD");
             switch(getType().toLowerCase()) {
                 case "experience":
-                    InvoiceexperienceRecord ier = new InvoiceexperienceRecord();
-                    ier.setExperiencevoucherid(UInteger.valueOf(id));
-                    getCart().getExperiences().add(ier);
+                    getCart().getExperiences().add(new CartExperience(id));
                     break;
 
                 case "room":

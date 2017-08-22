@@ -1,6 +1,5 @@
 package NewcastleConnections;
 
-import NewcastleConnections.packagedeals.tables.Invoicetransport;
 import NewcastleConnections.packagedeals.tables.records.*;
 import org.jooq.types.UInteger;
 
@@ -15,7 +14,7 @@ import java.util.Set;
  */
 public class Cart {
 
-    private Set<InvoiceexperienceRecord> experiences;
+    private Set<CartExperience> experiences;
     private Set<InvoicehotelRecord> rooms;
     private Set<InvoicerestaurantRecord> restaurants;
     private Set<InvoicetransportRecord> transport;
@@ -58,7 +57,8 @@ public class Cart {
     }
 
     private void storeSubInvoices(DatabaseConnection connection, UInteger id) {
-        for (InvoiceexperienceRecord r : experiences) {
+        for (CartExperience c : experiences) {
+            InvoiceexperienceRecord r = c.getInvoice();
             connection.getDSL().attach(r);
             r.setInvoiceid(id);
             r.store();
@@ -81,8 +81,8 @@ public class Cart {
     }
 
     public void removeExperience(int id) {
-        for (InvoiceexperienceRecord e : experiences) {
-            if (e.getExperiencevoucherid().intValue() == id) {
+        for (CartExperience e : experiences) {
+            if (e.getExperience().getId().intValue() == id) {
                 //e.delete(); // Need to attach first? Or not stored yet
                 experiences.remove(e);
                 return;
@@ -119,8 +119,8 @@ public class Cart {
 
     // -- Getters, Setters, etc --
 
-    public void addExperience(InvoiceexperienceRecord r) {
-        experiences.add(r);
+    public void addExperience(CartExperience c) {
+        experiences.add(c);
     }
 
     public void addRoom(InvoicehotelRecord r) {
@@ -135,8 +135,8 @@ public class Cart {
         transport.add(r);
     }
 
-    public void removeExperience(InvoiceexperienceRecord r) {
-        experiences.remove(r);
+    public void removeExperience(CartExperience c) {
+        experiences.remove(c);
     }
 
     public void removeRoom(InvoicehotelRecord r) {
@@ -151,7 +151,7 @@ public class Cart {
         transport.remove(r);
     }
 
-    public Set<InvoiceexperienceRecord> getExperiences() {
+    public Set<CartExperience> getExperiences() {
         return experiences;
     }
 

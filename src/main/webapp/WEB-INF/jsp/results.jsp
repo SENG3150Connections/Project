@@ -134,6 +134,34 @@
                 <hr />
             </div>
             <div id="results" class="flex-col">
+                <s:iterator value="recommendedExperiences" var="rec">
+                    <div class="offer-list" style="background-color: goldenrod">
+                        <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
+                        <span class="fa fa-plus offer-add" aria-hidden="true">
+                            <span class="tooltiptext">Add to package</span>
+                        </span>
+                        <div class="offer-images">
+                            <div class="offer-img-initial">
+                                <img src='../../img/offer-img.jpg' class="cover"/>
+                            </div>
+                            <div class="offer-img-item">
+                                <img src='../../img/offer-img-2.jpg' class="cover"/>
+                                <img src='../../img/offer-img-3.jpg' class="cover"/>
+                            </div>
+                        </div>
+                        <div class="offer-info">
+                            <div class="offer-info-left">
+                                <span class="name">${rec.name}</span>
+                                <span class="blurb">${rec.info}</span>
+                            </div>
+                            <div class="offer-info-right">
+                                <span class="price">${rec.price}</span>
+                                <span class="fa icons">&#xf2cd&nbsp;&#xf236</span>
+                            </div>
+                        </div>
+                    </div>
+                </s:iterator>
+
                 <s:iterator value="hotels" var="h">
                     <div class="offer-list">
                         <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
@@ -206,10 +234,10 @@
                         <div class="offer-info">
                             <div class="offer-info-left">
                                 <span class="name">${e.name}</span>
-                                <span class="blurb">address</span>
+                                <span class="blurb">${e.info}</span>
                             </div>
                             <div class="offer-info-right">
-                                <span class="price">$DB TBA</span>
+                                <span class="price">${e.price}</span>
                                 <span class="fa icons">&#xf290&nbsp;&#xf083</span>
                             </div>
                         </div>

@@ -27,26 +27,6 @@
 <!--[if lt IE 8]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
-<s:set var="numResults" value="0"/>
-<s:set var="avalue"><%= request.getParameter("search") %></s:set>
-<s:iterator value="hotels" var="h">
-    <s:set var="hName">${h.name}</s:set>
-    <s:if test="%{(#hName.toLowerCase().indexOf(#avalue.toLowerCase()) != -1) || (#avalue=='null')}">
-        <s:set var="numResults" value="%{#numResults+1}"/>
-    </s:if>
-</s:iterator>
-<s:iterator value="restaurants" var="r">
-    <s:set var="rName">${r.name}</s:set>
-    <s:if test="%{(#rName.toLowerCase().indexOf(#avalue.toLowerCase()) != -1) || (#avalue=='null')}">
-        <s:set var="numResults" value="%{#numResults+1}"/>
-    </s:if>
-</s:iterator>
-<s:iterator value="experiences" var="e">
-    <s:set var="eName">${e.name}</s:set>
-    <s:if test="%{(#eName.toLowerCase().indexOf(#avalue.toLowerCase()) != -1) || (#avalue=='null')}">
-        <s:set var="numResults" value="%{#numResults+1}"/>
-    </s:if>
-</s:iterator>
 
 <main>
     <header id="header-container">
@@ -84,7 +64,7 @@
                 <span>Transport: <input type="checkbox" name="transport-check" value="Transport"></span>
                 <span class="flex-divider"></span>
                 <span><a class="fa fa-chevron-right-after content-toggle">More Filters</a></span>
-                <span><a href="/results">Clear Filters x</a><br/><s:property value="numResults"/> Result(s)</span>
+                <span><a href="/results">Clear Filters x</a><br/><s:property value="totalCount"/> Result(s)</span>
             </div>
         </form>
     </div>
@@ -155,94 +135,112 @@
             </div>
             <div id="results" class="flex-col">
                 <s:iterator value="hotels" var="h">
-                    <s:set var="hName">${h.name}</s:set>
-                    <s:if test="%{(#hName.toLowerCase().indexOf(#avalue.toLowerCase()) != -1) || (#avalue=='null')}">
-                        <div class="offer-list">
-                            <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
-                            <span class="fa fa-plus offer-add" aria-hidden="true">
-                                <span class="tooltiptext">Add to package</span>
-                            </span>
-                            <div class="offer-images">
-                                <div class="offer-img-initial">
-                                    <img src='../../img/offer-img.jpg' class="cover"/>
-                                </div>
-                                <div class="offer-img-item">
-                                    <img src='../../img/offer-img-2.jpg' class="cover"/>
-                                    <img src='../../img/offer-img-3.jpg' class="cover"/>
-                                </div>
+                    <div class="offer-list">
+                        <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
+                        <span class="fa fa-plus offer-add" aria-hidden="true">
+                            <span class="tooltiptext">Add to package</span>
+                        </span>
+                        <div class="offer-images">
+                            <div class="offer-img-initial">
+                                <img src='../../img/offer-img.jpg' class="cover"/>
                             </div>
-                            <div class="offer-info">
-                                <div class="offer-info-left">
-                                    <span class="name">${h.name}</span>
-                                    <span class="blurb">${h.address}</span>
-                                </div>
-                                <div class="offer-info-right">
-                                    <span class="price">$DB TBA</span>
-                                    <span class="fa icons">&#xf2cd&nbsp;&#xf236</span>
-                                </div>
+                            <div class="offer-img-item">
+                                <img src='../../img/offer-img-2.jpg' class="cover"/>
+                                <img src='../../img/offer-img-3.jpg' class="cover"/>
                             </div>
                         </div>
-                    </s:if>
+                        <div class="offer-info">
+                            <div class="offer-info-left">
+                                <span class="name">${h.name}</span>
+                                <span class="blurb">${h.address}</span>
+                            </div>
+                            <div class="offer-info-right">
+                                <span class="price">$DB TBA</span>
+                                <span class="fa icons">&#xf2cd&nbsp;&#xf236</span>
+                            </div>
+                        </div>
+                    </div>
                 </s:iterator>
                 <s:iterator value="restaurants" var="r">
-                    <s:set var="rName">${r.name}</s:set>
-                    <s:if test="%{(#rName.toLowerCase().indexOf(#avalue.toLowerCase()) != -1) || (#avalue=='null')}">
-                        <div class="offer-list">
-                            <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
-                            <span class="fa fa-plus offer-add" aria-hidden="true">
-                                <span class="tooltiptext">Add to package</span>
-                            </span>
-                            <div class="offer-images">
-                                <div class="offer-img-initial">
-                                    <img src='../../img/offer-img.jpg' class="cover"/>
-                                </div>
-                                <div class="offer-img-item">
-                                    <img src='../../img/offer-img-2.jpg' class="cover"/>
-                                    <img src='../../img/offer-img-3.jpg' class="cover"/>
-                                </div>
+                    <div class="offer-list">
+                        <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
+                        <span class="fa fa-plus offer-add" aria-hidden="true">
+                            <span class="tooltiptext">Add to package</span>
+                        </span>
+                        <div class="offer-images">
+                            <div class="offer-img-initial">
+                                <img src='../../img/offer-img.jpg' class="cover"/>
                             </div>
-                            <div class="offer-info">
-                                <div class="offer-info-left">
-                                    <span class="name">${r.name}</span>
-                                    <span class="blurb">${r.address}</span>
-                                </div>
-                                <div class="offer-info-right">
-                                    <span class="price">$DB TBA</span>
-                                    <span class="fa icons">&#xf0fc&nbsp;&#xf0f5</span>
-                                </div>
+                            <div class="offer-img-item">
+                                <img src='../../img/offer-img-2.jpg' class="cover"/>
+                                <img src='../../img/offer-img-3.jpg' class="cover"/>
                             </div>
                         </div>
-                    </s:if>
+                        <div class="offer-info">
+                            <div class="offer-info-left">
+                                <span class="name">${r.name}</span>
+                                <span class="blurb">${r.address}</span>
+                            </div>
+                            <div class="offer-info-right">
+                                <span class="price">$DB TBA</span>
+                                <span class="fa icons">&#xf0fc&nbsp;&#xf0f5</span>
+                            </div>
+                        </div>
+                    </div>
                 </s:iterator>
                 <s:iterator value="experiences" var="e">
-                    <s:set var="eName">${e.name}</s:set>
-                    <s:if test="%{(#eName.toLowerCase().indexOf(#avalue.toLowerCase()) != -1) || (#avalue=='null')}">
-                        <div class="offer-list">
-                            <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
-                            <span class="fa fa-plus offer-add" aria-hidden="true">
-                                <span class="tooltiptext">Add to package</span>
-                            </span>
-                            <div class="offer-images">
-                                <div class="offer-img-initial">
-                                    <img src='../../img/offer-img.jpg' class="cover"/>
-                                </div>
-                                <div class="offer-img-item">
-                                    <img src='../../img/offer-img-2.jpg' class="cover"/>
-                                    <img src='../../img/offer-img-3.jpg' class="cover"/>
-                                </div>
+                    <div class="offer-list">
+                        <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
+                        <span class="fa fa-plus offer-add" aria-hidden="true">
+                            <span class="tooltiptext">Add to package</span>
+                        </span>
+                        <div class="offer-images">
+                            <div class="offer-img-initial">
+                                <img src='../../img/offer-img.jpg' class="cover"/>
                             </div>
-                            <div class="offer-info">
-                                <div class="offer-info-left">
-                                    <span class="name">${e.name}</span>
-                                    <span class="blurb">address</span>
-                                </div>
-                                <div class="offer-info-right">
-                                    <span class="price">$DB TBA</span>
-                                    <span class="fa icons">&#xf290&nbsp;&#xf083</span>
-                                </div>
+                            <div class="offer-img-item">
+                                <img src='../../img/offer-img-2.jpg' class="cover"/>
+                                <img src='../../img/offer-img-3.jpg' class="cover"/>
                             </div>
                         </div>
-                    </s:if>
+                        <div class="offer-info">
+                            <div class="offer-info-left">
+                                <span class="name">${e.name}</span>
+                                <span class="blurb">address</span>
+                            </div>
+                            <div class="offer-info-right">
+                                <span class="price">$DB TBA</span>
+                                <span class="fa icons">&#xf290&nbsp;&#xf083</span>
+                            </div>
+                        </div>
+                    </div>
+                </s:iterator>
+                <s:iterator value="transport" var="t">
+                    <div class="offer-list">
+                        <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
+                        <span class="fa fa-plus offer-add" aria-hidden="true">
+                            <span class="tooltiptext">Add to package</span>
+                        </span>
+                        <div class="offer-images">
+                            <div class="offer-img-initial">
+                                <img src='../../img/offer-img.jpg' class="cover"/>
+                            </div>
+                            <div class="offer-img-item">
+                                <img src='../../img/offer-img-2.jpg' class="cover"/>
+                                <img src='../../img/offer-img-3.jpg' class="cover"/>
+                            </div>
+                        </div>
+                        <div class="offer-info">
+                            <div class="offer-info-left">
+                                <span class="name">${t.name}</span>
+                                <span class="blurb">address</span>
+                            </div>
+                            <div class="offer-info-right">
+                                <span class="price">$DB TBA</span>
+                                <span class="fa icons">&#xf290&nbsp;&#xf083</span>
+                            </div>
+                        </div>
+                    </div>
                 </s:iterator>
             </div>
             <div id="offer-info-large" class="hidden">

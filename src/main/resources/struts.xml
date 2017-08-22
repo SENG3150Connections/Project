@@ -72,7 +72,7 @@
             <result name="error">/WEB-INF/jsp/exception.jsp</result>
         </action>
 
-        <action name="displayProducts" class="NewcastleConnections.Actions.GetData">
+        <action name="displayProducts" class="NewcastleConnections.Actions.SortAlphabetical">
             <result name="success">/WEB-INF/jsp/managementPortal-display-products.jsp</result>
             <result name="error">/WEB-INF/jsp/exception.jsp</result>
         </action>

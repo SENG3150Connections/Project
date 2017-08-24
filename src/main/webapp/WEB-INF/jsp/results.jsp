@@ -137,9 +137,9 @@
                 <s:iterator value="recommendedExperiences" var="rec">
                     <div class="offer-list" style="background-color: goldenrod">
                         <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
-                        <span class="fa fa-plus offer-add" aria-hidden="true">
+                        <a href="edit-cart?method=add&type=experience&id=${rec.id}"><span class="fa fa-plus offer-add" aria-hidden="true">
                             <span class="tooltiptext">Add to package</span>
-                        </span>
+                        </span></a>
                         <div class="offer-images">
                             <div class="offer-img-initial">
                                 <img src='../../img/offer-img.jpg' class="cover"/>
@@ -165,9 +165,9 @@
                 <s:iterator value="hotels" var="h">
                     <div class="offer-list">
                         <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
-                        <span class="fa fa-plus offer-add" aria-hidden="true">
+                        <a href="edit-cart?method=add&type=hotel&id=${h.id}"><span class="fa fa-plus offer-add" aria-hidden="true">
                             <span class="tooltiptext">Add to package</span>
-                        </span>
+                        </span></a>
                         <div class="offer-images">
                             <div class="offer-img-initial">
                                 <img src='../../img/offer-img.jpg' class="cover"/>
@@ -192,9 +192,9 @@
                 <s:iterator value="restaurants" var="r">
                     <div class="offer-list">
                         <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
-                        <span class="fa fa-plus offer-add" aria-hidden="true">
+                        <a href="edit-cart?method=add&type=restaurant&id=${r.id}"><span class="fa fa-plus offer-add" aria-hidden="true">
                             <span class="tooltiptext">Add to package</span>
-                        </span>
+                        </span></a>
                         <div class="offer-images">
                             <div class="offer-img-initial">
                                 <img src='../../img/offer-img.jpg' class="cover"/>
@@ -219,9 +219,9 @@
                 <s:iterator value="experiences" var="e">
                     <div class="offer-list">
                         <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
-                        <span class="fa fa-plus offer-add" aria-hidden="true">
+                        <a href="edit-cart?method=add&type=experience&id=${e.id}"><span class="fa fa-plus offer-add" aria-hidden="true">
                             <span class="tooltiptext">Add to package</span>
-                        </span>
+                        </span></a>
                         <div class="offer-images">
                             <div class="offer-img-initial">
                                 <img src='../../img/offer-img.jpg' class="cover"/>
@@ -246,9 +246,9 @@
                 <s:iterator value="transport" var="t">
                     <div class="offer-list">
                         <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
-                        <span class="fa fa-plus offer-add" aria-hidden="true">
+                        <a href="edit-cart?method=add&type=transport&id=${t.id}"><span class="fa fa-plus offer-add" aria-hidden="true">
                             <span class="tooltiptext">Add to package</span>
-                        </span>
+                        </span></a>
                         <div class="offer-images">
                             <div class="offer-img-initial">
                                 <img src='../../img/offer-img.jpg' class="cover"/>
@@ -287,9 +287,67 @@
             <div id="package-header">
                 <h2>Create your perfect holiday experience</h2>
             </div>
+
+            <s:set var="size" value="cart.size"/>
+            <s:if test="%{#size == 0}">
             <div id="package-contents" class="center">
                 <h2>Nothing here yet!</h2>
-                <h3>Add an offer from the left by<br />dragging it into this area or<br />clicking the plus symbol at the bottom right</h3>
+                <h3>Add an offer from the left by<br />
+                    <!--dragging it into this area or<br />-->
+                    clicking the plus symbol at the bottom right</h3>
+            </div>
+            </s:if>
+            <s:else>
+            <div id="package-contents" class="center">
+
+                <h2>PACKAGES HERE</h2>
+                <s:iterator value="cart.experiences" var="e" status="entry">
+                    <div>
+                        <span>${e.experience.name}</span>
+                        <a href="update-experience?edit&cartIndex=${entry.index}"><span class="fa fa-edit" aria-hidden="true">
+                            <span class="tooltiptext">Edit</span>
+                        </span></a>
+                        <a href="edit-cart?method=remove&type=experience&id=${e.experience.id}"><span class="fa fa-remove" aria-hidden="true">
+                            <span class="tooltiptext">Remove</span>
+                        </span></a>
+                    </div>
+                </s:iterator>
+                <s:iterator value="cart.hotels" var="h" status="entry">
+                    <div>
+                        <span>${h.hotel.name}</span>
+                        <a href="update-hotel?edit&cartIndex=${entry.index}"><span class="fa fa-edit" aria-hidden="true">
+                            <span class="tooltiptext">Edit</span>
+                        </span></a>
+                        <a href="edit-cart?method=remove&type=hotel&id=${h.hotel.id}"><span class="fa fa-remove" aria-hidden="true">
+                            <span class="tooltiptext">Remove</span>
+                        </span></a>
+                    </div>
+                </s:iterator>
+                <s:iterator value="cart.restaurants" var="r" status="entry">
+                    <div>
+                        <span>${r.restaurant.name}</span>
+                        <a href="update-restaurant?edit&cartIndex=${entry.index}"><span class="fa fa-edit" aria-hidden="true">
+                            <span class="tooltiptext">Edit</span>
+                        </span></a>
+                        <a href="edit-cart?method=remove&type=restaurant&id=${r.restaurant.id}"><span class="fa fa-remove" aria-hidden="true">
+                            <span class="tooltiptext">Remove</span>
+                        </span></a>
+                    </div>
+                </s:iterator>
+                <s:iterator value="cart.transport" var="t" status="entry">
+                    <div>
+                        <span>${t.transport.name}</span>
+                        <a href="update-transport?edit&cartIndex=${entry.index}"><span class="fa fa-edit" aria-hidden="true">
+                            <span class="tooltiptext">Edit</span>
+                        </span></a>
+                        <a href="edit-cart?method=remove&type=transport&id=${t.transport.id}"><span class="fa fa-remove" aria-hidden="true">
+                            <span class="tooltiptext">Remove</span>
+                        </span></a>
+                    </div>
+                </s:iterator>
+                <div></div>
+
+
             </div>
             <div id="package-confirmation">
                 <div class="left center">
@@ -297,9 +355,10 @@
                     <h3>You save: !</h3>
                 </div>
                 <div class="right center">
-                    <h3>Confirm</h3>
+                    <h3><a href="payment">Confirm</a></h3>
                 </div>
             </div>
+            </s:else>
         </div>
     </div>
 </main>

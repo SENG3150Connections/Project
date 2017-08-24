@@ -1,7 +1,6 @@
 package NewcastleConnections.Cart;
 
 import NewcastleConnections.DatabaseConnection;
-import NewcastleConnections.packagedeals.tables.Invoicerestaurant;
 import NewcastleConnections.packagedeals.tables.records.InvoicerestaurantRecord;
 import NewcastleConnections.packagedeals.tables.records.ResturantsRecord;
 import org.jooq.types.UInteger;
@@ -18,8 +17,8 @@ public class CartRestaurant {
 
     private ResturantsRecord restaurant = null;
     private InvoicerestaurantRecord invoice = null;
-    private Timestamp time = null;
     private int seats = 0;
+    private Timestamp time = null;
     private Double voucherPrice = null;
 
     public CartRestaurant(int restaurantID) {

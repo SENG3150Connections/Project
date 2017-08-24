@@ -49,36 +49,36 @@
                     <div class="management-container">
                         <div class="row" style="width:100%">
                             <div class="col-md-2"><label>Status</label></div>
-                            <div class="col-md-2"><label>Order</label></div>
-                            <div class="col-md-2"><label>Product</label></div>
-                            <div class="col-md-2"><label>Date</label></div>
-                            <div class="col-md-2"><label>Total</label></div>
-                            <div class="col-md-2"><label>Actions</label></div>
+                            <div class="col-md-1"><label>Order</label></div>
+                            <div class="col-md-4"><label>User ID</label></div>
+                            <div class="col-md-3"><label>Date</label></div>
+                            <div class="col-md-1"><label>Total</label></div>
+                            <div class="col-md-1"><label>Actions</label></div>
                         </div>
 
                         <hr>
 
 
                         <s:iterator value="invoices" var="invoice">
-                            <div class="row" style="width:100%">
+                            <div class="row" style="width:100%; height: 45px;">
                                 <div class="col-md-2">
                                     <label>
-                                        <s:if test="%{#invoice.status==0}">
+                                        <s:if test="%{#invoice.status==1}">
                                             Processing
                                         </s:if>
-                                        <s:elseif test="%{#invoice.status==1}">
+                                        <s:elseif test="%{#invoice.status==2}">
                                             Complete
                                         </s:elseif>
-                                        <s:elseif test="%{#invoice.status==2}">
+                                        <s:elseif test="%{#invoice.status==3}">
                                             Canceled
                                         </s:elseif>
                                     </label>
                                 </div>
-                                <div class="col-md-2"><label>${invoice.id}</label></div>
-                                <div class="col-md-2"><label>${invoice.customerid}</label></div>
-                                <div class="col-md-2"><label>${invoice.purchasedate}</label></div>
-                                <div class="col-md-2"><label>$${invoice.price}</label></div>
-                                <div class="col-md-2"><a href="#">View</a></div>
+                                <div class="col-md-1"><label>${invoice.id}</label></div>
+                                <div class="col-md-4"><label>${invoice.customerid}</label></div>
+                                <div class="col-md-3"><label>${invoice.purchasedate}</label></div>
+                                <div class="col-md-1"><label>$${invoice.price}</label></div>
+                                <div class="col-md-1"><a href="#">View</a></div>
                             </div>
                         </s:iterator>
 
@@ -88,13 +88,8 @@
                 <!-- Sidebar - Right -->
                 <div class="col-md-4">
                     <div class="management-sidebar">
-                        <label class="heading">Title</label>
-                    </div>
-
-                    <div class="management-sidebar">
-                        <label class="heading">Organisation</label>
-
-
+                        <label class="heading">Sorting</label>
+                        <label></label>
                     </div>
                 </div>
                 </form>

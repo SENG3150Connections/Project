@@ -30,7 +30,7 @@ public class GetUserInvoices extends ActionSupport {
     public String execute() {
         try {
             HttpServletRequest request = ServletActionContext.getRequest();
-            String userID = (String) request.getSession().getAttribute("userNickname");
+            String userID = (String) request.getSession().getAttribute("userId");
 
             // Get connection
             DatabaseConnection connection = new DatabaseConnection();

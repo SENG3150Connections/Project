@@ -35,16 +35,6 @@ public class CartHotel {
         }
     }
 
-    public CartHotel(int hotelID, int roomID) {
-        try {
-            DatabaseConnection connection = new DatabaseConnection();
-            hotel = connection.getDSL().selectFrom(HOTELS).where(HOTELS.ID.eq(UInteger.valueOf(hotelID))).fetch().get(0);
-            room = connection.getDSL().selectFrom(ROOMOFFERINGS).where(ROOMOFFERINGS.ID.eq(UInteger.valueOf(roomID))).fetch().get(0);
-            connection.close();
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
     public boolean isPrepared() {
         return room != null && adults > 0 && children >= 0 && checkIn != null && checkOut != null;
     }
@@ -71,6 +61,12 @@ public class CartHotel {
     public void updatePrice() {
         double rate = 150.0;
         long divisor = 1000 * 60 * 60 * 24;
+
+        if (checkIn == null || checkOut == null) {
+            setPrice(0.0);
+            return;
+        }
+
         long nights = checkOut.getTime() - checkIn.getTime();
         nights /= divisor;
         nights++;

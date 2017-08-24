@@ -37,7 +37,7 @@
         <div class="menuContent">
             <div class="create-offer">
                 <div class="title">
-                    <label class="prev-dir">Manage Products/</label><label class="current-dir"> Add Offer</label>
+                    <label class="prev-dir">Manage Products/</label><label class="current-dir"> Add & Edit Offers</label>
                 </div>
                 <div class="row">
                     <form>
@@ -99,8 +99,8 @@
 
                                 <!-- List group -->
                                 <div class="form-group">
-                                    <label for="subject">Sort By:</label>
-                                    <select id="subject" name="subject" class="form-control" required="required">
+                                    <label for="sorting">Sort By:</label>
+                                    <select id="sorting" name="subject" class="form-control" required="required">
                                         <option value="na" selected="">Choose One:</option>
                                         <option value="accomidation">Alphabetical</option>
                                         <option value="event">Most Popular</option>
@@ -109,16 +109,16 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="subject">Sort By:</label>
-                                    <select id="subject" name="subject" class="form-control" required="required">
+                                    <label for="category">Category</label>
+                                    <select id="category" name="subject" class="form-control" required="required">
                                         <option value="na" selected="">Choose One:</option>
-                                        <option value="accomidation">Alphabetical</option>
-                                        <option value="event">Most Popular</option>
-                                        <option value="food">Recently Added</option>
+                                        <option value="accomidation">Accomidation</option>
+                                        <option value="event">Event</option>
+                                        <option value="food">Food</option>
                                     </select>
                                 </div>
 
-                                <label for="subject">Visibility: </label>
+                                <label>Visibility: </label>
                                 <ul class="list-group">
                                     <li class="list-group-item">
                                         Display Publicly Visible Products
@@ -135,37 +135,10 @@
                                         </div>
                                     </li>
                                 </ul>
-                            </div>
 
-                            <div class="management-sidebar">
-                                <label class="heading">Organisation</label>
-                                <hr></hr>
-
-                                <div class="form-group float-label-control">
-                                    <label for="">Price</label>
-                                    <input type="text" name="title" class="form-control" placeholder="$###.##"></input>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="subject">Category</label>
-                                    <select id="subject" name="subject" class="form-control" required="required">
-                                        <option value="na" selected="">Choose One:</option>
-                                        <option value="accomidation">Accomidation</option>
-                                        <option value="event">Event</option>
-                                        <option value="food">Food</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group float-label-control">
-                                    <label for="">Location</label>
-                                    <input type="text" name="title" class="form-control" placeholder="42 Wallaby Way Sydney "></input>
-                                </div>
-
-                                <div class="form-group float-label-control">
-                                    <label for="">Tags</label>
-                                    <input type="text" name="title" class="form-control" placeholder="Tag 1, Tag 2, Tag 3, Etc"></input>
-                                </div>
-
+                                <div class="pull-right">
+                                    <a class="btn btn-info">Update</a>
+                                </div><br><br>
                             </div>
                         </div>
                     </form>

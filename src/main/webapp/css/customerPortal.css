@@ -1,0 +1,59 @@
+.customerPageBody{
+    display: flex;
+    flex-direction: row;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    margin-top: 1%;
+}
+.customerOptions{
+    width: 30%;
+    display: inline-grid;
+}
+.customerPageContent{
+    width: 70%;
+    display: inline-grid;
+}
+.customerInvoice{
+    width: 100%;
+    display: flex;
+}
+.invoiceHeading{
+    font-weight: bold;
+    width:20%;
+}
+.invoiceContent{
+    width: 20%;
+}
+.customerPageHeading{
+    font-weight: bold;
+    font-size: 30px;
+}
+.contentBox{
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    padding: 5px 10px 10px 10px;
+    display: inherit;
+    width: 80%;
+}
+.bg-cover {
+    height: 100%;
+    background-image: url("../img/large2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#homepage-image {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: -99;
+    width: 100%;
+    height: 96px;
+}
+.bg-cover {
+    height: 100%;
+    background-image: url("../img/large2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}

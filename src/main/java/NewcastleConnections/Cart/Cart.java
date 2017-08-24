@@ -2,37 +2,38 @@ package NewcastleConnections.Cart;
 
 import NewcastleConnections.DatabaseConnection;
 import NewcastleConnections.packagedeals.tables.records.*;
+import org.apache.struts2.ServletActionContext;
 import org.jooq.types.UInteger;
 
+import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
 import java.sql.Timestamp;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by Scott on 14/08/2017.
  */
 public class Cart {
 
-    private Set<CartExperience> experiences;
-    private Set<CartHotel> hotels;
-    private Set<CartRestaurant> restaurants;
-    private Set<CartTransport> transport;
+    private List<CartExperience> experiences;
+    private List<CartHotel> hotels;
+    private List<CartRestaurant> restaurants;
+    private List<CartTransport> transport;
 
     private String name = "";
 
     public Cart() {
-        experiences = new HashSet<>();
-        hotels = new HashSet<>();
-        restaurants = new HashSet<>();
-        transport = new HashSet<>();
+        experiences = new ArrayList<>();
+        hotels = new ArrayList<>();
+        restaurants = new ArrayList<>();
+        transport = new ArrayList<>();
     }
 
     public UInteger createInvoice() {
-        String customerId = "TESTING-ID";
+        HttpServletRequest request = ServletActionContext.getRequest();
+        String customerId = (String) request.getSession().getAttribute("userId");
         Timestamp date = new Timestamp(new Date().getTime());
-        double price = 10.20;
+        double price = 0.0;
         int status = 1; // Preparing
 
         InvoicesRecord record = new InvoicesRecord();
@@ -47,7 +48,9 @@ public class Cart {
             connection.getDSL().attach(record);
             record.store();
 
-            storeSubInvoices(connection, record.getId());
+            price = storeSubInvoices(connection, record.getId());
+            record.setPrice(price);
+            record.store();
 
             connection.close();
         } catch (SQLException | ClassNotFoundException e) {
@@ -57,31 +60,41 @@ public class Cart {
         return record.getId();
     }
 
-    private void storeSubInvoices(DatabaseConnection connection, UInteger id) {
+    private double storeSubInvoices(DatabaseConnection connection, UInteger id) {
+        double price = 0.0;
         for (CartExperience c : experiences) {
             InvoiceexperienceRecord r = c.getInvoice();
             connection.getDSL().attach(r);
             r.setInvoiceid(id);
             r.store();
+
+            if (r.getPrice() != null) price += r.getPrice();
         }
         for (CartHotel c : hotels) {
             InvoicehotelRecord r = c.getInvoice();
             connection.getDSL().attach(r);
             r.setInvoiceid(id);
             r.store();
+
+            if (r.getPrice() != null) price += r.getPrice();
         }
         for (CartRestaurant c : restaurants) {
             InvoicerestaurantRecord r = c.getInvoice();
             connection.getDSL().attach(r);
             r.setInvoiceid(id);
             r.store();
+
+            if (r.getVoucherprice() != null) price += r.getVoucherprice();
         }
         for (CartTransport c : transport) {
             InvoicetransportRecord r = c.getInvoice();
             connection.getDSL().attach(r);
             r.setInvoiceid(id);
             r.store();
+
+            if (r.getPrice() != null) price += r.getPrice();
         }
+        return price;
     }
 
     public void removeExperience(int id) {
@@ -121,6 +134,10 @@ public class Cart {
         }
     }
 
+    public int getSize() {
+        return experiences.size() + hotels.size() + restaurants.size() + transport.size();
+    }
+
     // -- Getters, Setters, etc --
 
     public void addExperience(CartExperience c) {
@@ -155,19 +172,19 @@ public class Cart {
         transport.remove(r);
     }
 
-    public Set<CartExperience> getExperiences() {
+    public List<CartExperience> getExperiences() {
         return experiences;
     }
 
-    public Set<CartHotel> getHotels() {
+    public List<CartHotel> getHotels() {
         return hotels;
     }
 
-    public Set<CartRestaurant> getRestaurants() {
+    public List<CartRestaurant> getRestaurants() {
         return restaurants;
     }
 
-    public Set<CartTransport> getTransport() {
+    public List<CartTransport> getTransport() {
         return transport;
     }
 

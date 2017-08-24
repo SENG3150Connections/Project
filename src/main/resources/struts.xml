@@ -114,18 +114,17 @@
             <result name="error">/WEB-INF/jsp/exception.jsp</result>
         </action>
 
-
         <action name="results" class="NewcastleConnections.Actions.Results">
             <result name="success">/WEB-INF/jsp/results.jsp</result>
             <result name="error">/WEB-INF/jsp/exception.jsp</result>
         </action>
 
-        <action name="cartTest" class="NewcastleConnections.Actions.Cart.ViewCart">
-            <result>/WEB-INF/jsp/cartTest.jsp</result>
+        <action name="edit-cart" class="NewcastleConnections.Actions.Cart.UpdateCart">
+            <result type="redirect">results</result>
         </action>
 
-        <action name="cartTest2" class="NewcastleConnections.Actions.Cart.UpdateCart">
-            <result type="redirect">cartTest</result>
+        <action name="cartTest" class="NewcastleConnections.Actions.Cart.ViewCart">
+            <result>/WEB-INF/jsp/cartTest.jsp</result>
         </action>
 
         <action name="login" class="NewcastleConnections.Authentication.LoginAction">

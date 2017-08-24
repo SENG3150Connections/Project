@@ -1,6 +1,7 @@
 package NewcastleConnections.Actions;
 
 import NewcastleConnections.Cart.Cart;
+import NewcastleConnections.Cart.CartHotel;
 import NewcastleConnections.DatabaseConnection;
 import NewcastleConnections.packagedeals.tables.records.ExperiencesRecord;
 import NewcastleConnections.packagedeals.tables.records.ResturantsRecord;
@@ -78,7 +79,24 @@ public class Results extends ActionSupport {
 
         totalCount = hotelCount + restaurantCount + experienceCount + transportCount;
 
-        generateRecommendations(151.784775,-32.928368,2);
+
+        // Recommendations
+
+        if (cart.getHotels().size() != 0) {
+
+            HotelsRecord hotel = cart.getHotels().get(cart.getHotels().size()-1).getHotel();
+            generateRecommendations(hotel.getLongitude(),hotel.getLatitude(),2);
+
+        } else if (cart.getExperiences().size() != 0) {
+
+            ExperiencesRecord experience = cart.getExperiences().get(cart.getExperiences().size()-1).getExperience();
+            generateRecommendations(experience.getLongitude(),experience.getLatitude(),2);
+
+        } else if (cart.getRestaurants().size() != 0) {
+
+            ResturantsRecord resturant = cart.getRestaurants().get(cart.getRestaurants().size()-1).getRestaurant();
+            generateRecommendations(resturant.getLongitude(),resturant.getLatitude(),2);
+        }
 
         // Return Success
         return SUCCESS;

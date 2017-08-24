@@ -25,6 +25,7 @@ public class CartHotel {
     private Timestamp checkOut = null;
     private Double price = null;
 
+
     public CartHotel(int hotelID) {
         try {
             DatabaseConnection connection = new DatabaseConnection();

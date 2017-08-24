@@ -355,7 +355,7 @@
                     <h3>You save: !</h3>
                 </div>
                 <div class="right center">
-                    <h3>Confirm</h3>
+                    <h3><a href="payment">Confirm</a></h3>
                 </div>
             </div>
             </s:else>

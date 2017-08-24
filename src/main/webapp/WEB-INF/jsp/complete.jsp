@@ -8,5 +8,7 @@
 
 <h1>Complete...</h1>
 <h3>ID: ${id}</h3>
+
+<a href="customerPortal">View invoices page</a>
 </body>
 </html>

@@ -88,7 +88,7 @@
                     <span class="invoiceContent">$1.00</span>
                     <span class="invoiceContent">Complete</span>
                     <form action="/customerPortal-bookings" method="post">
-                        <s:hidden name="invoiceID" value="1"/>
+                        <input type="hidden" name="invoiceID" value="1"/>
                         <input type="submit" class="invoiceSubmit" value="View Booking"/>
                     </form>
                 </div>
@@ -98,7 +98,7 @@
                     <span class="invoiceContent">$2.00</span>
                     <span class="invoiceContent">Complete</span>
                     <form action="/customerPortal-bookings" method="post">
-                        <s:hidden name="invoiceID" value="00002"/>
+                        <input type="hidden" name="invoiceID" value="00002"/>
                         <input type="submit" class="invoiceSubmit" value="View Booking"/>
                     </form>
                 </div>
@@ -109,7 +109,7 @@
                         <span class="invoiceContent">${invoice.price}</span>
                         <span class="invoiceContent">${invoice.status}</span>
                         <form action="/customerPortal-bookings" method="post">
-                            <s:hidden name="invoiceID" value="%{invoice.id}"/>
+                            <input type="hidden" name="invoiceID" value="${invoice.id}"/>
                             <input type="submit" class="invoiceSubmit" value="View Booking"/>
                         </form>
                     </div>

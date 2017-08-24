@@ -14,6 +14,7 @@ import org.jooq.types.UInteger;
 import javax.servlet.http.HttpServletRequest;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import static NewcastleConnections.packagedeals.Tables.*;
@@ -42,7 +43,7 @@ public class GetUserBooking extends ActionSupport {
         return experiences;
     }
 
-    public List<RestaurantInvoiceInfo> getResturants() {
+    public List<RestaurantInvoiceInfo> getRestaurants() {
         return restaurants;
     }
 
@@ -66,6 +67,7 @@ public class GetUserBooking extends ActionSupport {
             Result<InvoicerestaurantRecord> invoicerestaurants = connection.getDSL().selectFrom(INVOICERESTAURANT).where(INVOICERESTAURANT.INVOICEID.eq(UInteger.valueOf(invoiceID))).fetch();
             Result<InvoicetransportRecord> invoicetransports = connection.getDSL().selectFrom(INVOICETRANSPORT).where(INVOICETRANSPORT.INVOICEID.eq(UInteger.valueOf(invoiceID))).fetch();
 
+            hotels = new ArrayList<>();
             for (InvoicehotelRecord x: invoicehotels) {
                 HotelInvoiceInfo newHotel = new HotelInvoiceInfo();
 
@@ -76,12 +78,12 @@ public class GetUserBooking extends ActionSupport {
                 newHotel.setRoomID(x.getRoomid());
                 newHotel.setAdults(x.getAdults());
                 newHotel.setChildren(x.getChildren());
-                newHotel.setCheckin(x.getCheckin());
-                newHotel.setCheckout(x.getCheckout());
+                newHotel.setCheckIn(x.getCheckin());
+                newHotel.setCheckOut(x.getCheckout());
                 newHotel.setHotelPrice(x.getPrice());
                 newHotel.setHotelID(roomoffering.getHotelid());
                 newHotel.setRoomTypeID(roomoffering.getRoomtypeid());
-                newHotel.setRoomtype(roomtype.getName());
+                newHotel.setRoomType(roomtype.getName());
                 newHotel.setHotelName(hotel.getName());
                 newHotel.setHotelContact(hotel.getContact());
                 newHotel.setHotelAddress(hotel.getAddress());
@@ -90,13 +92,14 @@ public class GetUserBooking extends ActionSupport {
                 hotels.add(newHotel);
             }
 
+            experiences = new ArrayList<>();
             for (InvoiceexperienceRecord x: invoiceexperiences) {
                 ExperienceInvoiceInfo newExperience = new ExperienceInvoiceInfo();
 
                 ExperiencesRecord experience = connection.getDSL().selectFrom(EXPERIENCES).where(EXPERIENCES.ID.eq(x.getExperiencevoucherid())).fetchOne();
 
                 newExperience.setExperienceID(x.getExperiencevoucherid());
-                newExperience.setExperiencePrice(x.getPrice());
+                newExperience.setPrice(x.getPrice());
                 newExperience.setName(experience.getName());
                 newExperience.setLocation(experience.getLocation());
                 newExperience.setImageID(experience.getImageid());
@@ -104,6 +107,7 @@ public class GetUserBooking extends ActionSupport {
                 experiences.add(newExperience);
             }
 
+            restaurants = new ArrayList<>();
             for (InvoicerestaurantRecord x: invoicerestaurants) {
                 RestaurantInvoiceInfo newRestaurant = new RestaurantInvoiceInfo();
 
@@ -122,6 +126,7 @@ public class GetUserBooking extends ActionSupport {
 
             }
 
+            transports = new ArrayList<>();
             for (InvoicetransportRecord x: invoicetransports) {
                 TransportInvoiceInfo newTransport = new TransportInvoiceInfo();
 

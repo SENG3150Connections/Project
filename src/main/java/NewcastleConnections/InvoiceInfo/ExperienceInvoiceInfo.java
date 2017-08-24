@@ -8,26 +8,26 @@ import org.jooq.types.UInteger;
 public class ExperienceInvoiceInfo {
     //Experience Data from Invoiceexperience Table
     private UInteger experienceID;
-    private Double experiencePrice;
+    private Double price;
     //Experience Data from Invoice Table
     private String name;
     private String location;
     private String imageID;
 
-    public UInteger getExperienceID() {
-        return experienceID;
+    public int getExperienceID() {
+        return experienceID.intValue();
     }
 
     public void setExperienceID(UInteger experienceID) {
         this.experienceID = experienceID;
     }
 
-    public Double getExperiencePrice() {
-        return experiencePrice;
+    public Double getPrice() {
+        return price;
     }
 
-    public void setExperiencePrice(Double experiencePrice) {
-        this.experiencePrice = experiencePrice;
+    public void setPrice(Double price) {
+        this.price = price;
     }
 
     public String getName() {

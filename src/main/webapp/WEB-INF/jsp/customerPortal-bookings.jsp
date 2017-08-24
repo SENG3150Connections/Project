@@ -112,17 +112,17 @@
                 </s:if>
                 <s:iterator value="hotels" var="hotel">
                     <div class="customerInvoice">
-                        <span class="hotelContent">${hotel.roomid}</span>
-                        <span class="hotelContent">${hotel.roomtype}</span>
+                        <span class="hotelContent">${hotel.roomID}</span>
+                        <span class="hotelContent">${hotel.roomType}</span>
                         <span class="hotelContent">${hotel.adults}</span>
                         <span class="hotelContent">${hotel.children}</span>
-                        <span class="hotelContent">${hotel.checkin}</span>
-                        <span class="hotelContent">${hotel.checkout}</span>
-                        <span class="hotelContent">${hotel.hotelprice}</span>
-                        <span class="hotelContent">${hotel.hotelname}</span>
-                        <span class="hotelContent">${hotel.hoteladdress}</span>
-                        <span class="hotelContent">${hotel.hotelcontact}</span>
-                        <span class="hotelContent">${hotel.hotelimageid}</span>
+                        <span class="hotelContent">${hotel.checkIn}</span>
+                        <span class="hotelContent">${hotel.checkOut}</span>
+                        <span class="hotelContent">${hotel.hotelPrice}</span>
+                        <span class="hotelContent">${hotel.hotelName}</span>
+                        <span class="hotelContent">${hotel.hotelAddress}</span>
+                        <span class="hotelContent">${hotel.hotelContact}</span>
+                        <span class="hotelContent">${hotel.hotelImageID}</span>
                     </div>
                 </s:iterator>
                 <s:if test="%{experiences.size>0}">
@@ -138,7 +138,7 @@
                     <div class="customerInvoice">
                         <span class="experienceContent">${experience.name}</span>
                         <span class="experienceContent">${experience.location}</span>
-                        <span class="experienceContent">${experience.imageid}</span>
+                        <span class="experienceContent">${experience.imageID}</span>
                         <span class="experienceContent">${experience.price}</span>
                     </div>
                 </s:iterator>

@@ -20,8 +20,8 @@ public class RestaurantInvoiceInfo {
     private String restaurantAddress;
     private String restaurantImageID;
 
-    public UInteger getRestaurantID() {
-        return restaurantID;
+    public int getRestaurantID() {
+        return restaurantID.intValue();
     }
 
     public void setRestaurantID(UInteger restaurantID) {

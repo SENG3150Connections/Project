@@ -16,8 +16,8 @@ public class TransportInvoiceInfo {
     private String transportName;
     private double transportPrice;
 
-    public UInteger getTransportID() {
-        return transportID;
+    public int getTransportID() {
+        return transportID.intValue();
     }
 
     public void setTransportID(UInteger transportID) {

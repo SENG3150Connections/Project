@@ -12,8 +12,8 @@ public class HotelInvoiceInfo {
     private UInteger roomID;
     private int adults;
     private int children;
-    private Timestamp checkin;
-    private Timestamp checkout;
+    private Timestamp checkIn;
+    private Timestamp checkOut;
     private double hotelPrice;
 
     //Room data from Roomofferings table
@@ -21,7 +21,7 @@ public class HotelInvoiceInfo {
     private UInteger roomTypeID;
 
     //Room data from Roomtypes table
-    private String roomtype;
+    private String roomType;
 
     //Hotel data from Hotels table
     private String hotelName;
@@ -29,8 +29,8 @@ public class HotelInvoiceInfo {
     private String hotelAddress;
     private String hotelImageID;
 
-    public UInteger getRoomID() {
-        return roomID;
+    public int getRoomID() {
+        return roomID.intValue();
     }
 
     public void setRoomID(UInteger roomID) {
@@ -53,20 +53,20 @@ public class HotelInvoiceInfo {
         this.children = children;
     }
 
-    public Timestamp getCheckin() {
-        return checkin;
+    public Timestamp getCheckIn() {
+        return checkIn;
     }
 
-    public void setCheckin(Timestamp checkin) {
-        this.checkin = checkin;
+    public void setCheckIn(Timestamp checkIn) {
+        this.checkIn = checkIn;
     }
 
-    public Timestamp getCheckout() {
-        return checkout;
+    public Timestamp getCheckOut() {
+        return checkOut;
     }
 
-    public void setCheckout(Timestamp checkout) {
-        this.checkout = checkout;
+    public void setCheckOut(Timestamp checkOut) {
+        this.checkOut = checkOut;
     }
 
     public double getHotelPrice() {
@@ -77,28 +77,28 @@ public class HotelInvoiceInfo {
         this.hotelPrice = hotelPrice;
     }
 
-    public UInteger getHotelID() {
-        return hotelID;
+    public int getHotelID() {
+        return hotelID.intValue();
     }
 
     public void setHotelID(UInteger hotelID) {
         this.hotelID = hotelID;
     }
 
-    public UInteger getRoomTypeID() {
-        return roomTypeID;
+    public int getRoomTypeID() {
+        return roomTypeID.intValue();
     }
 
     public void setRoomTypeID(UInteger roomTypeID) {
         this.roomTypeID = roomTypeID;
     }
 
-    public String getRoomtype() {
-        return roomtype;
+    public String getRoomType() {
+        return roomType;
     }
 
-    public void setRoomtype(String roomtype) {
-        this.roomtype = roomtype;
+    public void setRoomType(String roomType) {
+        this.roomType = roomType;
     }
 
     public String getHotelName() {

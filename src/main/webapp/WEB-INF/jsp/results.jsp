@@ -301,33 +301,45 @@
             <div id="package-contents" class="center">
 
                 <h2>PACKAGES HERE</h2>
-                <s:iterator value="cart.experiences" var="e">
+                <s:iterator value="cart.experiences" var="e" status="entry">
                     <div>
                         <span>${e.experience.name}</span>
+                        <a href="update-experience?edit&cartIndex=${entry.index}"><span class="fa fa-edit" aria-hidden="true">
+                            <span class="tooltiptext">Edit</span>
+                        </span></a>
                         <a href="edit-cart?method=remove&type=experience&id=${e.experience.id}"><span class="fa fa-remove" aria-hidden="true">
                             <span class="tooltiptext">Remove</span>
                         </span></a>
                     </div>
                 </s:iterator>
-                <s:iterator value="cart.hotels" var="h">
+                <s:iterator value="cart.hotels" var="h" status="entry">
                     <div>
                         <span>${h.hotel.name}</span>
+                        <a href="update-hotel?edit&cartIndex=${entry.index}"><span class="fa fa-edit" aria-hidden="true">
+                            <span class="tooltiptext">Edit</span>
+                        </span></a>
                         <a href="edit-cart?method=remove&type=hotel&id=${h.hotel.id}"><span class="fa fa-remove" aria-hidden="true">
                             <span class="tooltiptext">Remove</span>
                         </span></a>
                     </div>
                 </s:iterator>
-                <s:iterator value="cart.restaurants" var="r">
+                <s:iterator value="cart.restaurants" var="r" status="entry">
                     <div>
                         <span>${r.restaurant.name}</span>
+                        <a href="update-restaurant?edit&cartIndex=${entry.index}"><span class="fa fa-edit" aria-hidden="true">
+                            <span class="tooltiptext">Edit</span>
+                        </span></a>
                         <a href="edit-cart?method=remove&type=restaurant&id=${r.restaurant.id}"><span class="fa fa-remove" aria-hidden="true">
                             <span class="tooltiptext">Remove</span>
                         </span></a>
                     </div>
                 </s:iterator>
-                <s:iterator value="cart.transport" var="t">
+                <s:iterator value="cart.transport" var="t" status="entry">
                     <div>
                         <span>${t.transport.name}</span>
+                        <a href="update-transport?edit&cartIndex=${entry.index}"><span class="fa fa-edit" aria-hidden="true">
+                            <span class="tooltiptext">Edit</span>
+                        </span></a>
                         <a href="edit-cart?method=remove&type=transport&id=${t.transport.id}"><span class="fa fa-remove" aria-hidden="true">
                             <span class="tooltiptext">Remove</span>
                         </span></a>

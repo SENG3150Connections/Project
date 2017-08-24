@@ -11,9 +11,13 @@ import java.sql.Timestamp;
  * Created by Scott on 14/08/2017.
  */
 public class UpdateCartTransport extends ActionSupport {
+    private static final String DONE = "done";
+
+    private String edit;
 
     private Cart cart;
     private int cartIndex;
+    private CartTransport transport;
 
     private Integer tickets;
     private String time;
@@ -23,8 +27,10 @@ public class UpdateCartTransport extends ActionSupport {
         // Valid index: 0 to size-1
         if (cartIndex < 0 || cartIndex >= cart.getTransport().size())
             return ERROR;
+        transport = cart.getTransport().get(cartIndex);
 
-        CartTransport transport = cart.getTransport().get(cartIndex);
+        if (edit != null)
+            return SUCCESS;
 
         // Valid tickets: Greater than 0
         if (tickets != null) {
@@ -34,7 +40,7 @@ public class UpdateCartTransport extends ActionSupport {
         }
 
         // Valid timestamp: yyyy-[m]m-[d]d hh:mm:ss
-        if (time != null) {
+        if (time != null && !time.isEmpty()) {
             try {
                 Timestamp timestamp = Timestamp.valueOf(time);
                 transport.setTime(timestamp);
@@ -43,7 +49,15 @@ public class UpdateCartTransport extends ActionSupport {
             }
         }
 
-        return SUCCESS;
+        return DONE;
+    }
+
+    public String getEdit() {
+        return edit;
+    }
+
+    public void setEdit(String edit) {
+        this.edit = edit;
     }
 
     public Cart getCart() {
@@ -61,6 +75,14 @@ public class UpdateCartTransport extends ActionSupport {
 
     public void setCartIndex(int cartIndex) {
         this.cartIndex = cartIndex;
+    }
+
+    public CartTransport getTransport() {
+        return transport;
+    }
+
+    public void setTransport(CartTransport transport) {
+        this.transport = transport;
     }
 
     public Integer getTickets() {

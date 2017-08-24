@@ -61,6 +61,12 @@ public class CartHotel {
     public void updatePrice() {
         double rate = 150.0;
         long divisor = 1000 * 60 * 60 * 24;
+
+        if (checkIn == null || checkOut == null) {
+            setPrice(0.0);
+            return;
+        }
+
         long nights = checkOut.getTime() - checkIn.getTime();
         nights /= divisor;
         nights++;

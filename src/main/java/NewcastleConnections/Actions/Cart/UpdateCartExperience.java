@@ -18,9 +18,13 @@ import static NewcastleConnections.packagedeals.Tables.EXPERIENCEVOUCHEROFFERING
  * Created by Scott on 14/08/2017.
  */
 public class UpdateCartExperience extends ActionSupport {
+    private static final String DONE = "done";
+
+    private String edit;
 
     private Cart cart;
     private int cartIndex;
+    private CartExperience experience;
 
     private Integer voucherId;
 
@@ -29,8 +33,10 @@ public class UpdateCartExperience extends ActionSupport {
         // Valid index: 0 to size-1
         if (cartIndex < 0 || cartIndex >= cart.getExperiences().size())
             return ERROR;
+        experience = cart.getExperiences().get(cartIndex);
 
-        CartExperience experience = cart.getExperiences().get(cartIndex);
+        if (edit != null)
+            return SUCCESS;
 
         try {
             DatabaseConnection connection = new DatabaseConnection();
@@ -43,7 +49,15 @@ public class UpdateCartExperience extends ActionSupport {
             return ERROR;
         }
 
-        return SUCCESS;
+        return DONE;
+    }
+
+    public String getEdit() {
+        return edit;
+    }
+
+    public void setEdit(String edit) {
+        this.edit = edit;
     }
 
     public Cart getCart() {
@@ -61,6 +75,14 @@ public class UpdateCartExperience extends ActionSupport {
 
     public void setCartIndex(int cartIndex) {
         this.cartIndex = cartIndex;
+    }
+
+    public CartExperience getExperience() {
+        return experience;
+    }
+
+    public void setExperience(CartExperience experience) {
+        this.experience = experience;
     }
 
     public Integer getVoucherId() {

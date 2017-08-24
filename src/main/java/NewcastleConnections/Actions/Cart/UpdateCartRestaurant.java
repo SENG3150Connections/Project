@@ -11,9 +11,13 @@ import java.sql.Timestamp;
  * Created by Scott on 14/08/2017.
  */
 public class UpdateCartRestaurant extends ActionSupport {
+    private static final String DONE = "done";
+
+    private String edit;
 
     private Cart cart;
     private int cartIndex;
+    private CartRestaurant restaurant;
 
     private Integer seats;
     private String time;
@@ -24,8 +28,10 @@ public class UpdateCartRestaurant extends ActionSupport {
         // Valid index: 0 to size-1
         if (cartIndex < 0 || cartIndex >= cart.getRestaurants().size())
             return ERROR;
+        restaurant = cart.getRestaurants().get(cartIndex);
 
-        CartRestaurant restaurant = cart.getRestaurants().get(cartIndex);
+        if (edit != null)
+            return SUCCESS;
 
         // Valid seats: Greater than 0
         if (seats != null) {
@@ -35,7 +41,7 @@ public class UpdateCartRestaurant extends ActionSupport {
         }
 
         // Valid timestamp: yyyy-[m]m-[d]d hh:mm:ss
-        if (time != null) {
+        if (time != null && !time.isEmpty()) {
             try {
                 Timestamp timestamp = Timestamp.valueOf(time);
                 restaurant.setTime(timestamp);
@@ -50,7 +56,15 @@ public class UpdateCartRestaurant extends ActionSupport {
             restaurant.setVoucherPrice(voucherPrice);
         }
 
-        return SUCCESS;
+        return DONE;
+    }
+
+    public String getEdit() {
+        return edit;
+    }
+
+    public void setEdit(String edit) {
+        this.edit = edit;
     }
 
     public Cart getCart() {
@@ -68,6 +82,14 @@ public class UpdateCartRestaurant extends ActionSupport {
 
     public void setCartIndex(int cartIndex) {
         this.cartIndex = cartIndex;
+    }
+
+    public CartRestaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(CartRestaurant restaurant) {
+        this.restaurant = restaurant;
     }
 
     public Integer getSeats() {

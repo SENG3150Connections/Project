@@ -40,19 +40,23 @@
 
         <!-- Cart updaters -->
         <action name="update-experience" class="NewcastleConnections.Actions.Cart.UpdateCartExperience">
-            <result type="redirect">cartTest</result>
+            <result name="success">/WEB-INF/jsp/cart-update/experience.jsp</result>
+            <result name="done" type="redirect">results</result>
             <result name="error">/WEB-INF/jsp/exception.jsp</result>
         </action>
         <action name="update-hotel" class="NewcastleConnections.Actions.Cart.UpdateCartHotel">
-            <result type="redirect">cartTest</result>
+            <result name="success">/WEB-INF/jsp/cart-update/hotel.jsp</result>
+            <result name="done" type="redirect">results</result>
             <result name="error">/WEB-INF/jsp/exception.jsp</result>
         </action>
         <action name="update-restaurant" class="NewcastleConnections.Actions.Cart.UpdateCartRestaurant">
-            <result type="redirect">cartTest</result>
+            <result name="success">/WEB-INF/jsp/cart-update/restaurant.jsp</result>
+            <result name="done" type="redirect">results</result>
             <result name="error">/WEB-INF/jsp/exception.jsp</result>
         </action>
         <action name="update-transport" class="NewcastleConnections.Actions.Cart.UpdateCartTransport">
-            <result type="redirect">cartTest</result>
+            <result name="success">/WEB-INF/jsp/cart-update/transport.jsp</result>
+            <result name="done" type="redirect">results</result>
             <result name="error">/WEB-INF/jsp/exception.jsp</result>
         </action>
 

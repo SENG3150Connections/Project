@@ -18,9 +18,13 @@ import static NewcastleConnections.packagedeals.Tables.ROOMOFFERINGS;
  * Created by Scott on 14/08/2017.
  */
 public class UpdateCartHotel extends ActionSupport {
+    private static final String DONE = "done";
+
+    private String edit;
 
     private Cart cart;
     private int cartIndex;
+    private CartHotel hotel;
 
     private Integer roomId;
     private Integer adults;
@@ -33,8 +37,10 @@ public class UpdateCartHotel extends ActionSupport {
         // Valid index: 0 to size-1
         if (cartIndex < 0 || cartIndex >= cart.getHotels().size())
             return ERROR;
+        hotel = cart.getHotels().get(cartIndex);
 
-        CartHotel hotel = cart.getHotels().get(cartIndex);
+        if (edit != null)
+            return SUCCESS;
 
         try {
             DatabaseConnection connection = new DatabaseConnection();
@@ -47,22 +53,22 @@ public class UpdateCartHotel extends ActionSupport {
             return ERROR;
         }
 
-        // Valid seats: Greater than 0
+        // Valid adults: Greater than 0
         if (adults != null) {
             if (adults < 1)
                 return ERROR;
             hotel.setAdults(adults);
         }
 
-        // Valid seats: Greater than 0
+        // Valid children: At least 0
         if (children != null) {
-            if (children < 1)
+            if (children < 0)
                 return ERROR;
             hotel.setChildren(children);
         }
 
         // Valid timestamp: yyyy-[m]m-[d]d hh:mm:ss
-        if (checkIn != null) {
+        if (checkIn != null && !checkIn.isEmpty()) {
             try {
                 Timestamp timestamp = Timestamp.valueOf(checkIn);
                 hotel.setCheckIn(timestamp);
@@ -72,7 +78,7 @@ public class UpdateCartHotel extends ActionSupport {
         }
 
         // Valid timestamp: yyyy-[m]m-[d]d hh:mm:ss
-        if (checkOut != null) {
+        if (checkOut != null && !checkOut.isEmpty()) {
             try {
                 Timestamp timestamp = Timestamp.valueOf(checkOut);
                 hotel.setCheckOut(timestamp);
@@ -81,7 +87,15 @@ public class UpdateCartHotel extends ActionSupport {
             }
         }
 
-        return SUCCESS;
+        return DONE;
+    }
+
+    public String getEdit() {
+        return edit;
+    }
+
+    public void setEdit(String edit) {
+        this.edit = edit;
     }
 
     public Cart getCart() {
@@ -99,6 +113,14 @@ public class UpdateCartHotel extends ActionSupport {
 
     public void setCartIndex(int cartIndex) {
         this.cartIndex = cartIndex;
+    }
+
+    public CartHotel getHotel() {
+        return hotel;
+    }
+
+    public void setHotel(CartHotel hotel) {
+        this.hotel = hotel;
     }
 
     public Integer getRoomId() {

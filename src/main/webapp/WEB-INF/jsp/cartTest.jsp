@@ -12,6 +12,7 @@
     <title>Cart Test</title>
 </head>
 <body>
+    <s:property value="cart.size"/>
     <s:property value="cart.name"/>
 
     <h1>ExperienceVouchers</h1>

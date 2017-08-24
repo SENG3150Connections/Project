@@ -1,11 +1,13 @@
 package NewcastleConnections.Actions;
 
+import NewcastleConnections.Cart.Cart;
 import NewcastleConnections.DatabaseConnection;
 import NewcastleConnections.packagedeals.tables.records.ExperiencesRecord;
 import NewcastleConnections.packagedeals.tables.records.ResturantsRecord;
 import NewcastleConnections.packagedeals.tables.records.TransportRecord;
 import com.opensymphony.xwork2.ActionSupport;
 import NewcastleConnections.packagedeals.tables.records.HotelsRecord;
+import com.opensymphony.xwork2.inject.Inject;
 import org.jooq.DSLContext;
 import org.jooq.Record;
 import org.jooq.Result;
@@ -32,6 +34,7 @@ public class Results extends ActionSupport {
     private int experienceCount;
     private int transportCount;
     private int totalCount;
+    private Cart cart;
 
     // URL bar properties
     private String search;
@@ -80,7 +83,6 @@ public class Results extends ActionSupport {
         // Return Success
         return SUCCESS;
     }
-
 
     private void generateRecommendations(double searchLongitude, double searchLattitude, int numberOfResults) {
 
@@ -274,6 +276,15 @@ public class Results extends ActionSupport {
 
     public int getTotalCount() {
         return totalCount;
+    }
+
+    public Cart getCart() {
+        return cart;
+    }
+
+    @Inject("cart")
+    public void setCart(Cart cart) {
+        this.cart = cart;
     }
 
     // URL bar properties

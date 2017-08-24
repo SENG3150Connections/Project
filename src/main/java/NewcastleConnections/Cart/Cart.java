@@ -134,6 +134,10 @@ public class Cart {
         }
     }
 
+    public int getSize() {
+        return experiences.size() + hotels.size() + restaurants.size() + transport.size();
+    }
+
     // -- Getters, Setters, etc --
 
     public void addExperience(CartExperience c) {

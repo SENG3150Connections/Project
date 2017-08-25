@@ -20,13 +20,14 @@ public class Cart {
     private List<CartRestaurant> restaurants;
     private List<CartTransport> transport;
 
-    private String name = "";
+    private Double price;
 
     public Cart() {
         experiences = new ArrayList<>();
         hotels = new ArrayList<>();
         restaurants = new ArrayList<>();
         transport = new ArrayList<>();
+        price = 0.0;
     }
 
     public UInteger createInvoice() {
@@ -61,38 +62,45 @@ public class Cart {
     }
 
     private double storeSubInvoices(DatabaseConnection connection, UInteger id) {
-        double price = 0.0;
         for (CartExperience c : experiences) {
             InvoiceexperienceRecord r = c.getInvoice();
             connection.getDSL().attach(r);
             r.setInvoiceid(id);
             r.store();
-
-            if (r.getPrice() != null) price += r.getPrice();
         }
         for (CartHotel c : hotels) {
             InvoicehotelRecord r = c.getInvoice();
             connection.getDSL().attach(r);
             r.setInvoiceid(id);
             r.store();
-
-            if (r.getPrice() != null) price += r.getPrice();
         }
         for (CartRestaurant c : restaurants) {
             InvoicerestaurantRecord r = c.getInvoice();
             connection.getDSL().attach(r);
             r.setInvoiceid(id);
             r.store();
-
-            if (r.getVoucherprice() != null) price += r.getVoucherprice();
         }
         for (CartTransport c : transport) {
             InvoicetransportRecord r = c.getInvoice();
             connection.getDSL().attach(r);
             r.setInvoiceid(id);
             r.store();
+        }
+        return getCurrentPrice();
+    }
 
-            if (r.getPrice() != null) price += r.getPrice();
+    public boolean getReadyToPay() {
+        for (CartItem i : getAll()) {
+            if (!i.isReady()) return false;
+        }
+        return true;
+    }
+
+    public double getCurrentPrice() {
+        price = 0.0;
+        for (CartItem i : getAll()) {
+            if (i.isReady())
+                price += i.getPrice();
         }
         return price;
     }
@@ -100,7 +108,6 @@ public class Cart {
     public void removeExperience(int id) {
         for (CartExperience e : experiences) {
             if (e.getExperience().getId().intValue() == id) {
-                //e.delete(); // Need to attach first? Or not stored yet
                 experiences.remove(e);
                 return;
             }
@@ -134,8 +141,17 @@ public class Cart {
         }
     }
 
+    public List<CartItem> getAll() {
+        List<CartItem> list = new ArrayList<>();
+        list.addAll(experiences);
+        list.addAll(hotels);
+        list.addAll(restaurants);
+        list.addAll(transport);
+        return list;
+    }
+
     public int getSize() {
-        return experiences.size() + hotels.size() + restaurants.size() + transport.size();
+        return getAll().size();
     }
 
     // -- Getters, Setters, etc --
@@ -188,11 +204,11 @@ public class Cart {
         return transport;
     }
 
-    public String getName() {
-        return name;
+    public Double getPrice() {
+        return getCurrentPrice();
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public Double getSavings() {
+        return price/4;
     }
 }

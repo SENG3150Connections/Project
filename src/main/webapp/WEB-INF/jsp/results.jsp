@@ -299,8 +299,6 @@
             </s:if>
             <s:else>
             <div id="package-contents" class="center">
-
-                <h2>PACKAGES HERE</h2>
                 <s:iterator value="cart.experiences" var="e" status="entry">
                     <div>
                         <span>${e.experience.name}</span>
@@ -351,11 +349,17 @@
             </div>
             <div id="package-confirmation">
                 <div class="left center">
-                    <h3>Total: </h3>
-                    <h3>You save: !</h3>
+                    <h3>Current Total: $${cart.price}</h3>
+                    <h3>You save: $${cart.savings}!</h3>
                 </div>
                 <div class="right center">
-                    <h3><a href="payment">Confirm</a></h3>
+                    <s:set var="ready" value="cart.readyToPay"/>
+                    <s:if test="%{#ready}">
+                        <h3><a href="payment">Confirm</a></h3>
+                    </s:if>
+                    <s:else>
+                        <h3>CANNOT PAY<br/>Cart Not Ready</h3>
+                    </s:else>
                 </div>
             </div>
             </s:else>

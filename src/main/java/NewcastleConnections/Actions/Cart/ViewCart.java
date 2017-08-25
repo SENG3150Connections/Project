@@ -13,8 +13,6 @@ public class ViewCart extends ActionSupport {
 
     @Override
     public String execute() {
-        if (cart.getName().isEmpty())
-            getCart().setName("THIS IS A CART");
         return SUCCESS;
     }
 

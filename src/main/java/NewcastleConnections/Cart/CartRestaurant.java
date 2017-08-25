@@ -13,7 +13,7 @@ import static NewcastleConnections.packagedeals.Tables.*;
 /**
  * Created by Scott on 22/08/2017.
  */
-public class CartRestaurant {
+public class CartRestaurant implements CartItem {
 
     private ResturantsRecord restaurant = null;
     private InvoicerestaurantRecord invoice = null;
@@ -31,12 +31,20 @@ public class CartRestaurant {
         }
     }
 
-    public boolean isPrepared() {
+    // -- Interface methods --
+
+    public boolean isReady() {
         return time != null && seats > 0;
     }
 
+    public double getPrice() {
+        return voucherPrice;
+    }
+
+    // -- Other methods --
+
     public InvoicerestaurantRecord getInvoice() {
-        if (!isPrepared()) {
+        if (!isReady()) {
             return null;
         }
 

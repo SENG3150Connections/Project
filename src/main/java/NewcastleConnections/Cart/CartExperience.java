@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 import static NewcastleConnections.packagedeals.Tables.*;
 
-public class CartExperience {
+public class CartExperience implements CartItem {
 
     private ExperiencesRecord experience = null;
     private ExperiencevoucherofferingsRecord voucher = null;
@@ -26,12 +26,20 @@ public class CartExperience {
         }
     }
 
-    public boolean isPrepared() {
+    // -- Interface methods --
+
+    public boolean isReady() {
         return voucher != null;
     }
 
+    public double getPrice() {
+        return getVoucher().getPrice();
+    }
+
+    // -- Other methods --
+
     public InvoiceexperienceRecord getInvoice() {
-        if (!isPrepared()) {
+        if (!isReady()) {
             return null;
         }
 

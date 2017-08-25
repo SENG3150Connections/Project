@@ -14,7 +14,7 @@ import static NewcastleConnections.packagedeals.Tables.*;
 /**
  * Created by Scott on 22/08/2017.
  */
-public class CartHotel {
+public class CartHotel implements CartItem {
 
     private HotelsRecord hotel = null;
     private RoomofferingsRecord room = null;
@@ -36,12 +36,20 @@ public class CartHotel {
         }
     }
 
-    public boolean isPrepared() {
+    // -- Interface methods --
+
+    public boolean isReady() {
         return room != null && adults > 0 && children >= 0 && checkIn != null && checkOut != null;
     }
 
+    public double getPrice() {
+        return price;
+    }
+
+    // -- Other methods --
+
     public InvoicehotelRecord getInvoice() {
-        if (!isPrepared()) {
+        if (!isReady()) {
             return null;
         }
 
@@ -124,10 +132,6 @@ public class CartHotel {
     public void setCheckOut(Timestamp checkOut) {
         this.checkOut = checkOut;
         updatePrice();
-    }
-
-    public Double getPrice() {
-        return price;
     }
 
     private void setPrice(Double price) {

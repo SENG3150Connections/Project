@@ -13,7 +13,7 @@ import static NewcastleConnections.packagedeals.Tables.*;
 /**
  * Created by Scott on 22/08/2017.
  */
-public class CartTransport {
+public class CartTransport implements CartItem {
 
     private TransportRecord transport = null;
     private InvoicetransportRecord invoice = null;
@@ -30,12 +30,20 @@ public class CartTransport {
         }
     }
 
-    public boolean isPrepared() {
+    // -- Interface methods --
+
+    public boolean isReady() {
         return tickets > 0 && time != null;
     }
 
+    public double getPrice() {
+        return tickets * transport.getTicketprice();
+    }
+
+    // -- Other methods --
+
     public InvoicetransportRecord getInvoice() {
-        if (!isPrepared()) {
+        if (!isReady()) {
             return null;
         }
 
@@ -44,7 +52,7 @@ public class CartTransport {
         }
 
         invoice.setTransportid(transport.getId());
-        invoice.setPrice(tickets * transport.getTicketprice());
+        invoice.setPrice(getPrice());
         invoice.setTime(time);
 
         return invoice;

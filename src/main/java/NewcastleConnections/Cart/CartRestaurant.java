@@ -33,6 +33,14 @@ public class CartRestaurant implements CartItem {
 
     // -- Interface methods --
 
+    public String getName() {
+        return restaurant.getName();
+    }
+
+    public int getId() {
+        return restaurant.getId().intValue();
+    }
+
     public boolean isReady() {
         return time != null && seats > 0;
     }

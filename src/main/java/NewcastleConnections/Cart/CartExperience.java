@@ -28,6 +28,14 @@ public class CartExperience implements CartItem {
 
     // -- Interface methods --
 
+    public String getName() {
+        return experience.getName();
+    }
+
+    public int getId() {
+        return experience.getId().intValue();
+    }
+
     public boolean isReady() {
         return voucher != null;
     }

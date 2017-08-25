@@ -32,6 +32,14 @@ public class CartTransport implements CartItem {
 
     // -- Interface methods --
 
+    public String getName() {
+        return transport.getName();
+    }
+
+    public int getId() {
+        return transport.getId().intValue();
+    }
+
     public boolean isReady() {
         return tickets > 0 && time != null;
     }

@@ -38,6 +38,14 @@ public class CartHotel implements CartItem {
 
     // -- Interface methods --
 
+    public String getName() {
+        return hotel.getName();
+    }
+
+    public int getId() {
+        return hotel.getId().intValue();
+    }
+
     public boolean isReady() {
         return room != null && adults > 0 && children >= 0 && checkIn != null && checkOut != null;
     }

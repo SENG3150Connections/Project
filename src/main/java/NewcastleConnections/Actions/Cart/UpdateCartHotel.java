@@ -7,6 +7,7 @@ import NewcastleConnections.packagedeals.tables.records.Experiencevoucherofferin
 import NewcastleConnections.packagedeals.tables.records.RoomofferingsRecord;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.inject.Inject;
+import org.jooq.Result;
 import org.jooq.types.UInteger;
 
 import java.sql.SQLException;
@@ -21,6 +22,7 @@ public class UpdateCartHotel extends ActionSupport {
     private static final String DONE = "done";
 
     private String edit;
+    private Result<RoomofferingsRecord> offerings;
 
     private Cart cart;
     private int cartIndex;
@@ -37,13 +39,18 @@ public class UpdateCartHotel extends ActionSupport {
         // Valid index: 0 to size-1
         if (cartIndex < 0 || cartIndex >= cart.getHotels().size())
             return ERROR;
+
         hotel = cart.getHotels().get(cartIndex);
-
-        if (edit != null)
-            return SUCCESS;
-
         try {
             DatabaseConnection connection = new DatabaseConnection();
+
+            if (edit != null) {
+                offerings = connection.getDSL().selectFrom(ROOMOFFERINGS)
+                        .where(ROOMOFFERINGS.HOTELID.eq(UInteger.valueOf(hotel.getId()))).fetch();
+                connection.close();
+                return SUCCESS;
+            }
+
             RoomofferingsRecord room = connection.getDSL().selectFrom(ROOMOFFERINGS)
                     .where(ROOMOFFERINGS.ID.eq(UInteger.valueOf(roomId))).fetch().get(0);
             hotel.setRoom(room);
@@ -96,6 +103,14 @@ public class UpdateCartHotel extends ActionSupport {
 
     public void setEdit(String edit) {
         this.edit = edit;
+    }
+
+    public Result<RoomofferingsRecord> getOfferings() {
+        return offerings;
+    }
+
+    public void setOfferings(Result<RoomofferingsRecord> offerings) {
+        this.offerings = offerings;
     }
 
     public Cart getCart() {

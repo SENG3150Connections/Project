@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <html>
 <head>
     <title>Title</title>
@@ -16,8 +17,12 @@
 
     <input type="hidden" name="cartIndex" value="${cartIndex}">
 
-    <br/>RoomID:<br/>
-    <input type="number" name="roomId" value="${hotel.room.id}">
+    <br/>Room:<br/>
+    <select name="roomId">
+    <s:iterator value="offerings" var="o" status="entry">
+        <option value="${o.id}">${o.title} - ${o.noguestmax} People</option>
+    </s:iterator>
+    </select>
 
     <br/>Adults:<br/>
     <input type="number" name="adults" value="${hotel.adults}">

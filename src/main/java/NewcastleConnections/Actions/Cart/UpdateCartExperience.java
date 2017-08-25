@@ -2,15 +2,14 @@ package NewcastleConnections.Actions.Cart;
 
 import NewcastleConnections.Cart.Cart;
 import NewcastleConnections.Cart.CartExperience;
-import NewcastleConnections.Cart.CartRestaurant;
 import NewcastleConnections.DatabaseConnection;
 import NewcastleConnections.packagedeals.tables.records.ExperiencevoucherofferingsRecord;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.inject.Inject;
+import org.jooq.Result;
 import org.jooq.types.UInteger;
 
 import java.sql.SQLException;
-import java.sql.Timestamp;
 
 import static NewcastleConnections.packagedeals.Tables.EXPERIENCEVOUCHEROFFERINGS;
 
@@ -21,6 +20,7 @@ public class UpdateCartExperience extends ActionSupport {
     private static final String DONE = "done";
 
     private String edit;
+    private Result<ExperiencevoucherofferingsRecord> offerings;
 
     private Cart cart;
     private int cartIndex;
@@ -33,23 +33,27 @@ public class UpdateCartExperience extends ActionSupport {
         // Valid index: 0 to size-1
         if (cartIndex < 0 || cartIndex >= cart.getExperiences().size())
             return ERROR;
+
         experience = cart.getExperiences().get(cartIndex);
-
-        if (edit != null)
-            return SUCCESS;
-
         try {
             DatabaseConnection connection = new DatabaseConnection();
+
+            if (edit != null) {
+                offerings = connection.getDSL().selectFrom(EXPERIENCEVOUCHEROFFERINGS)
+                        .where(EXPERIENCEVOUCHEROFFERINGS.EXPERIENCEID.eq(UInteger.valueOf(experience.getId()))).fetch();
+                connection.close();
+                return SUCCESS;
+            }
+
             ExperiencevoucherofferingsRecord voucher = connection.getDSL().selectFrom(EXPERIENCEVOUCHEROFFERINGS)
                     .where(EXPERIENCEVOUCHEROFFERINGS.ID.eq(UInteger.valueOf(voucherId))).fetch().get(0);
             experience.setVoucher(voucher);
             connection.close();
+            return DONE;
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
             return ERROR;
         }
-
-        return DONE;
     }
 
     public String getEdit() {
@@ -58,6 +62,14 @@ public class UpdateCartExperience extends ActionSupport {
 
     public void setEdit(String edit) {
         this.edit = edit;
+    }
+
+    public Result<ExperiencevoucherofferingsRecord> getOfferings() {
+        return offerings;
+    }
+
+    public void setOfferings(Result<ExperiencevoucherofferingsRecord> offerings) {
+        this.offerings = offerings;
     }
 
     public Cart getCart() {

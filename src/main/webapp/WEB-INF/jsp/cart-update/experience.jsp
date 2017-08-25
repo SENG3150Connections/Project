@@ -16,8 +16,13 @@
 <form action="update-experience">
 
     <input type="hidden" name="cartIndex" value="${cartIndex}">
-    <br/>VoucherID:<br/>
-    <input type="number" name="voucherId" value="${experience.voucher.id}">
+
+    <br/>Voucher:<br/>
+    <select name="voucherId">
+        <s:iterator value="offerings" var="o" status="entry">
+        <option value="${o.id}">${o.guestcount} People - $${o.price}</option>
+        </s:iterator>
+    </select>
 
     <input type="submit" value="Submit">
 </form>

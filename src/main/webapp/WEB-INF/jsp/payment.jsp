@@ -15,6 +15,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../css/normalize.css">
     <link rel="stylesheet" href="../../css/main.css">
+    <!-- <link rel="stylesheet" href="../../css/results.css"> -->
     <link rel="stylesheet" href="../../css/pikaday.css">
     <link rel="stylesheet" href="../../css/payment.css">
 
@@ -28,7 +29,8 @@
 </head>
 <body>
 <!--[if lt IE 8]>
-<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
 <![endif]-->
 
 <main>
@@ -68,50 +70,66 @@
 
     <div class="paymentPageBody">
 
-        <form>
-            <div class="contentBox">
-                <span class="customerPageHeading">Personal Details:</span>
-                <label for="firstName">First name</label>
-                <input id="firstName" class="textField" type="text">
-                <label for="lastName">Last name</label>
-                <input id="lastName" type="text">
+        <form action="/home" method="post">
+            <div class="inlineFlex">
+                <div class="contentBox row1">
+                    <span class="customerPageHeading">Personal Details:</span>
+                    <br>
+                    <p>To complete your order, please provide us with the following details.</p>
+                    <br>
+                    <label for="firstName">First name</label>
+                    <input id="firstName" class="textField" type="text">
+                    <label for="lastName">Last name</label>
+                    <input id="lastName" class="textField" type="text">
+                    <label for="email">Email address</label>
+
+                    <input id="email" class="textField" type="text" value='<s:property value="#session.userEmail"></s:property> '>
+
+
+                    <label for="phone">phone number</label>
+                    <input id="phone" class="textField" type="text">
+                </div>
+
+                <div class="contentBox row1" >
+                    <span class="customerPageHeading">Order Summary:</span>
+                    <table>
+                        <tr> <th>Item</th> <th>Price</th></tr>
+                        <tr>
+                            <td>A thing</td><td>$20.00</td>
+                        </tr>
+                    </table>
+
+<h3 style=" right:6%;">Total price: ${cart.price}</h3>
+                </div>
             </div>
 
-            <div class="contentBox contentBox-grey">
-                <span class="customerPageHeading">Contact Details:</span>
-                <label for="email">Email address</label>
-                <input id="email" class="textField" type="text">
-                <label for="phone">phone number</label>
-                <input id="phone" type="text">
-            </div>
+            <div class="contentBox contentBox-grey " style="width: 100%;">
 
-            <div class="contentBox">
-                <span class="customerPageHeading">Payment Method:</span>
+                <div class="card-wrapper inlineFlex" >
 
-                <!-- Library from: https://github.com/jessepollak/card -->
+                    <div id="creditCardContainer" class="">
+                        <span class="customerPageHeading">Payment:</span>
+                        <br>
 
-                <div class="card-wrapper">
-                    <h5> Credit card details: </h5>
-                    <form>
-                        <div>
-                            <input id="cardNumber" type="text"  name="number">
-                            <label for="cardNumber" style="color: #000000">Card Number</label>
-                        </div>
-                        <div>
-                            <input id="name" type="text"  name="name"/>
-                            <label for="name" style="color: #000000" >Name on card</label>
-                        </div>
-                        <div>
-                            <input id="time" type="text"   name="expiry"/>
-                            <label for="time" style="color: #000000" >Expiry Date</label>
-                        </div>
-                        <div>
-                            <input id="cvc" type="text"  name="cvc"/>
-                            <label for="cvc" style="color: #000000" >CVC</label>
-                        </div>
-                    </form>
-                    <div style="padding-top: 150px;">
+                        <p>Please enter your credit card details in the fields below.</p>
+                        <br>
+
+                        <!-- Library from: https://github.com/jessepollak/card -->
+
+                        <form>
+                            <input class="creditCardTextField" id="cardNumber" placeholder="Card number" type="text"
+                                   name="number">
+                            <input class="creditCardTextField" id="name" placeholder="Cardholder name" type="text"
+                                   name="name"/>
+                            <input class="creditCardTextField" id="time" placeholder="Expiry date" type="text"
+                                   name="expiry"/>
+                            <input class="creditCardTextField" id="cvc" placeholder="CVC" type="text" name="cvc"/>
+                        </form>
                     </div>
+                    <div>
+
+                    </div>
+
                     <script>
 
                         var card = new Card({
@@ -128,12 +146,12 @@
                     </script>
                 </div>
             </div>
+            <div class="inlineFlex confirmDiv">
+                <a href="/complete" id="cancel">Cancel</a>
+                <button type="submit"> Pay Now</button>
+            </div>
         </form>
     </div>
-
 </main>
-
-
-
 </body>
 </html>

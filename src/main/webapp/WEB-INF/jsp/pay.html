@@ -82,10 +82,7 @@
                     <label for="lastName">Last name</label>
                     <input id="lastName" class="textField" type="text">
                     <label for="email">Email address</label>
-
-                    <input id="email" class="textField" type="text" value='<s:property value="#session.userEmail"></s:property> '>
-
-
+                    <input id="email" class="textField" type="text">
                     <label for="phone">phone number</label>
                     <input id="phone" class="textField" type="text">
                 </div>
@@ -98,8 +95,7 @@
                             <td>A thing</td><td>$20.00</td>
                         </tr>
                     </table>
-
-<h3 style=" right:6%;">Total price: ${cart.price}</h3>
+                    <h3 style=" right:6%;">Total price: $353</h3>
                 </div>
             </div>
 
@@ -147,11 +143,17 @@
                 </div>
             </div>
             <div class="inlineFlex confirmDiv">
+
                 <a href="/complete" id="cancel">Cancel</a>
                 <button type="submit"> Pay Now</button>
+
             </div>
+
         </form>
     </div>
+
 </main>
+
+
 </body>
 </html>

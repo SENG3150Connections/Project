@@ -141,7 +141,8 @@
 
         </action>
 
-        <action name="payment">
+        <action name="payment" class="NewcastleConnections.Actions.Complete">
+            <interceptor-ref name="authentication" />
             <result>WEB-INF/jsp/payment.jsp</result>
         </action>
 

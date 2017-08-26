@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<h3> Enter Payment Information </h3>
+
+<form style="padding-top: 30px;">
+    <div>
+        <div class="input-field col s6">
+            <input id="first_name" type="text" class="validate">
+            <label for="first_name" style="color: #000000">First Name</label>
+        </div>
+        <div>
+            <input id="last_name" type="text" class="validate">
+            <label for="last_name" style="color: #000000">Last Name</label>
+        </div>
+    </div>
+
+    <div>
+        <div>
+            <input id="email" type="email" class="validate">
+            <label for="email" style="color: #000000">Email</label>
+        </div>
+    </div>
+
+    <!-- Library from: https://github.com/jessepollak/card -->
+
+    <div class="card-wrapper">
+        <h5> Credit card details: </h5>
+        <form>
+            <div>
+                <input id="cardNumber" type="text"  name="number">
+                <label for="cardNumber" style="color: #000000">Card Number</label>
+            </div>
+            <div>
+                <input id="name" type="text"  name="name"/>
+                <label for="name" style="color: #000000" >Name on card</label>
+            </div>
+            <div>
+                <input id="time" type="text"   name="expiry"/>
+                <label for="time" style="color: #000000" >Expiry Date</label>
+            </div>
+            <div>
+                <input id="cvc" type="text"  name="cvc"/>
+                <label for="cvc" style="color: #000000" >CVC</label>
+            </div>
+        </form>
+        <div style="padding-top: 150px;">
+        </div>
+        <script>
+
+            var card = new Card({
+                form: 'form',
+                container: '.card-wrapper',
+
+                placeholders: {
+                    number: '**** **** **** ****',
+                    name: 'Arya Stark',
+                    expiry: '**/****',
+                    cvc: '***'
+                }
+            });
+        </script>
+    </div>
+</form>
+
+
+</body>
+</html>

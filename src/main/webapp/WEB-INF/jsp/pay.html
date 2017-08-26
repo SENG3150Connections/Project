@@ -15,6 +15,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../css/normalize.css">
     <link rel="stylesheet" href="../../css/main.css">
+   <!-- <link rel="stylesheet" href="../../css/results.css"> -->
     <link rel="stylesheet" href="../../css/pikaday.css">
     <link rel="stylesheet" href="../../css/payment.css">
 
@@ -69,65 +70,56 @@
     <div class="paymentPageBody">
 
         <form>
-            <div class="contentBox">
-                <span class="customerPageHeading">Personal Details:</span>
-                <label for="firstName">First name</label>
-                <input id="firstName" class="textField" type="text">
-                <label for="lastName">Last name</label>
-                <input id="lastName" type="text">
-            </div>
+        <div class="contentBox">
+            <span class="customerPageHeading">Personal Details:</span>
+            <label for="firstName">First name</label>
+            <input id="firstName" class="textField" type="text">
+            <label for="lastName">Last name</label>
+            <input id="lastName" type="text">
+            <label for="email">Email address</label>
+            <input id="email" class="textField" type="text">
+            <label for="phone">phone number</label>
+            <input id="phone" type="text">
+        </div>
 
-            <div class="contentBox contentBox-grey">
-                <span class="customerPageHeading">Contact Details:</span>
-                <label for="email">Email address</label>
-                <input id="email" class="textField" type="text">
-                <label for="phone">phone number</label>
-                <input id="phone" type="text">
-            </div>
+        <div class="contentBox contentBox-grey">
+            <span class="customerPageHeading">Payment Method:</span>
 
-            <div class="contentBox">
-                <span class="customerPageHeading">Payment Method:</span>
+            <!-- Library from: https://github.com/jessepollak/card -->
 
-                <!-- Library from: https://github.com/jessepollak/card -->
+            <div class="card-wrapper contentBox">
+                <h5> Credit card details: </h5>
+                <form>
+                        <label for="cardNumber">Card Number</label>
+                        <input id="cardNumber" placeholder="Card number" type="text" name="number">
 
-                <div class="card-wrapper">
-                    <h5> Credit card details: </h5>
-                    <form>
-                        <div>
-                            <input id="cardNumber" type="text"  name="number">
-                            <label for="cardNumber" style="color: #000000">Card Number</label>
-                        </div>
-                        <div>
-                            <input id="name" type="text"  name="name"/>
-                            <label for="name" style="color: #000000" >Name on card</label>
-                        </div>
-                        <div>
-                            <input id="time" type="text"   name="expiry"/>
-                            <label for="time" style="color: #000000" >Expiry Date</label>
-                        </div>
-                        <div>
-                            <input id="cvc" type="text"  name="cvc"/>
-                            <label for="cvc" style="color: #000000" >CVC</label>
-                        </div>
-                    </form>
-                    <div style="padding-top: 150px;">
-                    </div>
-                    <script>
+                        <label for="name">Name on card</label>
+                        <input id="name" type="text" name="name"/>
 
-                        var card = new Card({
-                            form: 'form',
-                            container: '.card-wrapper',
+                        <label for="time">Expiry Date</label>
+                        <input id="time" type="text" name="expiry"/>
 
-                            placeholders: {
-                                number: '**** **** **** ****',
-                                name: 'Arya Stark',
-                                expiry: '**/****',
-                                cvc: '***'
-                            }
-                        });
-                    </script>
+                        <label for="cvc">CVC</label>
+                        <input id="cvc" type="text" name="cvc"/>
+                </form>
+                <div style="padding-top: 150px;">
                 </div>
+                <script>
+
+                    var card = new Card({
+                        form: 'form',
+                        container: '.card-wrapper',
+
+                        placeholders: {
+                            number: '**** **** **** ****',
+                            name: 'Arya Stark',
+                            expiry: '**/****',
+                            cvc: '***'
+                        }
+                    });
+                </script>
             </div>
+        </div>
         </form>
     </div>
 

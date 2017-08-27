@@ -155,12 +155,6 @@
             <result>WEB-INF/jsp/customerPortal-bookings.jsp</result>
         </action>
 
-
-        <action name="rec" class="NewcastleConnections.Actions.RecommendationTest">
-            <result name="success">/WEB-INF/jsp/recommendationTest.jsp</result>
-            <result name="error">/WEB-INF/jsp/exception.jsp</result>
-        </action>
-
     </package>
 
 

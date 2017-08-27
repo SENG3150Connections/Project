@@ -91,30 +91,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="invoiceContent">1</td>
-                            <td class="invoiceContent">01/01/2001</td>
-                            <td class="invoiceContent">$1</td>
-                            <td class="invoiceContent">Complete</td>
-                            <td class="invoiceContent">
-                                <form action="/customerPortal-bookings" method="post">
-                                    <input type="hidden" name="invoiceID" value="1"/>
-                                    <input type="submit" class="invoiceSubmit btn btn-primary" value="View Booking"/>
-                                </form>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="invoiceContent">25</td>
-                            <td class="invoiceContent">02/02/2002</td>
-                            <td class="invoiceContent">$2.00</td>
-                            <td class="invoiceContent">Complete</td>
-                            <td class="invoiceContent">
-                                <form action="/customerPortal-bookings" method="post">
-                                    <input type="hidden" name="invoiceID" value="25"/>
-                                    <input type="submit" class="invoiceSubmit btn btn-primary" value="View Booking"/>
-                                </form>
-                            </td>
-                        </tr>
                         <s:iterator value="invoices" var="invoice">
                         <tr>
                             <td class="invoiceContent">${invoice.id}</td>

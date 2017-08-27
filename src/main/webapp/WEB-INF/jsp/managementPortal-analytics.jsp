@@ -48,7 +48,7 @@
                         <label class="heading">Report</label>
 
                         <div class="row">
-
+                            <img style="padding-left:8px" src="../../img/analytics.png" />
                         </div>
                     </div>
                 </div>

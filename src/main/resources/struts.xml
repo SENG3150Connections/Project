@@ -101,6 +101,7 @@
 
         <!-- Management Portal -->
         <action name="managementPortal">
+            <interceptor-ref name="authentication" />
             <result>WEB-INF/jsp/managementPortal.jsp</result>
         </action>
 

@@ -57,19 +57,19 @@
                                     <label class="heading">$${netSalesTotal}</label><br>
                                     <label class="subHeading">Net Sales in this period</label>
                                 </div>
-                                <div class="col-md-12 analyticsGraphDetails" style="border-right-color: #0c0;">
+                                <div class="col-md-12 analyticsGraphDetails" style="border-right-color: #fc0;">
                                     <label class="heading">${ordersPlacedTotal}</label><br>
                                     <label class="subHeading">Orders placed</label>
                                 </div>
-                                <div class="col-md-12 analyticsGraphDetails" style="border-right-color: #0cc;">
+                                <div class="col-md-12 analyticsGraphDetails" style="border-right-color: #fcc;">
                                     <label class="heading">${itemsPurchasedTotal}</label><br>
                                     <label class="subHeading">Items Purchased</label>
                                 </div>
-                                <div class="col-md-12 analyticsGraphDetails" style="border-right-color: #00c;">
+                                <div class="col-md-12 analyticsGraphDetails" style="border-right-color: #f0c;">
                                     <label class="heading">$${refundedTotal}</label><br>
                                     <label class="subHeading">Refunded 0 orders (0 items)</label>
                                 </div>
-                                <div class="col-md-12 analyticsGraphDetails" style="border-right-color: #c0c;">
+                                <div class="col-md-12 analyticsGraphDetails" style="border-right-color: #c0f;">
                                     <label class="heading">$${couponSalesTotal}</label><br>
                                     <label class="subHeading">Worth of coupons used</label>
                                 </div>
@@ -84,7 +84,7 @@
 
                                     <!-- Graph Data -->>
                                     <% for(int i = 0; i < 7; i++) { %>
-                                        <% String[] colours = new String[]{"#c00", "#cc0", "#0c0", "#0cc", "#00c", "#c0c"}; %>
+                                        <% String[] colours = new String[]{"#c00", "#cc0", "#fc0", "#fcc", "#f0c", "#c0c"}; %>
                                         <% double percentage = 95.0; %>
 
 
@@ -96,9 +96,9 @@
                                     <% } %>
 
                                     <line x1="10%" y1="95%" x2="88%" y2="95%" style="stroke:#555;stroke-width:4" />
-                                    <% for(float i = 10; i <= 90; i+=13 + 1/3) { %>
-                                        <circle cx="<%=i%>%" cy="95%" r="10" fill="#555" />
-                                        <text x="<%=i - 1%>%" y="100%" fill="#aaa">28/08</text>
+                                    <% for(int i = 0; i < 7; i++) { %>
+                                        <circle cx="<%=10 + (13 + 1/3) * i%>%" cy="95%" r="10" fill="#555" />
+                                        <text x="<%=9 + (13 + 1/3) * i%>%" y="100%" fill="#aaa"><%=(28 + i)%31 + (int)(Math.floor((28 + i)/31))%>/0<%=8 + (int)(Math.floor((28 + i)/31))%></text>
                                     <% } %>
                                 </svg>
                             </div>

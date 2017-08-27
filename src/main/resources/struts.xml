@@ -128,8 +128,7 @@
         </action>
 
         <action name="callback" class="NewcastleConnections.Authentication.CallbackAction">
-            <result name="normal" type="redirectAction">home</result>
-            <result name="admin" type="redirectAction">managementPortal</result>
+            <result>WEB-INF/jsp/home.jsp</result>
 
         </action>
 

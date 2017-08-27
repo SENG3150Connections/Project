@@ -115,7 +115,14 @@ public class CallbackAction extends ActionSupport {
 
 
 
-        return getRedirectOnSuccess(role);
+        if (role.equals("1")) {
+            response.sendRedirect("managementPortal");
+        } else {
+            response.sendRedirect(SessionUtils.get(request,"authSourceUrl").toString());
+
+        }
+
+        return SUCCESS;
     }
 
 
@@ -138,30 +145,6 @@ public class CallbackAction extends ActionSupport {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        return output;
-    }
-
-
-    private String getRedirectOnSuccess(String userType) {
-
-        // Determine redirect on success based on user type.
-        String output = "";
-
-        switch (userType) {
-
-            case "0":
-                output = "normal";
-                break;
-            case "1":
-                output = "admin";
-                break;
-            default:
-                output = "normal";
-                break;
-
-        }
-
 
         return output;
     }

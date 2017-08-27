@@ -142,7 +142,7 @@
                                 <span class="tooltiptext">Add to package</span>
                             </span></a>
                             <div class="offer-images">
-                                <div class="offer-img-initial">
+                                <div class="offer-img-initial" style="min-height: 150px;">
                                     <img src='../../img/hotels/hotel${(rec.id)%17}.jpg' class="cover"/>
                                 </div>
                                 <div class="offer-img-item">
@@ -167,7 +167,7 @@
                                 <span class="tooltiptext">Add to package</span>
                             </span></a>
                             <div class="offer-images">
-                                <div class="offer-img-initial">
+                                <div class="offer-img-initial" style="min-height: 150px;">
                                     <img src='../../img/experiences/experience${(rec.id)%17}.jpg' class="cover"/>
                                 </div>
                                 <div class="offer-img-item">
@@ -196,7 +196,7 @@
                                 <span class="tooltiptext">Add to package</span>
                             </span></a>
                             <div class="offer-images">
-                                <div class="offer-img-initial">
+                                <div class="offer-img-initial" style="min-height: 150px;">
                                     <img src='../../img/restaurants/restaurant${(rec.id)%17}.jpg' class="cover"/>
                                 </div>
                                 <div class="offer-img-item">
@@ -223,7 +223,7 @@
                             <span class="tooltiptext">Add to package</span>
                         </span></a>
                         <div class="offer-images">
-                            <div class="offer-img-initial">
+                            <div class="offer-img-initial" style="min-height: 150px;">
                                 <img src='../../img/hotels/hotel${(h.id)%17}.jpg' class="cover"/>
                             </div>
                             <div class="offer-img-item">
@@ -250,7 +250,7 @@
                             <span class="tooltiptext">Add to package</span>
                         </span></a>
                         <div class="offer-images">
-                            <div class="offer-img-initial">
+                            <div class="offer-img-initial" style="min-height: 150px;">
                                 <img src='../../img/restaurants/restaurant${(r.id)%17}.jpg' class="cover"/>
                             </div>
                             <div class="offer-img-item">
@@ -277,7 +277,7 @@
                             <span class="tooltiptext">Add to package</span>
                         </span></a>
                         <div class="offer-images">
-                            <div class="offer-img-initial">
+                            <div class="offer-img-initial" style="min-height: 150px;">
                                 <img src='../../img/experiences/experience${(e.id)%17}.jpg' class="cover"/>
                             </div>
                             <div class="offer-img-item">
@@ -304,7 +304,7 @@
                             <span class="tooltiptext">Add to package</span>
                         </span></a>
                         <div class="offer-images">
-                            <div class="offer-img-initial">
+                            <div class="offer-img-initial" style="min-height: 150px;">
                                 <img src='../../img/offer-img.jpg' class="cover"/>
                             </div>
                             <div class="offer-img-item">

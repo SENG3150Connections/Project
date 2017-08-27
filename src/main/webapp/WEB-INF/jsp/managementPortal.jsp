@@ -50,27 +50,27 @@
                         <div class="row">
                             <div class="col-md-2">
                                 <div class="col-md-12 analyticsGraphDetails" style="border-right-color: #c00;">
-                                    <label class="heading">$${grossSales}</label><br>
+                                    <label class="heading">$${grossSalesTotal}</label><br>
                                     <label class="subHeading">Gross Sales in this period</label>
                                 </div>
                                 <div class="col-md-12 analyticsGraphDetails" style="border-right-color: #cc0;">
-                                    <label class="heading">$${netSales}</label><br>
+                                    <label class="heading">$${netSalesTotal}</label><br>
                                     <label class="subHeading">Net Sales in this period</label>
                                 </div>
                                 <div class="col-md-12 analyticsGraphDetails" style="border-right-color: #0c0;">
-                                    <label class="heading">${ordersPlaced}</label><br>
+                                    <label class="heading">${ordersPlacedTotal}</label><br>
                                     <label class="subHeading">Orders placed</label>
                                 </div>
                                 <div class="col-md-12 analyticsGraphDetails" style="border-right-color: #0cc;">
-                                    <label class="heading">${itemsPurchased}</label><br>
+                                    <label class="heading">${itemsPurchasedTotal}</label><br>
                                     <label class="subHeading">Items Purchased</label>
                                 </div>
                                 <div class="col-md-12 analyticsGraphDetails" style="border-right-color: #00c;">
-                                    <label class="heading">$${refunded}</label><br>
+                                    <label class="heading">$${refundedTotal}</label><br>
                                     <label class="subHeading">Refunded 0 orders (0 items)</label>
                                 </div>
                                 <div class="col-md-12 analyticsGraphDetails" style="border-right-color: #c0c;">
-                                    <label class="heading">$${couponSales}</label><br>
+                                    <label class="heading">$${couponSalesTotal}</label><br>
                                     <label class="subHeading">Worth of coupons used</label>
                                 </div>
                             </div>
@@ -78,18 +78,27 @@
                             <div class="col-md-9">
                                 <svg style="width:100%; height: 500px;">
                                     <% for(int i = 5; i <= 95; i+=15) { %>
-                                    <text x="2.5%" y="<%=95-i%>%" fill="#aaa"><%=i%></text>
-                                    <line x1="5%" y1="<%=i%>%" x2="95%" y2="<%=i%>%" style="stroke:#aaa;stroke-width:2" />
+                                        <text x="2.5%" y="<%=95-i%>%" fill="#aaa"><%=i%></text>
+                                        <line x1="5%" y1="<%=i%>%" x2="95%" y2="<%=i%>%" style="stroke:#aaa;stroke-width:2" />
                                     <% } %>
 
-                                    <!-- Graph Data -->
-                                    <rect x="7.5%" y="20%" width="5%" height="60%" style="fill:#0cc;fill-opacity:0.6;"/>
-                                    <rect x="7.5%" y="80%" width="5%" height="15%" style="fill:#0c0;fill-opacity:0.6;"/>
+                                    <!-- Graph Data -->>
+                                    <% for(int i = 0; i < 7; i++) { %>
+                                        <% String[] colours = new String[]{"#c00", "#cc0", "#0c0", "#0cc", "#00c", "#c0c"}; %>
+                                        <% double percentage = 95.0; %>
 
 
-                                    <line x1="10%" y1="95%" x2="90%" y2="95%" style="stroke:#555;stroke-width:4" />
-                                    <% for(int i = 10; i <= 90; i+=10) { %>
-                                    <circle cx="<%=i%>%" cy="95%" r="10" fill="#555" />
+                                        <% for(int j = 0; j < 6; j++) { %>
+                                            <% float value = ( java.lang.Math.round(java.lang.Math.random() * percentage) ) % 30; %>
+                                            <rect x="<%=7.5 + (13 + 1/3) * i%>%" y="<%= percentage - value %>%" width="5%" height="<%= value %>%" style="fill:<%=colours[j]%>;fill-opacity:0.6;"/>
+                                            <% percentage -= value; %>
+                                        <% } %>
+                                    <% } %>
+
+                                    <line x1="10%" y1="95%" x2="88%" y2="95%" style="stroke:#555;stroke-width:4" />
+                                    <% for(float i = 10; i <= 90; i+=13 + 1/3) { %>
+                                        <circle cx="<%=i%>%" cy="95%" r="10" fill="#555" />
+                                        <text x="<%=i - 1%>%" y="100%" fill="#aaa">28/08</text>
                                     <% } %>
                                 </svg>
                             </div>

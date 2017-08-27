@@ -58,12 +58,7 @@
                                     <s:iterator value="hotels" var="hotel">
                                         <div id="${hotel.id}" class="card-container col-sm-6 col-md-4 col-lg-3 mt-4" onclick="location.href='editOffer?id=${hotel.id}';">
                                             <div class="card">
-                                                <s:if test="%{hotel.name!=''}">
-                                                    <img id="${hotel.name}" class="card-img-top" src="img/hotelDefault.png">
-                                                </s:if>
-                                                <s:else>
-                                                    <img id="${hotel.name}" class="card-img-top" src="img/hotelDefault.png">
-                                                </s:else>
+                                                <img id="${hotel.name}" class="card-img-top" src="img/hotels/hotel${hotel.id % 17}.jpg">
                                                 <div class="card-block">
                                                     <h5 class="text-bold">${hotel.name}</h5>
                                                 </div>
@@ -74,14 +69,20 @@
                                     <s:iterator value="restaurants" var="restaurant">
                                         <div id="${restaurant.id}" class="card-container col-sm-6 col-md-4 col-lg-3 mt-4">
                                             <div class="card">
-                                                <s:if test="%{restaurant.name!=''}">
-                                                    <img id="${restaurant.name}" class="card-img-top" src="img/restaurantDefault.png">
-                                                </s:if>
-                                                <s:else>
-                                                    <img id="${restaurant.name}" class="card-img-top" src="img/restaurantDefault.png">
-                                                </s:else>
+                                                <img id="${restaurant.name}" class="card-img-top" src="img/restaurants/restaurant${restaurant.id % 17}.jpg">
                                                 <div class="card-block">
                                                     <h5 class="text-bold">${restaurant.name}</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </s:iterator>
+
+                                    <s:iterator value="experiences" var="experience">
+                                        <div id="${experience.id}" class="card-container col-sm-6 col-md-4 col-lg-3 mt-4">
+                                            <div class="card">
+                                                <img id="${experience.name}" class="card-img-top" src="img/experiences/experience${experience.id % 17}.jpg">
+                                                <div class="card-block">
+                                                    <h5 class="text-bold">${experience.name}</h5>
                                                 </div>
                                             </div>
                                         </div>

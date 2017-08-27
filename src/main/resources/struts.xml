@@ -123,10 +123,6 @@
             <result type="redirect">results</result>
         </action>
 
-        <action name="cartTest" class="NewcastleConnections.Actions.Cart.ViewCart">
-            <result>/WEB-INF/jsp/cartTest.jsp</result>
-        </action>
-
         <action name="login" class="NewcastleConnections.Authentication.LoginAction">
             <result>WEB-INF/jsp/home.jsp</result>
         </action>

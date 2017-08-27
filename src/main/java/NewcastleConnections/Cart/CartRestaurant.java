@@ -41,7 +41,7 @@ public class CartRestaurant implements CartItem {
         return restaurant.getId().intValue();
     }
 
-    public boolean isReady() {
+    public boolean getReady() {
         return time != null && seats > 0;
     }
 
@@ -52,7 +52,7 @@ public class CartRestaurant implements CartItem {
     // -- Other methods --
 
     public InvoicerestaurantRecord getInvoice() {
-        if (!isReady()) {
+        if (!getReady()) {
             return null;
         }
 

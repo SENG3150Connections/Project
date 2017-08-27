@@ -1,10 +1,7 @@
 package NewcastleConnections.Actions;
 
 import NewcastleConnections.*;
-import NewcastleConnections.InvoiceInfo.ExperienceInvoiceInfo;
-import NewcastleConnections.InvoiceInfo.HotelInvoiceInfo;
-import NewcastleConnections.InvoiceInfo.RestaurantInvoiceInfo;
-import NewcastleConnections.InvoiceInfo.TransportInvoiceInfo;
+import NewcastleConnections.InvoiceInfo.*;
 import NewcastleConnections.packagedeals.tables.records.*;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
@@ -25,13 +22,13 @@ import static NewcastleConnections.packagedeals.Tables.*;
 public class GetUserBooking extends ActionSupport {
 
     // Results property (to be shared with the JSP page)
-    private InvoicesRecord invoice;
+    private InvoiceInfo invoice;
     private List<HotelInvoiceInfo> hotels;
     private List<ExperienceInvoiceInfo> experiences;
     private List<RestaurantInvoiceInfo> restaurants;
     private List<TransportInvoiceInfo> transports;
 
-    public InvoicesRecord getInvoice() {
+    public InvoiceInfo getInvoice() {
         return invoice;
     }
 
@@ -61,11 +58,17 @@ public class GetUserBooking extends ActionSupport {
             // Get connection
             DatabaseConnection connection = new DatabaseConnection();
             // query
-            invoice = connection.getDSL().selectFrom(INVOICES).where(INVOICES.ID.eq(UInteger.valueOf(invoiceID))).fetchOne();
+            InvoicesRecord invoicesRecord = connection.getDSL().selectFrom(INVOICES).where(INVOICES.ID.eq(UInteger.valueOf(invoiceID))).fetchOne();
             Result<InvoiceexperienceRecord> invoiceexperiences = connection.getDSL().selectFrom(INVOICEEXPERIENCE).where(INVOICEEXPERIENCE.INVOICEID.eq(UInteger.valueOf(invoiceID))).fetch();
             Result<InvoicehotelRecord> invoicehotels = connection.getDSL().selectFrom(INVOICEHOTEL).where(INVOICEHOTEL.INVOICEID.eq(UInteger.valueOf(invoiceID))).fetch();
             Result<InvoicerestaurantRecord> invoicerestaurants = connection.getDSL().selectFrom(INVOICERESTAURANT).where(INVOICERESTAURANT.INVOICEID.eq(UInteger.valueOf(invoiceID))).fetch();
             Result<InvoicetransportRecord> invoicetransports = connection.getDSL().selectFrom(INVOICETRANSPORT).where(INVOICETRANSPORT.INVOICEID.eq(UInteger.valueOf(invoiceID))).fetch();
+
+            invoice = new InvoiceInfo();
+            invoice.setId(invoicesRecord.getId());
+            invoice.setPrice(invoicesRecord.getPrice());
+            invoice.setStatus(invoicesRecord.getStatus());
+            invoice.setPurchasedate(invoicesRecord.getPurchasedate());
 
             hotels = new ArrayList<>();
             for (InvoicehotelRecord x: invoicehotels) {

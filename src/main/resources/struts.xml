@@ -20,21 +20,22 @@
             <result name="login" type="redirect">/login</result>
         </global-results>
 
+        <!-- Begin actions -->
+        
         <action name="home">
             <result>WEB-INF/jsp/home.jsp</result>
         </action>
 
-        <action name="managementPortal">
-            <result>WEB-INF/jsp/managementPortal.jsp</result>
-        </action>
-
-        <!-- Example authentication -->
-        <action name="private">
-            <interceptor-ref name="authentication" />
-            <result name="success">/WEB-INF/jsp/private.jsp</result>
+        <action name="results" class="NewcastleConnections.Actions.Results">
+            <result name="success">/WEB-INF/jsp/results.jsp</result>
+            <result name="error">/WEB-INF/jsp/exception.jsp</result>
         </action>
 
         <!-- Cart updaters -->
+        <action name="edit-cart" class="NewcastleConnections.Actions.Cart.UpdateCart">
+            <result type="redirect">results</result>
+        </action>
+
         <action name="update-experience" class="NewcastleConnections.Actions.Cart.UpdateCartExperience">
             <result name="success">/WEB-INF/jsp/cart-update/experience.jsp</result>
             <result name="done" type="redirect">results</result>
@@ -55,8 +56,54 @@
             <result name="done" type="redirect">results</result>
             <result name="error">/WEB-INF/jsp/exception.jsp</result>
         </action>
+        <!-- End Cart Updaters -->
+
+        <!-- Example authentication -->
+        <action name="private">
+            <interceptor-ref name="authentication" />
+            <result name="success">/WEB-INF/jsp/private.jsp</result>
+        </action>
+
+        <!-- Auth -->
+        <action name="login" class="NewcastleConnections.Authentication.LoginAction">
+            <result>WEB-INF/jsp/home.jsp</result>
+        </action>
+
+        <action name="callback" class="NewcastleConnections.Authentication.CallbackAction">
+            <result>WEB-INF/jsp/home.jsp</result>
+        </action>
+
+        <action name="logout" class="NewcastleConnections.Authentication.LogoutAction">
+            <result type="redirectAction">home</result>
+        </action>
+        <!-- End Auth -->
+
+        <!-- Payment -->
+        <action name="payment" class="NewcastleConnections.Actions.Complete">
+            <interceptor-ref name="authentication" />
+            <result>WEB-INF/jsp/payment.jsp</result>
+        </action>
+
+        <action name="complete" class="NewcastleConnections.Actions.Complete">
+            <result>WEB-INF/jsp/complete.jsp</result>
+        </action>
+        <!-- End Payment -->
+
+        <!-- User Management Portal -->
+        <action name="customerPortal" class="NewcastleConnections.Actions.GetUserInvoices">
+            <result>WEB-INF/jsp/customerPortal.jsp</result>
+        </action>
+
+        <action name="customerPortal-bookings" class="NewcastleConnections.Actions.GetUserBooking">
+            <result>WEB-INF/jsp/customerPortal-bookings.jsp</result>
+        </action>
+        <!-- End User Management Portal -->
 
         <!-- Management Portal -->
+        <action name="managementPortal">
+            <result>WEB-INF/jsp/managementPortal.jsp</result>
+        </action>
+
         <action name="createOffer" class="NewcastleConnections.Actions.CreateOffer">
             <result name="success">/WEB-INF/jsp/managementPortal-create-offer.jsp</result>
             <result name="error">/WEB-INF/jsp/exception.jsp</result>
@@ -106,65 +153,7 @@
             <result name="success">WEB-INF/jsp/managementPortal-invoice.jsp</result>
             <result name="error">/WEB-INF/jsp/exception.jsp</result>
         </action>
-
         <!-- End Management Portal -->
-        
-        <action name="dbTest" class="NewcastleConnections.Actions.Results">
-            <result name="success">/WEB-INF/jsp/databaseTest.jsp</result>
-            <result name="error">/WEB-INF/jsp/exception.jsp</result>
-        </action>
-
-        <action name="results" class="NewcastleConnections.Actions.Results">
-            <result name="success">/WEB-INF/jsp/results.jsp</result>
-            <result name="error">/WEB-INF/jsp/exception.jsp</result>
-        </action>
-
-        <action name="edit-cart" class="NewcastleConnections.Actions.Cart.UpdateCart">
-            <result type="redirect">results</result>
-        </action>
-
-        <action name="cartTest" class="NewcastleConnections.Actions.Cart.ViewCart">
-            <result>/WEB-INF/jsp/cartTest.jsp</result>
-        </action>
-
-        <action name="login" class="NewcastleConnections.Authentication.LoginAction">
-            <result>WEB-INF/jsp/home.jsp</result>
-        </action>
-
-        <action name="callback" class="NewcastleConnections.Authentication.CallbackAction">
-            <result name="normal" type="redirectAction">home</result>
-            <result name="admin" type="redirectAction">managementPortal</result>
-
-        </action>
-
-        <action name="payment" class="NewcastleConnections.Actions.Complete">
-            <interceptor-ref name="authentication" />
-            <result>WEB-INF/jsp/payment.jsp</result>
-        </action>
-
-        <action name="complete" class="NewcastleConnections.Actions.Complete">
-            <result>WEB-INF/jsp/complete.jsp</result>
-        </action>
-
-        <action name="logout" class="NewcastleConnections.Authentication.LogoutAction">
-            <result type="redirectAction">home</result>
-        </action>
-
-        <!-- User Management Portal -->
-
-        <action name="customerPortal" class="NewcastleConnections.Actions.GetUserInvoices">
-            <result>WEB-INF/jsp/customerPortal.jsp</result>
-        </action>
-
-        <action name="customerPortal-bookings" class="NewcastleConnections.Actions.GetUserBooking">
-            <result>WEB-INF/jsp/customerPortal-bookings.jsp</result>
-        </action>
-
-
-        <action name="rec" class="NewcastleConnections.Actions.RecommendationTest">
-            <result name="success">/WEB-INF/jsp/recommendationTest.jsp</result>
-            <result name="error">/WEB-INF/jsp/exception.jsp</result>
-        </action>
 
     </package>
 

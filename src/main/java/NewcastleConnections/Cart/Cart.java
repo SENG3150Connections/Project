@@ -91,7 +91,7 @@ public class Cart {
 
     public boolean getReadyToPay() {
         for (CartItem i : getAll()) {
-            if (!i.isReady()) return false;
+            if (!i.getReady()) return false;
         }
         return true;
     }
@@ -99,7 +99,7 @@ public class Cart {
     public double getCurrentPrice() {
         price = 0.0;
         for (CartItem i : getAll()) {
-            if (i.isReady())
+            if (i.getReady())
                 price += i.getPrice();
         }
         return price;

@@ -138,7 +138,7 @@
                     <s:iterator value="recommendedHotels" var="rec">
                         <div class="offer-list recommendation">
                             <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
-                            <a href="edit-cart?method=add&type=experience&id=${(rec.id)%17}"><span class="fa fa-plus offer-add" aria-hidden="true">
+                            <a href="edit-cart?method=add&type=experience&id=${rec.id}"><span class="fa fa-plus offer-add" aria-hidden="true">
                                 <span class="tooltiptext">Add to package</span>
                             </span></a>
                             <div class="offer-images">
@@ -163,7 +163,7 @@
                     <s:iterator value="recommendedExperiences" var="rec">
                         <div class="offer-list recommendation">
                             <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
-                            <a href="edit-cart?method=add&type=experience&id=${(rec.id)%17}"><span class="fa fa-plus offer-add" aria-hidden="true">
+                            <a href="edit-cart?method=add&type=experience&id=${rec.id}"><span class="fa fa-plus offer-add" aria-hidden="true">
                                 <span class="tooltiptext">Add to package</span>
                             </span></a>
                             <div class="offer-images">
@@ -192,7 +192,7 @@
                     <s:iterator value="recommendedRestaurants" var="rec">
                         <div class="offer-list recommendation">
                             <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
-                            <a href="edit-cart?method=add&type=experience&id=${(rec.id)%17}"><span class="fa fa-plus offer-add" aria-hidden="true">
+                            <a href="edit-cart?method=add&type=experience&id=${rec.id}"><span class="fa fa-plus offer-add" aria-hidden="true">
                                 <span class="tooltiptext">Add to package</span>
                             </span></a>
                             <div class="offer-images">
@@ -219,7 +219,7 @@
                 <s:iterator value="hotels" var="h">
                     <div class="offer-list">
                         <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
-                        <a href="edit-cart?method=add&type=hotel&id=${(h.id)%17}"><span class="fa fa-plus offer-add" aria-hidden="true">
+                        <a href="edit-cart?method=add&type=hotel&id=${h.id}"><span class="fa fa-plus offer-add" aria-hidden="true">
                             <span class="tooltiptext">Add to package</span>
                         </span></a>
                         <div class="offer-images">
@@ -246,7 +246,7 @@
                 <s:iterator value="restaurants" var="r">
                     <div class="offer-list">
                         <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
-                        <a href="edit-cart?method=add&type=restaurant&id=${(r.id)%17}"><span class="fa fa-plus offer-add" aria-hidden="true">
+                        <a href="edit-cart?method=add&type=restaurant&id=${r.id}"><span class="fa fa-plus offer-add" aria-hidden="true">
                             <span class="tooltiptext">Add to package</span>
                         </span></a>
                         <div class="offer-images">
@@ -273,7 +273,7 @@
                 <s:iterator value="experiences" var="e">
                     <div class="offer-list">
                         <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
-                        <a href="edit-cart?method=add&type=experience&id=${(e.id)%17}"><span class="fa fa-plus offer-add" aria-hidden="true">
+                        <a href="edit-cart?method=add&type=experience&id=${e.id}"><span class="fa fa-plus offer-add" aria-hidden="true">
                             <span class="tooltiptext">Add to package</span>
                         </span></a>
                         <div class="offer-images">

@@ -3,6 +3,7 @@ package NewcastleConnections.InvoiceInfo;
 import org.jooq.types.UInteger;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 /**
  * Created by Jack on 22/08/2017.
@@ -28,8 +29,8 @@ public class RestaurantInvoiceInfo {
         this.restaurantID = restaurantID;
     }
 
-    public Timestamp getRestaurantTime() {
-        return restaurantTime;
+    public String getRestaurantTime() {
+        return new SimpleDateFormat("hh:mm a dd/MM/yyyy").format(restaurantTime);
     }
 
     public void setRestaurantTime(Timestamp restaurantTime) {
@@ -44,8 +45,8 @@ public class RestaurantInvoiceInfo {
         this.restaurantSeats = restaurantSeats;
     }
 
-    public double getRestaurantPrice() {
-        return restaurantPrice;
+    public String getRestaurantPrice() {
+        return "$" + String.format( "%.2f", restaurantPrice );
     }
 
     public void setRestaurantPrice(double restaurantPrice) {

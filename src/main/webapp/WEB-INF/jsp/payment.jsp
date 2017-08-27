@@ -167,7 +167,7 @@
             </div>
             <div class="inlineFlex confirmDiv">
                 <a href="/results" id="cancel">Cancel</a>
-                <button type="submit" form="form" value="Submit"> Pay Now</button>
+                <button type="submit" form="form" value="Submit">Pay Now</button>
             </div>
         </form>
     </div>

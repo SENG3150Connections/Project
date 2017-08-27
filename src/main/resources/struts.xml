@@ -79,13 +79,13 @@
         <!-- End Auth -->
 
         <!-- Payment -->
-        <action name="payment" class="NewcastleConnections.Actions.Complete">
+        <action name="payment" class="NewcastleConnections.Actions.Cart.ViewCart">
             <interceptor-ref name="authentication" />
             <result>WEB-INF/jsp/payment.jsp</result>
         </action>
 
         <action name="complete" class="NewcastleConnections.Actions.Complete">
-            <result>WEB-INF/jsp/complete.jsp</result>
+            <result type="redirect">customerPortal</result>
         </action>
         <!-- End Payment -->
 

@@ -134,47 +134,101 @@
                 <hr />
             </div>
             <div id="results" class="flex-col">
-                <s:iterator value="recommendedExperiences" var="rec">
-                    <div class="offer-list" style="background-color: goldenrod">
-                        <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
-                        <a href="edit-cart?method=add&type=experience&id=${rec.id}"><span class="fa fa-plus offer-add" aria-hidden="true">
-                            <span class="tooltiptext">Add to package</span>
-                        </span></a>
-                        <div class="offer-images">
-                            <div class="offer-img-initial">
-                                <img src='../../img/offer-img.jpg' class="cover"/>
+                <s:if test="%{recommendedItem == 0}">
+                    <s:iterator value="recommendedHotels" var="rec">
+                        <div class="offer-list" style="background-color: goldenrod">
+                            <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
+                            <a href="edit-cart?method=add&type=experience&id=${(rec.id)%17}"><span class="fa fa-plus offer-add" aria-hidden="true">
+                                <span class="tooltiptext">Add to package</span>
+                            </span></a>
+                            <div class="offer-images">
+                                <div class="offer-img-initial">
+                                    <img src='../../img/hotels/hotel${(rec.id)%17}.jpg' class="cover"/>
+                                </div>
+                                <div class="offer-img-item">
+                                    <img src='../../img/hotels/hotel${(rec.id + 10)%17}.jpg' class="cover"/>
+                                    <img src='../../img/hotels/hotel${(rec.id + 16)%17}.jpg' class="cover"/>
+                                </div>
                             </div>
-                            <div class="offer-img-item">
-                                <img src='../../img/offer-img-2.jpg' class="cover"/>
-                                <img src='../../img/offer-img-3.jpg' class="cover"/>
-                            </div>
-                        </div>
-                        <div class="offer-info">
-                            <div class="offer-info-left">
-                                <span class="name">${rec.name}</span>
-                                <span class="blurb">${rec.info}</span>
-                            </div>
-                            <div class="offer-info-right">
-                                <span class="price">${rec.price}</span>
-                                <span class="fa icons">&#xf2cd&nbsp;&#xf236</span>
+                            <div class="offer-info">
+                                <div class="offer-info-left">
+                                    <span class="name">${rec.name}</span>
+                                    <span class="blurb">${rec.description}</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </s:iterator>
+                    </s:iterator>
+                </s:if>
+                <s:if test="%{recommendedItem == 1}">
+                    <s:iterator value="recommendedExperiences" var="rec">
+                        <div class="offer-list" style="background-color: goldenrod">
+                            <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
+                            <a href="edit-cart?method=add&type=experience&id=${(rec.id)%17}"><span class="fa fa-plus offer-add" aria-hidden="true">
+                                <span class="tooltiptext">Add to package</span>
+                            </span></a>
+                            <div class="offer-images">
+                                <div class="offer-img-initial">
+                                    <img src='../../img/experiences/experience${(rec.id)%17}.jpg' class="cover"/>
+                                </div>
+                                <div class="offer-img-item">
+                                    <img src='../../img/hotels/hotel${(rec.id + 10)%17}.jpg' class="cover"/>
+                                    <img src='../../img/hotels/hotel${(rec.id + 16)%17}.jpg' class="cover"/>
+                                </div>
+                            </div>
+                            <div class="offer-info">
+                                <div class="offer-info-left">
+                                    <span class="name">${rec.name}</span>
+                                    <span class="blurb">${rec.info}</span>
+                                </div>
+                                <div class="offer-info-right">
+                                    <span class="price">${rec.price}</span>
+                                    <span class="fa icons">&#xf2cd&nbsp;&#xf236</span>
+                                </div>
+                            </div>
+                        </div>
+                    </s:iterator>
+                </s:if>
+                <s:if test="%{recommendedItem == 2}">
+                    <s:iterator value="recommendedRestaurants" var="rec">
+                        <div class="offer-list" style="background-color: goldenrod">
+                            <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
+                            <a href="edit-cart?method=add&type=experience&id=${(rec.id)%17}"><span class="fa fa-plus offer-add" aria-hidden="true">
+                                <span class="tooltiptext">Add to package</span>
+                            </span></a>
+                            <div class="offer-images">
+                                <div class="offer-img-initial">
+                                    <img src='../../img/restaurants/restaurant${(rec.id)%17}.jpg' class="cover"/>
+                                </div>
+                                <div class="offer-img-item">
+                                    <img src='../../img/hotels/hotel${(rec.id + 10)%17}.jpg' class="cover"/>
+                                    <img src='../../img/hotels/hotel${(rec.id + 16)%17}.jpg' class="cover"/>
+                                </div>
+                            </div>
+                            <div class="offer-info">
+                                <div class="offer-info-left">
+                                    <span class="name">${rec.name}</span>
+                                    <span class="blurb">${rec.description}</span>
+                                </div>
+                                <div class="offer-info-right">
+                                </div>
+                            </div>
+                        </div>
+                    </s:iterator>
+                </s:if>
 
                 <s:iterator value="hotels" var="h">
                     <div class="offer-list">
                         <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
-                        <a href="edit-cart?method=add&type=hotel&id=${h.id}"><span class="fa fa-plus offer-add" aria-hidden="true">
+                        <a href="edit-cart?method=add&type=hotel&id=${(h.id)%17}"><span class="fa fa-plus offer-add" aria-hidden="true">
                             <span class="tooltiptext">Add to package</span>
                         </span></a>
                         <div class="offer-images">
                             <div class="offer-img-initial">
-                                <img src='../../img/offer-img.jpg' class="cover"/>
+                                <img src='../../img/hotels/hotel${(h.id)%17}.jpg' class="cover"/>
                             </div>
                             <div class="offer-img-item">
-                                <img src='../../img/offer-img-2.jpg' class="cover"/>
-                                <img src='../../img/offer-img-3.jpg' class="cover"/>
+                                <img src='../../img/hotels/hotel${(h.id + 10)%17}.jpg' class="cover"/>
+                                <img src='../../img/hotels/hotel${(h.id + 16)%17}.jpg' class="cover"/>
                             </div>
                         </div>
                         <div class="offer-info">
@@ -192,16 +246,16 @@
                 <s:iterator value="restaurants" var="r">
                     <div class="offer-list">
                         <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
-                        <a href="edit-cart?method=add&type=restaurant&id=${r.id}"><span class="fa fa-plus offer-add" aria-hidden="true">
+                        <a href="edit-cart?method=add&type=restaurant&id=${(r.id)%17}"><span class="fa fa-plus offer-add" aria-hidden="true">
                             <span class="tooltiptext">Add to package</span>
                         </span></a>
                         <div class="offer-images">
                             <div class="offer-img-initial">
-                                <img src='../../img/offer-img.jpg' class="cover"/>
+                                <img src='../../img/restaurants/restaurant${(r.id)%17}.jpg' class="cover"/>
                             </div>
                             <div class="offer-img-item">
-                                <img src='../../img/offer-img-2.jpg' class="cover"/>
-                                <img src='../../img/offer-img-3.jpg' class="cover"/>
+                                <img src='../../img/hotels/hotel${(r.id + 10)%17}.jpg' class="cover"/>
+                                <img src='../../img/hotels/hotel${(r.id + 16)%17}.jpg' class="cover"/>
                             </div>
                         </div>
                         <div class="offer-info">
@@ -219,16 +273,16 @@
                 <s:iterator value="experiences" var="e">
                     <div class="offer-list">
                         <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
-                        <a href="edit-cart?method=add&type=experience&id=${e.id}"><span class="fa fa-plus offer-add" aria-hidden="true">
+                        <a href="edit-cart?method=add&type=experience&id=${(e.id)%17}"><span class="fa fa-plus offer-add" aria-hidden="true">
                             <span class="tooltiptext">Add to package</span>
                         </span></a>
                         <div class="offer-images">
                             <div class="offer-img-initial">
-                                <img src='../../img/offer-img.jpg' class="cover"/>
+                                <img src='../../img/experiences/experience${(e.id)%17}.jpg' class="cover"/>
                             </div>
                             <div class="offer-img-item">
-                                <img src='../../img/offer-img-2.jpg' class="cover"/>
-                                <img src='../../img/offer-img-3.jpg' class="cover"/>
+                                <img src='../../img/hotels/hotel${(e.id + 10)%17}.jpg' class="cover"/>
+                                <img src='../../img/hotels/hotel${(e.id + 16)%17}.jpg' class="cover"/>
                             </div>
                         </div>
                         <div class="offer-info">

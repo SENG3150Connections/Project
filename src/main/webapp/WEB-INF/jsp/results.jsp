@@ -160,7 +160,7 @@
                                 </div>
                                 <div class="offer-img-item">
                                     <img src='../../img/hotels/hotel${(rec.id + 10)%17}.jpg' class="cover"/>
-                                    <img src='../../img/hotels/hotel${(rec.id + 16)%17}.jpg' class="cover"/>
+                                    <img src='../../img/hotels/hotel${(rec.id + 5)%17}.jpg' class="cover"/>
                                 </div>
                             </div>
                             <div class="offer-info">
@@ -174,7 +174,7 @@
                                     <span class="website invisible">${rec.website}</span>
                                 </div>
                                 <div class="offer-info-right">
-                                    <span class="price">from $<%= (int)(Math.random() * ((650 - 100)+1)) %></span>
+                                    <span class="price">from $<%= (int)(Math.random() * 650 + 100) %></span>
                                     <span class="fa icons">&#xf2cd&nbsp;&#xf236</span>
                                 </div>
                             </div>
@@ -194,7 +194,7 @@
                                 </div>
                                 <div class="offer-img-item">
                                     <img src='../../img/hotels/hotel${(rec.id + 10)%17}.jpg' class="cover"/>
-                                    <img src='../../img/hotels/hotel${(rec.id + 16)%17}.jpg' class="cover"/>
+                                    <img src='../../img/hotels/hotel${(rec.id + 5)%17}.jpg' class="cover"/>
                                 </div>
                             </div>
                             <div class="offer-info">
@@ -208,7 +208,7 @@
                                     <span class="website invisible">${rec.guidelines}</span>
                                 </div>
                                 <div class="offer-info-right">
-                                    <span class="price">from $<%= (int)(Math.random() * ((1000 - 10)+1)) %></span>
+                                    <span class="price">from $<%= (int)(Math.random() * 800 + 50) %></span>
                                     <span class="fa icons">&#xf290&nbsp;&#xf083</span>
                                 </div>
                             </div>
@@ -228,7 +228,7 @@
                                 </div>
                                 <div class="offer-img-item">
                                     <img src='../../img/hotels/hotel${(rec.id + 10)%17}.jpg' class="cover"/>
-                                    <img src='../../img/hotels/hotel${(rec.id + 16)%17}.jpg' class="cover"/>
+                                    <img src='../../img/hotels/hotel${(rec.id + 5)%17}.jpg' class="cover"/>
                                 </div>
                             </div>
                             <div class="offer-info">
@@ -242,7 +242,7 @@
                                     <span class="website invisible">${rec.website}</span>
                                 </div>
                                 <div class="offer-info-right">
-                                    <span class="price">from $<%= (int)(Math.random() * ((200 - 20)+1)) %></span>
+                                    <span class="price">from $<%= (int)(Math.random() * 200 + 20) %></span>
                                     <span class="fa icons">&#xf0fc&nbsp;&#xf0f5</span>
                                 </div>
                             </div>
@@ -290,7 +290,7 @@
                             </div>
                             <div class="offer-img-item">
                                 <img src='../../img/hotels/hotel${(h.id + 10)%17}.jpg' class="cover"/>
-                                <img src='../../img/hotels/hotel${(h.id + 16)%17}.jpg' class="cover"/>
+                                <img src='../../img/hotels/hotel${(h.id + 5)%17}.jpg' class="cover"/>
                             </div>
                         </div>
                         <div class="offer-info">
@@ -304,7 +304,7 @@
                                 <span class="website invisible">${h.website}</span>
                             </div>
                             <div class="offer-info-right">
-                                <span class="price">from $<%= (int)(Math.random() * ((650 - 100)+1)) %></span>
+                                <span class="price">from $<%= (int)(Math.random() * 650 + 100) %></span>
                                 <span class="fa icons">&#xf2cd&nbsp;&#xf236</span>
                             </div>
                         </div>
@@ -322,7 +322,7 @@
                             </div>
                             <div class="offer-img-item">
                                 <img src='../../img/hotels/hotel${(r.id + 10)%17}.jpg' class="cover"/>
-                                <img src='../../img/hotels/hotel${(r.id + 16)%17}.jpg' class="cover"/>
+                                <img src='../../img/hotels/hotel${(r.id + 5)%17}.jpg' class="cover"/>
                             </div>
                         </div>
                         <div class="offer-info">
@@ -336,7 +336,7 @@
                                 <span class="website invisible">${r.website}</span>
                             </div>
                             <div class="offer-info-right">
-                                <span class="price">from $<%= (int)(Math.random() * ((200 - 20)+1)) %></span>
+                                <span class="price">from $<%= (int)(Math.random() * 200 + 20) %></span>
                                 <span class="fa icons">&#xf0fc&nbsp;&#xf0f5</span>
                             </div>
                         </div>
@@ -354,7 +354,7 @@
                             </div>
                             <div class="offer-img-item">
                                 <img src='../../img/hotels/hotel${(e.id + 10)%17}.jpg' class="cover"/>
-                                <img src='../../img/hotels/hotel${(e.id + 16)%17}.jpg' class="cover"/>
+                                <img src='../../img/hotels/hotel${(e.id + 5)%17}.jpg' class="cover"/>
                             </div>
                         </div>
                         <div class="offer-info">
@@ -368,7 +368,7 @@
                                 <span class="website invisible">${e.guidelines}</span>
                             </div>
                             <div class="offer-info-right">
-                                <span class="price">from $<%= (int)(Math.random() * ((1000 - 10)+1)) %></span>
+                                <span class="price">from $<%= (int)(Math.random() * 800 + 50) %></span>
                                 <span class="fa icons">&#xf290&nbsp;&#xf083</span>
                             </div>
                         </div>
@@ -395,7 +395,7 @@
                                 <span class="blurb">${t.description}</span>
                             </div>
                             <div class="offer-info-right">
-                                <span class="price">from $<%= (int)(Math.random() * ((100 - 25)+1)) %></span>
+                                <span class="price">from $40%></span>
                                 <span class="fa icons">&#xf21c&nbsp;&#xf1b9</span>
                             </div>
                         </div>

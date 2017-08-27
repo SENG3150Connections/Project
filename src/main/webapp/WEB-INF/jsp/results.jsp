@@ -27,26 +27,6 @@
 <!--[if lt IE 8]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
-<s:set var="numResults" value="0"/>
-<s:set var="avalue"><%= request.getParameter("search") %></s:set>
-<s:iterator value="hotels" var="h">
-    <s:set var="hName">${h.name}</s:set>
-    <s:if test="%{(#hName.toLowerCase().indexOf(#avalue.toLowerCase()) != -1) || (#avalue=='null')}">
-        <s:set var="numResults" value="%{#numResults+1}"/>
-    </s:if>
-</s:iterator>
-<s:iterator value="restaurants" var="r">
-    <s:set var="rName">${r.name}</s:set>
-    <s:if test="%{(#rName.toLowerCase().indexOf(#avalue.toLowerCase()) != -1) || (#avalue=='null')}">
-        <s:set var="numResults" value="%{#numResults+1}"/>
-    </s:if>
-</s:iterator>
-<s:iterator value="experiences" var="e">
-    <s:set var="eName">${e.name}</s:set>
-    <s:if test="%{(#eName.toLowerCase().indexOf(#avalue.toLowerCase()) != -1) || (#avalue=='null')}">
-        <s:set var="numResults" value="%{#numResults+1}"/>
-    </s:if>
-</s:iterator>
 
 <main>
     <header id="header-container">
@@ -84,7 +64,7 @@
                 <span>Transport: <input type="checkbox" name="transport-check" value="Transport"></span>
                 <span class="flex-divider"></span>
                 <span><a class="fa fa-chevron-right-after content-toggle">More Filters</a></span>
-                <span><a href="/results">Clear Filters x</a><br/><s:property value="numResults"/> Result(s)</span>
+                <span><a href="/results">Clear Filters x</a><br/><s:property value="totalCount"/> Result(s)</span>
             </div>
         </form>
     </div>
@@ -154,95 +134,141 @@
                 <hr />
             </div>
             <div id="results" class="flex-col">
-                <s:iterator value="hotels" var="h">
-                    <s:set var="hName">${h.name}</s:set>
-                    <s:if test="%{(#hName.toLowerCase().indexOf(#avalue.toLowerCase()) != -1) || (#avalue=='null')}">
-                        <div class="offer-list">
-                            <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
-                            <span class="fa fa-plus offer-add" aria-hidden="true">
-                                <span class="tooltiptext">Add to package</span>
-                            </span>
-                            <div class="offer-images">
-                                <div class="offer-img-initial">
-                                    <img src='../../img/offer-img.jpg' class="cover"/>
-                                </div>
-                                <div class="offer-img-item">
-                                    <img src='../../img/offer-img-2.jpg' class="cover"/>
-                                    <img src='../../img/offer-img-3.jpg' class="cover"/>
-                                </div>
+                <s:iterator value="recommendedExperiences" var="rec">
+                    <div class="offer-list" style="background-color: goldenrod">
+                        <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
+                        <a href="edit-cart?method=add&type=experience&id=${rec.id}"><span class="fa fa-plus offer-add" aria-hidden="true">
+                            <span class="tooltiptext">Add to package</span>
+                        </span></a>
+                        <div class="offer-images">
+                            <div class="offer-img-initial">
+                                <img src='../../img/offer-img.jpg' class="cover"/>
                             </div>
-                            <div class="offer-info">
-                                <div class="offer-info-left">
-                                    <span class="name">${h.name}</span>
-                                    <span class="blurb">${h.address}</span>
-                                </div>
-                                <div class="offer-info-right">
-                                    <span class="price">$DB TBA</span>
-                                    <span class="fa icons">&#xf2cd&nbsp;&#xf236</span>
-                                </div>
+                            <div class="offer-img-item">
+                                <img src='../../img/offer-img-2.jpg' class="cover"/>
+                                <img src='../../img/offer-img-3.jpg' class="cover"/>
                             </div>
                         </div>
-                    </s:if>
+                        <div class="offer-info">
+                            <div class="offer-info-left">
+                                <span class="name">${rec.name}</span>
+                                <span class="blurb">${rec.info}</span>
+                            </div>
+                            <div class="offer-info-right">
+                                <span class="price">${rec.price}</span>
+                                <span class="fa icons">&#xf2cd&nbsp;&#xf236</span>
+                            </div>
+                        </div>
+                    </div>
+                </s:iterator>
+
+                <s:iterator value="hotels" var="h">
+                    <div class="offer-list">
+                        <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
+                        <a href="edit-cart?method=add&type=hotel&id=${h.id}"><span class="fa fa-plus offer-add" aria-hidden="true">
+                            <span class="tooltiptext">Add to package</span>
+                        </span></a>
+                        <div class="offer-images">
+                            <div class="offer-img-initial">
+                                <img src='../../img/offer-img.jpg' class="cover"/>
+                            </div>
+                            <div class="offer-img-item">
+                                <img src='../../img/offer-img-2.jpg' class="cover"/>
+                                <img src='../../img/offer-img-3.jpg' class="cover"/>
+                            </div>
+                        </div>
+                        <div class="offer-info">
+                            <div class="offer-info-left">
+                                <span class="name">${h.name}</span>
+                                <span class="blurb">${h.address}</span>
+                            </div>
+                            <div class="offer-info-right">
+                                <span class="price">$DB TBA</span>
+                                <span class="fa icons">&#xf2cd&nbsp;&#xf236</span>
+                            </div>
+                        </div>
+                    </div>
                 </s:iterator>
                 <s:iterator value="restaurants" var="r">
-                    <s:set var="rName">${r.name}</s:set>
-                    <s:if test="%{(#rName.toLowerCase().indexOf(#avalue.toLowerCase()) != -1) || (#avalue=='null')}">
-                        <div class="offer-list">
-                            <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
-                            <span class="fa fa-plus offer-add" aria-hidden="true">
-                                <span class="tooltiptext">Add to package</span>
-                            </span>
-                            <div class="offer-images">
-                                <div class="offer-img-initial">
-                                    <img src='../../img/offer-img.jpg' class="cover"/>
-                                </div>
-                                <div class="offer-img-item">
-                                    <img src='../../img/offer-img-2.jpg' class="cover"/>
-                                    <img src='../../img/offer-img-3.jpg' class="cover"/>
-                                </div>
+                    <div class="offer-list">
+                        <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
+                        <a href="edit-cart?method=add&type=restaurant&id=${r.id}"><span class="fa fa-plus offer-add" aria-hidden="true">
+                            <span class="tooltiptext">Add to package</span>
+                        </span></a>
+                        <div class="offer-images">
+                            <div class="offer-img-initial">
+                                <img src='../../img/offer-img.jpg' class="cover"/>
                             </div>
-                            <div class="offer-info">
-                                <div class="offer-info-left">
-                                    <span class="name">${r.name}</span>
-                                    <span class="blurb">${r.address}</span>
-                                </div>
-                                <div class="offer-info-right">
-                                    <span class="price">$DB TBA</span>
-                                    <span class="fa icons">&#xf0fc&nbsp;&#xf0f5</span>
-                                </div>
+                            <div class="offer-img-item">
+                                <img src='../../img/offer-img-2.jpg' class="cover"/>
+                                <img src='../../img/offer-img-3.jpg' class="cover"/>
                             </div>
                         </div>
-                    </s:if>
+                        <div class="offer-info">
+                            <div class="offer-info-left">
+                                <span class="name">${r.name}</span>
+                                <span class="blurb">${r.address}</span>
+                            </div>
+                            <div class="offer-info-right">
+                                <span class="price">$DB TBA</span>
+                                <span class="fa icons">&#xf0fc&nbsp;&#xf0f5</span>
+                            </div>
+                        </div>
+                    </div>
                 </s:iterator>
                 <s:iterator value="experiences" var="e">
-                    <s:set var="eName">${e.name}</s:set>
-                    <s:if test="%{(#eName.toLowerCase().indexOf(#avalue.toLowerCase()) != -1) || (#avalue=='null')}">
-                        <div class="offer-list">
-                            <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
-                            <span class="fa fa-plus offer-add" aria-hidden="true">
-                                <span class="tooltiptext">Add to package</span>
-                            </span>
-                            <div class="offer-images">
-                                <div class="offer-img-initial">
-                                    <img src='../../img/offer-img.jpg' class="cover"/>
-                                </div>
-                                <div class="offer-img-item">
-                                    <img src='../../img/offer-img-2.jpg' class="cover"/>
-                                    <img src='../../img/offer-img-3.jpg' class="cover"/>
-                                </div>
+                    <div class="offer-list">
+                        <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
+                        <a href="edit-cart?method=add&type=experience&id=${e.id}"><span class="fa fa-plus offer-add" aria-hidden="true">
+                            <span class="tooltiptext">Add to package</span>
+                        </span></a>
+                        <div class="offer-images">
+                            <div class="offer-img-initial">
+                                <img src='../../img/offer-img.jpg' class="cover"/>
                             </div>
-                            <div class="offer-info">
-                                <div class="offer-info-left">
-                                    <span class="name">${e.name}</span>
-                                    <span class="blurb">address</span>
-                                </div>
-                                <div class="offer-info-right">
-                                    <span class="price">$DB TBA</span>
-                                    <span class="fa icons">&#xf290&nbsp;&#xf083</span>
-                                </div>
+                            <div class="offer-img-item">
+                                <img src='../../img/offer-img-2.jpg' class="cover"/>
+                                <img src='../../img/offer-img-3.jpg' class="cover"/>
                             </div>
                         </div>
-                    </s:if>
+                        <div class="offer-info">
+                            <div class="offer-info-left">
+                                <span class="name">${e.name}</span>
+                                <span class="blurb">${e.info}</span>
+                            </div>
+                            <div class="offer-info-right">
+                                <span class="price">${e.price}</span>
+                                <span class="fa icons">&#xf290&nbsp;&#xf083</span>
+                            </div>
+                        </div>
+                    </div>
+                </s:iterator>
+                <s:iterator value="transport" var="t">
+                    <div class="offer-list">
+                        <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
+                        <a href="edit-cart?method=add&type=transport&id=${t.id}"><span class="fa fa-plus offer-add" aria-hidden="true">
+                            <span class="tooltiptext">Add to package</span>
+                        </span></a>
+                        <div class="offer-images">
+                            <div class="offer-img-initial">
+                                <img src='../../img/offer-img.jpg' class="cover"/>
+                            </div>
+                            <div class="offer-img-item">
+                                <img src='../../img/offer-img-2.jpg' class="cover"/>
+                                <img src='../../img/offer-img-3.jpg' class="cover"/>
+                            </div>
+                        </div>
+                        <div class="offer-info">
+                            <div class="offer-info-left">
+                                <span class="name">${t.name}</span>
+                                <span class="blurb">address</span>
+                            </div>
+                            <div class="offer-info-right">
+                                <span class="price">$DB TBA</span>
+                                <span class="fa icons">&#xf290&nbsp;&#xf083</span>
+                            </div>
+                        </div>
+                    </div>
                 </s:iterator>
             </div>
             <div id="offer-info-large" class="hidden">
@@ -261,19 +287,51 @@
             <div id="package-header">
                 <h2>Create your perfect holiday experience</h2>
             </div>
+
+            <s:set var="size" value="cart.size"/>
+            <s:if test="%{#size == 0}">
             <div id="package-contents" class="center">
                 <h2>Nothing here yet!</h2>
-                <h3>Add an offer from the left by<br />dragging it into this area or<br />clicking the plus symbol at the bottom right</h3>
+                <h3>Add an offer from the left by<br />
+                    <!--dragging it into this area or<br />-->
+                    clicking the plus symbol at the bottom right</h3>
+            </div>
+            </s:if>
+            <s:else>
+            <div id="package-contents" class="center">
+                <s:set var="type" value="%{'experience'}"/>
+                <s:iterator value="cart.experiences" var="c" status="entry">
+                    <%@include file="helpers/resultsCart.jsp"%>
+                </s:iterator>
+                <s:set var="type" value="%{'hotel'}"/>
+                <s:iterator value="cart.hotels" var="c" status="entry">
+                    <%@include file="helpers/resultsCart.jsp"%>
+                </s:iterator>
+                <s:set var="type" value="%{'restaurant'}"/>
+                <s:iterator value="cart.restaurants" var="c" status="entry">
+                    <%@include file="helpers/resultsCart.jsp"%>
+                </s:iterator>
+                <s:set var="type" value="%{'transport'}"/>
+                <s:iterator value="cart.transport" var="c" status="entry">
+                    <%@include file="helpers/resultsCart.jsp"%>
+                </s:iterator>
             </div>
             <div id="package-confirmation">
                 <div class="left center">
-                    <h3>Total: </h3>
-                    <h3>You save: !</h3>
+                    <h3>Current Total: $${cart.price}</h3>
+                    <h3>You save: $${cart.savings}!</h3>
                 </div>
                 <div class="right center">
-                    <h3>Confirm</h3>
+                    <s:set var="ready" value="cart.readyToPay"/>
+                    <s:if test="%{#ready}">
+                        <h3><a href="payment">Confirm</a></h3>
+                    </s:if>
+                    <s:else>
+                        <h3>CANNOT PAY<br/>Cart Not Ready</h3>
+                    </s:else>
                 </div>
             </div>
+            </s:else>
         </div>
     </div>
 </main>

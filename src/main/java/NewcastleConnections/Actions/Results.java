@@ -1,41 +1,104 @@
 package NewcastleConnections.Actions;
 
+import NewcastleConnections.Cart.Cart;
+import NewcastleConnections.Cart.CartHotel;
 import NewcastleConnections.DatabaseConnection;
-import NewcastleConnections.packagedeals.tables.Experiences;
-import NewcastleConnections.packagedeals.tables.Transport;
 import NewcastleConnections.packagedeals.tables.records.ExperiencesRecord;
-import NewcastleConnections.packagedeals.tables.records.HotelsRecord;
 import NewcastleConnections.packagedeals.tables.records.ResturantsRecord;
 import NewcastleConnections.packagedeals.tables.records.TransportRecord;
 import com.opensymphony.xwork2.ActionSupport;
+import NewcastleConnections.packagedeals.tables.records.HotelsRecord;
+import com.opensymphony.xwork2.inject.Inject;
+import org.jooq.DSLContext;
 import org.jooq.Record;
 import org.jooq.Result;
-import org.jooq.util.derby.sys.Sys;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 import static NewcastleConnections.packagedeals.Tables.*;
 
+public class Results extends ActionSupport {
 
-public class RecommendationTest extends ActionSupport {
+    // Results property (to be shared with the JSP page)
+    private Result<HotelsRecord> hotels;
+    private Result<ResturantsRecord> restaurants;
+    private Result<ExperiencesRecord> experiences;
+    private Result<TransportRecord> transport;
 
+    public LinkedList recommendedHotels;
+    public LinkedList recommendedRestaurants;
+    public LinkedList recommendedExperiences;
 
-    public LinkedList result_hotels;
-    public LinkedList result_experiences;
-    public LinkedList result_restaurants;
-    public Result<TransportRecord> result_transport;
-    public String coordinates;
+    private int hotelCount;
+    private int restaurantCount;
+    private int experienceCount;
+    private int transportCount;
+    private int totalCount;
+    private Cart cart;
 
+    // URL bar properties
+    private String search;
+    private String start;
+    private String finish;
+    private int people;
 
     @Override
     public String execute() {
+        try {
+            // Get connection
+            DatabaseConnection connection = new DatabaseConnection();
+            DSLContext dsl = connection.getDSL();
 
-       generateRecommendations(151.784775,-32.928368,5);
-        coordinates = "151.784775,-32.928368";
+            // query
+            if (search == null || search.isEmpty()) {
+                hotels = dsl.selectFrom(HOTELS).fetch();
+                restaurants = dsl.selectFrom(RESTURANTS).fetch();
+                experiences = dsl.selectFrom(EXPERIENCES).fetch();
+                transport = dsl.selectFrom(TRANSPORT).fetch();
+            } else {
+                String like = "%"+search+"%";
+                hotels = dsl.selectFrom(HOTELS).where(HOTELS.NAME.likeIgnoreCase(like)).fetch();
+                restaurants = dsl.selectFrom(RESTURANTS).where(RESTURANTS.NAME.likeIgnoreCase(like)).fetch();
+                experiences = dsl.selectFrom(EXPERIENCES).where(EXPERIENCES.NAME.likeIgnoreCase(like)).fetch();
+                transport = dsl.selectFrom(TRANSPORT).where(TRANSPORT.NAME.likeIgnoreCase(like)).fetch();
+            }
+
+            // Close connection
+            connection.close();
+
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+            return ERROR;
+        }
+
+        hotelCount = hotels.size();
+        restaurantCount = restaurants.size();
+        experienceCount = experiences.size();
+        transportCount = transport.size();
+
+        totalCount = hotelCount + restaurantCount + experienceCount + transportCount;
 
 
+        // Recommendations
+
+        if (cart.getHotels().size() != 0) {
+
+            HotelsRecord hotel = cart.getHotels().get(cart.getHotels().size()-1).getHotel();
+            generateRecommendations(hotel.getLongitude(),hotel.getLatitude(),2);
+
+        } else if (cart.getExperiences().size() != 0) {
+
+            ExperiencesRecord experience = cart.getExperiences().get(cart.getExperiences().size()-1).getExperience();
+            generateRecommendations(experience.getLongitude(),experience.getLatitude(),2);
+
+        } else if (cart.getRestaurants().size() != 0) {
+
+            ResturantsRecord resturant = cart.getRestaurants().get(cart.getRestaurants().size()-1).getRestaurant();
+            generateRecommendations(resturant.getLongitude(),resturant.getLatitude(),2);
+        }
+
+        // Return Success
         return SUCCESS;
     }
 
@@ -106,24 +169,24 @@ public class RecommendationTest extends ActionSupport {
 
 
             // Now extract the top results.
-            result_hotels = new LinkedList();
-            result_experiences = new LinkedList();
-            result_restaurants = new LinkedList();
+            recommendedHotels = new LinkedList();
+            recommendedRestaurants = new LinkedList();
+            recommendedExperiences = new LinkedList();
 
 
             for (int i = 0; i < numberOfResults; i++) {
                 if (i <= distances_hotels.size()) {
-                    result_hotels.add(distances_hotels.get(i).get(1));
+                    recommendedHotels.add(distances_hotels.get(i).get(1));
                 }
             }
             for (int i = 0; i < numberOfResults; i++) {
                 if (i <= distances_restaurants.size()) {
-                    result_restaurants.add(distances_restaurants.get(i).get(1));
+                    recommendedRestaurants.add(distances_restaurants.get(i).get(1));
                 }
             }
             for (int i = 0; i < numberOfResults; i++) {
                 if (i <= distances_experiences.size()) {
-                    result_experiences.add(distances_experiences.get(i).get(1));
+                    recommendedExperiences.add(distances_experiences.get(i).get(1));
                 }
             }
 
@@ -197,4 +260,82 @@ public class RecommendationTest extends ActionSupport {
     }
 
 
+    public Result<HotelsRecord> getHotels() {
+        return hotels;
+    }
+
+    public Result<ResturantsRecord> getRestaurants() {
+        return restaurants;
+    }
+
+    public Result<ExperiencesRecord> getExperiences() {
+        return experiences;
+    }
+
+    public Result<TransportRecord> getTransport() {
+        return transport;
+    }
+
+    public int getHotelCount() {
+        return hotelCount;
+    }
+
+    public int getRestaurantCount() {
+        return restaurantCount;
+    }
+
+    public int getExperienceCount() {
+        return experienceCount;
+    }
+
+    public int getTransportCount() {
+        return transportCount;
+    }
+
+    public int getTotalCount() {
+        return totalCount;
+    }
+
+    public Cart getCart() {
+        return cart;
+    }
+
+    @Inject("cart")
+    public void setCart(Cart cart) {
+        this.cart = cart;
+    }
+
+    // URL bar properties
+
+    public String getSearch() {
+        return search;
+    }
+
+    public void setSearch(String search) {
+        this.search = search;
+    }
+
+    public String getStart() {
+        return start;
+    }
+
+    public void setStart(String start) {
+        this.start = start;
+    }
+
+    public String getFinish() {
+        return finish;
+    }
+
+    public void setFinish(String finish) {
+        this.finish = finish;
+    }
+
+    public int getPeople() {
+        return people;
+    }
+
+    public void setPeople(int people) {
+        this.people = people;
+    }
 }

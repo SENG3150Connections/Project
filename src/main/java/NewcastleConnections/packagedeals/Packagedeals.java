@@ -4,6 +4,7 @@
 package NewcastleConnections.packagedeals;
 
 
+import NewcastleConnections.DefaultCatalog;
 import NewcastleConnections.packagedeals.tables.Experiencebookingoffering;
 import NewcastleConnections.packagedeals.tables.Experienceofferingdates;
 import NewcastleConnections.packagedeals.tables.Experienceofferingsdatetime;
@@ -42,7 +43,6 @@ import javax.annotation.Generated;
 import org.jooq.Catalog;
 import org.jooq.Table;
 import org.jooq.impl.SchemaImpl;
-import org.jooq.util.mysql.mysql.DefaultCatalog;
 
 
 /**
@@ -58,7 +58,7 @@ import org.jooq.util.mysql.mysql.DefaultCatalog;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Packagedeals extends SchemaImpl {
 
-    private static final long serialVersionUID = 635945641;
+    private static final long serialVersionUID = 979245772;
 
     /**
      * The reference instance of <code>PackageDeals</code>

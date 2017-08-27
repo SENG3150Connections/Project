@@ -12,29 +12,31 @@
     <title>Cart Test</title>
 </head>
 <body>
+    <s:property value="cart.size"/>
     <s:property value="cart.name"/>
 
     <h1>ExperienceVouchers</h1>
     <table>
-        <tr><td>ExpVouchID</td><td>Price</td></tr>
-    <s:iterator value="cart.experiences" var="e">
+        <tr><td>ExpID</td><td>Price</td></tr>
+        <s:iterator value="cart.experiences" var="e">
         <tr>
-            <td>${e.experiencevoucherid}</td>
-            <td>${e.price}</td>
+            <td>${e.experience.id}</td>
+            <td>${e.experience.name}</td>
         </tr>
-    </s:iterator>
+        </s:iterator>
     </table>
 
     <h1>RoomOfferings</h1>
     <table>
-        <tr><td>RoomID</td><td>Adults</td><td>Children</td> ... </tr>
-        <s:iterator value="cart.rooms" var="e">
+        <tr><td>hotelID</td><td>Adults</td><td>Children</td> ... </tr>
+        <s:iterator value="cart.hotels" var="e">
             <tr>
-                <td>${e.roomid}</td>
+                <td>${e.hotel.id}</td>
+                <td>${e.hotel.name}</td>
                 <td>${e.adults}</td>
                 <td>${e.children}</td>
-                <td>${e.checkin}</td>
-                <td>${e.checkout}</td>
+                <td>${e.checkIn}</td>
+                <td>${e.checkOut}</td>
                 <td>${e.price}</td>
             </tr>
         </s:iterator>
@@ -45,10 +47,11 @@
         <tr><td>RestID</td><td>Time</td> ... </tr>
         <s:iterator value="cart.restaurants" var="e">
             <tr>
-                <td>${e.restaurantid}</td>
+                <td>${e.restaurant.id}</td>
+                <td>${e.restaurant.name}</td>
                 <td>${e.time}</td>
                 <td>${e.seats}</td>
-                <td>${e.voucherprice}</td>
+                <td>${e.voucherPrice}</td>
             </tr>
         </s:iterator>
     </table>
@@ -58,7 +61,8 @@
         <tr><td>TransID</td><td>Time</td></tr>
         <s:iterator value="cart.transport" var="e">
             <tr>
-                <td>${e.transportid}</td>
+                <td>${e.transport.id}</td>
+                <td>${e.transport.name}</td>
                 <td>${e.time}</td>
             </tr>
         </s:iterator>

@@ -1,22 +1,8 @@
 package NewcastleConnections.Actions.Cart;
 
-import NewcastleConnections.Cart;
-import NewcastleConnections.DatabaseConnection;
-import NewcastleConnections.packagedeals.tables.Invoicerestaurant;
-import NewcastleConnections.packagedeals.tables.records.*;
+import NewcastleConnections.Cart.*;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.inject.Inject;
-import org.jooq.Record;
-import org.jooq.Result;
-import org.jooq.SelectWhereStep;
-import org.jooq.Table;
-import org.jooq.types.UInteger;
-
-import java.sql.SQLException;
-
-import static NewcastleConnections.packagedeals.Tables.EXPERIENCEVOUCHEROFFERINGS;
-import static NewcastleConnections.packagedeals.Tables.RESTURANTS;
-import static NewcastleConnections.packagedeals.Tables.ROOMOFFERINGS;
 
 /**
  * Created by Scott on 14/08/2017.
@@ -31,60 +17,54 @@ public class UpdateCart extends ActionSupport {
 
     @Override
     public String execute() {
-        if (getMethod().equalsIgnoreCase("add")) {
-            getCart().setName("CART - ADD");
-            switch(getType().toLowerCase()) {
-                case "experience":
-                    InvoiceexperienceRecord ier = new InvoiceexperienceRecord();
-                    ier.setExperiencevoucherid(UInteger.valueOf(id));
-                    getCart().getExperiences().add(ier);
-                    break;
+        if (getMethod() == null || getType() == null)
+            return SUCCESS; // Simply redirect back
 
-                case "room":
-                    InvoicehotelRecord ihr = new InvoicehotelRecord();
-                    ihr.setRoomid(UInteger.valueOf(id));
-                    getCart().getRooms().add(ihr);
-                    break;
+        boolean add = getMethod().equalsIgnoreCase("add");
+        boolean remove = getMethod().equalsIgnoreCase("remove");
 
-                case "restaurant":
-                    InvoicerestaurantRecord irr = new InvoicerestaurantRecord();
-                    irr.setRestaurantid(UInteger.valueOf(id));
-                    getCart().getRestaurants().add(irr);
-                    break;
-
-                case "transport":
-                    InvoicetransportRecord itr = new InvoicetransportRecord();
-                    itr.setTransportid(UInteger.valueOf(id));
-                    getCart().getTransport().add(itr);
-
-                default:
-                    break;
-
-            }
-        }
-        else if (getMethod().equalsIgnoreCase("remove")) {
-            getCart().setName("CART - REMOVE");
-            switch(getType().toLowerCase()) {
-                case "experience":
+        switch(getType().toLowerCase()) {
+            case "experience":
+                if (add) {
+                    getCart().getExperiences().add(new CartExperience(id));
+                }
+                else if (remove) {
                     getCart().removeExperience(id);
-                    break;
-                case "room":
-                    getCart().removeRoom(id);
-                    break;
-                case "restaurant":
-                    getCart().removeRestaurant(id);
-                    break;
-                case "transport":
-                    getCart().removeTransport(id);
-                    break;
-                default:
-                    break;
+                }
+                break;
 
-            }
+            case "hotel":
+                if (add) {
+                    getCart().getHotels().add(new CartHotel(id));
+                }
+                else if (remove) {
+                    getCart().removeHotel(id);
+                }
+                break;
+
+            case "restaurant":
+                if (add) {
+                    getCart().getRestaurants().add(new CartRestaurant(id));
+                }
+                else if (remove) {
+                    getCart().removeRestaurant(id);
+                }
+                break;
+
+            case "transport":
+                if (add) {
+                    getCart().getTransport().add(new CartTransport(id));
+                }
+                else if (remove) {
+                    getCart().removeTransport(id);
+                }
+                break;
+
+            default:
+                break;
+
         }
-        else if (getMethod().equalsIgnoreCase("create")) {
-            getCart().createInvoice();
-        }
+
         return SUCCESS;
     }
 
@@ -119,25 +99,5 @@ public class UpdateCart extends ActionSupport {
     @Inject("cart")
     public void setCart(Cart cart) {
         this.cart = cart;
-    }
-
-    private Result<? extends Record> fetchSingle(Table<? extends Record> table, String where) {
-        try {
-            DatabaseConnection connection = new DatabaseConnection();
-            Result<? extends Record> result;
-            SelectWhereStep<? extends Record> step = connection.getDSL().selectFrom(table);
-
-            if (where.isEmpty()) {
-                result = step.fetch();
-            } else {
-                result = step.where(where).fetch();
-            }
-            connection.close();
-
-            return result;
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-            return null;
-        }
     }
 }

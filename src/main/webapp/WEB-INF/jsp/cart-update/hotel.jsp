@@ -194,7 +194,7 @@
                 field: document.getElementById('checkIn'),
                 minDate: new Date(),
                 maxDate: new Date(2020, 12, 31),
-                format: 'YYYY-MM-d h:mm:ss',
+                format: 'YYYY-MM-D h:mm:ss',
                 onSelect: function() {
                     startDate = this.getDate();
                     updateStartDate();
@@ -204,7 +204,7 @@
                 field: document.getElementById('checkOut'),
                 minDate: new Date(),
                 maxDate: new Date(2020, 12, 31),
-                format: 'YYYY-MM-d h:mm:ss',
+                format: 'YYYY-MM-D h:mm:ss',
                 onSelect: function() {
                     endDate = this.getDate();
                     updateEndDate();

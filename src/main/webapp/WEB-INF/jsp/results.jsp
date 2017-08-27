@@ -168,6 +168,10 @@
                                     <span class="name">${rec.name}</span>
                                     <span>${rec.address}</span>
                                     <span class="blurb invisible">${rec.description}</span>
+                                    <span class="addr invisible">${rec.address}</span>
+                                    <span class="contact invisible">${rec.contact}</span>
+                                    <span class="email invisible">${rec.email}</span>
+                                    <span class="website invisible">${rec.website}</span>
                                 </div>
                                 <div class="offer-info-right">
                                     <span class="price">from $<%= (int)(Math.random() * ((650 - 100)+1)) %></span>
@@ -198,6 +202,10 @@
                                     <span class="name">${rec.name}</span>
                                     <span>${rec.location}</span>
                                     <span class="blurb invisible">${rec.overview}</span>
+                                    <span class="addr invisible">${rec.location}</span>
+                                    <span class="contact invisible">${rec.info}</span>
+                                    <span class="email invisible">${rec.description}</span>
+                                    <span class="website invisible">${rec.guidelines}</span>
                                 </div>
                                 <div class="offer-info-right">
                                     <span class="price">from $<%= (int)(Math.random() * ((1000 - 10)+1)) %></span>
@@ -228,6 +236,10 @@
                                     <span class="name">${rec.name}</span>
                                     <span>${rec.address}</span>
                                     <span class="blurb invisible">${rec.description}</span>
+                                    <span class="addr invisible">${rec.address}</span>
+                                    <span class="contact invisible">${rec.contact}</span>
+                                    <span class="email invisible">${rec.email}</span>
+                                    <span class="website invisible">${rec.website}</span>
                                 </div>
                                 <div class="offer-info-right">
                                     <span class="price">from $<%= (int)(Math.random() * ((200 - 20)+1)) %></span>
@@ -286,6 +298,10 @@
                                 <span class="name">${h.name}</span>
                                 <span>${h.address}</span>
                                 <span class="blurb invisible">${h.description}</span>
+                                <span class="addr invisible">${h.address}</span>
+                                <span class="contact invisible">${h.contact}</span>
+                                <span class="email invisible">${h.email}</span>
+                                <span class="website invisible">${h.website}</span>
                             </div>
                             <div class="offer-info-right">
                                 <span class="price">from $<%= (int)(Math.random() * ((650 - 100)+1)) %></span>
@@ -314,6 +330,10 @@
                                 <span class="name">${r.name}</span>
                                 <span>${r.address}</span>
                                 <span class="blurb invisible">${r.description}</span>
+                                <span class="addr invisible">${r.address}</span>
+                                <span class="contact invisible">${r.contact}</span>
+                                <span class="email invisible">${r.email}</span>
+                                <span class="website invisible">${r.website}</span>
                             </div>
                             <div class="offer-info-right">
                                 <span class="price">from $<%= (int)(Math.random() * ((200 - 20)+1)) %></span>
@@ -342,6 +362,10 @@
                                 <span class="name">${e.name}</span>
                                 <span>${e.location}</span>
                                 <span class="blurb invisible">${e.overview}</span>
+                                <span class="addr invisible">${e.location}</span>
+                                <span class="contact invisible">${e.info}</span>
+                                <span class="email invisible">${e.description}</span>
+                                <span class="website invisible">${e.guidelines}</span>
                             </div>
                             <div class="offer-info-right">
                                 <span class="price">from $<%= (int)(Math.random() * ((1000 - 10)+1)) %></span>
@@ -383,6 +407,10 @@
                 <div id="offer-info">
                     <h2 id="offer-name"></h2>
                     <p id="offer-desc"></p>
+                    <p id="offer-addr"></p>
+                    <p id="offer-contact"></p>
+                    <p id="offer-email"></p>
+                    <p id="offer-website"></p>
                     <a href="" id="show-results">Back to Results</a>
                 </div>
             </div>
@@ -473,6 +501,14 @@
         $('#offer-name').html(str);
         str = $(this).parent().find(".blurb").text();
         $('#offer-desc').html(str);
+        str = $(this).parent().find(".addr").text();
+        $('#offer-addr').html(str);
+        str = $(this).parent().find(".contact").text();
+        $('#offer-contact').html(str);
+        str = $(this).parent().find(".email").text();
+        $('#offer-email').html(str);
+        str = $(this).parent().find(".website").text();
+        $('#offer-website').html(str);
         $(this).find(".offer-img-initial").clone().appendTo('#offer-image');
     });
     $(".offer-list > .offer-info").on('click', function() {
@@ -484,6 +520,14 @@
         $('#offer-name').html(str);
         str = $(this).parent().find(".blurb").text();
         $('#offer-desc').html(str);
+        str = $(this).parent().find(".addr").text();
+        $('#offer-addr').html(str);
+        str = $(this).parent().find(".contact").text();
+        $('#offer-contact').html(str);
+        str = $(this).parent().find(".email").text();
+        $('#offer-email').html(str);
+        str = $(this).parent().find(".website").text();
+        $('#offer-website').html(str);
         $(this).parent().find(".offer-img-initial").clone().appendTo('#offer-image');
     });
     $("#show-results").on('click', function() {

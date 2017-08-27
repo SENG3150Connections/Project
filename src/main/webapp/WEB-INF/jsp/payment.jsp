@@ -70,7 +70,7 @@
 
     <div class="paymentPageBody">
 
-        <form action="/home" method="post">
+        <form action="/complete" method="post" id="form">
             <div class="inlineFlex">
                 <div class="contentBox row1">
                     <span class="customerPageHeading">Personal Details:</span>
@@ -90,16 +90,35 @@
                     <input id="phone" class="textField" type="text">
                 </div>
 
-                <div class="contentBox row1" >
+                <div class="row1" style="padding-top: 10px;" >
                     <span class="customerPageHeading">Order Summary:</span>
-                    <table>
-                        <tr> <th>Item</th> <th>Price</th></tr>
-                        <tr>
-                            <td>A thing</td><td>$20.00</td>
-                        </tr>
-                    </table>
+                    <div class="tableDiv">
+                        <table style="">
+                            <tr> <th style="width: 80%; ">Item</th> <th style="width: 20%;">Price</th></tr>
+                            <s:iterator value="cart.hotels" var="i">
+                                <tr>
+                                    <td>${i.name}</td><td>${i.price}</td>
+                                </tr>
+                            </s:iterator>
+                            <s:iterator value="cart.experiences" var="i">
+                                <tr>
+                                    <td>${i.name}</td><td>${i.price}</td>
+                                </tr>
+                            </s:iterator>
+                            <s:iterator value="cart.restaurants" var="i">
+                                <tr>
+                                    <td>${i.name}</td><td>${i.price}</td>
+                                </tr>
+                            </s:iterator>
+                            <s:iterator value="cart.transport" var="i">
+                                <tr>
+                                    <td>${i.name}</td><td>${i.price}</td>
+                                </tr>
+                            </s:iterator>
+                        </table>
+                        <h3 style=" padding: 20px; text-align: right;">Total price: ${cart.price}</h3>
 
-<h3 style=" right:6%;">Total price: ${cart.price}</h3>
+                    </div>
                 </div>
             </div>
 
@@ -147,8 +166,8 @@
                 </div>
             </div>
             <div class="inlineFlex confirmDiv">
-                <a href="/complete" id="cancel">Cancel</a>
-                <button type="submit"> Pay Now</button>
+                <a href="/results" id="cancel">Cancel</a>
+                <button type="submit" form="form" value="Submit"> Pay Now</button>
             </div>
         </form>
     </div>

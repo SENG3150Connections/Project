@@ -139,7 +139,7 @@
             <div id="package-header">
                 <h2>Tailor the offer to suit you</h2>
             </div>
-            <div id="package-contents" class="center" style="overflow: hidden">
+            <div id="package-contents" class="center" style="overflow: hidden;flex-basis:100%">
                 <form action="update-hotel" class="flexform packageform">
                     <input type="hidden" name="cartIndex" value="${cartIndex}">
 
@@ -151,14 +151,19 @@
                     </select>
 
                     <br/>Adults:<br/>
-                    <input type="number" name="adults" value="${hotel.adults}">
+                    <div class="quantity">
+                        <input type="number" name="adults" min="1" max="9" step="1" value="${hotel.adults}">
+                    </div>
+
                     <br/>Children:<br/>
-                    <input type="number" name="children" value="${hotel.children}">
+                    <div class="quantity">
+                        <input type="number" name="children" min="0" max="9" step="1" value="${hotel.children}">
+                    </div>
 
                     <br/>CheckIn:<br/>
-                    <input type="text" id="checkIn" name="checkIn" value="${hotel.checkIn}">
+                    <input type="text" id="checkIn" name="checkIn" value="${hotel.checkIn}" required>
                     <br/>CheckOut:<br/>
-                    <input type="text" id="checkOut" name="checkOut" value="${hotel.checkOut}">
+                    <input type="text" id="checkOut" name="checkOut" value="${hotel.checkOut}" required>
 
                     <input type="submit" value="Submit">
                 </form>
@@ -219,6 +224,38 @@
             updateEndDate();
         }
     }());
+    jQuery('<div class="quantity-nav"><div class="quantity-button quantity-up">+</div><div class="quantity-button quantity-down">-</div></div>').insertAfter('.quantity input');
+    jQuery('.quantity').each(function() {
+        var spinner = jQuery(this),
+            input = spinner.find('input[type="number"]'),
+            btnUp = spinner.find('.quantity-up'),
+            btnDown = spinner.find('.quantity-down'),
+            min = input.attr('min'),
+            max = input.attr('max');
+
+        btnUp.click(function() {
+            var oldValue = parseFloat(input.val());
+            if (oldValue >= max) {
+                var newVal = oldValue;
+            } else {
+                var newVal = oldValue + 1;
+            }
+            spinner.find("input").val(newVal);
+            spinner.find("input").trigger("change");
+        });
+
+        btnDown.click(function() {
+            var oldValue = parseFloat(input.val());
+            if (oldValue <= min) {
+                var newVal = oldValue;
+            } else {
+                var newVal = oldValue - 1;
+            }
+            spinner.find("input").val(newVal);
+            spinner.find("input").trigger("change");
+        });
+
+    });
 </script>
 
 </body>

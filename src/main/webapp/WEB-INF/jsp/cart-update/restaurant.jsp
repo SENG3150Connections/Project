@@ -139,16 +139,20 @@
             <div id="package-header">
                 <h2>Tailor the offer to suit you</h2>
             </div>
-            <div id="package-contents" class="center" style="overflow: hidden">
+            <div id="package-contents" class="center" style="overflow: hidden;height:100vh">
                 <form action="update-restaurant" class="flexform packageform">
 
                     <input type="hidden" name="cartIndex" value="${cartIndex}">
                     <br/>Seats:<br/>
-                    <input type="number" name="seats" value="${restaurant.seats}">
+                    <div class="quantity">
+                        <input type="number" name="seats" min="1" max="9" step="1"  value="${restaurant.seats}" required>
+                    </div>
                     <br/>Time:<br/>
                     <input type="text" id="time" name="time" value="${restaurant.time}">
                     <br/>Voucher Price:<br/>
-                    <input type="number" name="voucherPrice" value="${restaurant.voucherPrice}">
+                    <div class="quantity">
+                        <input type="number" name="voucherPrice" min="0" max="9" step="1"  value="${restaurant.voucherPrice}">
+                    </div>
 
                     <input type="submit" value="Submit">
                 </form>
@@ -209,6 +213,38 @@
             updateEndDate();
         }
     }());
+    jQuery('<div class="quantity-nav"><div class="quantity-button quantity-up">+</div><div class="quantity-button quantity-down">-</div></div>').insertAfter('.quantity input');
+    jQuery('.quantity').each(function() {
+        var spinner = jQuery(this),
+            input = spinner.find('input[type="number"]'),
+            btnUp = spinner.find('.quantity-up'),
+            btnDown = spinner.find('.quantity-down'),
+            min = input.attr('min'),
+            max = input.attr('max');
+
+        btnUp.click(function() {
+            var oldValue = parseFloat(input.val());
+            if (oldValue >= max) {
+                var newVal = oldValue;
+            } else {
+                var newVal = oldValue + 1;
+            }
+            spinner.find("input").val(newVal);
+            spinner.find("input").trigger("change");
+        });
+
+        btnDown.click(function() {
+            var oldValue = parseFloat(input.val());
+            if (oldValue <= min) {
+                var newVal = oldValue;
+            } else {
+                var newVal = oldValue - 1;
+            }
+            spinner.find("input").val(newVal);
+            spinner.find("input").trigger("change");
+        });
+
+    });
 </script>
 
 </body>

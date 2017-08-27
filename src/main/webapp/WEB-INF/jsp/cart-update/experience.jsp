@@ -139,7 +139,7 @@
             <div id="package-header">
                 <h2>Tailor the offer to suit you</h2>
             </div>
-            <div id="package-contents" class="center" style="overflow: hidden">
+            <div id="package-contents" class="center" style="overflow: hidden;height:100vh">
                 <form action="update-experience" class="flexform packageform">
 
                     <input type="hidden" name="cartIndex" value="${cartIndex}">

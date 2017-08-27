@@ -242,7 +242,7 @@
                                 <span class="blurb">address</span>
                             </div>
                             <div class="offer-info-right">
-                                <span class="price">from $<%= (int)(Math.random() * ((100 - 25)+1)) %></span>
+                                <span class="price">from $40</span>
                                 <span class="fa icons">&#xf21c&nbsp;&#xf1b9</span>
                             </div>
                         </div>

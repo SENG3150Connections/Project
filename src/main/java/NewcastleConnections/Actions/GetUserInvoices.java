@@ -1,6 +1,7 @@
 package NewcastleConnections.Actions;
 
 import NewcastleConnections.DatabaseConnection;
+import NewcastleConnections.InvoiceInfo.InvoiceInfo;
 import NewcastleConnections.packagedeals.tables.records.InvoicesRecord;
 import com.auth0.IdentityVerificationException;
 import com.opensymphony.xwork2.ActionSupport;
@@ -11,6 +12,8 @@ import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static NewcastleConnections.packagedeals.Tables.*;
 
@@ -20,9 +23,9 @@ import static NewcastleConnections.packagedeals.Tables.*;
 public class GetUserInvoices extends ActionSupport {
 
     // Results property (to be shared with the JSP page)
-    private Result<InvoicesRecord> invoices;
+    private List<InvoiceInfo> invoices;
 
-    public Result<InvoicesRecord> getInvoices() {
+    public List<InvoiceInfo> getInvoices() {
         return invoices;
     }
 
@@ -35,7 +38,18 @@ public class GetUserInvoices extends ActionSupport {
             // Get connection
             DatabaseConnection connection = new DatabaseConnection();
             // query
-            invoices = connection.getDSL().selectFrom(INVOICES).where(INVOICES.CUSTOMERID.eq(userID)).fetch();
+            Result<InvoicesRecord> invoicesRecords;
+            invoicesRecords = connection.getDSL().selectFrom(INVOICES).where(INVOICES.CUSTOMERID.eq(userID)).fetch();
+
+            invoices = new ArrayList<>();
+            for (InvoicesRecord x: invoicesRecords) {
+                InvoiceInfo newInvoice = new InvoiceInfo();
+                newInvoice.setId(x.getId());
+                newInvoice.setPrice(x.getPrice());
+                newInvoice.setStatus(x.getStatus());
+                newInvoice.setPurchasedate(x.getPurchasedate());
+                invoices.add(newInvoice);
+            }
             // Close connection
             connection.close();
 

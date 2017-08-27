@@ -3,6 +3,7 @@ package NewcastleConnections.InvoiceInfo;
 import org.jooq.types.UInteger;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 /**
  * Created by Jack on 22/08/2017.
@@ -24,8 +25,8 @@ public class TransportInvoiceInfo {
         this.transportID = transportID;
     }
 
-    public Timestamp getTransportTime() {
-        return transportTime;
+    public String getTransportTime() {
+        return new SimpleDateFormat("hh:mm a dd/MM/yyyy").format(transportTime);
     }
 
     public void setTransportTime(Timestamp transportTime) {
@@ -40,8 +41,8 @@ public class TransportInvoiceInfo {
         this.transportName = transportName;
     }
 
-    public double getTransportPrice() {
-        return transportPrice;
+    public String getTransportPrice() {
+        return "$" + String.format( "%.2f", transportPrice );
     }
 
     public void setTransportPrice(double transportPrice) {

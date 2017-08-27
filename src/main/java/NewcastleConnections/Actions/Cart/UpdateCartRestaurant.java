@@ -33,7 +33,7 @@ public class UpdateCartRestaurant extends ActionSupport {
     public LinkedList recommendedHotels;
     public LinkedList recommendedRestaurants;
     public LinkedList recommendedExperiences;
-    int recommendedItem = (int)(Math.random() * 3);
+    public int recommendedItem = (int)(Math.random() * 3);
 
 
     @Override
@@ -43,8 +43,35 @@ public class UpdateCartRestaurant extends ActionSupport {
             return ERROR;
         restaurant = cart.getRestaurants().get(cartIndex);
 
-        if (edit != null)
+        if (edit != null) {
+
+            // Recommendations
+            Recommendations recommendations = new Recommendations();
+            int numberOfResults = 2;
+
+            if (cart.getHotels().size() != 0) {
+
+                HotelsRecord hotel = cart.getHotels().get(cart.getHotels().size()-1).getHotel();
+                recommendations.generateRecommendations(hotel.getLongitude(),hotel.getLatitude(),numberOfResults);
+
+            } else if (cart.getExperiences().size() != 0) {
+
+                ExperiencesRecord experience = cart.getExperiences().get(cart.getExperiences().size()-1).getExperience();
+                recommendations.generateRecommendations(experience.getLongitude(),experience.getLatitude(),numberOfResults);
+
+            } else if (cart.getRestaurants().size() != 0) {
+
+                ResturantsRecord resturant = cart.getRestaurants().get(cart.getRestaurants().size()-1).getRestaurant();
+                recommendations.generateRecommendations(resturant.getLongitude(),resturant.getLatitude(),numberOfResults);
+            }
+
+            recommendedHotels = recommendations.hotels;
+            recommendedExperiences = recommendations.experiences;
+            recommendedRestaurants = recommendations.restaurants;
+
+
             return SUCCESS;
+        }
 
         // Valid seats: Greater than 0
         if (seats != null) {
@@ -71,28 +98,6 @@ public class UpdateCartRestaurant extends ActionSupport {
 
 
 
-        // Recommendations
-        Recommendations recommendations = new Recommendations();
-
-        if (cart.getHotels().size() != 0) {
-
-            HotelsRecord hotel = cart.getHotels().get(cart.getHotels().size()-1).getHotel();
-            recommendations.generateRecommendations(hotel.getLongitude(),hotel.getLatitude(),2);
-
-        } else if (cart.getExperiences().size() != 0) {
-
-            ExperiencesRecord experience = cart.getExperiences().get(cart.getExperiences().size()-1).getExperience();
-            recommendations.generateRecommendations(experience.getLongitude(),experience.getLatitude(),2);
-
-        } else if (cart.getRestaurants().size() != 0) {
-
-            ResturantsRecord resturant = cart.getRestaurants().get(cart.getRestaurants().size()-1).getRestaurant();
-            recommendations.generateRecommendations(resturant.getLongitude(),resturant.getLatitude(),2);
-        }
-
-        recommendedHotels = recommendations.hotels;
-        recommendedExperiences = recommendations.experiences;
-        recommendedRestaurants = recommendations.restaurants;
 
 
         return DONE;

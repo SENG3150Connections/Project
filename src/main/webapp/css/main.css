@@ -193,6 +193,10 @@ textarea {
    Helper classes
    ========================================================================== */
 
+.overflow-hidden {
+    overflow: hidden;
+}
+
 /*
  * Hide visually and from screen readers
  */

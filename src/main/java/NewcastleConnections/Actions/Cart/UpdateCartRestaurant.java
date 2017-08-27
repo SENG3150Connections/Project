@@ -2,10 +2,15 @@ package NewcastleConnections.Actions.Cart;
 
 import NewcastleConnections.Cart.Cart;
 import NewcastleConnections.Cart.CartRestaurant;
+import NewcastleConnections.Recommendations;
+import NewcastleConnections.packagedeals.tables.records.ExperiencesRecord;
+import NewcastleConnections.packagedeals.tables.records.HotelsRecord;
+import NewcastleConnections.packagedeals.tables.records.ResturantsRecord;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.inject.Inject;
 
 import java.sql.Timestamp;
+import java.util.LinkedList;
 
 /**
  * Created by Scott on 14/08/2017.
@@ -22,6 +27,14 @@ public class UpdateCartRestaurant extends ActionSupport {
     private Integer seats;
     private String time;
     private Double voucherPrice;
+
+
+    // Recommendations
+    public LinkedList recommendedHotels;
+    public LinkedList recommendedRestaurants;
+    public LinkedList recommendedExperiences;
+    int recommendedItem = (int)(Math.random() * 3);
+
 
     @Override
     public String execute() {
@@ -55,6 +68,32 @@ public class UpdateCartRestaurant extends ActionSupport {
                 return ERROR;
             restaurant.setVoucherPrice(voucherPrice);
         }
+
+
+
+        // Recommendations
+        Recommendations recommendations = new Recommendations();
+
+        if (cart.getHotels().size() != 0) {
+
+            HotelsRecord hotel = cart.getHotels().get(cart.getHotels().size()-1).getHotel();
+            recommendations.generateRecommendations(hotel.getLongitude(),hotel.getLatitude(),2);
+
+        } else if (cart.getExperiences().size() != 0) {
+
+            ExperiencesRecord experience = cart.getExperiences().get(cart.getExperiences().size()-1).getExperience();
+            recommendations.generateRecommendations(experience.getLongitude(),experience.getLatitude(),2);
+
+        } else if (cart.getRestaurants().size() != 0) {
+
+            ResturantsRecord resturant = cart.getRestaurants().get(cart.getRestaurants().size()-1).getRestaurant();
+            recommendations.generateRecommendations(resturant.getLongitude(),resturant.getLatitude(),2);
+        }
+
+        recommendedHotels = recommendations.hotels;
+        recommendedExperiences = recommendations.experiences;
+        recommendedRestaurants = recommendations.restaurants;
+
 
         return DONE;
     }

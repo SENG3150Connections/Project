@@ -3,8 +3,8 @@ package NewcastleConnections.Actions.Cart;
 import NewcastleConnections.Cart.Cart;
 import NewcastleConnections.Cart.CartHotel;
 import NewcastleConnections.DatabaseConnection;
-import NewcastleConnections.packagedeals.tables.records.ExperiencevoucherofferingsRecord;
-import NewcastleConnections.packagedeals.tables.records.RoomofferingsRecord;
+import NewcastleConnections.Recommendations;
+import NewcastleConnections.packagedeals.tables.records.*;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.inject.Inject;
 import org.jooq.Result;
@@ -12,6 +12,7 @@ import org.jooq.types.UInteger;
 
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.LinkedList;
 
 import static NewcastleConnections.packagedeals.Tables.ROOMOFFERINGS;
 
@@ -34,6 +35,12 @@ public class UpdateCartHotel extends ActionSupport {
     private String checkIn;
     private String checkOut;
 
+    // Recommendations
+    public LinkedList recommendedHotels;
+    public LinkedList recommendedRestaurants;
+    public LinkedList recommendedExperiences;
+    int recommendedItem = (int)(Math.random() * 3);
+
     @Override
     public String execute() {
         // Valid index: 0 to size-1
@@ -43,6 +50,31 @@ public class UpdateCartHotel extends ActionSupport {
         hotel = cart.getHotels().get(cartIndex);
         try {
             DatabaseConnection connection = new DatabaseConnection();
+
+
+            // Recommendations
+            Recommendations recommendations = new Recommendations();
+
+            if (cart.getHotels().size() != 0) {
+
+                HotelsRecord hotel = cart.getHotels().get(cart.getHotels().size()-1).getHotel();
+                recommendations.generateRecommendations(hotel.getLongitude(),hotel.getLatitude(),2);
+
+            } else if (cart.getExperiences().size() != 0) {
+
+                ExperiencesRecord experience = cart.getExperiences().get(cart.getExperiences().size()-1).getExperience();
+                recommendations.generateRecommendations(experience.getLongitude(),experience.getLatitude(),2);
+
+            } else if (cart.getRestaurants().size() != 0) {
+
+                ResturantsRecord resturant = cart.getRestaurants().get(cart.getRestaurants().size()-1).getRestaurant();
+                recommendations.generateRecommendations(resturant.getLongitude(),resturant.getLatitude(),2);
+            }
+
+            recommendedHotels = recommendations.hotels;
+            recommendedExperiences = recommendations.experiences;
+            recommendedRestaurants = recommendations.restaurants;
+
 
             if (edit != null) {
                 offerings = connection.getDSL().selectFrom(ROOMOFFERINGS)

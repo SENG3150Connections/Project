@@ -6,6 +6,6 @@ package NewcastleConnections.Cart;
 public interface CartItem {
     String getName();
     int getId();
-    boolean isReady();
+    boolean getReady();
     double getPrice();
 }

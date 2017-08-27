@@ -155,6 +155,10 @@
                                     <span class="name">${rec.name}</span>
                                     <span class="blurb">${rec.description}</span>
                                 </div>
+                                <div class="offer-info-right">
+                                    <span class="price">from $<%= (int)(Math.random() * ((650 - 100)+1)) %></span>
+                                    <span class="fa icons">&#xf2cd&nbsp;&#xf236</span>
+                                </div>
                             </div>
                         </div>
                     </s:iterator>
@@ -181,8 +185,8 @@
                                     <span class="blurb">${rec.info}</span>
                                 </div>
                                 <div class="offer-info-right">
-                                    <span class="price">${rec.price}</span>
-                                    <span class="fa icons">&#xf2cd&nbsp;&#xf236</span>
+                                    <span class="price">from $<%= (int)(Math.random() * ((1000 - 10)+1)) %></span>
+                                    <span class="fa icons">&#xf290&nbsp;&#xf083</span>
                                 </div>
                             </div>
                         </div>
@@ -210,11 +214,41 @@
                                     <span class="blurb">${rec.description}</span>
                                 </div>
                                 <div class="offer-info-right">
+                                    <span class="price">from $<%= (int)(Math.random() * ((200 - 20)+1)) %></span>
+                                    <span class="fa icons">&#xf0fc&nbsp;&#xf0f5</span>
                                 </div>
                             </div>
                         </div>
                     </s:iterator>
                 </s:if>
+                <s:iterator value="transport" var="t">
+                    <div class="offer-list recommendation">
+                        <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
+                        <a href="edit-cart?method=add&type=transport&id=${t.id}"><span class="fa fa-plus offer-add" aria-hidden="true">
+                            <span class="tooltiptext">Add to package</span>
+                        </span></a>
+                        <div class="offer-images">
+                            <div class="offer-img-initial" style="min-height: 150px;">
+                                <img src='../../img/shuttlebus.jpg' class="cover"/>
+                            </div>
+                            <div class="offer-img-item">
+                                <img src='../../img/shuttlebus3.jpg' class="cover"/>
+                                <img src='../../img/shuttlebus2.jpg' class="cover"/>
+                            </div>
+                        </div>
+                        <div class="offer-info">
+                            <div class="offer-info-left">
+                                <span class="name">${t.name}</span>
+                                <span class="blurb">address</span>
+                            </div>
+                            <div class="offer-info-right">
+                                <span class="price">from $<%= (int)(Math.random() * ((100 - 25)+1)) %></span>
+                                <span class="fa icons">&#xf21c&nbsp;&#xf1b9</span>
+                            </div>
+                        </div>
+                    </div>
+                </s:iterator>
+
 
                 <s:iterator value="hotels" var="h">
                     <div class="offer-list">
@@ -237,7 +271,7 @@
                                 <span class="blurb">${h.address}</span>
                             </div>
                             <div class="offer-info-right">
-                                <span class="price">$DB TBA</span>
+                                <span class="price">from $<%= (int)(Math.random() * ((650 - 100)+1)) %></span>
                                 <span class="fa icons">&#xf2cd&nbsp;&#xf236</span>
                             </div>
                         </div>
@@ -264,7 +298,7 @@
                                 <span class="blurb">${r.address}</span>
                             </div>
                             <div class="offer-info-right">
-                                <span class="price">$DB TBA</span>
+                                <span class="price">from $<%= (int)(Math.random() * ((200 - 20)+1)) %></span>
                                 <span class="fa icons">&#xf0fc&nbsp;&#xf0f5</span>
                             </div>
                         </div>
@@ -291,7 +325,7 @@
                                 <span class="blurb">${e.info}</span>
                             </div>
                             <div class="offer-info-right">
-                                <span class="price">${e.price}</span>
+                                <span class="price">from $<%= (int)(Math.random() * ((1000 - 10)+1)) %></span>
                                 <span class="fa icons">&#xf290&nbsp;&#xf083</span>
                             </div>
                         </div>
@@ -305,11 +339,11 @@
                         </span></a>
                         <div class="offer-images">
                             <div class="offer-img-initial" style="min-height: 150px;">
-                                <img src='../../img/offer-img.jpg' class="cover"/>
+                                <img src='../../img/shuttlebus.jpg' class="cover"/>
                             </div>
                             <div class="offer-img-item">
-                                <img src='../../img/offer-img-2.jpg' class="cover"/>
-                                <img src='../../img/offer-img-3.jpg' class="cover"/>
+                                <img src='../../img/shuttlebus3.jpg' class="cover"/>
+                                <img src='../../img/shuttlebus2.jpg' class="cover"/>
                             </div>
                         </div>
                         <div class="offer-info">
@@ -318,8 +352,8 @@
                                 <span class="blurb">address</span>
                             </div>
                             <div class="offer-info-right">
-                                <span class="price">$DB TBA</span>
-                                <span class="fa icons">&#xf290&nbsp;&#xf083</span>
+                                <span class="price">from $<%= (int)(Math.random() * ((100 - 25)+1)) %></span>
+                                <span class="fa icons">&#xf21c&nbsp;&#xf1b9</span>
                             </div>
                         </div>
                     </div>

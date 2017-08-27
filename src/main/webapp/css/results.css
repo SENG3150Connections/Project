@@ -277,9 +277,10 @@ header {
     flex-direction: column;
 }
 .offer-tile .offer-info-left .name {
-    font-size: 18px;
+    font-size: 16px;
     color: #005da9;
     margin-bottom: 15px;
+    overflow: hidden;
 }
 .offer-tile .offer-info-left .blurb {
      display: none;
@@ -407,6 +408,10 @@ header {
 }
 #package-info > #package-contents > div > a {
     flex: 1 1 5%;
+}
+#package-info #package-contents a:visited, #package-info #package-contents a {
+    color: #005da9;
+    text-decoration: none;
 }
 #package-info #package-confirmation {
     height: 10vh;

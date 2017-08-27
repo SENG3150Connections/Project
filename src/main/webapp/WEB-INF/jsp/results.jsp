@@ -284,7 +284,8 @@
                         <div class="offer-info">
                             <div class="offer-info-left">
                                 <span class="name">${h.name}</span>
-                                <span class="blurb">${h.address}</span>
+                                <span>${h.address}</span>
+                                <span class="blurb invisible">${h.description}</span>
                             </div>
                             <div class="offer-info-right">
                                 <span class="price">from $<%= (int)(Math.random() * ((650 - 100)+1)) %></span>
@@ -311,7 +312,8 @@
                         <div class="offer-info">
                             <div class="offer-info-left">
                                 <span class="name">${r.name}</span>
-                                <span class="blurb">${r.address}</span>
+                                <span>${r.address}</span>
+                                <span class="blurb invisible">${r.description}</span>
                             </div>
                             <div class="offer-info-right">
                                 <span class="price">from $<%= (int)(Math.random() * ((200 - 20)+1)) %></span>
@@ -338,7 +340,8 @@
                         <div class="offer-info">
                             <div class="offer-info-left">
                                 <span class="name">${e.name}</span>
-                                <span class="blurb">${e.info}</span>
+                                <span>${e.location}</span>
+                                <span class="blurb invisible">${e.overview}</span>
                             </div>
                             <div class="offer-info-right">
                                 <span class="price">from $<%= (int)(Math.random() * ((1000 - 10)+1)) %></span>
@@ -365,7 +368,7 @@
                         <div class="offer-info">
                             <div class="offer-info-left">
                                 <span class="name">${t.name}</span>
-                                <span class="blurb">Direct to door transport</span>
+                                <span class="blurb">${t.description}</span>
                             </div>
                             <div class="offer-info-right">
                                 <span class="price">from $<%= (int)(Math.random() * ((100 - 25)+1)) %></span>

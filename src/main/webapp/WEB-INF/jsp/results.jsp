@@ -134,33 +134,87 @@
                 <hr />
             </div>
             <div id="results" class="flex-col">
-                <s:iterator value="recommendedExperiences" var="rec">
-                    <div class="offer-list" style="background-color: goldenrod">
-                        <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
-                        <a href="edit-cart?method=add&type=experience&id=${rec.id}"><span class="fa fa-plus offer-add" aria-hidden="true">
-                            <span class="tooltiptext">Add to package</span>
-                        </span></a>
-                        <div class="offer-images">
-                            <div class="offer-img-initial">
-                                <img src='../../img/offer-img.jpg' class="cover"/>
+                <s:if test="%{recommendedItem == 0}">
+                    <s:iterator value="recommendedHotels" var="rec">
+                        <div class="offer-list recommendation">
+                            <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
+                            <a href="edit-cart?method=add&type=experience&id=${rec.id}"><span class="fa fa-plus offer-add" aria-hidden="true">
+                                <span class="tooltiptext">Add to package</span>
+                            </span></a>
+                            <div class="offer-images">
+                                <div class="offer-img-initial" style="min-height: 150px;">
+                                    <img src='../../img/hotels/hotel${(rec.id)%17}.jpg' class="cover"/>
+                                </div>
+                                <div class="offer-img-item">
+                                    <img src='../../img/hotels/hotel${(rec.id + 10)%17}.jpg' class="cover"/>
+                                    <img src='../../img/hotels/hotel${(rec.id + 16)%17}.jpg' class="cover"/>
+                                </div>
                             </div>
-                            <div class="offer-img-item">
-                                <img src='../../img/offer-img-2.jpg' class="cover"/>
-                                <img src='../../img/offer-img-3.jpg' class="cover"/>
-                            </div>
-                        </div>
-                        <div class="offer-info">
-                            <div class="offer-info-left">
-                                <span class="name">${rec.name}</span>
-                                <span class="blurb">${rec.info}</span>
-                            </div>
-                            <div class="offer-info-right">
-                                <span class="price">${rec.price}</span>
-                                <span class="fa icons">&#xf2cd&nbsp;&#xf236</span>
+                            <div class="offer-info">
+                                <div class="offer-info-left">
+                                    <span class="name">${rec.name}</span>
+                                    <span class="blurb">${rec.description}</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </s:iterator>
+                    </s:iterator>
+                </s:if>
+                <s:if test="%{recommendedItem == 1}">
+                    <s:iterator value="recommendedExperiences" var="rec">
+                        <div class="offer-list recommendation">
+                            <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
+                            <a href="edit-cart?method=add&type=experience&id=${rec.id}"><span class="fa fa-plus offer-add" aria-hidden="true">
+                                <span class="tooltiptext">Add to package</span>
+                            </span></a>
+                            <div class="offer-images">
+                                <div class="offer-img-initial" style="min-height: 150px;">
+                                    <img src='../../img/experiences/experience${(rec.id)%17}.jpg' class="cover"/>
+                                </div>
+                                <div class="offer-img-item">
+                                    <img src='../../img/hotels/hotel${(rec.id + 10)%17}.jpg' class="cover"/>
+                                    <img src='../../img/hotels/hotel${(rec.id + 16)%17}.jpg' class="cover"/>
+                                </div>
+                            </div>
+                            <div class="offer-info">
+                                <div class="offer-info-left">
+                                    <span class="name">${rec.name}</span>
+                                    <span class="blurb">${rec.info}</span>
+                                </div>
+                                <div class="offer-info-right">
+                                    <span class="price">${rec.price}</span>
+                                    <span class="fa icons">&#xf2cd&nbsp;&#xf236</span>
+                                </div>
+                            </div>
+                        </div>
+                    </s:iterator>
+                </s:if>
+                <s:if test="%{recommendedItem == 2}">
+                    <s:iterator value="recommendedRestaurants" var="rec">
+                        <div class="offer-list recommendation">
+                            <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
+                            <a href="edit-cart?method=add&type=experience&id=${rec.id}"><span class="fa fa-plus offer-add" aria-hidden="true">
+                                <span class="tooltiptext">Add to package</span>
+                            </span></a>
+                            <div class="offer-images">
+                                <div class="offer-img-initial" style="min-height: 150px;">
+                                    <img src='../../img/restaurants/restaurant${(rec.id)%17}.jpg' class="cover"/>
+                                </div>
+                                <div class="offer-img-item">
+                                    <img src='../../img/hotels/hotel${(rec.id + 10)%17}.jpg' class="cover"/>
+                                    <img src='../../img/hotels/hotel${(rec.id + 16)%17}.jpg' class="cover"/>
+                                </div>
+                            </div>
+                            <div class="offer-info">
+                                <div class="offer-info-left">
+                                    <span class="name">${rec.name}</span>
+                                    <span class="blurb">${rec.description}</span>
+                                </div>
+                                <div class="offer-info-right">
+                                </div>
+                            </div>
+                        </div>
+                    </s:iterator>
+                </s:if>
 
                 <s:iterator value="hotels" var="h">
                     <div class="offer-list">
@@ -169,12 +223,12 @@
                             <span class="tooltiptext">Add to package</span>
                         </span></a>
                         <div class="offer-images">
-                            <div class="offer-img-initial">
-                                <img src='../../img/offer-img.jpg' class="cover"/>
+                            <div class="offer-img-initial" style="min-height: 150px;">
+                                <img src='../../img/hotels/hotel${(h.id)%17}.jpg' class="cover"/>
                             </div>
                             <div class="offer-img-item">
-                                <img src='../../img/offer-img-2.jpg' class="cover"/>
-                                <img src='../../img/offer-img-3.jpg' class="cover"/>
+                                <img src='../../img/hotels/hotel${(h.id + 10)%17}.jpg' class="cover"/>
+                                <img src='../../img/hotels/hotel${(h.id + 16)%17}.jpg' class="cover"/>
                             </div>
                         </div>
                         <div class="offer-info">
@@ -196,12 +250,12 @@
                             <span class="tooltiptext">Add to package</span>
                         </span></a>
                         <div class="offer-images">
-                            <div class="offer-img-initial">
-                                <img src='../../img/offer-img.jpg' class="cover"/>
+                            <div class="offer-img-initial" style="min-height: 150px;">
+                                <img src='../../img/restaurants/restaurant${(r.id)%17}.jpg' class="cover"/>
                             </div>
                             <div class="offer-img-item">
-                                <img src='../../img/offer-img-2.jpg' class="cover"/>
-                                <img src='../../img/offer-img-3.jpg' class="cover"/>
+                                <img src='../../img/hotels/hotel${(r.id + 10)%17}.jpg' class="cover"/>
+                                <img src='../../img/hotels/hotel${(r.id + 16)%17}.jpg' class="cover"/>
                             </div>
                         </div>
                         <div class="offer-info">
@@ -223,12 +277,12 @@
                             <span class="tooltiptext">Add to package</span>
                         </span></a>
                         <div class="offer-images">
-                            <div class="offer-img-initial">
-                                <img src='../../img/offer-img.jpg' class="cover"/>
+                            <div class="offer-img-initial" style="min-height: 150px;">
+                                <img src='../../img/experiences/experience${(e.id)%17}.jpg' class="cover"/>
                             </div>
                             <div class="offer-img-item">
-                                <img src='../../img/offer-img-2.jpg' class="cover"/>
-                                <img src='../../img/offer-img-3.jpg' class="cover"/>
+                                <img src='../../img/hotels/hotel${(e.id + 10)%17}.jpg' class="cover"/>
+                                <img src='../../img/hotels/hotel${(e.id + 16)%17}.jpg' class="cover"/>
                             </div>
                         </div>
                         <div class="offer-info">
@@ -250,7 +304,7 @@
                             <span class="tooltiptext">Add to package</span>
                         </span></a>
                         <div class="offer-images">
-                            <div class="offer-img-initial">
+                            <div class="offer-img-initial" style="min-height: 150px;">
                                 <img src='../../img/offer-img.jpg' class="cover"/>
                             </div>
                             <div class="offer-img-item">
@@ -272,9 +326,7 @@
                 </s:iterator>
             </div>
             <div id="offer-info-large" class="hidden">
-                <div id="offer-image">
-                    <img src="../../img/offer-img.jpg" />
-                </div>
+                <div id="offer-image"></div>
                 <div id="offer-info">
                     <h2 id="offer-name"></h2>
                     <h2>Description</h2>
@@ -291,8 +343,8 @@
             <s:set var="size" value="cart.size"/>
             <s:if test="%{#size == 0}">
             <div id="package-contents" class="center">
-                <h2>Nothing here yet!</h2>
-                <h3>Add an offer from the left by<br />
+                <h2 style="padding-top: 25px">Nothing here yet!</h2>
+                <h3 style="padding-top: 25px">Add an offer from the left by<br />
                     <!--dragging it into this area or<br />-->
                     clicking the plus symbol at the bottom right</h3>
             </div>
@@ -360,12 +412,21 @@
         $('#results').addClass('flex-row').removeClass('flex-col');
         $('.offer-list').toggleClass('offer-tile').toggleClass('offer-list');
     });
-    $(".offer-list").on('click', function() {
+    $(".offer-list > .offer-info").on('click', function() {
         $('#results').addClass('hidden');
         $('#display-type').addClass('hidden');
         $('.offer-list').addClass('hidden');
         $('#offer-info-large').removeClass('hidden');
         $(this).find(".offer-info").find(".offer-info-left").find(".name").clone().appendTo('#offer-name');
+        $(this).find(".offer-images").find(".offer-img-initial").find(".cover").clone().appendTo('#offer-image');
+    });
+    $(".offer-list > .offer-images").on('click', function() {
+        $('#results').addClass('hidden');
+        $('#display-type').addClass('hidden');
+        $('.offer-list').addClass('hidden');
+        $('#offer-info-large').removeClass('hidden');
+        $(this).find(".offer-info").find(".offer-info-left").find(".name").clone().appendTo('#offer-name');
+        $(this).find(".offer-images").find(".offer-img-initial").find(".cover").clone().appendTo('#offer-image');
     });
     $("#show-results").on('click', function() {
         $('#offer-info-large').addClass('hidden');
@@ -373,94 +434,6 @@
         $('#display-type').removeClass('hidden');
         $('.offer-list').removeClass('hidden');
     });
-//    $(function () {
-//        // jQuery UI Draggable
-//        $(".draggable").draggable({
-//            // brings the item back to its place when dragging is over
-//            revert:true,
-//            helper:"clone",
-//            // once the dragging starts, we decrease the opactiy of other items
-//            // Appending a class as we do that with CSS
-//            drag:function () {
-//                $(this).addClass("active");
-//                $(this).closest(".draggable").addClass("active");
-//            },
-//            // removing the CSS classes once dragging is over.
-//            stop:function () {
-//                $(this).removeClass("active").closest(".draggable").removeClass("active");
-//            }
-//        });
-//
-//        // jQuery Ui Droppable
-//        $("#package-contents").droppable({
-//            // The class that will be appended to the to-be-dropped-element (basket)
-//            activeClass:"active",
-//            // The class that will be appended once we are hovering the to-be-dropped-element (basket)
-//            hoverClass:"hover",
-//            // The acceptance of the item once it touches the to-be-dropped-element basket
-//            // For different values http://api.jqueryui.com/droppable/#option-tolerance
-//            tolerance:"touch",
-//            drop:function (event, ui) {
-//                var basket = $(this),
-//                    move = ui.draggable,
-//                    itemId = basket.find("ul li[data-id='" + move.attr("data-id") + "']");
-//                // To increase the value by +1 if the same item is already in the basket
-//                if (itemId.html() != null) {
-//                    itemId.find("input").val(parseInt(itemId.find("input").val()) + 1);
-//                }
-//                else {
-//                    // Add the dragged item to the basket
-//                    addBasket(basket, move);
-//                    // Updating the quantity by +1" rather than adding it to the basket
-//                    move.find("input").val(parseInt(move.find("input").val()) + 1);
-//                }
-//            }
-//        });
-//
-//        // This function runs onc ean item is added to the basket
-//        function addBasket(basket, move) {
-//            basket.find("ul").append('<li data-id="' + move.attr("data-id") + '">'
-//                + '<span class="name">' + move.find("h3").html() + '</span>'
-//                + '<input class="count" value="1" type="text">'
-//                + '<button class="delete">&#10005;</button>');
-//        }
-//        // The function that is triggered once delete button is pressed
-//        $(".basket ul li button.delete").live("click", function () {
-//            $(this).closest("li").remove();
-//        });
-//    });
-//    $(".draggable").draggable({ cursor: "crosshair", revert: "invalid", scroll: "false", opacity: 0.8, helper: "clone"});
-//    $("#package-contents").droppable({ accept: ".draggable",
-//        drop: function(event, ui) {
-//            console.log("drop");
-//            $(this).removeClass("border").removeClass("over");
-//            var dropped = ui.draggable;
-//            var droppedOn = $(this);
-//            $(dropped).detach().css({top: 0,left: 0}).appendTo(droppedOn);
-//            if($('#package-contents>div').hasClass('draggable')) {
-//                $("#package-contents > h2").addClass( "hidden" );
-//                $("#package-contents > h3").addClass( "hidden" );
-//            }
-//            $("#package-contents:has(div)").addClass( "active" );
-//        },
-//        over: function(event, elem) {
-//            $(this).addClass("over");
-//            console.log("over");
-//        },
-//        out: function(event, elem) {
-//            $(this).removeClass("over");
-//        }
-//    }).sortable();
-//    $("#results").droppable({ accept: ".draggable",
-//        drop: function(event, ui) {
-//            console.log("drop");
-//            $(this).removeClass("border").removeClass("over");
-//            var dropped = ui.draggable;
-//            var droppedOn = $(this);
-//            $(dropped).detach().css({top: 0,left: 0}).appendTo(droppedOn);
-//            $("#package-contents:not(:has(div))").removeClass( "active" );
-//        }
-//    });
 </script>
 
 </body>

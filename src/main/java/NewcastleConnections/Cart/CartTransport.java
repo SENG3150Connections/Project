@@ -40,7 +40,7 @@ public class CartTransport implements CartItem {
         return transport.getId().intValue();
     }
 
-    public boolean isReady() {
+    public boolean getReady() {
         return tickets > 0 && time != null;
     }
 
@@ -51,7 +51,7 @@ public class CartTransport implements CartItem {
     // -- Other methods --
 
     public InvoicetransportRecord getInvoice() {
-        if (!isReady()) {
+        if (!getReady()) {
             return null;
         }
 

@@ -29,6 +29,7 @@ public class Results extends ActionSupport {
     public LinkedList recommendedHotels;
     public LinkedList recommendedRestaurants;
     public LinkedList recommendedExperiences;
+    int recommendedItem = (int)(Math.random() * 3);
 
     private int hotelCount;
     private int restaurantCount;
@@ -338,4 +339,12 @@ public class Results extends ActionSupport {
     public void setPeople(int people) {
         this.people = people;
     }
+
+    public int getRecommendedItem() { return recommendedItem; }
+
+    public LinkedList getRecommendedHotels() { return recommendedHotels; }
+
+    public LinkedList getRecommendedRestaurants() { return recommendedRestaurants; }
+
+    public LinkedList getRecommendedExperiences() { return recommendedExperiences; }
 }

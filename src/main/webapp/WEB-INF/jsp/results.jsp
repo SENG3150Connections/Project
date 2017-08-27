@@ -42,12 +42,25 @@
                 <a href="#"><img src="../../img/tw-social.png" class="pointer hover"/></a>
                 <a href="#"><img src="../../img/ig-social.png" class="pointer hover"/></a>
             </div>
-            <div class="homepage-login">
-                <a href="/login">Login</a>
-            </div>
-            <div class="homepage-help">
-                <a href="#">Help</a>
-            </div>
+            <s:if test="%{#session.userNickname == null}">
+                <div class="homepage-login">
+                    <form action="/login">
+                        <button type="submit">Login</button>
+                    </form>
+                </div>
+            </s:if>
+            <s:else>
+                <div class="homepage-login">
+                    <form action="/customerPortal">
+                        <button type="submit">Your Account</button>
+                    </form>
+                </div>
+                <div class="homepage-login">
+                    <form action="/logout">
+                        <button type="submit">Logout</button>
+                    </form>
+                </div>
+            </s:else>
         </div>
     </header>
     <div id="selector">
@@ -133,7 +146,7 @@
                 <a href="#" id="display-list" class="fa fa-2x fa-th-list">&nbsp;</a>
                 <hr />
             </div>
-            <div id="results" class="flex-col">
+                <div id="results" class="flex-col">
                 <s:if test="%{recommendedItem == 0}">
                     <s:iterator value="recommendedHotels" var="rec">
                         <div class="offer-list recommendation">
@@ -153,7 +166,8 @@
                             <div class="offer-info">
                                 <div class="offer-info-left">
                                     <span class="name">${rec.name}</span>
-                                    <span class="blurb">${rec.description}</span>
+                                    <span>${rec.address}</span>
+                                    <span class="blurb invisible">${rec.description}</span>
                                 </div>
                                 <div class="offer-info-right">
                                     <span class="price">from $<%= (int)(Math.random() * ((650 - 100)+1)) %></span>
@@ -182,7 +196,8 @@
                             <div class="offer-info">
                                 <div class="offer-info-left">
                                     <span class="name">${rec.name}</span>
-                                    <span class="blurb">${rec.info}</span>
+                                    <span>${rec.location}</span>
+                                    <span class="blurb invisible">${rec.overview}</span>
                                 </div>
                                 <div class="offer-info-right">
                                     <span class="price">from $<%= (int)(Math.random() * ((1000 - 10)+1)) %></span>
@@ -211,7 +226,8 @@
                             <div class="offer-info">
                                 <div class="offer-info-left">
                                     <span class="name">${rec.name}</span>
-                                    <span class="blurb">${rec.description}</span>
+                                    <span>${rec.address}</span>
+                                    <span class="blurb invisible">${rec.description}</span>
                                 </div>
                                 <div class="offer-info-right">
                                     <span class="price">from $<%= (int)(Math.random() * ((200 - 20)+1)) %></span>
@@ -239,7 +255,7 @@
                         <div class="offer-info">
                             <div class="offer-info-left">
                                 <span class="name">${t.name}</span>
-                                <span class="blurb">address</span>
+                                <span class="blurb">${t.description}</span>
                             </div>
                             <div class="offer-info-right">
                                 <span class="price">from $40</span>
@@ -349,7 +365,7 @@
                         <div class="offer-info">
                             <div class="offer-info-left">
                                 <span class="name">${t.name}</span>
-                                <span class="blurb">address</span>
+                                <span class="blurb">Direct to door transport</span>
                             </div>
                             <div class="offer-info-right">
                                 <span class="price">from $<%= (int)(Math.random() * ((100 - 25)+1)) %></span>
@@ -363,10 +379,9 @@
                 <div id="offer-image"></div>
                 <div id="offer-info">
                     <h2 id="offer-name"></h2>
-                    <h2>Description</h2>
-                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat</p>
+                    <p id="offer-desc"></p>
+                    <a href="" id="show-results">Back to Results</a>
                 </div>
-                <a href="" id="show-results">Back to Results</a>
             </div>
         </div>
         <div id="package-info">
@@ -379,7 +394,6 @@
             <div id="package-contents" class="center">
                 <h2 style="padding-top: 25px">Nothing here yet!</h2>
                 <h3 style="padding-top: 25px">Add an offer from the left by<br />
-                    <!--dragging it into this area or<br />-->
                     clicking the plus symbol at the bottom right</h3>
             </div>
             </s:if>
@@ -427,6 +441,7 @@
 <script src="js/plugins.js"></script>
 <script src="js/main.js"></script>
 <script>
+    var str;
     $("a.content-toggle").click(function() {
         $('#filters').animate({height: ($('#filters').height() == 0) ? $(window).height()-250 : 0}, 200);
         $('#filters>div').toggleClass('invisible');
@@ -446,21 +461,27 @@
         $('#results').addClass('flex-row').removeClass('flex-col');
         $('.offer-list').toggleClass('offer-tile').toggleClass('offer-list');
     });
-    $(".offer-list > .offer-info").on('click', function() {
-        $('#results').addClass('hidden');
-        $('#display-type').addClass('hidden');
-        $('.offer-list').addClass('hidden');
-        $('#offer-info-large').removeClass('hidden');
-        $(this).find(".offer-info").find(".offer-info-left").find(".name").clone().appendTo('#offer-name');
-        $(this).find(".offer-images").find(".offer-img-initial").find(".cover").clone().appendTo('#offer-image');
-    });
     $(".offer-list > .offer-images").on('click', function() {
         $('#results').addClass('hidden');
         $('#display-type').addClass('hidden');
         $('.offer-list').addClass('hidden');
         $('#offer-info-large').removeClass('hidden');
-        $(this).find(".offer-info").find(".offer-info-left").find(".name").clone().appendTo('#offer-name');
-        $(this).find(".offer-images").find(".offer-img-initial").find(".cover").clone().appendTo('#offer-image');
+        str = $(this).parent().find(".name").text();
+        $('#offer-name').html(str);
+        str = $(this).parent().find(".blurb").text();
+        $('#offer-desc').html(str);
+        $(this).find(".offer-img-initial").clone().appendTo('#offer-image');
+    });
+    $(".offer-list > .offer-info").on('click', function() {
+        $('#results').addClass('hidden');
+        $('#display-type').addClass('hidden');
+        $('.offer-list').addClass('hidden');
+        $('#offer-info-large').removeClass('hidden');
+        str = $(this).parent().find(".name").text();
+        $('#offer-name').html(str);
+        str = $(this).parent().find(".blurb").text();
+        $('#offer-desc').html(str);
+        $(this).parent().find(".offer-img-initial").clone().appendTo('#offer-image');
     });
     $("#show-results").on('click', function() {
         $('#offer-info-large').addClass('hidden');

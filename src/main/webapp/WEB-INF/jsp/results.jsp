@@ -326,9 +326,7 @@
                 </s:iterator>
             </div>
             <div id="offer-info-large" class="hidden">
-                <div id="offer-image">
-                    <img src="../../img/offer-img.jpg" />
-                </div>
+                <div id="offer-image"></div>
                 <div id="offer-info">
                     <h2 id="offer-name"></h2>
                     <h2>Description</h2>
@@ -420,6 +418,7 @@
         $('.offer-list').addClass('hidden');
         $('#offer-info-large').removeClass('hidden');
         $(this).find(".offer-info").find(".offer-info-left").find(".name").clone().appendTo('#offer-name');
+        $(this).find(".offer-images").find(".offer-img-initial").find(".cover").clone().appendTo('#offer-image');
     });
     $("#show-results").on('click', function() {
         $('#offer-info-large').addClass('hidden');

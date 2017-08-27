@@ -151,7 +151,7 @@
                     <s:iterator value="recommendedHotels" var="rec">
                         <div class="offer-list recommendation">
                             <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
-                            <a href="edit-cart?method=add&type=experience&id=${rec.id}"><span class="fa fa-plus offer-add" aria-hidden="true">
+                            <a href="edit-cart?method=add&type=hotel&id=${rec.id}"><span class="fa fa-plus offer-add" aria-hidden="true">
                                 <span class="tooltiptext">Add to package</span>
                             </span></a>
                             <div class="offer-images">
@@ -219,7 +219,7 @@
                     <s:iterator value="recommendedRestaurants" var="rec">
                         <div class="offer-list recommendation">
                             <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
-                            <a href="edit-cart?method=add&type=experience&id=${rec.id}"><span class="fa fa-plus offer-add" aria-hidden="true">
+                            <a href="edit-cart?method=add&type=restaurant&id=${rec.id}"><span class="fa fa-plus offer-add" aria-hidden="true">
                                 <span class="tooltiptext">Add to package</span>
                             </span></a>
                             <div class="offer-images">

@@ -151,7 +151,7 @@
                     <input type="text" id="time" name="time" value="${restaurant.time}">
                     <br/>Voucher Price:<br/>
                     <div class="quantity">
-                        <input type="number" name="voucherPrice" min="0" max="9" step="1"  value="${restaurant.voucherPrice}">
+                        <input type="number" name="voucherPrice" min="0" max="150" step="10"  value="${restaurant.voucherPrice}">
                     </div>
 
                     <input type="submit" value="Submit">

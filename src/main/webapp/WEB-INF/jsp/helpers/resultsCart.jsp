@@ -8,14 +8,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <div>
-    <s:set var="ready" value="c.ready"/>
-    <s:if test="%{#ready}">
-        <span class="fa fa-remove"></span>
+    <s:if test="%{#c.ready == true}">
+        <span class="fa fa-check" style="color: #4ab64a"></span>
     </s:if>
     <s:else>
-        <span class="fa fa-check"></span>
+        <span class="fa fa-remove" style="color: #db0000"></span>
     </s:else>
-    <%--<span class="fa fa-check">${c.ready}</span>--%>
     <span>${c.name}</span>
     <a href="update-${type}?edit&cartIndex=${entry.index}"><span class="fa fa-edit" aria-hidden="true">
         <span class="tooltiptext">Edit</span>

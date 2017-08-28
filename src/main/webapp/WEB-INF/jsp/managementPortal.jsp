@@ -46,7 +46,7 @@
                 <div class="col-md-12">
                     <div class="management-container" style="height:90%;">
                         <label class="heading">Weekly Report</label>
-                        <% String[] colours = new String[]{"#c00", "#cc0", "#0c0", "#0cc", "#00c", "#c0c"}; %>
+                        <% String[] colours = new String[]{"#900", "#990", "#090", "#099", "#009", "#909"}; %>
 
                         <div class="row">
                             <div class="col-md-2">
@@ -90,7 +90,7 @@
 
                                         <% for(int j = 0; j < 6; j++) { %>
                                             <% float value = ( java.lang.Math.round(java.lang.Math.random() * percentage) ) % 30; %>
-                                            <rect x="<%=7.5 + (13 + 1/3) * i%>%" y="<%= percentage - value %>%" width="5%" height="<%= value %>%" style="fill:<%=colours[j]%>;fill-opacity:0.6;"/>
+                                            <rect x="<%=7.5 + (13 + 1/3) * i%>%" y="<%= percentage - value %>%" width="5%" height="<%= value %>%" style="fill:<%=colours[j]%>;fill-opacity:1;"/>
                                             <% percentage -= value; %>
                                         <% } %>
                                     <% } %>

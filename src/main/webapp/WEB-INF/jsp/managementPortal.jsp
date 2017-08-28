@@ -46,30 +46,31 @@
                 <div class="col-md-12">
                     <div class="management-container" style="height:90%;">
                         <label class="heading">Weekly Report</label>
+                        <% String[] colours = new String[]{"#c00", "#cc0", "#fc0", "#fcc", "#f0c", "#c0c"}; %>
 
                         <div class="row">
                             <div class="col-md-2">
-                                <div class="col-md-12 analyticsGraphDetails" style="border-right-color: #c00;">
+                                <div class="col-md-12 analyticsGraphDetails" style="border-right-color: <%=colours[0]%>;">
                                     <label class="heading">$${grossSalesTotal}</label><br>
                                     <label class="subHeading">Gross Sales in this period</label>
                                 </div>
-                                <div class="col-md-12 analyticsGraphDetails" style="border-right-color: #cc0;">
+                                <div class="col-md-12 analyticsGraphDetails" style="border-right-color: <%=colours[1]%>;">
                                     <label class="heading">$${netSalesTotal}</label><br>
                                     <label class="subHeading">Net Sales in this period</label>
                                 </div>
-                                <div class="col-md-12 analyticsGraphDetails" style="border-right-color: #fc0;">
+                                <div class="col-md-12 analyticsGraphDetails" style="border-right-color: <%=colours[2]%>;">
                                     <label class="heading">${ordersPlacedTotal}</label><br>
                                     <label class="subHeading">Orders placed</label>
                                 </div>
-                                <div class="col-md-12 analyticsGraphDetails" style="border-right-color: #fcc;">
+                                <div class="col-md-12 analyticsGraphDetails" style="border-right-color: <%=colours[3]%>;">
                                     <label class="heading">${itemsPurchasedTotal}</label><br>
                                     <label class="subHeading">Items Purchased</label>
                                 </div>
-                                <div class="col-md-12 analyticsGraphDetails" style="border-right-color: #f0c;">
+                                <div class="col-md-12 analyticsGraphDetails" style="border-right-color: <%=colours[4]%>;">
                                     <label class="heading">$${refundedTotal}</label><br>
                                     <label class="subHeading">Refunded 0 orders (0 items)</label>
                                 </div>
-                                <div class="col-md-12 analyticsGraphDetails" style="border-right-color: #c0f;">
+                                <div class="col-md-12 analyticsGraphDetails" style="border-right-color: <%=colours[5]%>;">
                                     <label class="heading">$${couponSalesTotal}</label><br>
                                     <label class="subHeading">Worth of coupons used</label>
                                 </div>
@@ -84,7 +85,6 @@
 
                                     <!-- Graph Data -->>
                                     <% for(int i = 0; i < 7; i++) { %>
-                                        <% String[] colours = new String[]{"#c00", "#cc0", "#fc0", "#fcc", "#f0c", "#c0c"}; %>
                                         <% double percentage = 95.0; %>
 
 

@@ -389,7 +389,7 @@
                                 <span class="blurb">${t.description}</span>
                             </div>
                             <div class="offer-info-right">
-                                <span class="price">from $40%></span>
+                                <span class="price">from $40</span>
                                 <span class="fa icons">&#xf21c&nbsp;&#xf1b9</span>
                             </div>
                         </div>

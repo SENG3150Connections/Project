@@ -15,7 +15,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../css/normalize.css">
     <link rel="stylesheet" href="../../css/main.css">
-    <link rel="stylesheet" href="../../css/results.css">
+    <link rel="stylesheet" href="../../css/home.css">
     <link rel="stylesheet" href="../../css/pikaday.css">
     <link rel="stylesheet" href="../../css/customerPortal.css">
 
@@ -25,11 +25,12 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
-<body>
+<body class="customerPortalBody">
 <!--[if lt IE 8]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
 
+<div id="wrapper">
 <main>
     <header id="header-container">
         <div class="header">
@@ -38,7 +39,7 @@
                 <div class="cover-overlay"></div>
             </div>
             <div class="homepage-logo" style="margin-left: 0;">
-                <h1><a style="color: white;" href="/home">NewcastleConnections</a></h1>
+                <h1><a style="color: white; font-size: 32px" href="/home">NewcastleConnections</a></h1>
             </div>
             <div class="homepage-social">
                 <a href="#"><img src="../../img/fb-social.png" class="pointer hover"/></a>
@@ -63,129 +64,155 @@
             </div>
         </div>
     </header>
+    <p class="customerTopMenu">
+        <a class="customerPageNav" href="/home">Home</a> / <a class="customerPageNav" href="/customerPortal">My Account</a> / <a class="customerPageNav" href="/customerPortal">Invoices</a> / <a class="customerPageNav" href="/customerPortal">Booking</a>
+    </p>
     <div class="customerPageBody">
         <div class="customerOptions">
             <div class="contentBox">
                 <span class="customerPageHeading">Menu</span>
-                <span href="/customerPortal-bookings" class="customerPageMenu">Invoices</span>
-                <span class="customerPageMenu">Itinerary</span>
-                <span class="customerPageMenu">Manage Account</span>
+                <a href="/customerPortal" class="customerPageMenu${pageContext.request.requestURI eq '/WEB-INF/jsp/customerPortal-bookings.jsp' ? ' active' : ''}">Invoices</a>
+                <a class="customerPageMenu">Itinerary</a>
+                <a class="customerPageMenu">Manage Account</a>
             </div>
         </div>
         <div class="customerPageContent">
-            <div class="contentBox">
-                <span class="customerPageHeading">Booking</span>
-                <div class="customerInvoice">
-                    <span class="invoiceHeading">Invoice Number</span>
-                    <span class="invoiceHeading">Purchase Date</span>
-                    <span class="invoiceHeading">Price</span>
-                    <span class="invoiceHeading">Status</span>
-                    <span class="invoiceHeading">Action</span>
-                </div>
                 <s:iterator value="invoice" var="invoice">
-                    <div class="customerInvoice">
-                        <span class="invoiceContent">${invoice.id}</span>
-                        <span class="invoiceContent">${invoice.purchasedate}</span>
-                        <span class="invoiceContent">${invoice.price}</span>
-                        <span class="invoiceContent">${invoice.status}</span>
-                        <form action="/customerPortal-bookings">
-                            <s:hidden name="invoiceID" value="%{invoice.id}"/>
-                            <input type="submit" class="invoiceSubmit" value="View Booking"/>
-                        </form>
-                    </div>
+                <div class="contentBox">
+                    <span class="customerPageHeading">#${invoice.id} Invoice Info</span>
+                    <span class="invoiceList"><strong>Invoice Date: </strong>${invoice.purchasedate}</span>
+                    <span class="invoiceList"><strong>Invoice Status: </strong>${invoice.status}</span>
+                    <span class="invoiceList"><strong>Invoice Price: </strong>${invoice.price}</span>
+                </div>
                 </s:iterator>
                 <s:if test="%{hotels.size>0}">
+                <div class="contentBox">
                     <span class="customerPageHeading">Hotels</span>
-                    <div class="customerInvoice">
-                        <span class="hotelHeading">Room Number</span>
-                        <span class="hotelHeading">Room Type</span>
-                        <span class="hotelHeading">Adults</span>
-                        <span class="hotelHeading">Children</span>
-                        <span class="hotelHeading">Check In</span>
-                        <span class="hotelHeading">Check Out</span>
-                        <span class="hotelHeading">Price</span>
-                        <span class="hotelHeading">Hotel Name</span>
-                        <span class="hotelHeading">Hotel Address</span>
-                        <span class="hotelHeading">Hotel Contact</span>
-                        <span class="hotelHeading">Hotel Image</span>
-                    </div>
+                    <s:iterator value="hotels" var="hotel">
+                    <span class="hotelName">${hotel.hotelName}</span>
+                    <span class="hotelAddress">${hotel.hotelAddress}</span>
+                    <span class="hotelContact">${hotel.hotelContact}</span>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="invoiceHeading">Room Number</th>
+                                <th class="invoiceHeading">Room Type</th>
+                                <th class="invoiceHeading">Price</th>
+                                <th class="invoiceHeading">Check In</th>
+                                <th class="invoiceHeading">Check Out</th>
+                                <th class="invoiceHeading">Adults</th>
+                                <th class="invoiceHeading">Children</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="hotelContent">${hotel.roomID}</td>
+                                <td class="hotelContent">${hotel.roomType}</td>\
+                                <td class="hotelContent">${hotel.hotelPrice}</td>
+                                <td class="hotelContent">${hotel.checkIn}</td>
+                                <td class="hotelContent">${hotel.checkOut}</td>
+                                <td class="hotelContent">${hotel.adults}</td>
+                                <td class="hotelContent">${hotel.children}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </s:iterator>
+                </div>
                 </s:if>
-                <s:iterator value="hotels" var="hotel">
-                    <div class="customerInvoice">
-                        <span class="hotelContent">${hotel.roomID}</span>
-                        <span class="hotelContent">${hotel.roomType}</span>
-                        <span class="hotelContent">${hotel.adults}</span>
-                        <span class="hotelContent">${hotel.children}</span>
-                        <span class="hotelContent">${hotel.checkIn}</span>
-                        <span class="hotelContent">${hotel.checkOut}</span>
-                        <span class="hotelContent">${hotel.hotelPrice}</span>
-                        <span class="hotelContent">${hotel.hotelName}</span>
-                        <span class="hotelContent">${hotel.hotelAddress}</span>
-                        <span class="hotelContent">${hotel.hotelContact}</span>
-                        <span class="hotelContent">${hotel.hotelImageID}</span>
-                    </div>
-                </s:iterator>
                 <s:if test="%{experiences.size>0}">
+                <div class="contentBox">
                     <span class="customerPageHeading">Experiences</span>
-                    <div class="customerInvoice">
-                        <span class="experienceHeading">Name</span>
-                        <span class="experienceHeading">Locations</span>
-                        <span class="experienceHeading">Image</span>
-                        <span class="experienceHeading">Price</span>
-                    </div>
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th class="experienceHeading">Name</th>
+                            <th class="experienceHeading">Location</th>
+                            <th class="experienceHeading">Price</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <s:iterator value="experiences" var="experience">
+                            <tr>
+                                <td class="experienceContent">${experience.name}</td>
+                                <td class="experienceContent">${experience.location}</td>
+                                <td class="experienceContent">${experience.price}</td>
+                            </tr>
+                        </s:iterator>
+                        </tbody>
+                    </table>
+                </div>
                 </s:if>
-                <s:iterator value="experiences" var="experience">
-                    <div class="customerInvoice">
-                        <span class="experienceContent">${experience.name}</span>
-                        <span class="experienceContent">${experience.location}</span>
-                        <span class="experienceContent">${experience.imageID}</span>
-                        <span class="experienceContent">${experience.price}</span>
-                    </div>
-                </s:iterator>
                 <s:if test="%{restaurants.size>0}">
+                <div class="contentBox">
                     <span class="customerPageHeading">Restaurants</span>
-                    <div class="customerInvoice">
-                        <span class="restaurantHeading">Name</span>
-                        <span class="restaurantHeading">Address</span>
-                        <span class="restaurantHeading">Time</span>
-                        <span class="restaurantHeading">Seats</span>
-                        <span class="restaurantHeading">Price</span>
-                        <span class="restaurantHeading">Contact</span>
-                        <span class="restaurantHeading">Image</span>
-                    </div>
+                    <s:iterator value="restaurants" var="restaurant">
+                    <span class="hotelName">${restaurant.restaurantName}</span>
+                    <span class="hotelAddress">${restaurant.restaurantAddress}</span>
+                    <span class="hotelContact">${restaurant.restaurantContact}</span>
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th class="restaurantHeading">Booking Time</th>
+                            <th class="restaurantHeading">Seats Booked</th>
+                            <th class="restaurantHeading">Voucher Price</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="restaurantContent">${restaurant.restaurantTime}</td>
+                                <td class="restaurantContent">${restaurant.restaurantSeats}</td>
+                                <td class="restaurantContent">${restaurant.restaurantPrice}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </s:iterator>
+                </div>
                 </s:if>
-                <s:iterator value="restaurants" var="restaurant">
-                    <div class="customerInvoice">
-                        <span class="restaurantContent">${restaurant.restaurantName}</span>
-                        <span class="restaurantContent">${restaurant.restaurantAddress}</span>
-                        <span class="restaurantContent">${restaurant.restaurantTime}</span>
-                        <span class="restaurantContent">${restaurant.restaurantSeats}</span>
-                        <span class="restaurantContent">${restaurant.restaurantPrice}</span>
-                        <span class="restaurantContent">${restaurant.restaurantContact}</span>
-                        <span class="restaurantContent">${restaurant.restaurantImageID}</span>
-                    </div>
-                </s:iterator>
                 <s:if test="%{transports.size>0}">
+                <div class="contentBox">
                     <span class="customerPageHeading">Transport</span>
-                    <div class="customerInvoice">
-                        <span class="transportHeading">Name</span>
-                        <span class="transportHeading">Time</span>
-                        <span class="transportHeading">Price</span>
-                    </div>
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th class="transportHeading">Name</th>
+                            <th class="transportHeading">Time</th>
+                            <th class="transportHeading">Price</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <s:iterator value="transports" var="transport">
+                            <tr>
+                                <td class="transportContent">${transport.transportName}</td>
+                                <td class="transportContent">${transport.transportTime}</td>
+                                <td class="transportContent">${transport.transportPrice}</td>
+                            </tr>
+                        </s:iterator>
+                        </tbody>
+                    </table>
+                </div>
                 </s:if>
-                <s:iterator value="transports" var="transport">
-                    <div class="customerInvoice">
-                        <span class="transportContent">${transport.transportName}</span>
-                        <span class="transportContent">${transport.transportTime}</span>
-                        <span class="transportContent">${transport.transportPrice}</span>
-                    </div>
-                </s:iterator>
-            </div>
         </div>
     </div>
 
 </main>
-
+</div>
+<footer id="footer-container">
+    <div class="container" style="height: 250px; flex-direction: column;justify-content: center;align-items: center">
+        <div>
+            <div class="homepage-social ">
+                <a href="#"><img src="../../img/fb-social.png" class="pointer hover"/></a>
+                <a href="#"><img src="../../img/tw-social.png" class="pointer hover"/></a>
+                <a href="#"><img src="../../img/ig-social.png" class="pointer hover"/></a>
+            </div>
+        </div>
+        <p id="terms-and-conditions">
+            Use of this Web site constitutes acceptance of the Newcastle Connections Terms and Conditions and Privacy Policy</a>.
+        </p>
+        <p id="copyright">
+            © Copyright 2017 – Newcastle Connections.
+        </p>
+    </div>
+</footer>
 <script>window.jQuery || document.write('<script src="../../js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
 <script src="../../js/pikaday.js"></script>
 <script src="js/plugins.js"></script>

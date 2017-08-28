@@ -5,7 +5,7 @@
         <div class="menu-list">
   
             <ul id="menu-content" class="menu-content collapse out">
-                <li class="active" onclick="location.href='managementPortal';">
+                <li onclick="location.href='managementPortal';">
                     <a href="#">
                         <i class="fa fa-dashboard fa-lg"></i> Dashboard
                     </a>
@@ -31,26 +31,9 @@
 
                 <li onclick="location.href='invoice';">
                     <a>
-                        <i class="fa fa-user fa-lg"></i> Invoice
+                        <i class="fa fa-users fa-lg"></i> Invoice
                     </a>
                 </li>
-
-                <li onclick="location.href='';">
-                    <a>
-                        <i class="fa fa-users fa-lg"></i> Orders
-                    </a>
-                </li>
-                
-                
-                
-                <li data-toggle="collapse" data-target="#service" class="collapsed">
-                    <a href="#"><i class="fa fa-globe fa-lg"></i> Collaped Menu <span class="arrow"></span></a>
-                </li>  
-                <ul class="sub-menu collapse" id="service">
-                    <li>New Service 1</li>
-                    <li>New Service 2</li>
-                    <li>New Service 3</li>
-                </ul>
 
                 <li onclick="location.href='logout';">
                     <a>

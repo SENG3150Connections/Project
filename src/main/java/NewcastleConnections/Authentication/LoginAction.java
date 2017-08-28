@@ -1,8 +1,10 @@
 package NewcastleConnections.Authentication;
 
 import com.auth0.AuthenticationController;
+import com.auth0.SessionUtils;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
+import org.jooq.util.derby.sys.Sys;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -42,6 +44,12 @@ public class LoginAction extends ActionSupport {
 
             }
             String authorizeUrl = authenticationController.buildAuthorizeUrl(request, redirectUri).build();
+
+            // Store the page the user has just come from as a session attribute, so we can go back there after auth.
+            String referer = request.getHeader("referer");
+            SessionUtils.set(request, "authSourceUrl",  referer.substring(referer.lastIndexOf("/") + 1));
+
+
 
             response.sendRedirect(authorizeUrl);
         } catch (Exception e) {

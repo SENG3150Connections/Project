@@ -46,7 +46,7 @@ public class CartHotel implements CartItem {
         return hotel.getId().intValue();
     }
 
-    public boolean isReady() {
+    public boolean getReady() {
         return room != null && adults > 0 && children >= 0 && checkIn != null && checkOut != null;
     }
 
@@ -57,7 +57,7 @@ public class CartHotel implements CartItem {
     // -- Other methods --
 
     public InvoicehotelRecord getInvoice() {
-        if (!isReady()) {
+        if (!getReady()) {
             return null;
         }
 

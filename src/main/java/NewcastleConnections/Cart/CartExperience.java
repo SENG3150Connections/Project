@@ -36,7 +36,7 @@ public class CartExperience implements CartItem {
         return experience.getId().intValue();
     }
 
-    public boolean isReady() {
+    public boolean getReady() {
         return voucher != null;
     }
 
@@ -47,7 +47,7 @@ public class CartExperience implements CartItem {
     // -- Other methods --
 
     public InvoiceexperienceRecord getInvoice() {
-        if (!isReady()) {
+        if (!getReady()) {
             return null;
         }
 

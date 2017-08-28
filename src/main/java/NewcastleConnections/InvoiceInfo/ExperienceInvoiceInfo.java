@@ -8,7 +8,7 @@ import org.jooq.types.UInteger;
 public class ExperienceInvoiceInfo {
     //Experience Data from Invoiceexperience Table
     private UInteger experienceID;
-    private Double price;
+    private double price;
     //Experience Data from Invoice Table
     private String name;
     private String location;
@@ -22,8 +22,8 @@ public class ExperienceInvoiceInfo {
         this.experienceID = experienceID;
     }
 
-    public Double getPrice() {
-        return price;
+    public String getPrice() {
+        return "$" + String.format( "%.2f", price );
     }
 
     public void setPrice(Double price) {

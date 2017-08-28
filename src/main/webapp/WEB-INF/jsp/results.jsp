@@ -38,16 +38,23 @@
                 <h1><a href="/home">NewcastleConnections</a></h1>
             </div>
             <div class="homepage-social ">
-                <a href="#"><img src="../../img/fb-social.png" class="pointer hover"/></a>
+                <a href="https://www.facebook.com/newcastleconnections/"><img src="../../img/fb-social.png" class="pointer hover"/></a>
                 <a href="#"><img src="../../img/tw-social.png" class="pointer hover"/></a>
-                <a href="#"><img src="../../img/ig-social.png" class="pointer hover"/></a>
+                <a href="https://www.instagram.com/newcastleconnections/"><img src="../../img/ig-social.png" class="pointer hover"/></a>
             </div>
-            <div class="homepage-login">
-                <a href="/login">Login</a>
-            </div>
-            <div class="homepage-help">
-                <a href="#">Help</a>
-            </div>
+            <s:if test="%{#session.userNickname == null}">
+                <div class="homepage-login">
+                    <a href="/login">Login</a>
+                </div>
+            </s:if>
+            <s:else>
+                <div class="homepage-login">
+                    <a href="/customerPortal">Your Account</a>
+                </div>
+                <div class="homepage-login">
+                    <a href="/logout">Logout</a>
+                </div>
+            </s:else>
         </div>
     </header>
     <div id="selector">
@@ -56,7 +63,7 @@
             <input type="text" class="fa" name="start" id="start" placeholder="&#xf073; Arrive" />
             <input type="text" class="fa" name="finish" id="end" placeholder="&#xf073; Leave">
             <input type="text" class="fa" name="people" placeholder="&#xf0c0; 3 guests, pets">
-            <input type="submit" class="btn" name="submit" placeholder="Submit">
+            <input type="submit" class="btn" name="submit" value="Submit" placeholder="Submit">
             <div class="options">
                 <span>Accommodation: <input type="checkbox" name="accommodation-check" value="Accommodation"></span>
                 <span>Events: <input type="checkbox" name="event-check" value="Events"></span>
@@ -133,34 +140,137 @@
                 <a href="#" id="display-list" class="fa fa-2x fa-th-list">&nbsp;</a>
                 <hr />
             </div>
-            <div id="results" class="flex-col">
-                <s:iterator value="recommendedExperiences" var="rec">
-                    <div class="offer-list" style="background-color: goldenrod">
+                <div id="results" class="flex-col">
+                <s:if test="%{recommendedItem == 0}">
+                    <s:iterator value="recommendedHotels" var="rec">
+                        <div class="offer-list recommendation">
+                            <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
+                            <a href="edit-cart?method=add&type=hotel&id=${rec.id}"><span class="fa fa-plus offer-add" aria-hidden="true">
+                                <span class="tooltiptext">Add to package</span>
+                            </span></a>
+                            <div class="offer-images">
+                                <div class="offer-img-initial" style="min-height: 150px;">
+                                    <img src='../../img/hotels/hotel${(rec.id)%17}.jpg' class="cover"/>
+                                </div>
+                                <div class="offer-img-item">
+                                    <img src='../../img/hotels/hotel${(rec.id + 10)%17}.jpg' class="cover"/>
+                                    <img src='../../img/hotels/hotel${(rec.id + 5)%17}.jpg' class="cover"/>
+                                </div>
+                            </div>
+                            <div class="offer-info">
+                                <div class="offer-info-left">
+                                    <span class="name">${rec.name}</span>
+                                    <span>${rec.address}</span>
+                                    <span class="blurb invisible">${rec.description}</span>
+                                    <span class="addr invisible">${rec.address}</span>
+                                    <span class="contact invisible">${rec.contact}</span>
+                                    <span class="email invisible">${rec.email}</span>
+                                    <span class="website invisible">${rec.website}</span>
+                                </div>
+                                <div class="offer-info-right">
+                                    <span class="price">from $<%= (int)(Math.random() * 650 + 100) %></span>
+                                    <span class="fa icons">&#xf2cd&nbsp;&#xf236</span>
+                                </div>
+                            </div>
+                        </div>
+                    </s:iterator>
+                </s:if>
+                <s:if test="%{recommendedItem == 1}">
+                    <s:iterator value="recommendedExperiences" var="rec">
+                        <div class="offer-list recommendation">
+                            <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
+                            <a href="edit-cart?method=add&type=experience&id=${rec.id}"><span class="fa fa-plus offer-add" aria-hidden="true">
+                                <span class="tooltiptext">Add to package</span>
+                            </span></a>
+                            <div class="offer-images">
+                                <div class="offer-img-initial" style="min-height: 150px;">
+                                    <img src='../../img/experiences/experience${(rec.id)%17}.jpg' class="cover"/>
+                                </div>
+                                <div class="offer-img-item">
+                                    <img src='../../img/hotels/hotel${(rec.id + 10)%17}.jpg' class="cover"/>
+                                    <img src='../../img/hotels/hotel${(rec.id + 5)%17}.jpg' class="cover"/>
+                                </div>
+                            </div>
+                            <div class="offer-info">
+                                <div class="offer-info-left">
+                                    <span class="name">${rec.name}</span>
+                                    <span>${rec.location}</span>
+                                    <span class="blurb invisible">${rec.overview}</span>
+                                    <span class="addr invisible">${rec.location}</span>
+                                    <span class="contact invisible">${rec.info}</span>
+                                    <span class="email invisible">${rec.description}</span>
+                                    <span class="website invisible">${rec.guidelines}</span>
+                                </div>
+                                <div class="offer-info-right">
+                                    <span class="price">from $<%= (int)(Math.random() * 800 + 50) %></span>
+                                    <span class="fa icons">&#xf290&nbsp;&#xf083</span>
+                                </div>
+                            </div>
+                        </div>
+                    </s:iterator>
+                </s:if>
+                <s:if test="%{recommendedItem == 2}">
+                    <s:iterator value="recommendedRestaurants" var="rec">
+                        <div class="offer-list recommendation">
+                            <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
+                            <a href="edit-cart?method=add&type=restaurant&id=${rec.id}"><span class="fa fa-plus offer-add" aria-hidden="true">
+                                <span class="tooltiptext">Add to package</span>
+                            </span></a>
+                            <div class="offer-images">
+                                <div class="offer-img-initial" style="min-height: 150px;">
+                                    <img src='../../img/restaurants/restaurant${(rec.id)%17}.jpg' class="cover"/>
+                                </div>
+                                <div class="offer-img-item">
+                                    <img src='../../img/hotels/hotel${(rec.id + 10)%17}.jpg' class="cover"/>
+                                    <img src='../../img/hotels/hotel${(rec.id + 5)%17}.jpg' class="cover"/>
+                                </div>
+                            </div>
+                            <div class="offer-info">
+                                <div class="offer-info-left">
+                                    <span class="name">${rec.name}</span>
+                                    <span>${rec.address}</span>
+                                    <span class="blurb invisible">${rec.description}</span>
+                                    <span class="addr invisible">${rec.address}</span>
+                                    <span class="contact invisible">${rec.contact}</span>
+                                    <span class="email invisible">${rec.email}</span>
+                                    <span class="website invisible">${rec.website}</span>
+                                </div>
+                                <div class="offer-info-right">
+                                    <span class="price">from $<%= (int)(Math.random() * 200 + 20) %></span>
+                                    <span class="fa icons">&#xf0fc&nbsp;&#xf0f5</span>
+                                </div>
+                            </div>
+                        </div>
+                    </s:iterator>
+                </s:if>
+                <s:iterator value="transport" var="t">
+                    <div class="offer-list recommendation">
                         <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
-                        <a href="edit-cart?method=add&type=experience&id=${rec.id}"><span class="fa fa-plus offer-add" aria-hidden="true">
+                        <a href="edit-cart?method=add&type=transport&id=${t.id}"><span class="fa fa-plus offer-add" aria-hidden="true">
                             <span class="tooltiptext">Add to package</span>
                         </span></a>
                         <div class="offer-images">
-                            <div class="offer-img-initial">
-                                <img src='../../img/offer-img.jpg' class="cover"/>
+                            <div class="offer-img-initial" style="min-height: 150px;">
+                                <img src='../../img/shuttlebus.jpg' class="cover"/>
                             </div>
                             <div class="offer-img-item">
-                                <img src='../../img/offer-img-2.jpg' class="cover"/>
-                                <img src='../../img/offer-img-3.jpg' class="cover"/>
+                                <img src='../../img/shuttlebus3.jpg' class="cover"/>
+                                <img src='../../img/shuttlebus2.jpg' class="cover"/>
                             </div>
                         </div>
                         <div class="offer-info">
                             <div class="offer-info-left">
-                                <span class="name">${rec.name}</span>
-                                <span class="blurb">${rec.info}</span>
+                                <span class="name">${t.name}</span>
+                                <span class="blurb">${t.description}</span>
                             </div>
                             <div class="offer-info-right">
-                                <span class="price">${rec.price}</span>
-                                <span class="fa icons">&#xf2cd&nbsp;&#xf236</span>
+                                <span class="price">from $40</span>
+                                <span class="fa icons">&#xf21c&nbsp;&#xf1b9</span>
                             </div>
                         </div>
                     </div>
                 </s:iterator>
+
 
                 <s:iterator value="hotels" var="h">
                     <div class="offer-list">
@@ -169,21 +279,26 @@
                             <span class="tooltiptext">Add to package</span>
                         </span></a>
                         <div class="offer-images">
-                            <div class="offer-img-initial">
-                                <img src='../../img/offer-img.jpg' class="cover"/>
+                            <div class="offer-img-initial" style="min-height: 150px;">
+                                <img src='../../img/hotels/hotel${(h.id)%17}.jpg' class="cover"/>
                             </div>
                             <div class="offer-img-item">
-                                <img src='../../img/offer-img-2.jpg' class="cover"/>
-                                <img src='../../img/offer-img-3.jpg' class="cover"/>
+                                <img src='../../img/hotels/hotel${(h.id + 10)%17}.jpg' class="cover"/>
+                                <img src='../../img/hotels/hotel${(h.id + 5)%17}.jpg' class="cover"/>
                             </div>
                         </div>
                         <div class="offer-info">
                             <div class="offer-info-left">
                                 <span class="name">${h.name}</span>
-                                <span class="blurb">${h.address}</span>
+                                <span>${h.address}</span>
+                                <span class="blurb invisible">${h.description}</span>
+                                <span class="addr invisible">${h.address}</span>
+                                <span class="contact invisible">${h.contact}</span>
+                                <span class="email invisible">${h.email}</span>
+                                <span class="website invisible">${h.website}</span>
                             </div>
                             <div class="offer-info-right">
-                                <span class="price">$DB TBA</span>
+                                <span class="price">from $<%= (int)(Math.random() * 650 + 100) %></span>
                                 <span class="fa icons">&#xf2cd&nbsp;&#xf236</span>
                             </div>
                         </div>
@@ -196,21 +311,26 @@
                             <span class="tooltiptext">Add to package</span>
                         </span></a>
                         <div class="offer-images">
-                            <div class="offer-img-initial">
-                                <img src='../../img/offer-img.jpg' class="cover"/>
+                            <div class="offer-img-initial" style="min-height: 150px;">
+                                <img src='../../img/restaurants/restaurant${(r.id)%17}.jpg' class="cover"/>
                             </div>
                             <div class="offer-img-item">
-                                <img src='../../img/offer-img-2.jpg' class="cover"/>
-                                <img src='../../img/offer-img-3.jpg' class="cover"/>
+                                <img src='../../img/hotels/hotel${(r.id + 10)%17}.jpg' class="cover"/>
+                                <img src='../../img/hotels/hotel${(r.id + 5)%17}.jpg' class="cover"/>
                             </div>
                         </div>
                         <div class="offer-info">
                             <div class="offer-info-left">
                                 <span class="name">${r.name}</span>
-                                <span class="blurb">${r.address}</span>
+                                <span>${r.address}</span>
+                                <span class="blurb invisible">${r.description}</span>
+                                <span class="addr invisible">${r.address}</span>
+                                <span class="contact invisible">${r.contact}</span>
+                                <span class="email invisible">${r.email}</span>
+                                <span class="website invisible">${r.website}</span>
                             </div>
                             <div class="offer-info-right">
-                                <span class="price">$DB TBA</span>
+                                <span class="price">from $<%= (int)(Math.random() * 200 + 20) %></span>
                                 <span class="fa icons">&#xf0fc&nbsp;&#xf0f5</span>
                             </div>
                         </div>
@@ -223,21 +343,26 @@
                             <span class="tooltiptext">Add to package</span>
                         </span></a>
                         <div class="offer-images">
-                            <div class="offer-img-initial">
-                                <img src='../../img/offer-img.jpg' class="cover"/>
+                            <div class="offer-img-initial" style="min-height: 150px;">
+                                <img src='../../img/experiences/experience${(e.id)%17}.jpg' class="cover"/>
                             </div>
                             <div class="offer-img-item">
-                                <img src='../../img/offer-img-2.jpg' class="cover"/>
-                                <img src='../../img/offer-img-3.jpg' class="cover"/>
+                                <img src='../../img/hotels/hotel${(e.id + 10)%17}.jpg' class="cover"/>
+                                <img src='../../img/hotels/hotel${(e.id + 5)%17}.jpg' class="cover"/>
                             </div>
                         </div>
                         <div class="offer-info">
                             <div class="offer-info-left">
                                 <span class="name">${e.name}</span>
-                                <span class="blurb">${e.info}</span>
+                                <span>${e.location}</span>
+                                <span class="blurb invisible">${e.overview}</span>
+                                <span class="addr invisible">${e.location}</span>
+                                <span class="contact invisible">${e.info}</span>
+                                <span class="email invisible">${e.description}</span>
+                                <span class="website invisible">${e.guidelines}</span>
                             </div>
                             <div class="offer-info-right">
-                                <span class="price">${e.price}</span>
+                                <span class="price">from $<%= (int)(Math.random() * 800 + 50) %></span>
                                 <span class="fa icons">&#xf290&nbsp;&#xf083</span>
                             </div>
                         </div>
@@ -250,37 +375,38 @@
                             <span class="tooltiptext">Add to package</span>
                         </span></a>
                         <div class="offer-images">
-                            <div class="offer-img-initial">
-                                <img src='../../img/offer-img.jpg' class="cover"/>
+                            <div class="offer-img-initial" style="min-height: 150px;">
+                                <img src='../../img/shuttlebus.jpg' class="cover"/>
                             </div>
                             <div class="offer-img-item">
-                                <img src='../../img/offer-img-2.jpg' class="cover"/>
-                                <img src='../../img/offer-img-3.jpg' class="cover"/>
+                                <img src='../../img/shuttlebus3.jpg' class="cover"/>
+                                <img src='../../img/shuttlebus2.jpg' class="cover"/>
                             </div>
                         </div>
                         <div class="offer-info">
                             <div class="offer-info-left">
                                 <span class="name">${t.name}</span>
-                                <span class="blurb">address</span>
+                                <span class="blurb">${t.description}</span>
                             </div>
                             <div class="offer-info-right">
-                                <span class="price">$DB TBA</span>
-                                <span class="fa icons">&#xf290&nbsp;&#xf083</span>
+                                <span class="price">from $40</span>
+                                <span class="fa icons">&#xf21c&nbsp;&#xf1b9</span>
                             </div>
                         </div>
                     </div>
                 </s:iterator>
             </div>
             <div id="offer-info-large" class="hidden">
-                <div id="offer-image">
-                    <img src="../../img/offer-img.jpg" />
-                </div>
+                <div id="offer-image"></div>
                 <div id="offer-info">
                     <h2 id="offer-name"></h2>
-                    <h2>Description</h2>
-                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat</p>
+                    <p id="offer-desc"></p>
+                    <p id="offer-addr"></p>
+                    <p id="offer-contact"></p>
+                    <p id="offer-email"></p>
+                    <p id="offer-website"></p>
+                    <a href="" id="show-results">Back to Results</a>
                 </div>
-                <a href="" id="show-results">Back to Results</a>
             </div>
         </div>
         <div id="package-info">
@@ -291,9 +417,8 @@
             <s:set var="size" value="cart.size"/>
             <s:if test="%{#size == 0}">
             <div id="package-contents" class="center">
-                <h2>Nothing here yet!</h2>
-                <h3>Add an offer from the left by<br />
-                    <!--dragging it into this area or<br />-->
+                <h2 style="padding-top: 25px">Nothing here yet!</h2>
+                <h3 style="padding-top: 25px">Add an offer from the left by<br />
                     clicking the plus symbol at the bottom right</h3>
             </div>
             </s:if>
@@ -341,6 +466,7 @@
 <script src="js/plugins.js"></script>
 <script src="js/main.js"></script>
 <script>
+    var str;
     $("a.content-toggle").click(function() {
         $('#filters').animate({height: ($('#filters').height() == 0) ? $(window).height()-250 : 0}, 200);
         $('#filters>div').toggleClass('invisible');
@@ -360,12 +486,43 @@
         $('#results').addClass('flex-row').removeClass('flex-col');
         $('.offer-list').toggleClass('offer-tile').toggleClass('offer-list');
     });
-    $(".offer-list").on('click', function() {
+    $(".offer-list > .offer-images").on('click', function() {
         $('#results').addClass('hidden');
         $('#display-type').addClass('hidden');
         $('.offer-list').addClass('hidden');
         $('#offer-info-large').removeClass('hidden');
-        $(this).find(".offer-info").find(".offer-info-left").find(".name").clone().appendTo('#offer-name');
+        str = $(this).parent().find(".name").text();
+        $('#offer-name').html(str);
+        str = $(this).parent().find(".blurb").text();
+        $('#offer-desc').html(str);
+        str = $(this).parent().find(".addr").text();
+        $('#offer-addr').html(str);
+        str = $(this).parent().find(".contact").text();
+        $('#offer-contact').html(str);
+        str = $(this).parent().find(".email").text();
+        $('#offer-email').html(str);
+        str = $(this).parent().find(".website").text();
+        $('#offer-website').html(str);
+        $(this).find(".offer-img-initial").clone().appendTo('#offer-image');
+    });
+    $(".offer-list > .offer-info").on('click', function() {
+        $('#results').addClass('hidden');
+        $('#display-type').addClass('hidden');
+        $('.offer-list').addClass('hidden');
+        $('#offer-info-large').removeClass('hidden');
+        str = $(this).parent().find(".name").text();
+        $('#offer-name').html(str);
+        str = $(this).parent().find(".blurb").text();
+        $('#offer-desc').html(str);
+        str = $(this).parent().find(".addr").text();
+        $('#offer-addr').html(str);
+        str = $(this).parent().find(".contact").text();
+        $('#offer-contact').html(str);
+        str = $(this).parent().find(".email").text();
+        $('#offer-email').html(str);
+        str = $(this).parent().find(".website").text();
+        $('#offer-website').html(str);
+        $(this).parent().find(".offer-img-initial").clone().appendTo('#offer-image');
     });
     $("#show-results").on('click', function() {
         $('#offer-info-large').addClass('hidden');
@@ -373,94 +530,6 @@
         $('#display-type').removeClass('hidden');
         $('.offer-list').removeClass('hidden');
     });
-//    $(function () {
-//        // jQuery UI Draggable
-//        $(".draggable").draggable({
-//            // brings the item back to its place when dragging is over
-//            revert:true,
-//            helper:"clone",
-//            // once the dragging starts, we decrease the opactiy of other items
-//            // Appending a class as we do that with CSS
-//            drag:function () {
-//                $(this).addClass("active");
-//                $(this).closest(".draggable").addClass("active");
-//            },
-//            // removing the CSS classes once dragging is over.
-//            stop:function () {
-//                $(this).removeClass("active").closest(".draggable").removeClass("active");
-//            }
-//        });
-//
-//        // jQuery Ui Droppable
-//        $("#package-contents").droppable({
-//            // The class that will be appended to the to-be-dropped-element (basket)
-//            activeClass:"active",
-//            // The class that will be appended once we are hovering the to-be-dropped-element (basket)
-//            hoverClass:"hover",
-//            // The acceptance of the item once it touches the to-be-dropped-element basket
-//            // For different values http://api.jqueryui.com/droppable/#option-tolerance
-//            tolerance:"touch",
-//            drop:function (event, ui) {
-//                var basket = $(this),
-//                    move = ui.draggable,
-//                    itemId = basket.find("ul li[data-id='" + move.attr("data-id") + "']");
-//                // To increase the value by +1 if the same item is already in the basket
-//                if (itemId.html() != null) {
-//                    itemId.find("input").val(parseInt(itemId.find("input").val()) + 1);
-//                }
-//                else {
-//                    // Add the dragged item to the basket
-//                    addBasket(basket, move);
-//                    // Updating the quantity by +1" rather than adding it to the basket
-//                    move.find("input").val(parseInt(move.find("input").val()) + 1);
-//                }
-//            }
-//        });
-//
-//        // This function runs onc ean item is added to the basket
-//        function addBasket(basket, move) {
-//            basket.find("ul").append('<li data-id="' + move.attr("data-id") + '">'
-//                + '<span class="name">' + move.find("h3").html() + '</span>'
-//                + '<input class="count" value="1" type="text">'
-//                + '<button class="delete">&#10005;</button>');
-//        }
-//        // The function that is triggered once delete button is pressed
-//        $(".basket ul li button.delete").live("click", function () {
-//            $(this).closest("li").remove();
-//        });
-//    });
-//    $(".draggable").draggable({ cursor: "crosshair", revert: "invalid", scroll: "false", opacity: 0.8, helper: "clone"});
-//    $("#package-contents").droppable({ accept: ".draggable",
-//        drop: function(event, ui) {
-//            console.log("drop");
-//            $(this).removeClass("border").removeClass("over");
-//            var dropped = ui.draggable;
-//            var droppedOn = $(this);
-//            $(dropped).detach().css({top: 0,left: 0}).appendTo(droppedOn);
-//            if($('#package-contents>div').hasClass('draggable')) {
-//                $("#package-contents > h2").addClass( "hidden" );
-//                $("#package-contents > h3").addClass( "hidden" );
-//            }
-//            $("#package-contents:has(div)").addClass( "active" );
-//        },
-//        over: function(event, elem) {
-//            $(this).addClass("over");
-//            console.log("over");
-//        },
-//        out: function(event, elem) {
-//            $(this).removeClass("over");
-//        }
-//    }).sortable();
-//    $("#results").droppable({ accept: ".draggable",
-//        drop: function(event, ui) {
-//            console.log("drop");
-//            $(this).removeClass("border").removeClass("over");
-//            var dropped = ui.draggable;
-//            var droppedOn = $(this);
-//            $(dropped).detach().css({top: 0,left: 0}).appendTo(droppedOn);
-//            $("#package-contents:not(:has(div))").removeClass( "active" );
-//        }
-//    });
 </script>
 
 </body>

@@ -84,14 +84,6 @@
 
                     </div>
                 </div>
-
-                <!-- Sidebar - Right -->
-                <div class="col-md-4">
-                    <div class="management-sidebar">
-                        <label class="heading">Sorting</label>
-                        <label></label>
-                    </div>
-                </div>
                 </form>
 
             </div>

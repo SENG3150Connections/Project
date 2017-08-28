@@ -4,10 +4,15 @@
     margin-left: 2.5%;
     margin-right: 2.5%;
     margin-top: 1%;
+    max-width: max-content;
+}
+.customerPortalBody{
+    background-color: #F5F5F5;
 }
 .customerOptions{
     width: 30%;
-    display: inline-grid;
+    display: block;
+    max-width: 337px;
 }
 .customerPageContent{
     width: 70%;
@@ -24,16 +29,31 @@
 .invoiceContent{
     width: 20%;
 }
+.customerPageMenuHeading{
+    font-weight: bold;
+    font-size: 24px;
+}
 .customerPageHeading{
     font-weight: bold;
-    font-size: 30px;
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+.customerPageMenu{
+    display: block;
+    padding-top: 4%;
+    font-size: 16px;
+    color: black;
+}
+.customerPageMenu:hover{
+    color: black;
 }
 .contentBox{
-    border: 2px solid #ccc;
-    border-radius: 4px;
     padding: 5px 10px 10px 10px;
     display: inherit;
-    width: 80%;
+    width: 90%;
+    background-color: white;
+    box-shadow: 2px 2px 8px #AFAFAF;
+    margin-bottom: 2%;
 }
 .bg-cover {
     height: 100%;
@@ -56,4 +76,60 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+}
+.invoiceSubmit{
+    min-height: 0;
+    padding: 0 0 0 0;
+}
+.active{
+    color: #2a6ebb;
+}
+input[type=submit]{
+    border-radius: 0;
+    min-height: 0;
+    padding-left: 3%;
+    padding-right: 3%;
+    margin-left: 0;
+    box-shadow: 2px 2px 8px #AFAFAF;
+}
+.customerTopMenu{
+    margin-left: 2.5%;
+    margin-top: 1.5%;
+}
+.homepage-login, .homepage-help{
+    color: white;
+    font-size: 16px;
+}
+.hotelName{
+    font-size: large;
+}
+.customerPageNav{
+    color: black;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+#wrapper {
+    min-height: 100%;
+}
+
+main {
+    overflow: auto;
+    padding-bottom: 250px;
+    /* must be same height as the footer */
+}
+
+#footer-container {
+    position: relative;
+    margin-top: -250px;
+    /* negative value of footer height */
+    height: 250px;
+    clear: both;
 }

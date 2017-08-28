@@ -1,3 +1,3 @@
 <%
-    response.sendRedirect(request.getContextPath() + "/countdown");
+    response.sendRedirect(request.getContextPath() + "/home");
 %>

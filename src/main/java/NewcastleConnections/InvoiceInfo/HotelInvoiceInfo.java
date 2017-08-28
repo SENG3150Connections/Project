@@ -3,6 +3,7 @@ package NewcastleConnections.InvoiceInfo;
 import org.jooq.types.UInteger;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 /**
  * Created by Jack on 22/08/2017.
@@ -53,24 +54,24 @@ public class HotelInvoiceInfo {
         this.children = children;
     }
 
-    public Timestamp getCheckIn() {
-        return checkIn;
+    public String getCheckIn() {
+        return new SimpleDateFormat("hh:mm a dd/MM/yyyy").format(checkIn);
     }
 
     public void setCheckIn(Timestamp checkIn) {
         this.checkIn = checkIn;
     }
 
-    public Timestamp getCheckOut() {
-        return checkOut;
+    public String getCheckOut() {
+        return new SimpleDateFormat("hh:mm a dd/MM/yyyy").format(checkOut);
     }
 
     public void setCheckOut(Timestamp checkOut) {
         this.checkOut = checkOut;
     }
 
-    public double getHotelPrice() {
-        return hotelPrice;
+    public String getHotelPrice() {
+        return "$" + String.format( "%.2f", hotelPrice );
     }
 
     public void setHotelPrice(double hotelPrice) {

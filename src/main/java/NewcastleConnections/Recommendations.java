@@ -1,45 +1,27 @@
-package NewcastleConnections.Actions;
+package NewcastleConnections;
 
-import NewcastleConnections.DatabaseConnection;
-import NewcastleConnections.packagedeals.tables.Experiences;
-import NewcastleConnections.packagedeals.tables.Transport;
 import NewcastleConnections.packagedeals.tables.records.ExperiencesRecord;
 import NewcastleConnections.packagedeals.tables.records.HotelsRecord;
 import NewcastleConnections.packagedeals.tables.records.ResturantsRecord;
 import NewcastleConnections.packagedeals.tables.records.TransportRecord;
-import com.opensymphony.xwork2.ActionSupport;
 import org.jooq.Record;
 import org.jooq.Result;
-import org.jooq.util.derby.sys.Sys;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 import static NewcastleConnections.packagedeals.Tables.*;
+import static NewcastleConnections.packagedeals.Tables.EXPERIENCES;
 
 
-public class RecommendationTest extends ActionSupport {
+public class Recommendations {
 
 
-    public LinkedList result_hotels;
-    public LinkedList result_experiences;
-    public LinkedList result_restaurants;
-    public Result<TransportRecord> result_transport;
-    public String coordinates;
+    public LinkedList hotels;
+    public LinkedList restaurants;
+    public LinkedList experiences;
 
-
-    @Override
-    public String execute() {
-
-       generateRecommendations(151.784775,-32.928368,5);
-        coordinates = "151.784775,-32.928368";
-
-
-        return SUCCESS;
-    }
-
-    private void generateRecommendations(double searchLongitude, double searchLattitude, int numberOfResults) {
+    public void generateRecommendations(double searchLongitude, double searchLattitude, int numberOfResults) {
 
         try {
 
@@ -106,24 +88,24 @@ public class RecommendationTest extends ActionSupport {
 
 
             // Now extract the top results.
-            result_hotels = new LinkedList();
-            result_experiences = new LinkedList();
-            result_restaurants = new LinkedList();
+            this.hotels = new LinkedList();
+            this.restaurants = new LinkedList();
+            this.experiences = new LinkedList();
 
 
             for (int i = 0; i < numberOfResults; i++) {
                 if (i <= distances_hotels.size()) {
-                    result_hotels.add(distances_hotels.get(i).get(1));
+                    this.hotels.add(distances_hotels.get(i).get(1));
                 }
             }
             for (int i = 0; i < numberOfResults; i++) {
                 if (i <= distances_restaurants.size()) {
-                    result_restaurants.add(distances_restaurants.get(i).get(1));
+                    this.restaurants.add(distances_restaurants.get(i).get(1));
                 }
             }
             for (int i = 0; i < numberOfResults; i++) {
                 if (i <= distances_experiences.size()) {
-                    result_experiences.add(distances_experiences.get(i).get(1));
+                    this.experiences.add(distances_experiences.get(i).get(1));
                 }
             }
 
@@ -195,6 +177,5 @@ public class RecommendationTest extends ActionSupport {
             }
         }
     }
-
 
 }

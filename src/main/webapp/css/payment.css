@@ -85,7 +85,7 @@ button {
     color: #FFFFFF;
     position: absolute;
     background-color: #2a6ebb;
-    border-color: #2a6ebb;
+    border-style: none;
 }
 button:hover {
     background-color: #0067db;
@@ -98,6 +98,38 @@ button:hover {
     font-size: 20px;
 }
 
+.tableDiv {
+    background-color: #f2f2f2;
+
+}
+
+table {
+    width: 100%;
+    text-align:left;
+    margin-top: 20px;
+    table-layout: fixed;
+    white-space: normal!important;
+}
+
+tr {
+
+}
+
+th {
+    padding-left: 20px;
+    padding-top: 15px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #ddd;
+
+}
+
+td {
+    border-bottom: 2px solid #ddd;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    word-wrap: break-word;
+}
 
 
 

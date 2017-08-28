@@ -4,9 +4,6 @@ import NewcastleConnections.Cart.Cart;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.inject.Inject;
 
-/**
- * Created by Scott on 14/08/2017.
- */
 public class ViewCart extends ActionSupport {
 
     private Cart cart;

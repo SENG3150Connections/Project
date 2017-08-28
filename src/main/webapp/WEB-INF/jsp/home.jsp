@@ -38,9 +38,9 @@
                 <a href="/login">Login</a>
             </div>
             <div class="menu-social hidden">
-                <a href="#"><img src="../../img/fb-social.png" class="pointer"/></a>
-                <a href="#"><img src="../../img/tw-social.png" class="pointer"/></a>
-                <a href="#"><img src="../../img/ig-social.png" class="pointer"/></a>
+                <a href="https://www.facebook.com/newcastleconnections/"><img src="../../img/fb-social.png" class="pointer hover"/></a>
+                <a href="#"><img src="../../img/tw-social.png" class="pointer hover"/></a>
+                <a href="https://www.instagram.com/newcastleconnections/"><img src="../../img/ig-social.png" class="pointer hover"/></a>
             </div>
         </div>
         <div id="homepage-image">
@@ -56,27 +56,21 @@
                     <h1><a href="#">NewcastleConnections</a></h1>
                 </div>
                 <div class="homepage-social ">
-                    <a href="#"><img src="../../img/fb-social.png" class="pointer hover"/></a>
+                    <a href="https://www.facebook.com/newcastleconnections/"><img src="../../img/fb-social.png" class="pointer hover"/></a>
                     <a href="#"><img src="../../img/tw-social.png" class="pointer hover"/></a>
-                    <a href="#"><img src="../../img/ig-social.png" class="pointer hover"/></a>
+                    <a href="https://www.instagram.com/newcastleconnections/"><img src="../../img/ig-social.png" class="pointer hover"/></a>
                 </div>
                 <s:if test="%{#session.userNickname == null}">
                     <div class="homepage-login">
-                        <form action="/login">
-                            <button type="submit">Login</button>
-                        </form>
+                        <a href="/login">Login</a>
                     </div>
                 </s:if>
                 <s:else>
                     <div class="homepage-login">
-                        <form action="/customerPortal">
-                            <button type="submit">Your Account</button>
-                        </form>
+                        <a href="/customerPortal">Your Account</a>
                     </div>
                     <div class="homepage-login">
-                        <form action="/logout">
-                            <button type="submit">Logout</button>
-                        </form>
+                        <a href="/logout">Logout</a>
                     </div>
                 </s:else>
                 <div class="homepage-help">
@@ -93,7 +87,7 @@
                 <input type="text" class="fa" name="start" id="start" placeholder="&#xf073; Arrive">
                 <input type="text" class="fa" name="finish" id="end" placeholder="&#xf073; Leave">
                 <input type="text" class="fa" name="people" placeholder="&#xf0c0; 3 guests, pets">
-                <input type="submit" class="btn" name="submit" placeholder="Submit">
+                <input type="submit" class="btn" name="submit" value="Submit" placeholder="Submit">
             </form>
         </div>
         <div class="container">
@@ -172,7 +166,7 @@
         <img src="../../img/large.jpg" class="opacity-5"/>
         <div class="text-overlay">
             <h2>Own a business? Get involved and open your door to travellers from around the globe.</h2>
-            <a href="#">List Your Business</a>
+            <a href="/managementPortal">List Your Business</a>
         </div>
     </div>
     <div class="container" style="margin: 25px;padding: 25px;color: #555555;flex-direction: column;justify-content: center;align-items: center">
@@ -182,21 +176,27 @@
         <div class="threebox">
             <div class="threebox-item pointer hover-shadow" style="background-color: #000000">
                 <img src='../../img/bitter-and-twisted.jpg' class="cover opacity-5"/>
-                <div class="text-overlay">
-                    <h2>Bitter & Twisted</h2>
-                </div>
+                <a href="http://www.visitnsw.com/destinations/hunter/hunter-valley/maitland/events/bitter-and-twisted-boutique-beer-festival">
+                    <div class="text-overlay">
+                        <h2>Bitter & Twisted</h2>
+                    </div>
+                </a>
             </div>
             <div class="threebox-item pointer hover-shadow" style="background-color: #000000">
                 <img src='../../img/newcastle-supermoto.jpg' class="cover opacity-5"/>
-                <div class="text-overlay">
-                    <h2>Newcastle SuperMoto</h2>
-                </div>
+                <a href="http://www.visitnsw.com/destinations/north-coast/newcastle-area/newcastle/events/watson-demolition-newcastle-city-supermoto">
+                    <div class="text-overlay">
+                        <h2>Newcastle SuperMoto</h2>
+                    </div>
+                </a>
             </div>
             <div class="threebox-item last-item pointer hover-shadow" style="background-color: #000000">
                 <img src='../../img/Newcastlemuseum.jpg' class="cover opacity-5"/>
-                <div class="text-overlay">
-                    <h2>Newcastle Museum</h2>
-                </div>
+                <a href="https://www.visitnewcastle.com.au/newcastle-museum">
+                    <div class="text-overlay">
+                        <h2>Newcastle Museum</h2>
+                    </div>
+                </a>
             </div>
         </div>
     </div>
@@ -205,9 +205,9 @@
         <div class="container" style="height: 250px; flex-direction: column;justify-content: center;align-items: center">
             <div>
                 <div class="homepage-social ">
-                    <a href="#"><img src="../../img/fb-social.png" class="pointer hover"/></a>
+                    <a href="https://www.facebook.com/newcastleconnections/"><img src="../../img/fb-social.png" class="pointer hover"/></a>
                     <a href="#"><img src="../../img/tw-social.png" class="pointer hover"/></a>
-                    <a href="#"><img src="../../img/ig-social.png" class="pointer hover"/></a>
+                    <a href="https://www.instagram.com/newcastleconnections/"><img src="../../img/ig-social.png" class="pointer hover"/></a>
                 </div>
             </div>
             <p id="terms-and-conditions">

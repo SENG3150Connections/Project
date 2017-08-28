@@ -86,7 +86,7 @@
                     <input id="email" class="textField" type="text" value='<s:property value="#session.userEmail"></s:property> '>
 
 
-                    <label for="phone">phone number</label>
+                    <label for="phone">Phone number</label>
                     <input id="phone" class="textField" type="text">
                 </div>
 

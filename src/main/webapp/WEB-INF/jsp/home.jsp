@@ -93,7 +93,7 @@
                 <input type="text" class="fa" name="start" id="start" placeholder="&#xf073; Arrive">
                 <input type="text" class="fa" name="finish" id="end" placeholder="&#xf073; Leave">
                 <input type="text" class="fa" name="people" placeholder="&#xf0c0; 3 guests, pets">
-                <input type="submit" class="btn" name="submit" placeholder="Submit">
+                <input type="submit" class="btn" name="submit" value="Submit" placeholder="Submit">
             </form>
         </div>
         <div class="container">

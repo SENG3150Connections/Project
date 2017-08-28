@@ -46,7 +46,7 @@
                 <div class="col-md-12">
                     <div class="management-container" style="height:90%;">
                         <label class="heading">Weekly Report</label>
-                        <% String[] colours = new String[]{"#900", "#990", "#090", "#099", "#009", "#909"}; %>
+                        <% String[] colours = new String[]{"#FF3100", "#FFA200", "#00E35C", "#0055DD", "#661400", "#004A1E"}; %>
 
                         <div class="row">
                             <div class="col-md-2">

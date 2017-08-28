@@ -107,7 +107,7 @@
                         <tbody>
                             <tr>
                                 <td class="hotelContent">${hotel.roomID}</td>
-                                <td class="hotelContent">${hotel.roomType}</td>\
+                                <td class="hotelContent">${hotel.roomType}</td>
                                 <td class="hotelContent">${hotel.hotelPrice}</td>
                                 <td class="hotelContent">${hotel.checkIn}</td>
                                 <td class="hotelContent">${hotel.checkOut}</td>

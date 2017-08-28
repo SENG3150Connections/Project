@@ -44,21 +44,15 @@
             </div>
             <s:if test="%{#session.userNickname == null}">
                 <div class="homepage-login">
-                    <form action="/login">
-                        <button type="submit">Login</button>
-                    </form>
+                    <a href="/login">Login</a>
                 </div>
             </s:if>
             <s:else>
                 <div class="homepage-login">
-                    <form action="/customerPortal">
-                        <button type="submit">Your Account</button>
-                    </form>
+                    <a href="/customerPortal">Your Account</a>
                 </div>
                 <div class="homepage-login">
-                    <form action="/logout">
-                        <button type="submit">Logout</button>
-                    </form>
+                    <a href="/logout">Logout</a>
                 </div>
             </s:else>
         </div>

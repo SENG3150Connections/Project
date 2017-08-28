@@ -100,10 +100,7 @@
         <!-- End User Management Portal -->
 
         <!-- Management Portal -->
-        <action name="managementPortal">
-            <interceptor-ref name="authentication" />
-            <result>WEB-INF/jsp/managementPortal.jsp</result>
-        </action>
+
 
         <action name="createOffer" class="NewcastleConnections.Actions.CreateOffer">
             <result name="success">/WEB-INF/jsp/managementPortal-create-offer.jsp</result>
@@ -116,6 +113,7 @@
         </action>
 
         <action name="managementPortal" class="NewcastleConnections.Actions.GetWeeklyStats">
+            <interceptor-ref name="authentication" />
             <result name="success">/WEB-INF/jsp/managementPortal.jsp</result>
             <result name="error">/WEB-INF/jsp/exception.jsp</result>
         </action>

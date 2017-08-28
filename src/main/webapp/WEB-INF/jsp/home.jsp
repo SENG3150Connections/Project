@@ -62,21 +62,15 @@
                 </div>
                 <s:if test="%{#session.userNickname == null}">
                     <div class="homepage-login">
-                        <form action="/login">
-                            <button type="submit">Login</button>
-                        </form>
+                        <a href="/login">Login</a>
                     </div>
                 </s:if>
                 <s:else>
                     <div class="homepage-login">
-                        <form action="/customerPortal">
-                            <button type="submit">Your Account</button>
-                        </form>
+                        <a href="/customerPortal">Your Account</a>
                     </div>
                     <div class="homepage-login">
-                        <form action="/logout">
-                            <button type="submit">Logout</button>
-                        </form>
+                        <a href="/logout">Logout</a>
                     </div>
                 </s:else>
                 <div class="homepage-help">
@@ -172,7 +166,7 @@
         <img src="../../img/large.jpg" class="opacity-5"/>
         <div class="text-overlay">
             <h2>Own a business? Get involved and open your door to travellers from around the globe.</h2>
-            <a href="#">List Your Business</a>
+            <a href="/managementPortal">List Your Business</a>
         </div>
     </div>
     <div class="container" style="margin: 25px;padding: 25px;color: #555555;flex-direction: column;justify-content: center;align-items: center">

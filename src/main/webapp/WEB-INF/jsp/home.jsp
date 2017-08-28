@@ -38,9 +38,9 @@
                 <a href="/login">Login</a>
             </div>
             <div class="menu-social hidden">
-                <a href="#"><img src="../../img/fb-social.png" class="pointer"/></a>
-                <a href="#"><img src="../../img/tw-social.png" class="pointer"/></a>
-                <a href="#"><img src="../../img/ig-social.png" class="pointer"/></a>
+                <a href="https://www.facebook.com/newcastleconnections/"><img src="../../img/fb-social.png" class="pointer hover"/></a>
+                <a href="#"><img src="../../img/tw-social.png" class="pointer hover"/></a>
+                <a href="https://www.instagram.com/newcastleconnections/"><img src="../../img/ig-social.png" class="pointer hover"/></a>
             </div>
         </div>
         <div id="homepage-image">

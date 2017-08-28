@@ -49,9 +49,8 @@
                     <div class="management-container">
                         <div class="row" style="width:100%">
                             <div class="col-md-2"><label>Status</label></div>
-                            <div class="col-md-1"><label>Order</label></div>
-                            <div class="col-md-4"><label>User ID</label></div>
-                            <div class="col-md-3"><label>Date</label></div>
+                            <div class="col-md-3"><label>Order</label></div>
+                            <div class="col-md-5"><label>Date</label></div>
                             <div class="col-md-1"><label>Total</label></div>
                             <div class="col-md-1"><label>Actions</label></div>
                         </div>
@@ -74,9 +73,8 @@
                                         </s:elseif>
                                     </label>
                                 </div>
-                                <div class="col-md-1"><label>${invoice.id}</label></div>
-                                <div class="col-md-4"><label>${invoice.customerid}</label></div>
-                                <div class="col-md-3"><label>${invoice.purchasedate}</label></div>
+                                <div class="col-md-3"><label>${invoice.id}</label></div>
+                                <div class="col-md-5"><label>${invoice.purchasedate}</label></div>
                                 <div class="col-md-1"><label>$${invoice.price}</label></div>
                                 <div class="col-md-1"><a href="#">View</a></div>
                             </div>

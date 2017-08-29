@@ -110,7 +110,7 @@ public class CallbackAction extends ActionSupport {
             role = json.get("role").toString();
             SessionUtils.set(request, "userPermissions", json.get("role"));
         } else {
-            SessionUtils.set(request, "userPermissions", 0);
+            SessionUtils.set(request, "userPermissions", "0");
         }
 
 

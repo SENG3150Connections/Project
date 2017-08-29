@@ -99,58 +99,65 @@
         </action>
         <!-- End User Management Portal -->
 
-        <!-- Management Portal -->
+    </package>
 
+    <!-- Management Portal Package -->
+    <package name="management" extends="struts-default">
+
+        <interceptors>
+            <interceptor name="management" class="NewcastleConnections.Authentication.ManagementInterceptor"/>
+            <interceptor-stack name="managementStack">
+                <interceptor-ref name="defaultStack"/>
+                <interceptor-ref name="management"/>
+            </interceptor-stack>
+        </interceptors>
+
+        <default-interceptor-ref name="managementStack"/>
+
+        <global-results>
+            <result name="login" type="redirect">/login</result>
+            <result name="denied" type="redirect">/home</result>
+            <result name="error">/WEB-INF/jsp/exception.jsp</result>
+        </global-results>
 
         <action name="createOffer" class="NewcastleConnections.Actions.CreateOffer">
             <result name="success">/WEB-INF/jsp/managementPortal-create-offer.jsp</result>
-            <result name="error">/WEB-INF/jsp/exception.jsp</result>
         </action>
 
         <action name="submitOffer" class="NewcastleConnections.Actions.SubmitOffer">
             <result name="success">/WEB-INF/jsp/managementPortal.jsp</result>
-            <result name="error">/WEB-INF/jsp/exception.jsp</result>
         </action>
 
         <action name="managementPortal" class="NewcastleConnections.Actions.GetWeeklyStats">
-            <interceptor-ref name="authentication" />
             <result name="success">/WEB-INF/jsp/managementPortal.jsp</result>
-            <result name="error">/WEB-INF/jsp/exception.jsp</result>
         </action>
 
         <action name="displayProducts" class="NewcastleConnections.Actions.SortAlphabetical">
             <result name="success">/WEB-INF/jsp/managementPortal-display-products.jsp</result>
-            <result name="error">/WEB-INF/jsp/exception.jsp</result>
         </action>
 
         <action name="createRestaurant">
             <result name="success">/WEB-INF/jsp/managementPortal-create-restaurant.jsp</result>
-            <result name="error">/WEB-INF/jsp/exception.jsp</result>
         </action>
 
         <action name="createHotel">
             <result name="success">/WEB-INF/jsp/managementPortal-create-hotel.jsp</result>
-            <result name="error">/WEB-INF/jsp/exception.jsp</result>
         </action>
 
         <action name="createExperience">
             <result name="success">/WEB-INF/jsp/managementPortal-create-experience.jsp</result>
-            <result name="error">/WEB-INF/jsp/exception.jsp</result>
         </action>
 
         <action name="editOffer" class="NewcastleConnections.Actions.GetDataSingleOffer">
             <result name="success">/WEB-INF/jsp/managementPortal-edit-offer.jsp</result>
-            <result name="error">/WEB-INF/jsp/exception.jsp</result>
         </action>
 
         <action name="analytics" class="NewcastleConnections.Actions.GetInvoices">
-            <result>WEB-INF/jsp/managementPortal-analytics.jsp</result>
-            <result name="error">/WEB-INF/jsp/exception.jsp</result>
+            <result name="success">/WEB-INF/jsp/managementPortal-analytics.jsp</result>
         </action>
 
         <action name="invoice" class="NewcastleConnections.Actions.GetInvoices">
-            <result name="success">WEB-INF/jsp/managementPortal-invoice.jsp</result>
-            <result name="error">/WEB-INF/jsp/exception.jsp</result>
+            <result name="success">/WEB-INF/jsp/managementPortal-invoice.jsp</result>
         </action>
         <!-- End Management Portal -->
 

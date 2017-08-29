@@ -1,7 +1,7 @@
 package NewcastleConnections;
 
 /*
-UpdateCartExperience.java
+Recommendations.java
 Author: Seb Brown / Scott Walker
 
 Description:

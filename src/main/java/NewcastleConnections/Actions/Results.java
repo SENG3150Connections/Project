@@ -1,7 +1,14 @@
 package NewcastleConnections.Actions;
 
+/*
+Results.java
+Author: Scott Walker
+
+Description:
+    Action called for the results page.
+*/
+
 import NewcastleConnections.Cart.Cart;
-import NewcastleConnections.Cart.CartHotel;
 import NewcastleConnections.DatabaseConnection;
 import NewcastleConnections.Recommendations;
 import NewcastleConnections.packagedeals.tables.records.ExperiencesRecord;
@@ -11,11 +18,9 @@ import com.opensymphony.xwork2.ActionSupport;
 import NewcastleConnections.packagedeals.tables.records.HotelsRecord;
 import com.opensymphony.xwork2.inject.Inject;
 import org.jooq.DSLContext;
-import org.jooq.Record;
 import org.jooq.Result;
 
 import java.sql.SQLException;
-import java.util.LinkedList;
 
 import static NewcastleConnections.packagedeals.Tables.*;
 
@@ -42,6 +47,9 @@ public class Results extends ActionSupport {
     private String finish;
     private int people;
 
+    // -- Public --
+    //   Role: Method that is executed when the page is requested.
+    //
     @Override
     public String execute() {
         try {
@@ -49,7 +57,7 @@ public class Results extends ActionSupport {
             DatabaseConnection connection = new DatabaseConnection();
             DSLContext dsl = connection.getDSL();
 
-            // query
+            // Query, if search is not empty, use %like% matching on the query.
             if (search == null || search.isEmpty()) {
                 hotels = dsl.selectFrom(HOTELS).fetch();
                 restaurants = dsl.selectFrom(RESTURANTS).fetch();
@@ -71,11 +79,11 @@ public class Results extends ActionSupport {
             return ERROR;
         }
 
+        // Add up the counts
         hotelCount = hotels.size();
         restaurantCount = restaurants.size();
         experienceCount = experiences.size();
         transportCount = transport.size();
-
         totalCount = hotelCount + restaurantCount + experienceCount + transportCount;
 
 
@@ -95,7 +103,7 @@ public class Results extends ActionSupport {
         return SUCCESS;
     }
 
-
+    // -- Getters and Setters --
 
     public Result<HotelsRecord> getHotels() {
         return hotels;

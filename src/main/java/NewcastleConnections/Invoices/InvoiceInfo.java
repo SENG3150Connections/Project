@@ -1,18 +1,27 @@
 package NewcastleConnections.Invoices;
 
+/*
+InvoiceInfo.java
+Author: Jack Ratcliffe
+
+Description:
+    Class to store all raw data for an invoice
+*/
+
 import org.jooq.types.UInteger;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
-/**
- * Created by Jack on 27/08/2017.
- */
 public class InvoiceInfo {
+
+    // Data from Invoice table
     private UInteger id;
     private Timestamp purchasedate;
     private double price;
     private UInteger status;
+
+    // -- Getters and Setters --
 
     public UInteger getId() {
         return id;

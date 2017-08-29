@@ -1,18 +1,27 @@
 package NewcastleConnections.Invoices;
 
+/*
+ExperienceInvoiceInfo.java
+Author: Jack Ratcliffe
+
+Description:
+    Class to store all raw data for an invoice
+*/
+
 import org.jooq.types.UInteger;
 
-/**
- * Created by Jack on 22/08/2017.
- */
 public class ExperienceInvoiceInfo {
+
     //Experience Data from Invoiceexperience Table
     private UInteger experienceID;
     private double price;
+
     //Experience Data from Invoice Table
     private String name;
     private String location;
     private String imageID;
+
+    // -- Getters and Setters --
 
     public int getExperienceID() {
         return experienceID.intValue();

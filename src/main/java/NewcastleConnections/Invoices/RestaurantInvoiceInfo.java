@@ -1,14 +1,20 @@
 package NewcastleConnections.Invoices;
 
+/*
+RestaurantInvoiceInfo.java
+Author: Jack Ratcliffe
+
+Description:
+    Class to store all raw data for an invoice
+*/
+
 import org.jooq.types.UInteger;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
-/**
- * Created by Jack on 22/08/2017.
- */
 public class RestaurantInvoiceInfo {
+
     //Restaurant Data from Invoicerestaurant table
     private UInteger restaurantID;
     private Timestamp restaurantTime;
@@ -20,6 +26,8 @@ public class RestaurantInvoiceInfo {
     private String restaurantContact;
     private String restaurantAddress;
     private String restaurantImageID;
+
+    // -- Getters and Setters --
 
     public int getRestaurantID() {
         return restaurantID.intValue();

@@ -1,14 +1,20 @@
 package NewcastleConnections.Invoices;
 
+/*
+HotelInvoiceInfo.java
+Author: Jack Ratcliffe
+
+Description:
+    Class to store all raw data for an invoice
+*/
+
 import org.jooq.types.UInteger;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
-/**
- * Created by Jack on 22/08/2017.
- */
 public class HotelInvoiceInfo {
+
     //Hotel/Room Data from Invoicehotel table
     private UInteger roomID;
     private int adults;
@@ -29,6 +35,8 @@ public class HotelInvoiceInfo {
     private String hotelContact;
     private String hotelAddress;
     private String hotelImageID;
+
+    // -- Getters and Setters --
 
     public int getRoomID() {
         return roomID.intValue();

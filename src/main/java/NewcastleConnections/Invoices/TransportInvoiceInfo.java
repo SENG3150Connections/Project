@@ -1,14 +1,20 @@
 package NewcastleConnections.Invoices;
 
+/*
+TransportInvoiceInfo.java
+Author: Jack Ratcliffe
+
+Description:
+    Class to store all raw data for an invoice
+*/
+
 import org.jooq.types.UInteger;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
-/**
- * Created by Jack on 22/08/2017.
- */
 public class TransportInvoiceInfo {
+
     //Transport Data from Invoicetransport table
     private UInteger transportID;
     private Timestamp transportTime;
@@ -16,6 +22,8 @@ public class TransportInvoiceInfo {
     //Transport data from transport table
     private String transportName;
     private double transportPrice;
+
+    // -- Getters and Setters --
 
     public int getTransportID() {
         return transportID.intValue();

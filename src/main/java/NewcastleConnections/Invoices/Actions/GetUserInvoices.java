@@ -1,5 +1,13 @@
 package NewcastleConnections.Invoices.Actions;
 
+/*
+GetUserInvoices.java
+Author: Jack Ratcliffe
+
+Description:
+    Get all user invoices
+*/
+
 import NewcastleConnections.DatabaseConnection;
 import NewcastleConnections.Invoices.InvoiceInfo;
 import NewcastleConnections.packagedeals.tables.records.InvoicesRecord;
@@ -15,18 +23,14 @@ import java.util.List;
 
 import static NewcastleConnections.packagedeals.Tables.*;
 
-/**
- * Created by Jack on 19/08/2017.
- */
 public class GetUserInvoices extends ActionSupport {
 
     // Results property (to be shared with the JSP page)
     private List<InvoiceInfo> invoices;
 
-    public List<InvoiceInfo> getInvoices() {
-        return invoices;
-    }
-
+    // -- Public --
+    //   Role: Method that is executed when the page is requested.
+    //
     @Override
     public String execute() {
         try {
@@ -35,10 +39,12 @@ public class GetUserInvoices extends ActionSupport {
 
             // Get connection
             DatabaseConnection connection = new DatabaseConnection();
-            // query
+
+            // Query
             Result<InvoicesRecord> invoicesRecords;
             invoicesRecords = connection.getDSL().selectFrom(INVOICES).where(INVOICES.CUSTOMERID.eq(userID)).fetch();
 
+            // Add all invoices to the array as an InvoiceInfo
             invoices = new ArrayList<>();
             for (InvoicesRecord x: invoicesRecords) {
                 InvoiceInfo newInvoice = new InvoiceInfo();
@@ -48,6 +54,7 @@ public class GetUserInvoices extends ActionSupport {
                 newInvoice.setPurchasedate(x.getPurchasedate());
                 invoices.add(newInvoice);
             }
+
             // Close connection
             connection.close();
 
@@ -60,4 +67,9 @@ public class GetUserInvoices extends ActionSupport {
         return SUCCESS;
     }
 
+    // -- Getters and Setters --
+
+    public List<InvoiceInfo> getInvoices() {
+        return invoices;
+    }
 }

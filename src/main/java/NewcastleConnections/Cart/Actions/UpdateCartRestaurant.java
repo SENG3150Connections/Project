@@ -11,9 +11,6 @@ Description:
 import NewcastleConnections.Cart.Cart;
 import NewcastleConnections.Cart.CartRestaurant;
 import NewcastleConnections.Recommendations;
-import NewcastleConnections.packagedeals.tables.records.ExperiencesRecord;
-import NewcastleConnections.packagedeals.tables.records.HotelsRecord;
-import NewcastleConnections.packagedeals.tables.records.ResturantsRecord;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.inject.Inject;
 
@@ -36,11 +33,7 @@ public class UpdateCartRestaurant extends ActionSupport {
 
 
     // Recommendations
-    public LinkedList recommendedHotels;
-    public LinkedList recommendedRestaurants;
-    public LinkedList recommendedExperiences;
-    public int recommendedItem = (int)(Math.random() * 3);
-
+    public Recommendations recommendations;
 
     @Override
     public String execute() {
@@ -52,25 +45,16 @@ public class UpdateCartRestaurant extends ActionSupport {
         if (edit != null) {
 
             // Recommendations
-            Recommendations recommendations = new Recommendations();
             int numberOfResults = 2;
-
             if (cart.getHotels().size() != 0) {
-                HotelsRecord hotel = cart.getHotels().get(cart.getHotels().size()-1).getHotel();
-                recommendations.generateRecommendations(hotel.getLongitude(),hotel.getLatitude(),numberOfResults);
-
+                recommendations = new Recommendations(cart.getLastHotel().getHotel(), numberOfResults);
             } else if (cart.getExperiences().size() != 0) {
-                ExperiencesRecord experience = cart.getExperiences().get(cart.getExperiences().size()-1).getExperience();
-                recommendations.generateRecommendations(experience.getLongitude(),experience.getLatitude(),numberOfResults);
-
+                recommendations = new Recommendations(cart.getLastExperience().getExperience(), numberOfResults);
             } else if (cart.getRestaurants().size() != 0) {
-                ResturantsRecord resturant = cart.getRestaurants().get(cart.getRestaurants().size()-1).getRestaurant();
-                recommendations.generateRecommendations(resturant.getLongitude(),resturant.getLatitude(),numberOfResults);
+                recommendations = new Recommendations(cart.getLastRestaurant().getRestaurant(), numberOfResults);
+            } else {
+                recommendations = new Recommendations();
             }
-
-            recommendedHotels = recommendations.hotels;
-            recommendedExperiences = recommendations.experiences;
-            recommendedRestaurants = recommendations.restaurants;
 
             return SUCCESS;
         }
@@ -160,5 +144,9 @@ public class UpdateCartRestaurant extends ActionSupport {
 
     public void setVoucherPrice(Double voucherPrice) {
         this.voucherPrice = voucherPrice;
+    }
+
+    public Recommendations getRecommendations() {
+        return recommendations;
     }
 }

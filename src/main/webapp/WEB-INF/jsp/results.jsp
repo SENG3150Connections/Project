@@ -141,8 +141,8 @@
                 <hr />
             </div>
                 <div id="results" class="flex-col">
-                <s:if test="%{recommendedItem == 0}">
-                    <s:iterator value="recommendedHotels" var="rec">
+                <s:if test="%{recommendations.recommendedItem == 0}">
+                    <s:iterator value="recommendations.hotels" var="rec">
                         <div class="offer-list recommendation">
                             <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
                             <a href="edit-cart?method=add&type=hotel&id=${rec.id}"><span class="fa fa-plus offer-add" aria-hidden="true">
@@ -175,8 +175,8 @@
                         </div>
                     </s:iterator>
                 </s:if>
-                <s:if test="%{recommendedItem == 1}">
-                    <s:iterator value="recommendedExperiences" var="rec">
+                <s:if test="%{recommendations.recommendedItem == 1}">
+                    <s:iterator value="recommendations.experiences" var="rec">
                         <div class="offer-list recommendation">
                             <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
                             <a href="edit-cart?method=add&type=experience&id=${rec.id}"><span class="fa fa-plus offer-add" aria-hidden="true">
@@ -209,8 +209,8 @@
                         </div>
                     </s:iterator>
                 </s:if>
-                <s:if test="%{recommendedItem == 2}">
-                    <s:iterator value="recommendedRestaurants" var="rec">
+                <s:if test="%{recommendations.recommendedItem == 2}">
+                    <s:iterator value="recommendations.restaurants" var="rec">
                         <div class="offer-list recommendation">
                             <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
                             <a href="edit-cart?method=add&type=restaurant&id=${rec.id}"><span class="fa fa-plus offer-add" aria-hidden="true">

@@ -42,9 +42,7 @@ public class UpdateCartHotel extends ActionSupport {
     private String checkOut;
 
     // Recommendations
-    public LinkedList recommendedHotels;
-    public LinkedList recommendedRestaurants;
-    public LinkedList recommendedExperiences;
+    public Recommendations recommendations;
 
     @Override
     public String execute() {
@@ -62,25 +60,16 @@ public class UpdateCartHotel extends ActionSupport {
                 connection.close();
 
                 // Recommendations
-                Recommendations recommendations = new Recommendations();
                 int numberOfResults = 2;
-
                 if (cart.getHotels().size() != 0) {
-                    HotelsRecord hotel = cart.getHotels().get(cart.getHotels().size()-1).getHotel();
-                    recommendations.generateRecommendations(hotel.getLongitude(),hotel.getLatitude(),numberOfResults);
-
+                    recommendations = new Recommendations(cart.getLastHotel().getHotel(), numberOfResults);
                 } else if (cart.getExperiences().size() != 0) {
-                    ExperiencesRecord experience = cart.getExperiences().get(cart.getExperiences().size()-1).getExperience();
-                    recommendations.generateRecommendations(experience.getLongitude(),experience.getLatitude(),numberOfResults);
-
+                    recommendations = new Recommendations(cart.getLastExperience().getExperience(), numberOfResults);
                 } else if (cart.getRestaurants().size() != 0) {
-                    ResturantsRecord resturant = cart.getRestaurants().get(cart.getRestaurants().size()-1).getRestaurant();
-                    recommendations.generateRecommendations(resturant.getLongitude(),resturant.getLatitude(),numberOfResults);
+                    recommendations = new Recommendations(cart.getLastRestaurant().getRestaurant(), numberOfResults);
+                } else {
+                    recommendations = new Recommendations();
                 }
-
-                recommendedHotels = recommendations.hotels;
-                recommendedExperiences = recommendations.experiences;
-                recommendedRestaurants = recommendations.restaurants;
 
                 return SUCCESS;
             }
@@ -212,5 +201,9 @@ public class UpdateCartHotel extends ActionSupport {
 
     public void setCheckOut(String checkOut) {
         this.checkOut = checkOut;
+    }
+
+    public Recommendations getRecommendations() {
+        return recommendations;
     }
 }

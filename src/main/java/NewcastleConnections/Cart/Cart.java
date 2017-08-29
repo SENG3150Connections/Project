@@ -252,6 +252,22 @@ public class Cart {
         return transport;
     }
 
+    public CartExperience getLastExperience() {
+        return experiences.get(experiences.size()-1);
+    }
+
+    public CartHotel getLastHotel() {
+        return hotels.get(hotels.size()-1);
+    }
+
+    public CartRestaurant getLastRestaurant() {
+        return restaurants.get(restaurants.size()-1);
+    }
+
+    public CartTransport getLastTransport() {
+        return transport.get(transport.size()-1);
+    }
+
     public Double getPrice() {
         return getCurrentPrice();
     }

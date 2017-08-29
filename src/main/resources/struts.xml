@@ -32,26 +32,26 @@
         </action>
 
         <!-- Cart updaters -->
-        <action name="edit-cart" class="NewcastleConnections.Actions.Cart.UpdateCart">
+        <action name="edit-cart" class="NewcastleConnections.Cart.Actions.UpdateCart">
             <result type="redirect">results</result>
         </action>
 
-        <action name="update-experience" class="NewcastleConnections.Actions.Cart.UpdateCartExperience">
+        <action name="update-experience" class="NewcastleConnections.Cart.Actions.UpdateCartExperience">
             <result name="success">/WEB-INF/jsp/cart-update/experience.jsp</result>
             <result name="done" type="redirect">results</result>
             <result name="error">/WEB-INF/jsp/exception.jsp</result>
         </action>
-        <action name="update-hotel" class="NewcastleConnections.Actions.Cart.UpdateCartHotel">
+        <action name="update-hotel" class="NewcastleConnections.Cart.Actions.UpdateCartHotel">
             <result name="success">/WEB-INF/jsp/cart-update/hotel.jsp</result>
             <result name="done" type="redirect">results</result>
             <result name="error">/WEB-INF/jsp/exception.jsp</result>
         </action>
-        <action name="update-restaurant" class="NewcastleConnections.Actions.Cart.UpdateCartRestaurant">
+        <action name="update-restaurant" class="NewcastleConnections.Cart.Actions.UpdateCartRestaurant">
             <result name="success">/WEB-INF/jsp/cart-update/restaurant.jsp</result>
             <result name="done" type="redirect">results</result>
             <result name="error">/WEB-INF/jsp/exception.jsp</result>
         </action>
-        <action name="update-transport" class="NewcastleConnections.Actions.Cart.UpdateCartTransport">
+        <action name="update-transport" class="NewcastleConnections.Cart.Actions.UpdateCartTransport">
             <result name="success">/WEB-INF/jsp/cart-update/transport.jsp</result>
             <result name="done" type="redirect">results</result>
             <result name="error">/WEB-INF/jsp/exception.jsp</result>
@@ -79,7 +79,7 @@
         <!-- End Auth -->
 
         <!-- Payment -->
-        <action name="payment" class="NewcastleConnections.Actions.Cart.ViewCart">
+        <action name="payment" class="NewcastleConnections.Cart.Actions.ViewCart">
             <interceptor-ref name="authentication" />
             <result>WEB-INF/jsp/payment.jsp</result>
         </action>

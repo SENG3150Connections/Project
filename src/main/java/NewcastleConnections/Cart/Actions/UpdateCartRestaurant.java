@@ -1,37 +1,33 @@
-package NewcastleConnections.Actions.Cart;
+package NewcastleConnections.Cart.Actions;
 
 import NewcastleConnections.Cart.Cart;
-import NewcastleConnections.Cart.CartExperience;
-import NewcastleConnections.DatabaseConnection;
+import NewcastleConnections.Cart.CartRestaurant;
 import NewcastleConnections.Recommendations;
 import NewcastleConnections.packagedeals.tables.records.ExperiencesRecord;
-import NewcastleConnections.packagedeals.tables.records.ExperiencevoucherofferingsRecord;
 import NewcastleConnections.packagedeals.tables.records.HotelsRecord;
 import NewcastleConnections.packagedeals.tables.records.ResturantsRecord;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.inject.Inject;
-import org.jooq.Result;
-import org.jooq.types.UInteger;
 
-import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.LinkedList;
-
-import static NewcastleConnections.packagedeals.Tables.EXPERIENCEVOUCHEROFFERINGS;
 
 /**
  * Created by Scott on 14/08/2017.
  */
-public class UpdateCartExperience extends ActionSupport {
+public class UpdateCartRestaurant extends ActionSupport {
     private static final String DONE = "done";
 
     private String edit;
-    private Result<ExperiencevoucherofferingsRecord> offerings;
 
     private Cart cart;
     private int cartIndex;
-    private CartExperience experience;
+    private CartRestaurant restaurant;
 
-    private Integer voucherId;
+    private Integer seats;
+    private String time;
+    private Double voucherPrice;
+
 
     // Recommendations
     public LinkedList recommendedHotels;
@@ -39,15 +35,15 @@ public class UpdateCartExperience extends ActionSupport {
     public LinkedList recommendedExperiences;
     public int recommendedItem = (int)(Math.random() * 3);
 
+
     @Override
     public String execute() {
         // Valid index: 0 to size-1
-        if (cartIndex < 0 || cartIndex >= cart.getExperiences().size())
+        if (cartIndex < 0 || cartIndex >= cart.getRestaurants().size())
             return ERROR;
+        restaurant = cart.getRestaurants().get(cartIndex);
 
-        experience = cart.getExperiences().get(cartIndex);
-        try {
-            DatabaseConnection connection = new DatabaseConnection();
+        if (edit != null) {
 
             // Recommendations
             Recommendations recommendations = new Recommendations();
@@ -74,22 +70,37 @@ public class UpdateCartExperience extends ActionSupport {
             recommendedRestaurants = recommendations.restaurants;
 
 
-            if (edit != null) {
-                offerings = connection.getDSL().selectFrom(EXPERIENCEVOUCHEROFFERINGS)
-                        .where(EXPERIENCEVOUCHEROFFERINGS.EXPERIENCEID.eq(UInteger.valueOf(experience.getId()))).fetch();
-                connection.close();
-                return SUCCESS;
-            }
-
-            ExperiencevoucherofferingsRecord voucher = connection.getDSL().selectFrom(EXPERIENCEVOUCHEROFFERINGS)
-                    .where(EXPERIENCEVOUCHEROFFERINGS.ID.eq(UInteger.valueOf(voucherId))).fetch().get(0);
-            experience.setVoucher(voucher);
-            connection.close();
-            return DONE;
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-            return ERROR;
+            return SUCCESS;
         }
+
+        // Valid seats: Greater than 0
+        if (seats != null) {
+            if (seats < 0)
+                return ERROR;
+            restaurant.setSeats(seats);
+        }
+
+        // Valid timestamp: yyyy-[m]m-[d]d hh:mm:ss
+        if (time != null && !time.isEmpty()) {
+            try {
+                Timestamp timestamp = Timestamp.valueOf(time);
+                restaurant.setTime(timestamp);
+            } catch (IllegalArgumentException e) {
+                return ERROR;
+            }
+        }
+
+        if (voucherPrice != null) {
+            if (voucherPrice < 0)
+                return ERROR;
+            restaurant.setVoucherPrice(voucherPrice);
+        }
+
+
+
+
+
+        return DONE;
     }
 
     public String getEdit() {
@@ -98,14 +109,6 @@ public class UpdateCartExperience extends ActionSupport {
 
     public void setEdit(String edit) {
         this.edit = edit;
-    }
-
-    public Result<ExperiencevoucherofferingsRecord> getOfferings() {
-        return offerings;
-    }
-
-    public void setOfferings(Result<ExperiencevoucherofferingsRecord> offerings) {
-        this.offerings = offerings;
     }
 
     public Cart getCart() {
@@ -125,19 +128,35 @@ public class UpdateCartExperience extends ActionSupport {
         this.cartIndex = cartIndex;
     }
 
-    public CartExperience getExperience() {
-        return experience;
+    public CartRestaurant getRestaurant() {
+        return restaurant;
     }
 
-    public void setExperience(CartExperience experience) {
-        this.experience = experience;
+    public void setRestaurant(CartRestaurant restaurant) {
+        this.restaurant = restaurant;
     }
 
-    public Integer getVoucherId() {
-        return voucherId;
+    public Integer getSeats() {
+        return seats;
     }
 
-    public void setVoucherId(Integer voucherId) {
-        this.voucherId = voucherId;
+    public void setSeats(Integer seats) {
+        this.seats = seats;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public Double getVoucherPrice() {
+        return voucherPrice;
+    }
+
+    public void setVoucherPrice(Double voucherPrice) {
+        this.voucherPrice = voucherPrice;
     }
 }

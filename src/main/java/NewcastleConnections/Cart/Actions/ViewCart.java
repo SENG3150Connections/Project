@@ -1,4 +1,4 @@
-package NewcastleConnections.Actions.Cart;
+package NewcastleConnections.Cart.Actions;
 
 import NewcastleConnections.Cart.Cart;
 import com.opensymphony.xwork2.ActionSupport;

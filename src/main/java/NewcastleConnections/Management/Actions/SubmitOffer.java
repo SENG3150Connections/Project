@@ -1,17 +1,20 @@
 package NewcastleConnections.Management.Actions;
 
+/*
+SubmitOffer.java
+Author: Harry Barden
+
+Description:
+    Submit a new offer to the database
+*/
+
 import NewcastleConnections.DatabaseConnection;
 import NewcastleConnections.packagedeals.tables.records.HotelsRecord;
 import com.opensymphony.xwork2.ActionSupport;
 
-import javax.naming.NamingException;
 import java.sql.Date;
 import java.sql.SQLException;
 
-
-/**
- * Created by Harry on 12/8/17.
- */
 public class SubmitOffer extends ActionSupport {
     private String name = "";
     private String contact = "";
@@ -21,12 +24,15 @@ public class SubmitOffer extends ActionSupport {
     private String description = "";
     private double latitude = 0.0;
     private double longitude = 0.0;
-    private byte publicallyvisible = (byte)0;
-    private byte releaseondate = (byte)0;
+    private byte publicallyvisible = (byte) 0;
+    private byte releaseondate = (byte) 0;
     private Date releasedate = new Date(2017, 1, 1);
     private String imageid = "";
     private String category = "";
 
+    // -- Public --
+    //   Role: Method that is executed when the page is requested.
+    //
     @Override
     public String execute() {
         HotelsRecord hotel = new HotelsRecord();
@@ -63,6 +69,8 @@ public class SubmitOffer extends ActionSupport {
         // Return Success
         return SUCCESS;
     }
+
+    // -- Getters and Setters --
 
     public void setName(final String name) {
         this.name = name;

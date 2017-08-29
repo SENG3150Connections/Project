@@ -1,20 +1,28 @@
 package NewcastleConnections.Management.Actions;
 
+/*
+CreateOffer.java
+Author: Harry Barden
+
+Description:
+    Simple action class to pass an offer type string
+*/
+
 import com.opensymphony.xwork2.ActionSupport;
 
-
-/**
- * Created by Harry on 12/8/17.
- */
 public class CreateOffer extends ActionSupport {
+
     private String offerType = "";
 
+    // -- Public --
+    //   Role: Method that is executed when the page is requested.
+    //
     @Override
     public String execute() {
-
-        // Return Success
         return SUCCESS;
     }
+
+    // -- Getters and Setters --
 
     public String getOfferType() {
         return offerType;

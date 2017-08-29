@@ -1,5 +1,13 @@
 package NewcastleConnections.Management.Actions;
 
+/*
+GetWeeklyStats.java
+Author: Harry Barden
+
+Description:
+    Get the weekly stats for a business
+*/
+
 import NewcastleConnections.DatabaseConnection;
 import NewcastleConnections.packagedeals.tables.records.InvoicesRecord;
 import com.opensymphony.xwork2.ActionSupport;
@@ -12,9 +20,6 @@ import java.time.LocalDateTime;
 
 import static NewcastleConnections.packagedeals.Tables.INVOICES;
 
-/**
- * Created by Harry on 21/08/2017.
- */
 public class GetWeeklyStats extends ActionSupport {
 
     // Results property (to be shared with the JSP page)
@@ -28,6 +33,9 @@ public class GetWeeklyStats extends ActionSupport {
     private double refundedTotal = 0.0;
     private double couponSalesTotal = 0.0;
 
+    // -- Public --
+    //   Role: Method that is executed when the page is requested.
+    //
     @Override
     public String execute() {
         try {
@@ -43,7 +51,7 @@ public class GetWeeklyStats extends ActionSupport {
             return ERROR;
         }
 
-
+        // Create 7 weekly stats, for each day of the week.
         for (int i = 0; i < 7; i++)
             weeklyStats[i] = new WeeklyStats();
 
@@ -56,12 +64,15 @@ public class GetWeeklyStats extends ActionSupport {
             String todayDate = new SimpleDateFormat("dd").format(invoice.getPurchasedate());
         }
 
-
-        // return (int) Success
+        // return Success
         return SUCCESS;
     }
 
-    public WeeklyStats[] getWeeklyStats() { return weeklyStats; }
+    // -- Getters and Setters --
+
+    public WeeklyStats[] getWeeklyStats() {
+        return weeklyStats;
+    }
 
     public double getGrossSalesTotal() {
         return (int) grossSalesTotal;
@@ -87,6 +98,10 @@ public class GetWeeklyStats extends ActionSupport {
         return (int) couponSalesTotal;
     }
 
+    /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+     |  Private inner class WeeklyStats  |
+     *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
+
     private class WeeklyStats {
         private double grossSales = 0.0;
         private double netSales = 0.0;
@@ -98,8 +113,8 @@ public class GetWeeklyStats extends ActionSupport {
         private WeeklyStats() {
             grossSales = Math.random() * 1000;
             netSales = grossSales * 0.2;
-            ordersPlaced = (int)(Math.random() * 20);
-            itemsPurchased = (int)(Math.random() * 20);
+            ordersPlaced = (int) (Math.random() * 20);
+            itemsPurchased = (int) (Math.random() * 20);
             refunded = Math.random() * 10;
             couponSales = Math.random() * 1000;
 
@@ -111,6 +126,8 @@ public class GetWeeklyStats extends ActionSupport {
             refundedTotal += refunded;
             couponSalesTotal += couponSales * 0.25;
         }
+
+        // -- Getters and Setters --
 
         public double getGrossSales() {
             return (int) grossSales;

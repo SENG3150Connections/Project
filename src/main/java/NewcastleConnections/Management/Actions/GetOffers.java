@@ -1,5 +1,13 @@
 package NewcastleConnections.Management.Actions;
 
+/*
+GetOffers.java
+Author: Scott Walker
+
+Description:
+    Simple action class to pass an offer by its ID
+*/
+
 import NewcastleConnections.DatabaseConnection;
 import NewcastleConnections.packagedeals.tables.records.ExperiencesRecord;
 import NewcastleConnections.packagedeals.tables.records.HotelsRecord;
@@ -18,6 +26,9 @@ public class GetOffers extends ActionSupport {
     private Result<ResturantsRecord> restaurants;
     private Result<ExperiencesRecord> experiences;
 
+    // -- Public --
+    //   Role: Method that is executed when the page is requested.
+    //
     @Override
     public String execute() {
         try {
@@ -38,6 +49,8 @@ public class GetOffers extends ActionSupport {
         // Return Success
         return SUCCESS;
     }
+
+    // -- Getters and Setters --
 
     public Result<HotelsRecord> getHotels() {
         return hotels;

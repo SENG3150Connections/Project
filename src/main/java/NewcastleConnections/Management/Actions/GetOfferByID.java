@@ -1,40 +1,37 @@
 package NewcastleConnections.Management.Actions;
 
-import NewcastleConnections.DatabaseConnection;
-import NewcastleConnections.packagedeals.tables.records.ExperiencesRecord;
-import NewcastleConnections.packagedeals.tables.records.HotelsRecord;
-import NewcastleConnections.packagedeals.tables.records.ResturantsRecord;
-import com.opensymphony.xwork2.ActionSupport;
-import org.jooq.Result;
+/*
+CreateOffer.java
+Author: Seb Brown / Scott Walker
 
-import javax.naming.NamingException;
+Description:
+    Simple action class to pass an offer by its ID
+*/
+
+import NewcastleConnections.DatabaseConnection;
+import NewcastleConnections.packagedeals.tables.records.HotelsRecord;
+import com.opensymphony.xwork2.ActionSupport;
+
 import java.sql.SQLException;
 
 import static NewcastleConnections.packagedeals.Tables.*;
 
-/**
- * Created by seb on 1/8/17.
- */
 public class GetOfferByID extends ActionSupport {
 
-
     // Results property (to be shared with the JSP page)
-    private Result<HotelsRecord> hotels;
+    private HotelsRecord hotel;
     private String id;
 
-    public HotelsRecord getHotel() { return hotels.get(0); }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
+    // -- Public --
+    //   Role: Method that is executed when the page is requested.
+    //
     @Override
     public String execute() {
         try {
             // Get connection
             DatabaseConnection connection = new DatabaseConnection();
-            // query
-            hotels = connection.getDSL().selectFrom(HOTELS).where("id=" + id).fetch();
+            // Query
+            hotel = connection.getDSL().selectFrom(HOTELS).where("id=" + id).fetch().get(0);
             // Close connection
             connection.close();
 
@@ -45,5 +42,23 @@ public class GetOfferByID extends ActionSupport {
 
         // Return Success
         return SUCCESS;
+    }
+
+    // -- Getters and Setters
+
+    public HotelsRecord getHotel() {
+        return hotel;
+    }
+
+    public void setHotel(HotelsRecord hotel) {
+        this.hotel = hotel;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

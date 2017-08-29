@@ -22,11 +22,15 @@ import static NewcastleConnections.packagedeals.Tables.EXPERIENCES;
 
 public class Recommendations {
 
+    // Private member data
     private LinkedList hotels;
     private LinkedList restaurants;
     private LinkedList experiences;
     private int recommendedItem;
 
+    // -- Constructor --
+    //   Role: Create an empty recommendation set
+    //
     public Recommendations() {
         hotels = new LinkedList();
         restaurants = new LinkedList();
@@ -34,24 +38,39 @@ public class Recommendations {
         recommendedItem = 0;
     }
 
+    // -- Constructor --
+    //   Role: Create recommendations for a specific record
+    //
     public Recommendations(ExperiencesRecord record, int numberOfResults) {
         generateRecommendations(record.getLongitude(), record.getLatitude(), numberOfResults);
     }
 
+    // -- Constructor --
+    //   Role: Create recommendations for a specific record
+    //
     public Recommendations(HotelsRecord record, int numberOfResults) {
         generateRecommendations(record.getLongitude(), record.getLatitude(), numberOfResults);
     }
 
+    // -- Constructor --
+    //   Role: Create recommendations for a specific record
+    //
     public Recommendations(ResturantsRecord record, int numberOfResults) {
         generateRecommendations(record.getLongitude(), record.getLatitude(), numberOfResults);
     }
 
+    // -- Private --
+    //   Role: Set the private lists to each record in order of recommending.
+    //
     private void generateRecommendations(double searchLongitude, double searchLattitude, int numberOfResults) {
+        // Which category we will display
         recommendedItem = (int)(Math.random() * 3);
 
         try {
+            // Initialise connection
             DatabaseConnection connection = new DatabaseConnection();
 
+            // Fecth all records
             Result<HotelsRecord> hotels = connection.getDSL().selectFrom(HOTELS).fetch();
             Result<ResturantsRecord> restaurants = connection.getDSL().selectFrom(RESTURANTS).fetch();
             Result<ExperiencesRecord> experiences = connection.getDSL().selectFrom(EXPERIENCES).fetch();
@@ -61,8 +80,8 @@ public class Recommendations {
             LinkedList<DistancedRecord> distances_restaurants = new LinkedList<>();
             LinkedList<DistancedRecord> distances_experiences = new LinkedList<>();
 
+            // Process hotels into DistancedRecord
             for (Record record : hotels) {
-
                 double dist = calculateHypotenuse(searchLongitude,
                         record.getValue(HOTELS.LONGITUDE),
                         searchLattitude,
@@ -70,8 +89,8 @@ public class Recommendations {
                 distances_hotels.add(new DistancedRecord(dist, record));
             }
 
+            // Process restaurants into DistancedRecord
             for (Record record : restaurants) {
-
                 double dist = calculateHypotenuse(searchLongitude,
                         record.getValue(RESTURANTS.LONGITUDE),
                         searchLattitude,
@@ -79,8 +98,8 @@ public class Recommendations {
                 distances_restaurants.add(new DistancedRecord(dist, record));
             }
 
+            // Process experiences into DistancedRecord
             for (Record record : experiences) {
-
                 double dist = calculateHypotenuse(searchLongitude,
                         record.getValue(EXPERIENCES.LONGITUDE),
                         searchLattitude,
@@ -98,22 +117,18 @@ public class Recommendations {
             this.restaurants = new LinkedList();
             this.experiences = new LinkedList();
 
-            for (int i = 0; i < numberOfResults; i++) {
-                if (i <= distances_hotels.size()) {
-                    this.hotels.add(distances_hotels.get(i).record);
-                }
+            // Add all records back into the lists in order of rank, up to the max limit.
+            for (int i = 0; i < Math.min(numberOfResults, distances_hotels.size()); i++) {
+                this.hotels.add(distances_hotels.get(i).record);
             }
-            for (int i = 0; i < numberOfResults; i++) {
-                if (i <= distances_restaurants.size()) {
-                    this.restaurants.add(distances_restaurants.get(i).record);
-                }
+            for (int i = 0; i < Math.min(numberOfResults, distances_restaurants.size()); i++) {
+                this.restaurants.add(distances_restaurants.get(i).record);
             }
-            for (int i = 0; i < numberOfResults; i++) {
-                if (i <= distances_experiences.size()) {
-                    this.experiences.add(distances_experiences.get(i).record);
-                }
+            for (int i = 0; i < Math.min(numberOfResults, distances_experiences.size()); i++) {
+                this.experiences.add(distances_experiences.get(i).record);
             }
 
+            // Close the connections
             connection.close();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -121,9 +136,14 @@ public class Recommendations {
 
     }
 
+    // -- Private --
+    //   Role: Calculate 2D distance of 2 points
+    //
     private double calculateHypotenuse(double x0, double x1, double y0, double y1) {
         return Math.sqrt(Math.pow((Math.abs(x1 - x0)), 2) + Math.pow((Math.abs(y1 - y0)), 2));
     }
+
+    // -- Getters and Setters --
 
     public LinkedList getHotels() {
         return hotels;
@@ -141,9 +161,7 @@ public class Recommendations {
         return recommendedItem;
     }
 
-    /**
-     * Sorting functions (MergeSort)
-     */
+    // -- Merge sort functions --
 
     private LinkedList<DistancedRecord> mSort(LinkedList<DistancedRecord> list) {
 
@@ -186,6 +204,10 @@ public class Recommendations {
             return l;
         }
     }
+
+    /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+     |  Private inner class DistancedRecord  |
+     *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 
     private class DistancedRecord {
         private double distance;

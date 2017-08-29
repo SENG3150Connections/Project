@@ -45,6 +45,8 @@ public class LoginAction extends ActionSupport {
 
             // Store the page the user has just come from as a session attribute, so we can go back there after auth.
             String referer = request.getHeader("referer");
+            if (referer == null) // Set to home if unsure/
+                referer = "home";
             SessionUtils.set(request, "authSourceUrl", referer.substring(referer.lastIndexOf("/") + 1));
 
             response.sendRedirect(authorizeUrl);

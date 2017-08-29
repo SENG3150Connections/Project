@@ -58,12 +58,6 @@
         </action>
         <!-- End Cart Updaters -->
 
-        <!-- Example authentication -->
-        <action name="private">
-            <interceptor-ref name="authentication" />
-            <result name="success">/WEB-INF/jsp/private.jsp</result>
-        </action>
-
         <!-- Auth -->
         <action name="login" class="NewcastleConnections.Authentication.LoginAction">
             <result>WEB-INF/jsp/home.jsp</result>

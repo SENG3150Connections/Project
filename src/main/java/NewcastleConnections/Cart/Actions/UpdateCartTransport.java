@@ -1,5 +1,13 @@
 package NewcastleConnections.Cart.Actions;
 
+/*
+UpdateCartTransport.java
+Author: Scott Walker
+
+Description:
+    Action to update a particular transport in the cart.
+*/
+
 import NewcastleConnections.Cart.Cart;
 import NewcastleConnections.Cart.CartTransport;
 import NewcastleConnections.Recommendations;
@@ -12,12 +20,10 @@ import com.opensymphony.xwork2.inject.Inject;
 import java.sql.Timestamp;
 import java.util.LinkedList;
 
-/**
- * Created by Scott on 14/08/2017.
- */
 public class UpdateCartTransport extends ActionSupport {
     private static final String DONE = "done";
 
+    // Private member data
     private String edit;
 
     private Cart cart;
@@ -27,13 +33,10 @@ public class UpdateCartTransport extends ActionSupport {
     private Integer tickets;
     private String time;
 
-
     // Recommendations
     public LinkedList recommendedHotels;
     public LinkedList recommendedRestaurants;
     public LinkedList recommendedExperiences;
-    public int recommendedItem = (int)(Math.random() * 3);
-
 
     @Override
     public String execute() {
@@ -42,8 +45,31 @@ public class UpdateCartTransport extends ActionSupport {
             return ERROR;
         transport = cart.getTransport().get(cartIndex);
 
-        if (edit != null)
+        if (edit != null) {
+
+            // Recommendations
+            Recommendations recommendations = new Recommendations();
+            int numberOfResults = 2;
+
+            if (cart.getHotels().size() != 0) {
+                HotelsRecord hotel = cart.getHotels().get(cart.getHotels().size()-1).getHotel();
+                recommendations.generateRecommendations(hotel.getLongitude(),hotel.getLatitude(),numberOfResults);
+
+            } else if (cart.getExperiences().size() != 0) {
+                ExperiencesRecord experience = cart.getExperiences().get(cart.getExperiences().size()-1).getExperience();
+                recommendations.generateRecommendations(experience.getLongitude(),experience.getLatitude(),numberOfResults);
+
+            } else if (cart.getRestaurants().size() != 0) {
+                ResturantsRecord resturant = cart.getRestaurants().get(cart.getRestaurants().size()-1).getRestaurant();
+                recommendations.generateRecommendations(resturant.getLongitude(),resturant.getLatitude(),numberOfResults);
+            }
+
+            recommendedHotels = recommendations.hotels;
+            recommendedExperiences = recommendations.experiences;
+            recommendedRestaurants = recommendations.restaurants;
+
             return SUCCESS;
+        }
 
         // Valid tickets: Greater than 0
         if (tickets != null) {
@@ -62,34 +88,10 @@ public class UpdateCartTransport extends ActionSupport {
             }
         }
 
-
-        // Recommendations
-        Recommendations recommendations = new Recommendations();
-        int numberOfResults = 2;
-
-        if (cart.getHotels().size() != 0) {
-
-            HotelsRecord hotel = cart.getHotels().get(cart.getHotels().size()-1).getHotel();
-            recommendations.generateRecommendations(hotel.getLongitude(),hotel.getLatitude(),numberOfResults);
-
-        } else if (cart.getExperiences().size() != 0) {
-
-            ExperiencesRecord experience = cart.getExperiences().get(cart.getExperiences().size()-1).getExperience();
-            recommendations.generateRecommendations(experience.getLongitude(),experience.getLatitude(),numberOfResults);
-
-        } else if (cart.getRestaurants().size() != 0) {
-
-            ResturantsRecord resturant = cart.getRestaurants().get(cart.getRestaurants().size()-1).getRestaurant();
-            recommendations.generateRecommendations(resturant.getLongitude(),resturant.getLatitude(),numberOfResults);
-        }
-
-        recommendedHotels = recommendations.hotels;
-        recommendedExperiences = recommendations.experiences;
-        recommendedRestaurants = recommendations.restaurants;
-
-
         return DONE;
     }
+
+    // -- Getters and Setters
 
     public String getEdit() {
         return edit;

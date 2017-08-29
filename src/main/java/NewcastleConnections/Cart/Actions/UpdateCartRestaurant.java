@@ -1,5 +1,13 @@
 package NewcastleConnections.Cart.Actions;
 
+/*
+UpdateCartRestaurant.java
+Author: Scott Walker
+
+Description:
+    Action to update a particular restaurant in the cart.
+*/
+
 import NewcastleConnections.Cart.Cart;
 import NewcastleConnections.Cart.CartRestaurant;
 import NewcastleConnections.Recommendations;
@@ -12,14 +20,12 @@ import com.opensymphony.xwork2.inject.Inject;
 import java.sql.Timestamp;
 import java.util.LinkedList;
 
-/**
- * Created by Scott on 14/08/2017.
- */
 public class UpdateCartRestaurant extends ActionSupport {
     private static final String DONE = "done";
 
     private String edit;
 
+    // Private member data
     private Cart cart;
     private int cartIndex;
     private CartRestaurant restaurant;
@@ -50,17 +56,14 @@ public class UpdateCartRestaurant extends ActionSupport {
             int numberOfResults = 2;
 
             if (cart.getHotels().size() != 0) {
-
                 HotelsRecord hotel = cart.getHotels().get(cart.getHotels().size()-1).getHotel();
                 recommendations.generateRecommendations(hotel.getLongitude(),hotel.getLatitude(),numberOfResults);
 
             } else if (cart.getExperiences().size() != 0) {
-
                 ExperiencesRecord experience = cart.getExperiences().get(cart.getExperiences().size()-1).getExperience();
                 recommendations.generateRecommendations(experience.getLongitude(),experience.getLatitude(),numberOfResults);
 
             } else if (cart.getRestaurants().size() != 0) {
-
                 ResturantsRecord resturant = cart.getRestaurants().get(cart.getRestaurants().size()-1).getRestaurant();
                 recommendations.generateRecommendations(resturant.getLongitude(),resturant.getLatitude(),numberOfResults);
             }
@@ -69,9 +72,10 @@ public class UpdateCartRestaurant extends ActionSupport {
             recommendedExperiences = recommendations.experiences;
             recommendedRestaurants = recommendations.restaurants;
 
-
             return SUCCESS;
         }
+
+        // We have submitted the form, save the data
 
         // Valid seats: Greater than 0
         if (seats != null) {
@@ -96,12 +100,10 @@ public class UpdateCartRestaurant extends ActionSupport {
             restaurant.setVoucherPrice(voucherPrice);
         }
 
-
-
-
-
         return DONE;
     }
+
+    // -- Getters and Setters
 
     public String getEdit() {
         return edit;

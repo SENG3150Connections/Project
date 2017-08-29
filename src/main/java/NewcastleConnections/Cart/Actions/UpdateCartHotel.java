@@ -1,5 +1,13 @@
 package NewcastleConnections.Cart.Actions;
 
+/*
+UpdateCartHotel.java
+Author: Scott Walker
+
+Description:
+    Action to update a particular hotel in the cart.
+*/
+
 import NewcastleConnections.Cart.Cart;
 import NewcastleConnections.Cart.CartHotel;
 import NewcastleConnections.DatabaseConnection;
@@ -16,12 +24,10 @@ import java.util.LinkedList;
 
 import static NewcastleConnections.packagedeals.Tables.ROOMOFFERINGS;
 
-/**
- * Created by Scott on 14/08/2017.
- */
 public class UpdateCartHotel extends ActionSupport {
     private static final String DONE = "done";
 
+    // Private member data
     private String edit;
     private Result<RoomofferingsRecord> offerings;
 
@@ -39,7 +45,6 @@ public class UpdateCartHotel extends ActionSupport {
     public LinkedList recommendedHotels;
     public LinkedList recommendedRestaurants;
     public LinkedList recommendedExperiences;
-    public int recommendedItem = (int)(Math.random() * 3);
 
     @Override
     public String execute() {
@@ -51,35 +56,32 @@ public class UpdateCartHotel extends ActionSupport {
         try {
             DatabaseConnection connection = new DatabaseConnection();
 
-
-            // Recommendations
-            Recommendations recommendations = new Recommendations();
-            int numberOfResults = 2;
-
-            if (cart.getHotels().size() != 0) {
-
-                HotelsRecord hotel = cart.getHotels().get(cart.getHotels().size()-1).getHotel();
-                recommendations.generateRecommendations(hotel.getLongitude(),hotel.getLatitude(),numberOfResults);
-
-            } else if (cart.getExperiences().size() != 0) {
-
-                ExperiencesRecord experience = cart.getExperiences().get(cart.getExperiences().size()-1).getExperience();
-                recommendations.generateRecommendations(experience.getLongitude(),experience.getLatitude(),numberOfResults);
-
-            } else if (cart.getRestaurants().size() != 0) {
-
-                ResturantsRecord resturant = cart.getRestaurants().get(cart.getRestaurants().size()-1).getRestaurant();
-                recommendations.generateRecommendations(resturant.getLongitude(),resturant.getLatitude(),numberOfResults);
-            }
-
-            recommendedHotels = recommendations.hotels;
-            recommendedExperiences = recommendations.experiences;
-            recommendedRestaurants = recommendations.restaurants;
-
             if (edit != null) {
                 offerings = connection.getDSL().selectFrom(ROOMOFFERINGS)
                         .where(ROOMOFFERINGS.HOTELID.eq(UInteger.valueOf(hotel.getId()))).fetch();
                 connection.close();
+
+                // Recommendations
+                Recommendations recommendations = new Recommendations();
+                int numberOfResults = 2;
+
+                if (cart.getHotels().size() != 0) {
+                    HotelsRecord hotel = cart.getHotels().get(cart.getHotels().size()-1).getHotel();
+                    recommendations.generateRecommendations(hotel.getLongitude(),hotel.getLatitude(),numberOfResults);
+
+                } else if (cart.getExperiences().size() != 0) {
+                    ExperiencesRecord experience = cart.getExperiences().get(cart.getExperiences().size()-1).getExperience();
+                    recommendations.generateRecommendations(experience.getLongitude(),experience.getLatitude(),numberOfResults);
+
+                } else if (cart.getRestaurants().size() != 0) {
+                    ResturantsRecord resturant = cart.getRestaurants().get(cart.getRestaurants().size()-1).getRestaurant();
+                    recommendations.generateRecommendations(resturant.getLongitude(),resturant.getLatitude(),numberOfResults);
+                }
+
+                recommendedHotels = recommendations.hotels;
+                recommendedExperiences = recommendations.experiences;
+                recommendedRestaurants = recommendations.restaurants;
+
                 return SUCCESS;
             }
 
@@ -128,6 +130,8 @@ public class UpdateCartHotel extends ActionSupport {
 
         return DONE;
     }
+
+    // -- Getters and Setters
 
     public String getEdit() {
         return edit;

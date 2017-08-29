@@ -1,4 +1,4 @@
-package NewcastleConnections.Actions;
+package NewcastleConnections.Management.Actions;
 
 import com.opensymphony.xwork2.ActionSupport;
 

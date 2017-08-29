@@ -84,11 +84,11 @@
         <!-- End Payment -->
 
         <!-- User Management Portal -->
-        <action name="customerPortal" class="NewcastleConnections.Actions.GetUserInvoices">
+        <action name="customerPortal" class="NewcastleConnections.Invoices.Actions.GetUserInvoices">
             <result>WEB-INF/jsp/customerPortal.jsp</result>
         </action>
 
-        <action name="customerPortal-bookings" class="NewcastleConnections.Actions.GetUserBooking">
+        <action name="customerPortal-bookings" class="NewcastleConnections.Invoices.Actions.GetUserBooking">
             <result>WEB-INF/jsp/customerPortal-bookings.jsp</result>
         </action>
         <!-- End User Management Portal -->
@@ -114,11 +114,11 @@
             <result name="error">/WEB-INF/jsp/exception.jsp</result>
         </global-results>
 
-        <action name="managementPortal" class="NewcastleConnections.Actions.GetWeeklyStats">
+        <action name="managementPortal" class="NewcastleConnections.Management.Actions.GetWeeklyStats">
             <result name="success">/WEB-INF/jsp/management/dashboard.jsp</result>
         </action>
 
-        <action name="createOffer" class="NewcastleConnections.Actions.CreateOffer">
+        <action name="createOffer" class="NewcastleConnections.Management.Actions.CreateOffer">
             <result name="success">/WEB-INF/jsp/management/create-offer.jsp</result>
         </action>
 
@@ -134,23 +134,23 @@
             <result name="success">/WEB-INF/jsp/management/create-restaurant.jsp</result>
         </action>
 
-        <action name="displayProducts" class="NewcastleConnections.Actions.SortAlphabetical">
+        <action name="displayProducts" class="NewcastleConnections.Management.Actions.GetOffers">
             <result name="success">/WEB-INF/jsp/management/display-products.jsp</result>
         </action>
 
-        <action name="editOffer" class="NewcastleConnections.Actions.GetDataSingleOffer">
+        <action name="editOffer" class="NewcastleConnections.Management.Actions.GetOfferByID">
             <result name="success">/WEB-INF/jsp/management/edit-offer.jsp</result>
         </action>
 
-        <action name="submitOffer" class="NewcastleConnections.Actions.SubmitOffer">
+        <action name="submitOffer" class="NewcastleConnections.Management.Actions.SubmitOffer">
             <result name="success" type="redirect">/displayProducts</result>
         </action>
 
-        <action name="analytics" class="NewcastleConnections.Actions.GetInvoices">
+        <action name="analytics">
             <result name="success">/WEB-INF/jsp/management/analytics.jsp</result>
         </action>
 
-        <action name="invoice" class="NewcastleConnections.Actions.GetInvoices">
+        <action name="invoice" class="NewcastleConnections.Management.Actions.GetInvoices">
             <result name="success">/WEB-INF/jsp/management/invoice.jsp</result>
         </action>
         <!-- End Management Portal -->

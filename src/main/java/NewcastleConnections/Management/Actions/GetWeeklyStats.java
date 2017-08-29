@@ -1,4 +1,4 @@
-package NewcastleConnections.Actions;
+package NewcastleConnections.Management.Actions;
 
 import NewcastleConnections.DatabaseConnection;
 import NewcastleConnections.packagedeals.tables.records.InvoicesRecord;
@@ -9,7 +9,6 @@ import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 
 import static NewcastleConnections.packagedeals.Tables.INVOICES;
 
@@ -62,58 +61,6 @@ public class GetWeeklyStats extends ActionSupport {
         return SUCCESS;
     }
 
-    public class WeeklyStats {
-        private double grossSales = 0.0;
-        private double netSales = 0.0;
-        private int ordersPlaced = 0;
-        private int itemsPurchased = 0;
-        private double refunded = 0.0;
-        private double couponSales = 0.0;
-
-        WeeklyStats() {
-            grossSales = Math.random() * 1000;
-            netSales = grossSales * 0.2;
-            ordersPlaced = (int)(Math.random() * 20);
-            itemsPurchased = (int)(Math.random() * 20);
-            refunded = Math.random() * 10;
-            couponSales = Math.random() * 1000;
-
-            grossSalesTotal += grossSales;
-            netSalesTotal += netSales;
-            ordersPlacedTotal += ordersPlaced;
-            grossSalesTotal += grossSales;
-            itemsPurchasedTotal += itemsPurchased;
-            refundedTotal += refunded;
-            couponSalesTotal += couponSales * 0.25;
-        }
-
-        public double getGrossSales() {
-            return (int) grossSales;
-        }
-
-        public double getNetSales() {
-            return (int) netSales;
-        }
-
-        public int getOrdersPlaced() {
-            return (int) ordersPlaced;
-        }
-
-        public int getItemsPurchased() {
-            return (int) itemsPurchased;
-        }
-
-        public double getRefunded() {
-            return (int) refunded;
-        }
-
-        public double getCouponSales() {
-            return (int) couponSales;
-        }
-
-    }
-
-
     public WeeklyStats[] getWeeklyStats() { return weeklyStats; }
 
     public double getGrossSalesTotal() {
@@ -140,4 +87,54 @@ public class GetWeeklyStats extends ActionSupport {
         return (int) couponSalesTotal;
     }
 
+    private class WeeklyStats {
+        private double grossSales = 0.0;
+        private double netSales = 0.0;
+        private int ordersPlaced = 0;
+        private int itemsPurchased = 0;
+        private double refunded = 0.0;
+        private double couponSales = 0.0;
+
+        private WeeklyStats() {
+            grossSales = Math.random() * 1000;
+            netSales = grossSales * 0.2;
+            ordersPlaced = (int)(Math.random() * 20);
+            itemsPurchased = (int)(Math.random() * 20);
+            refunded = Math.random() * 10;
+            couponSales = Math.random() * 1000;
+
+            grossSalesTotal += grossSales;
+            netSalesTotal += netSales;
+            ordersPlacedTotal += ordersPlaced;
+            grossSalesTotal += grossSales;
+            itemsPurchasedTotal += itemsPurchased;
+            refundedTotal += refunded;
+            couponSalesTotal += couponSales * 0.25;
+        }
+
+        public double getGrossSales() {
+            return (int) grossSales;
+        }
+
+        public double getNetSales() {
+            return (int) netSales;
+        }
+
+        public int getOrdersPlaced() {
+            return ordersPlaced;
+        }
+
+        public int getItemsPurchased() {
+            return itemsPurchased;
+        }
+
+        public double getRefunded() {
+            return (int) refunded;
+        }
+
+        public double getCouponSales() {
+            return (int) couponSales;
+        }
+
+    }
 }

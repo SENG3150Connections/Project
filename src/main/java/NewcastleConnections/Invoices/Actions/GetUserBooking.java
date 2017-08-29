@@ -1,7 +1,7 @@
-package NewcastleConnections.Actions;
+package NewcastleConnections.Invoices.Actions;
 
 import NewcastleConnections.*;
-import NewcastleConnections.InvoiceInfo.*;
+import NewcastleConnections.Invoices.*;
 import NewcastleConnections.packagedeals.tables.records.*;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;

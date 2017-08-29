@@ -1,4 +1,4 @@
-package NewcastleConnections.Actions;
+package NewcastleConnections.Management.Actions;
 
 import NewcastleConnections.DatabaseConnection;
 import NewcastleConnections.packagedeals.tables.records.InvoicesRecord;

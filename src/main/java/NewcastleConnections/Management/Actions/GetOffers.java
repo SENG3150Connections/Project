@@ -1,4 +1,4 @@
-package NewcastleConnections.Actions;
+package NewcastleConnections.Management.Actions;
 
 import NewcastleConnections.DatabaseConnection;
 import NewcastleConnections.packagedeals.tables.records.ExperiencesRecord;
@@ -7,26 +7,16 @@ import NewcastleConnections.packagedeals.tables.records.ResturantsRecord;
 import com.opensymphony.xwork2.ActionSupport;
 import org.jooq.Result;
 
-import javax.naming.NamingException;
 import java.sql.SQLException;
 
 import static NewcastleConnections.packagedeals.Tables.*;
 
-/**
- * Created by seb on 1/8/17.
- */
-public class GetDataSingleOffer extends ActionSupport {
-
+public class GetOffers extends ActionSupport {
 
     // Results property (to be shared with the JSP page)
     private Result<HotelsRecord> hotels;
-    private String id;
-
-    public HotelsRecord getHotel() { return hotels.get(0); }
-
-    public void setId(String id) {
-        this.id = id;
-    }
+    private Result<ResturantsRecord> restaurants;
+    private Result<ExperiencesRecord> experiences;
 
     @Override
     public String execute() {
@@ -34,7 +24,9 @@ public class GetDataSingleOffer extends ActionSupport {
             // Get connection
             DatabaseConnection connection = new DatabaseConnection();
             // query
-            hotels = connection.getDSL().selectFrom(HOTELS).where("id=" + id).fetch();
+            hotels = connection.getDSL().selectFrom(HOTELS).fetch();
+            restaurants = connection.getDSL().selectFrom(RESTURANTS).fetch();
+            experiences = connection.getDSL().selectFrom(EXPERIENCES).fetch();
             // Close connection
             connection.close();
 
@@ -45,5 +37,17 @@ public class GetDataSingleOffer extends ActionSupport {
 
         // Return Success
         return SUCCESS;
+    }
+
+    public Result<HotelsRecord> getHotels() {
+        return hotels;
+    }
+
+    public Result<ResturantsRecord> getRestaurants() {
+        return restaurants;
+    }
+
+    public Result<ExperiencesRecord> getExperiences() {
+        return experiences;
     }
 }

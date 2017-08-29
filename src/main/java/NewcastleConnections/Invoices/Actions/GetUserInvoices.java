@@ -1,14 +1,12 @@
-package NewcastleConnections.Actions;
+package NewcastleConnections.Invoices.Actions;
 
 import NewcastleConnections.DatabaseConnection;
-import NewcastleConnections.InvoiceInfo.InvoiceInfo;
+import NewcastleConnections.Invoices.InvoiceInfo;
 import NewcastleConnections.packagedeals.tables.records.InvoicesRecord;
-import com.auth0.IdentityVerificationException;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 import org.jooq.Result;
 
-import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
 
 import java.sql.SQLException;

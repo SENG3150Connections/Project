@@ -1,4 +1,4 @@
-package NewcastleConnections.InvoiceInfo;
+package NewcastleConnections.Invoices;
 
 import org.jooq.types.UInteger;
 

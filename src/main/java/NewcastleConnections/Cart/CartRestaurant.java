@@ -1,5 +1,13 @@
 package NewcastleConnections.Cart;
 
+/*
+CartRestaurant.java
+Author: Scott Walker
+
+Description:
+    The cart item to store Restaurants.
+*/
+
 import NewcastleConnections.DatabaseConnection;
 import NewcastleConnections.packagedeals.tables.records.InvoicerestaurantRecord;
 import NewcastleConnections.packagedeals.tables.records.ResturantsRecord;
@@ -10,17 +18,18 @@ import java.sql.Timestamp;
 
 import static NewcastleConnections.packagedeals.Tables.*;
 
-/**
- * Created by Scott on 22/08/2017.
- */
 public class CartRestaurant implements CartItem {
 
+    // Private member data
     private ResturantsRecord restaurant = null;
     private InvoicerestaurantRecord invoice = null;
     private int seats = 0;
     private Timestamp time = null;
     private Double voucherPrice = null;
 
+    // -- Constructor --
+    //   Role: Initialise the CartRestaurant of certain ID.
+    //
     public CartRestaurant(int restaurantID) {
         try {
             DatabaseConnection connection = new DatabaseConnection();
@@ -42,6 +51,7 @@ public class CartRestaurant implements CartItem {
     }
 
     public boolean getReady() {
+        // Must have a booking time and at least 1 seat booked.
         return time != null && seats > 0;
     }
 
@@ -51,6 +61,9 @@ public class CartRestaurant implements CartItem {
 
     // -- Other methods --
 
+    // -- Public --
+    //   Role: Get the invoice for this cart item.
+    //
     public InvoicerestaurantRecord getInvoice() {
         if (!getReady()) {
             return null;

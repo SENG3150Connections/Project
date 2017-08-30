@@ -1,3 +1,13 @@
+<%--
+recommendation-panel.jsp
+Author: Tim Pitts / Scott Walker
+
+Description:
+    A helper JSP to be included in another.
+    This is the side-panel that will appear on the edit pages for items in the users
+    current shopping cart.
+--%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <s:if test="%{recommendations.recommendedItem == 0}">
     <s:iterator value="recommendations.hotels" var="rec">

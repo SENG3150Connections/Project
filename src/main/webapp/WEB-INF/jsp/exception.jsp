@@ -1,10 +1,10 @@
+<%--
+exception.jsp
+Author: Seb Brown
 
-<!--
-
-A generic error page.
-
--->
-
+Description:
+    A generic error page.
+--%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>

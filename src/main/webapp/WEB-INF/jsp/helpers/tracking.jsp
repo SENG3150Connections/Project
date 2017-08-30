@@ -1,12 +1,12 @@
 <%--
-  Created by IntelliJ IDEA.
-  User: seb
-  Date: 14/8/17
-  Time: 2:42 PM
-  To change this template use File | Settings | File Templates.
+tracking.jsp
+Author: Seb Brown
+
+Description:
+    A helper JSP to be included in another.
+    This JSP simply includes the tags to link a page to Google Analytics.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

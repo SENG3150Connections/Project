@@ -1,3 +1,13 @@
+<%--
+invoice.jsp
+Author: Harry Barden
+
+Description:
+    The back-end page to display all invoices made by clients of Newcastle Conenctions
+
+    The sidebar is dynamically loaded in via jsp:include at the start of the body tag.
+--%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 

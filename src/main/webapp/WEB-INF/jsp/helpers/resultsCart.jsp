@@ -1,10 +1,17 @@
 <%--
-  Created by IntelliJ IDEA.
-  User: Scott
-  Date: 25/08/2017
-  Time: 2:02 PM
-  To change this template use File | Settings | File Templates.
+resultsCart.jsp
+Author: Scott Walker
+
+Description:
+    A helper JSP to be included in another.
+    This produces the items in the shopping cart on the results page.
+    They feature:
+    - Tick or cross if they're ready to be processed
+    - Name of item
+    - An edit button
+    - A remove from cart button
 --%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <div>

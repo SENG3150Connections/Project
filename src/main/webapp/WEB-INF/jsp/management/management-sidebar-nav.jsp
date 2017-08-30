@@ -1,3 +1,11 @@
+<%--
+management-sidebar-nav.jsp
+Author: Harry Barden
+
+Description:
+    This is the sidebar that is dynamically loaded into all management portal JSPs.
+--%>
+
 <div class="nav-side-menu">
     <div class="brand">DMB - Management</div>
     <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>

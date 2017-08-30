@@ -1,3 +1,11 @@
+<%--
+customerPortal.jsp
+Author: Jack Ratcliffe / Seb Brown
+
+Description:
+    The homepage for the customer portal. It displays their purchased items as invoices which may be viewed.
+--%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 

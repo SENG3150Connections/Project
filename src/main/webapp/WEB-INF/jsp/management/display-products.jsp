@@ -1,3 +1,14 @@
+<%--
+display-products.jsp
+Author: Harry Barden
+
+Description:
+    Displays all the available products in the database to the admin.
+    This can be further limited if the user is a business client.
+
+    The sidebar is dynamically loaded in via jsp:include at the start of the body tag.
+--%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 

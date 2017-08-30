@@ -1,3 +1,14 @@
+<%--
+results.jsp
+Author: Tim Pitts
+
+Description:
+    The page in which results are displayed for queries from the homepage.
+    Experiences, hotels, restaurants, and transport options are displayed on this page.
+
+    The current users shopping card is also displayed on the right-hand side of the page.
+--%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 

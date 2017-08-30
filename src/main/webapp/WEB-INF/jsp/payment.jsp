@@ -1,3 +1,12 @@
+<%--
+payment.jsp
+Author: Seb Brown
+
+Description:
+    The mock-payment page where an invoice is finalised by the user.
+    It inclused the imported card.js for credit-card visualisation.
+--%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 

@@ -1,3 +1,14 @@
+<%--
+experience.jsp
+Author: Tim Pitts
+
+Description:
+    The page where a user may edit an experience item that is currently inside their
+    shopping cart. They can only select a voucher for the associated experience.
+
+    Recommendations appear in a side panel.
+--%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 

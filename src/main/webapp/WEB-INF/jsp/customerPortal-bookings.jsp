@@ -1,3 +1,12 @@
+<%--
+customerPortal-bookings.jsp
+Author: Jack Ratcliffe
+
+Description:
+    This is the particular booking viewing page. It displays all information for the invoice
+    as stored in the database.
+--%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 

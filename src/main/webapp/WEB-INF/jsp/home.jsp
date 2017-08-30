@@ -1,3 +1,13 @@
+<%--
+home.jsp
+Author: Tim Pitts
+
+Description:
+    The homepage landing for the entire website.
+    It includes the menu bar up top, search bar, as well as various other piece of
+    data below, such as business login.
+--%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 

@@ -1,3 +1,16 @@
+<%--
+create-hotel.jsp
+Author: Harry Barden
+
+Description:
+    This JSP displays the creation page for a new hotel package.
+    This page is loaded into create-offer.jsp
+
+    The sidebar is dynamically loaded in via jsp:include at the start of the body tag.
+--%>
+
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 
 <div class="create-hotel">
     <form action="/submitOffer">
@@ -7,7 +20,7 @@
             <div class="pull-right">
                 <a class="btn btn-default" href="displayProducts">Cancel</a>
                 <a class="btn btn-default">Preview</a>
-                <input type="submit" class="btn btn-info" value="Save Product"></input>
+                <input type="submit" class="btn btn-info" value="Save Product"/>
             </div>
         </div>
         <div class="row">
@@ -16,7 +29,7 @@
                 <div class="management-container">
                     <div class="form-group float-label-control">
                         <label for="">Title</label>
-                        <input type="text" name="name" class="form-control" placeholder="Product Title"></input>
+                        <input type="text" name="name" class="form-control" placeholder="Product Title"/>
                     </div>
 
                     <div class="form-group float-label-control">
@@ -34,17 +47,17 @@
                 <div class="management-container">
                     <div class="form-group float-label-control">
                         <label for="">Contact Number</label>
-                        <input type="text" name="contact" class="form-control" placeholder="0412 345 678"></input>
+                        <input type="text" name="contact" class="form-control" placeholder="0412 345 678"/>
                     </div>
 
                     <div class="form-group float-label-control">
                         <label for="">Contact Email</label>
-                        <input type="text" name="email" class="form-control" placeholder="example@domain.com"></input>
+                        <input type="text" name="email" class="form-control" placeholder="example@domain.com"/>
                     </div>
 
                     <div class="form-group float-label-control">
                         <label for="">Website</label>
-                        <input type="text" name="website" class="form-control" placeholder="www.example.com"></input>
+                        <input type="text" name="website" class="form-control" placeholder="www.example.com"/>
                     </div>
                 </div>
             </div>
@@ -60,7 +73,7 @@
                         <li class="list-group-item">
                             Publicly Visible
                             <div class="material-switch pull-right">
-                                <input id="publiclyVisible" name="publiclyVisible" type="checkbox"></input>
+                                <input id="publiclyVisible" name="publiclyVisible" type="checkbox"/>
                                 <label for="publiclyVisible" class="label-info"></label>
                             </div>
                         </li>
@@ -84,27 +97,27 @@
 
                     <div class="form-group float-label-control">
                         <label for="">Price</label>
-                        <input type="text" name="price" class="form-control" placeholder="$###.##"></input>
+                        <input type="text" name="price" class="form-control" placeholder="$###.##"/>
                     </div>
 
                     <div class="form-group float-label-control">
                         <label for="">Tags</label>
-                        <input type="text" name="tags" class="form-control" placeholder="Tag 1, Tag 2, Tag 3, Etc"></input>
+                        <input type="text" name="tags" class="form-control" placeholder="Tag 1, Tag 2, Tag 3, Etc"/>
                     </div>
 
                     <div class="form-group float-label-control">
                         <label for="">Location</label>
-                        <input type="text" name="location" class="form-control" placeholder="42 Wallaby Way Sydney "></input>
+                        <input type="text" name="location" class="form-control" placeholder="42 Wallaby Way Sydney "/>
                     </div>
 
                     <div class="form-group float-label-control">
                         <label for="">Latitude</label>
-                        <input type="text" name="latitude" class="form-control" placeholder="-##.######"></input>
+                        <input type="text" name="latitude" class="form-control" placeholder="-##.######"/>
                     </div>
 
                     <div class="form-group float-label-control">
                         <label for="">Longitude</label>
-                        <input type="text" name="longitude" class="form-control" placeholder="###.######"></input>
+                        <input type="text" name="longitude" class="form-control" placeholder="###.######"/>
                     </div>
 
                 </div>

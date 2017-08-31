@@ -40,32 +40,15 @@ Description:
 <![endif]-->
 
 <main>
-    <header id="header-container">
-        <div class="header">
-            <div class="homepage-menu">
-                <p class="fa" style="cursor: pointer;">&#xf0c9;</p>
-            </div>
-            <div class="homepage-logo">
-                <h1><a href="/home">NewcastleConnections</a></h1>
-            </div>
-            <div class="homepage-social ">
-                <a href="#"><img src="../../img/fb-social.png" class="pointer hover"/></a>
-                <a href="#"><img src="../../img/tw-social.png" class="pointer hover"/></a>
-                <a href="#"><img src="../../img/ig-social.png" class="pointer hover"/></a>
-            </div>
-            <div class="homepage-login">
-                <a href="/login">Login</a>
-            </div>
-            <div class="homepage-help">
-                <a href="#">Help</a>
-            </div>
-        </div>
-    </header>
+    <jsp:include page="../helpers/header.jsp"/>
 
     <div id="results-container">
+        <%-- Recommendation panel --%>
         <div id="restults-content" style="height:100vh;">
             <%@include file="recommendation-panel.jsp"%>
         </div>
+
+        <%-- The item edit panel --%>
         <div id="package-info">
             <div id="package-header">
                 <h2>Tailor the offer to suit you</h2>
@@ -73,8 +56,9 @@ Description:
             <div id="package-contents" class="center" style="overflow: hidden;height:100vh">
                 <form action="update-experience" class="flexform packageform">
 
-                    <input type="hidden" name="cartIndex" value="${cartIndex}">
+                    <input type="hidden" name="cartIndex" value="${cartIndex}"> <%-- Hidden item to maintain cart index --%>
 
+                    <%-- The voucher to purchase --%>
                     <br/>Voucher:<br/>
                     <select name="voucherId">
                         <s:iterator value="offerings" var="o" status="entry">
@@ -88,60 +72,6 @@ Description:
         </div>
     </div>
 </main>
-
-<script>window.jQuery || document.write('<script src="../../js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
-<script src="../../js/moment.js"></script>
-<script src="../../js/pikaday.js"></script>
-<script src="js/main.js"></script>
-<script>
-    (function() {
-        var startDate,
-            endDate,
-            updateStartDate = function() {
-                startPicker.setStartRange(startDate);
-                endPicker.setStartRange(startDate);
-                endPicker.setMinDate(startDate);
-            },
-            updateEndDate = function() {
-                startPicker.setEndRange(endDate);
-                startPicker.setMaxDate(endDate);
-                endPicker.setEndRange(endDate);
-            },
-            startPicker = new Pikaday({
-                field: document.getElementById('checkIn'),
-                minDate: new Date(),
-                maxDate: new Date(2020, 12, 31),
-                format: 'YYYY-MM-D h:mm:ss',
-                onSelect: function() {
-                    startDate = this.getDate();
-                    updateStartDate();
-                }
-            }),
-            endPicker = new Pikaday({
-                field: document.getElementById('checkOut'),
-                minDate: new Date(),
-                maxDate: new Date(2020, 12, 31),
-                format: 'YYYY-MM-D h:mm:ss',
-                onSelect: function() {
-                    endDate = this.getDate();
-                    updateEndDate();
-
-                }
-            }),
-            _startDate = startPicker.getDate(),
-            _endDate = endPicker.getDate();
-
-        if (_startDate) {
-            startDate = _startDate;
-            updateStartDate();
-        }
-
-        if (_endDate) {
-            endDate = _endDate;
-            updateEndDate();
-        }
-    }());
-</script>
 
 </body>
 </html>

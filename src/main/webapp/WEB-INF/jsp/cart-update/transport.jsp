@@ -42,32 +42,15 @@ Description:
 <![endif]-->
 
 <main>
-    <header id="header-container">
-        <div class="header">
-            <div class="homepage-menu">
-                <p class="fa" style="cursor: pointer;">&#xf0c9;</p>
-            </div>
-            <div class="homepage-logo">
-                <h1><a href="/home">NewcastleConnections</a></h1>
-            </div>
-            <div class="homepage-social ">
-                <a href="#"><img src="../../img/fb-social.png" class="pointer hover"/></a>
-                <a href="#"><img src="../../img/tw-social.png" class="pointer hover"/></a>
-                <a href="#"><img src="../../img/ig-social.png" class="pointer hover"/></a>
-            </div>
-            <div class="homepage-login">
-                <a href="/login">Login</a>
-            </div>
-            <div class="homepage-help">
-                <a href="#">Help</a>
-            </div>
-        </div>
-    </header>
+    <jsp:include page="../helpers/header.jsp"/>
 
     <div id="results-container">
+        <%-- Recommendation panel --%>
         <div id="restults-content" style="height:100vh;">
             <%@include file="recommendation-panel.jsp"%>
         </div>
+
+        <%-- The item edit panel --%>
         <div id="package-info">
             <div id="package-header">
                 <h2>Tailor the offer to suit you</h2>
@@ -75,12 +58,14 @@ Description:
             <div id="package-contents" class="center" style="overflow: hidden;height:100vh">
                 <form action="update-transport" class="flexform packageform">
 
-                    <input type="hidden" name="cartIndex" value="${cartIndex}">
-                    <br/>Tickets:<br/>
+                    <input type="hidden" name="cartIndex" value="${cartIndex}"> <%-- Hidden input to maintain cart index --%>
+
+                    <br/>Tickets:<br/> <%-- Number of tickets the customer wants --%>
                     <div class="quantity">
                         <input type="number" name="tickets" min="1" max="9" step="1"  value="${transport.tickets}">
                     </div>
-                    <br/>Time:<br/>
+
+                    <br/>Time:<br/> <%-- Time of departure --%>
                     <input type="text" id="time" name="time" value="${transport.time}" required>
 
                     <input type="submit" value="Submit">
@@ -90,6 +75,7 @@ Description:
     </div>
 </main>
 
+<%-- Scripts for the pickaday calendars --%>
 <script>window.jQuery || document.write('<script src="../../js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
 <script src="../../js/moment.js"></script>
 <script src="../../js/pikaday.js"></script>

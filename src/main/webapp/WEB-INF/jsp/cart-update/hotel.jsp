@@ -43,40 +43,25 @@ Description:
 <![endif]-->
 
 <main>
-    <header id="header-container">
-        <div class="header">
-            <div class="homepage-menu">
-                <p class="fa" style="cursor: pointer;">&#xf0c9;</p>
-            </div>
-            <div class="homepage-logo">
-                <h1><a href="/home">NewcastleConnections</a></h1>
-            </div>
-            <div class="homepage-social ">
-                <a href="#"><img src="../../img/fb-social.png" class="pointer hover"/></a>
-                <a href="#"><img src="../../img/tw-social.png" class="pointer hover"/></a>
-                <a href="#"><img src="../../img/ig-social.png" class="pointer hover"/></a>
-            </div>
-            <div class="homepage-login">
-                <a href="/login">Login</a>
-            </div>
-            <div class="homepage-help">
-                <a href="#">Help</a>
-            </div>
-        </div>
-    </header>
+    <jsp:include page="../helpers/header.jsp"/>
 
     <div id="results-container">
+        <%-- Recommendation panel --%>
         <div id="restults-content" style="height:100vh;">
             <%@include file="recommendation-panel.jsp"%>
         </div>
+
+        <%-- The item edit panel --%>
         <div id="package-info">
             <div id="package-header">
                 <h2>Tailor the offer to suit you</h2>
             </div>
             <div id="package-contents" class="center" style="overflow: hidden;flex-basis:100%">
                 <form action="update-hotel" class="flexform packageform">
-                    <input type="hidden" name="cartIndex" value="${cartIndex}">
 
+                    <input type="hidden" name="cartIndex" value="${cartIndex}"> <%-- Hidden input to maintain cart index --%>
+
+                    <%-- Room type to book --%>
                     <br/>Room:<br/>
                     <select name="roomId">
                         <s:iterator value="offerings" var="o" status="entry">
@@ -84,16 +69,19 @@ Description:
                         </s:iterator>
                     </select>
 
+                    <%-- How many adults --%>
                     <br/>Adults:<br/>
                     <div class="quantity">
                         <input type="number" name="adults" min="1" max="9" step="1" value="${hotel.adults}">
                     </div>
 
+                    <%-- How many children --%>
                     <br/>Children:<br/>
                     <div class="quantity">
                         <input type="number" name="children" min="0" max="9" step="1" value="${hotel.children}">
                     </div>
 
+                    <%-- Check in and check out dates --%>
                     <br/>CheckIn:<br/>
                     <input type="text" id="checkIn" name="checkIn" value="${hotel.checkIn}" required>
                     <br/>CheckOut:<br/>
@@ -106,6 +94,7 @@ Description:
     </div>
 </main>
 
+<%-- Scripts for pikaday calendars --%>
 <script>window.jQuery || document.write('<script src="../../js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
 <script src="../../js/moment.js"></script>
 <script src="../../js/pikaday.js"></script>

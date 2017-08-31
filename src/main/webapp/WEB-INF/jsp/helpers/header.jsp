@@ -1,6 +1,6 @@
 <%--
 header.jsp
-Author: Scott Walker
+Author: Tim Pitts / Scott Walker
 
 Description:
     A helper JSP to be included in another.

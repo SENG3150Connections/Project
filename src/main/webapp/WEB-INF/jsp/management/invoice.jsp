@@ -13,28 +13,8 @@ Description:
 
 <html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Invoice</title>
-
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/managementPortal.css" rel="stylesheet">
-
-    <!-- CSS -->
-    <link href="css/sidebar-nav.css" rel="stylesheet">
-    <link href="css/normalize.css" rel="stylesheet">
-
-    <!-- JS -->
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="js/management-loadContent.js"></script>
-
-    <!-- FONTS -->
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-
-
+    <jsp:include page="static-head.jsp"/>
+    <title>Management - Invoice</title>
 </head>
 <body>
 <!-- Sidebar -->
@@ -67,7 +47,6 @@ Description:
 
                         <hr>
 
-
                         <s:iterator value="invoices" var="invoice">
                             <div class="row" style="width:100%; height: 45px;">
                                 <div class="col-md-2">
@@ -99,12 +78,9 @@ Description:
     </div>
 </div>
 
-
-
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
-

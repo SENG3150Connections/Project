@@ -42,6 +42,7 @@ Description:
 <main>
     <jsp:include page="helpers/header.jsp"/>
 
+    <%-- Search info and checkboxes --%>
     <div id="selector">
         <form class="flexform results-form" action="/results">
             <input type="search" class="fa" name="search" placeholder="&#xf002; Search..">
@@ -60,6 +61,8 @@ Description:
             </div>
         </form>
     </div>
+
+    <%-- Filters drop-down --%>
     <div id="filters">
         <div id="event-type" class="invisible">
             <h3>Event Type</h3>
@@ -117,6 +120,8 @@ Description:
             <span><input type="checkbox"> Wheelchair Accessible</span>
         </div>
     </div>
+
+    <%-- Results from previous query --%>
     <div id="results-container">
         <div id="restults-content">
             <div id="display-type">
@@ -126,6 +131,8 @@ Description:
                 <hr />
             </div>
                 <div id="results" class="flex-col">
+
+                <%-- Recommendations --%>
                 <s:if test="%{recommendations.recommendedItem == 0}">
                     <s:iterator value="recommendations.hotels" var="rec">
                         <div class="offer-list recommendation">
@@ -257,6 +264,7 @@ Description:
                 </s:iterator>
 
 
+                <%-- Rest of the normal offers, not recommendations --%>
                 <s:iterator value="hotels" var="h">
                     <div class="offer-list">
                         <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
@@ -381,6 +389,7 @@ Description:
                     </div>
                 </s:iterator>
             </div>
+
             <div id="offer-info-large" class="hidden">
                 <div id="offer-image"></div>
                 <div id="offer-info">
@@ -394,6 +403,8 @@ Description:
                 </div>
             </div>
         </div>
+
+        <%-- Shopping cart panel --%>
         <div id="package-info">
             <div id="package-header">
                 <h2>Create your perfect holiday experience</h2>
@@ -401,6 +412,7 @@ Description:
 
             <s:set var="size" value="cart.size"/>
             <s:if test="%{#size == 0}">
+            <%-- Cart is empty, show info instead --%>
             <div id="package-contents" class="center">
                 <h2 style="padding-top: 25px">Nothing here yet!</h2>
                 <h3 style="padding-top: 25px">Add an offer from the left by<br />
@@ -408,6 +420,7 @@ Description:
             </div>
             </s:if>
             <s:else>
+            <%-- Print in all of the cart items with direct JSP linking, not as a jsp tag --%>
             <div id="package-contents" class="center">
                 <s:set var="type" value="%{'experience'}"/>
                 <s:iterator value="cart.experiences" var="c" status="entry">

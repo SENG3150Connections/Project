@@ -50,13 +50,14 @@ public class Cart {
         // Invoice data
         String customerId = (String) request.getSession().getAttribute("userId");
         Timestamp date = new Timestamp(new Date().getTime());
-        double price;
+        double price = 0.0;
         int status = 1; // Preparing
 
         // Set the data onto the invoice
         InvoicesRecord record = new InvoicesRecord();
         record.setCustomerid(customerId);
         record.setPurchasedate(date);
+        record.setPrice(price);
         record.setStatus(UInteger.valueOf(status));
 
         try {

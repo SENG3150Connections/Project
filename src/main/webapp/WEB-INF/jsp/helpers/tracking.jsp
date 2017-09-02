@@ -16,5 +16,4 @@ Description:
 
         ga('create', 'UA-104523878-1', 'auto');
         ga('send', 'pageview');
-
     </script>

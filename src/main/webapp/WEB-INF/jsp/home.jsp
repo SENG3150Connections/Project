@@ -42,6 +42,7 @@ Description:
 
 <main>
     <div id="homepage-container">
+        <%-- Burger menu --%>
         <div id="menu">
             <div class="menu-close menu-toggle hidden">
                 <span class="fa fa-3x fa-times pointer"></span>
@@ -53,10 +54,13 @@ Description:
                 <a href="https://www.instagram.com/newcastleconnections/"><img src="../../img/ig-social.png" class="pointer hover"/></a>
             </div>
         </div>
+
         <div id="homepage-image">
             <div class="bg-cover"></div>
             <div class="cover-overlay"></div>
         </div>
+
+        <%-- Header panel --%>
         <header id="header-container" class="grad">
             <div class="header">
                 <div class="homepage-menu menu-toggle">
@@ -88,9 +92,12 @@ Description:
                 </div>
             </div>
         </header>
+
         <div class="container">
             <h1 class="text-center homepage-maintext">Discover Newcastle</h1>
         </div>
+
+        <%-- Search panel --%>
         <div class="container">
             <form class="flexform search-form" action="/results">
                 <input type="search" class="fa" name="search" placeholder="&#xf002; Search..">
@@ -118,6 +125,7 @@ Description:
         </div>
     </div>
 
+    <%-- Package types panel --%>
     <div id="slider">
         <div id="options" class="pointer">
             <div class="slider-item">
@@ -138,6 +146,8 @@ Description:
             </div>
         </div>
     </div>
+
+    <%-- Info panel --%>
     <div id="help" class="container" style="margin: 25px;padding: 25px;color: #555555;flex-direction: column;justify-content: center;align-items: center">
         <h2 class="text-center" style="margin: 15px 15px">
             How to organise the perfect holiday
@@ -172,6 +182,8 @@ Description:
             </div>
         </div>
     </div>
+
+    <%-- Business panel --%>
     <div class="container" style="height: 650px;overflow: hidden; background-color: #000">
         <img src="../../img/large.jpg" class="opacity-5"/>
         <div class="text-overlay">
@@ -179,6 +191,8 @@ Description:
             <a href="/managementPortal">List Your Business</a>
         </div>
     </div>
+
+    <%-- Popular events panel --%>
     <div class="container" style="margin: 25px;padding: 25px;color: #555555;flex-direction: column;justify-content: center;align-items: center">
         <h2 class="text-center" style="margin: 15px 15px">
             Most Popular Upcoming Events

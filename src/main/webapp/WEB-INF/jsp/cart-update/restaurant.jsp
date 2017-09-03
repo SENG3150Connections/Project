@@ -62,17 +62,13 @@ Description:
                     <input type="hidden" name="cartIndex" value="${cartIndex}"> <%-- Hidden input to maintain cart index --%>
 
                     <br/>Seats:<br/> <%-- Seats to book --%>
-                    <div class="quantity">
-                        <input type="number" name="seats" min="1" max="9" step="1"  value="${restaurant.seats}" required>
-                    </div>
+                    <input type="number" name="seats" min="1" max="9" step="1"  value="${restaurant.seats}" required>
 
                     <br/>Time:<br/> <%-- Time to book for --%>
                     <input type="text" id="start" name="time" value="${restaurant.time}">
 
                     <br/>Voucher Price:<br/> <%-- OPTIONAL voucher amount to purchase --%>
-                    <div class="quantity">
-                        <input type="number" name="voucherPrice" min="0" max="150" step="10"  value="${restaurant.voucherPrice}">
-                    </div>
+                    <input type="number" name="voucherPrice" min="0" max="150" step="10"  value="${restaurant.voucherPrice}">
 
                     <input type="submit" value="Submit">
                 </form>

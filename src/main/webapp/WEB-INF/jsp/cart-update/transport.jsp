@@ -61,9 +61,7 @@ Description:
                     <input type="hidden" name="cartIndex" value="${cartIndex}"> <%-- Hidden input to maintain cart index --%>
 
                     <br/>Tickets:<br/> <%-- Number of tickets the customer wants --%>
-                    <div class="quantity">
-                        <input type="number" name="tickets" min="1" max="9" step="1"  value="${transport.tickets}">
-                    </div>
+                    <input type="number" name="tickets" min="1" max="9" step="1"  value="${transport.tickets}">
 
                     <br/>Time:<br/> <%-- Time of departure --%>
                     <input type="text" id="start" name="time" value="${transport.time}" required>

@@ -6,7 +6,7 @@ Description:
     The page in which results are displayed for queries from the homepage.
     Experiences, hotels, restaurants, and transport options are displayed on this page.
 
-    The current users shopping cart is also displayed on the right-hand side of the page.
+    The current users shopping card is also displayed on the right-hand side of the page.
 --%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -162,7 +162,7 @@ Description:
                                     <span class="website invisible">${rec.website}</span>
                                 </div>
                                 <div class="offer-info-right">
-                                    <span class="price">from $<%= (int)(Math.random() * 650 + 100) %></span>
+                                    <span class="price">from $<%= (int)(Math.random() * ((650 - 100)+1)) %></span>
                                     <span class="fa icons">&#xf2cd&nbsp;&#xf236</span>
                                 </div>
                             </div>

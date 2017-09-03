@@ -1,3 +1,12 @@
+<%--
+payment.jsp
+Author: Seb Brown
+
+Description:
+    The mock-payment page where an invoice is finalised by the user.
+    It inclused the imported card.js for credit-card visualisation.
+--%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
@@ -15,7 +24,6 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../css/normalize.css">
     <link rel="stylesheet" href="../../css/main.css">
-    <!-- <link rel="stylesheet" href="../../css/results.css"> -->
     <link rel="stylesheet" href="../../css/pikaday.css">
     <link rel="stylesheet" href="../../css/payment.css">
 
@@ -72,6 +80,7 @@
 
         <form action="/complete" method="post" id="form">
             <div class="inlineFlex">
+                <%-- Personal info box --%>
                 <div class="contentBox row1">
                     <span class="customerPageHeading">Personal Details:</span>
                     <br>
@@ -86,10 +95,11 @@
                     <input id="email" class="textField" type="text" value='<s:property value="#session.userEmail"></s:property> '>
 
 
-                    <label for="phone">phone number</label>
+                    <label for="phone">Phone number</label>
                     <input id="phone" class="textField" type="text">
                 </div>
 
+                <%-- Display the shopping cart contents --%>
                 <div class="row1" style="padding-top: 10px;" >
                     <span class="customerPageHeading">Order Summary:</span>
                     <div class="tableDiv">
@@ -122,19 +132,17 @@
                 </div>
             </div>
 
+            <%-- Card.js input area --%>
             <div class="contentBox contentBox-grey " style="width: 100%;">
-
                 <div class="card-wrapper inlineFlex" >
-
                     <div id="creditCardContainer" class="">
                         <span class="customerPageHeading">Payment:</span>
-                        <br>
 
+                        <br/>
                         <p>Please enter your credit card details in the fields below.</p>
-                        <br>
+                        <br/>
 
                         <!-- Library from: https://github.com/jessepollak/card -->
-
                         <form>
                             <input class="creditCardTextField" id="cardNumber" placeholder="Card number" type="text"
                                    name="number">
@@ -145,12 +153,8 @@
                             <input class="creditCardTextField" id="cvc" placeholder="CVC" type="text" name="cvc"/>
                         </form>
                     </div>
-                    <div>
-
-                    </div>
 
                     <script>
-
                         var card = new Card({
                             form: 'form',
                             container: '.card-wrapper',
@@ -167,7 +171,7 @@
             </div>
             <div class="inlineFlex confirmDiv">
                 <a href="/results" id="cancel">Cancel</a>
-                <button type="submit" form="form" value="Submit"> Pay Now</button>
+                <button type="submit" form="form" value="Submit">Pay Now</button>
             </div>
         </form>
     </div>

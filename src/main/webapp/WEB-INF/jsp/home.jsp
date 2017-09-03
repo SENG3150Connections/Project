@@ -1,3 +1,13 @@
+<%--
+home.jsp
+Author: Tim Pitts
+
+Description:
+    The homepage landing for the entire website.
+    It includes the menu bar up top, search bar, as well as various other piece of
+    data below, such as business login.
+--%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
@@ -32,21 +42,25 @@
 
 <main>
     <div id="homepage-container">
+        <%-- Burger menu --%>
         <div id="menu">
             <div class="menu-close menu-toggle hidden">
                 <span class="fa fa-3x fa-times pointer"></span>
                 <a href="/login">Login</a>
             </div>
             <div class="menu-social hidden">
-                <a href="#"><img src="../../img/fb-social.png" class="pointer"/></a>
-                <a href="#"><img src="../../img/tw-social.png" class="pointer"/></a>
-                <a href="#"><img src="../../img/ig-social.png" class="pointer"/></a>
+                <a href="https://www.facebook.com/newcastleconnections/"><img src="../../img/fb-social.png" class="pointer hover"/></a>
+                <a href="#"><img src="../../img/tw-social.png" class="pointer hover"/></a>
+                <a href="https://www.instagram.com/newcastleconnections/"><img src="../../img/ig-social.png" class="pointer hover"/></a>
             </div>
         </div>
+
         <div id="homepage-image">
             <div class="bg-cover"></div>
             <div class="cover-overlay"></div>
         </div>
+
+        <%-- Header panel --%>
         <header id="header-container" class="grad">
             <div class="header">
                 <div class="homepage-menu menu-toggle">
@@ -56,27 +70,21 @@
                     <h1><a href="#">NewcastleConnections</a></h1>
                 </div>
                 <div class="homepage-social ">
-                    <a href="#"><img src="../../img/fb-social.png" class="pointer hover"/></a>
+                    <a href="https://www.facebook.com/newcastleconnections/"><img src="../../img/fb-social.png" class="pointer hover"/></a>
                     <a href="#"><img src="../../img/tw-social.png" class="pointer hover"/></a>
-                    <a href="#"><img src="../../img/ig-social.png" class="pointer hover"/></a>
+                    <a href="https://www.instagram.com/newcastleconnections/"><img src="../../img/ig-social.png" class="pointer hover"/></a>
                 </div>
                 <s:if test="%{#session.userNickname == null}">
                     <div class="homepage-login">
-                        <form action="/login">
-                            <button type="submit">Login</button>
-                        </form>
+                        <a href="/login">Login</a>
                     </div>
                 </s:if>
                 <s:else>
                     <div class="homepage-login">
-                        <form action="/customerPortal">
-                            <button type="submit">Your Account</button>
-                        </form>
+                        <a href="/customerPortal">Your Account</a>
                     </div>
                     <div class="homepage-login">
-                        <form action="/logout">
-                            <button type="submit">Logout</button>
-                        </form>
+                        <a href="/logout">Logout</a>
                     </div>
                 </s:else>
                 <div class="homepage-help">
@@ -84,16 +92,19 @@
                 </div>
             </div>
         </header>
+
         <div class="container">
             <h1 class="text-center homepage-maintext">Discover Newcastle</h1>
         </div>
+
+        <%-- Search panel --%>
         <div class="container">
             <form class="flexform search-form" action="/results">
                 <input type="search" class="fa" name="search" placeholder="&#xf002; Search..">
                 <input type="text" class="fa" name="start" id="start" placeholder="&#xf073; Arrive">
                 <input type="text" class="fa" name="finish" id="end" placeholder="&#xf073; Leave">
                 <input type="text" class="fa" name="people" placeholder="&#xf0c0; 3 guests, pets">
-                <input type="submit" class="btn" name="submit" placeholder="Submit">
+                <input type="submit" class="btn" name="submit" value="Submit" placeholder="Submit">
             </form>
         </div>
         <div class="container">
@@ -114,6 +125,7 @@
         </div>
     </div>
 
+    <%-- Package types panel --%>
     <div id="slider">
         <div id="options" class="pointer">
             <div class="slider-item">
@@ -134,6 +146,8 @@
             </div>
         </div>
     </div>
+
+    <%-- Info panel --%>
     <div id="help" class="container" style="margin: 25px;padding: 25px;color: #555555;flex-direction: column;justify-content: center;align-items: center">
         <h2 class="text-center" style="margin: 15px 15px">
             How to organise the perfect holiday
@@ -168,13 +182,17 @@
             </div>
         </div>
     </div>
+
+    <%-- Business panel --%>
     <div class="container" style="height: 650px;overflow: hidden; background-color: #000">
         <img src="../../img/large.jpg" class="opacity-5"/>
         <div class="text-overlay">
             <h2>Own a business? Get involved and open your door to travellers from around the globe.</h2>
-            <a href="#">List Your Business</a>
+            <a href="/managementPortal">List Your Business</a>
         </div>
     </div>
+
+    <%-- Popular events panel --%>
     <div class="container" style="margin: 25px;padding: 25px;color: #555555;flex-direction: column;justify-content: center;align-items: center">
         <h2 class="text-center" style="margin: 15px 15px">
             Most Popular Upcoming Events
@@ -182,49 +200,37 @@
         <div class="threebox">
             <div class="threebox-item pointer hover-shadow" style="background-color: #000000">
                 <img src='../../img/bitter-and-twisted.jpg' class="cover opacity-5"/>
-                <div class="text-overlay">
-                    <h2>Bitter & Twisted</h2>
-                </div>
+                <a href="http://www.visitnsw.com/destinations/hunter/hunter-valley/maitland/events/bitter-and-twisted-boutique-beer-festival">
+                    <div class="text-overlay">
+                        <h2>Bitter & Twisted</h2>
+                    </div>
+                </a>
             </div>
             <div class="threebox-item pointer hover-shadow" style="background-color: #000000">
                 <img src='../../img/newcastle-supermoto.jpg' class="cover opacity-5"/>
-                <div class="text-overlay">
-                    <h2>Newcastle SuperMoto</h2>
-                </div>
+                <a href="http://www.visitnsw.com/destinations/north-coast/newcastle-area/newcastle/events/watson-demolition-newcastle-city-supermoto">
+                    <div class="text-overlay">
+                        <h2>Newcastle SuperMoto</h2>
+                    </div>
+                </a>
             </div>
             <div class="threebox-item last-item pointer hover-shadow" style="background-color: #000000">
                 <img src='../../img/Newcastlemuseum.jpg' class="cover opacity-5"/>
-                <div class="text-overlay">
-                    <h2>Newcastle Museum</h2>
-                </div>
+                <a href="https://www.visitnewcastle.com.au/newcastle-museum">
+                    <div class="text-overlay">
+                        <h2>Newcastle Museum</h2>
+                    </div>
+                </a>
             </div>
         </div>
     </div>
 
-    <footer id="footer-container">
-        <div class="container" style="height: 250px; flex-direction: column;justify-content: center;align-items: center">
-            <div>
-                <div class="homepage-social ">
-                    <a href="#"><img src="../../img/fb-social.png" class="pointer hover"/></a>
-                    <a href="#"><img src="../../img/tw-social.png" class="pointer hover"/></a>
-                    <a href="#"><img src="../../img/ig-social.png" class="pointer hover"/></a>
-                </div>
-            </div>
-            <p id="terms-and-conditions">
-                Use of this Web site constitutes acceptance of the Newcastle Connections Terms and Conditions and Privacy Policy</a>.
-            </p>
-            <p id="copyright">
-                © Copyright 2017 – Newcastle Connections.
-            </p>
-        </div>
-    </footer>
-
+    <jsp:include page="helpers/footer.jsp"/>
 </main>
 
 <script>window.jQuery || document.write('<script src="../../js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
 <script src="../../js/pikaday.js"></script>
 <script src="../../js/plugins.js"></script>
-<script src="js/main.js"></script>
 <script>
     $(".menu-toggle").click(function() {
         $('#menu').animate({width: ($('#menu').width() === 0) ? 300 : 0});

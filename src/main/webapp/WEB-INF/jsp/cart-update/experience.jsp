@@ -1,3 +1,14 @@
+<%--
+experience.jsp
+Author: Tim Pitts
+
+Description:
+    The page where a user may edit an experience item that is currently inside their
+    shopping cart. They can only select a voucher for the associated experience.
+
+    Recommendations appear in a side panel.
+--%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
@@ -29,112 +40,15 @@
 <![endif]-->
 
 <main>
-    <header id="header-container">
-        <div class="header">
-            <div class="homepage-menu">
-                <p class="fa" style="cursor: pointer;">&#xf0c9;</p>
-            </div>
-            <div class="homepage-logo">
-                <h1><a href="/home">NewcastleConnections</a></h1>
-            </div>
-            <div class="homepage-social ">
-                <a href="#"><img src="../../img/fb-social.png" class="pointer hover"/></a>
-                <a href="#"><img src="../../img/tw-social.png" class="pointer hover"/></a>
-                <a href="#"><img src="../../img/ig-social.png" class="pointer hover"/></a>
-            </div>
-            <div class="homepage-login">
-                <a href="/login">Login</a>
-            </div>
-            <div class="homepage-help">
-                <a href="#">Help</a>
-            </div>
-        </div>
-    </header>
+    <jsp:include page="../helpers/header.jsp"/>
 
     <div id="results-container">
+        <%-- Recommendation panel --%>
         <div id="restults-content" style="height:100vh;">
-            <s:if test="%{recommendedItem == 0}">
-                <s:iterator value="recommendedHotels" var="rec">
-                    <div class="offer-list recommendation">
-                        <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
-                        <a href="edit-cart?method=add&type=experience&id=${rec.id}"><span class="fa fa-plus offer-add" aria-hidden="true">
-                                <span class="tooltiptext">Add to package</span>
-                            </span></a>
-                        <div class="offer-images">
-                            <div class="offer-img-initial" style="min-height: 150px;">
-                                <img src='../../img/hotels/hotel${(rec.id)%17}.jpg' class="cover"/>
-                            </div>
-                            <div class="offer-img-item">
-                                <img src='../../img/hotels/hotel${(rec.id + 10)%17}.jpg' class="cover"/>
-                                <img src='../../img/hotels/hotel${(rec.id + 16)%17}.jpg' class="cover"/>
-                            </div>
-                        </div>
-                        <div class="offer-info">
-                            <div class="offer-info-left">
-                                <span class="name">${rec.name}</span>
-                                <span class="blurb">${rec.description}</span>
-                            </div>
-                        </div>
-                    </div>
-                </s:iterator>
-            </s:if>
-            <s:if test="%{recommendedItem == 1}">
-                <s:iterator value="recommendedExperiences" var="rec">
-                    <div class="offer-list recommendation">
-                        <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
-                        <a href="edit-cart?method=add&type=experience&id=${rec.id}"><span class="fa fa-plus offer-add" aria-hidden="true">
-                                <span class="tooltiptext">Add to package</span>
-                            </span></a>
-                        <div class="offer-images">
-                            <div class="offer-img-initial" style="min-height: 150px;">
-                                <img src='../../img/experiences/experience${(rec.id)%17}.jpg' class="cover"/>
-                            </div>
-                            <div class="offer-img-item">
-                                <img src='../../img/hotels/hotel${(rec.id + 10)%17}.jpg' class="cover"/>
-                                <img src='../../img/hotels/hotel${(rec.id + 16)%17}.jpg' class="cover"/>
-                            </div>
-                        </div>
-                        <div class="offer-info">
-                            <div class="offer-info-left">
-                                <span class="name">${rec.name}</span>
-                                <span class="blurb">${rec.info}</span>
-                            </div>
-                            <div class="offer-info-right">
-                                <span class="price">${rec.price}</span>
-                                <span class="fa icons">&#xf2cd&nbsp;&#xf236</span>
-                            </div>
-                        </div>
-                    </div>
-                </s:iterator>
-            </s:if>
-            <s:if test="%{recommendedItem == 2}">
-                <s:iterator value="recommendedRestaurants" var="rec">
-                    <div class="offer-list recommendation">
-                        <span class="fa fa-heart-o offer-heart" aria-hidden="true"></span>
-                        <a href="edit-cart?method=add&type=experience&id=${rec.id}"><span class="fa fa-plus offer-add" aria-hidden="true">
-                                <span class="tooltiptext">Add to package</span>
-                            </span></a>
-                        <div class="offer-images">
-                            <div class="offer-img-initial" style="min-height: 150px;">
-                                <img src='../../img/restaurants/restaurant${(rec.id)%17}.jpg' class="cover"/>
-                            </div>
-                            <div class="offer-img-item">
-                                <img src='../../img/hotels/hotel${(rec.id + 10)%17}.jpg' class="cover"/>
-                                <img src='../../img/hotels/hotel${(rec.id + 16)%17}.jpg' class="cover"/>
-                            </div>
-                        </div>
-                        <div class="offer-info">
-                            <div class="offer-info-left">
-                                <span class="name">${rec.name}</span>
-                                <span class="blurb">${rec.description}</span>
-                            </div>
-                            <div class="offer-info-right">
-                            </div>
-                        </div>
-                    </div>
-                </s:iterator>
-            </s:if>
+            <%@include file="recommendation-panel.jsp"%>
         </div>
+
+        <%-- The item edit panel --%>
         <div id="package-info">
             <div id="package-header">
                 <h2>Tailor the offer to suit you</h2>
@@ -142,8 +56,9 @@
             <div id="package-contents" class="center" style="overflow: hidden;height:100vh">
                 <form action="update-experience" class="flexform packageform">
 
-                    <input type="hidden" name="cartIndex" value="${cartIndex}">
+                    <input type="hidden" name="cartIndex" value="${cartIndex}"> <%-- Hidden item to maintain cart index --%>
 
+                    <%-- The voucher to purchase --%>
                     <br/>Voucher:<br/>
                     <select name="voucherId">
                         <s:iterator value="offerings" var="o" status="entry">
@@ -157,60 +72,6 @@
         </div>
     </div>
 </main>
-
-<script>window.jQuery || document.write('<script src="../../js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
-<script src="../../js/moment.js"></script>
-<script src="../../js/pikaday.js"></script>
-<script src="js/main.js"></script>
-<script>
-    (function() {
-        var startDate,
-            endDate,
-            updateStartDate = function() {
-                startPicker.setStartRange(startDate);
-                endPicker.setStartRange(startDate);
-                endPicker.setMinDate(startDate);
-            },
-            updateEndDate = function() {
-                startPicker.setEndRange(endDate);
-                startPicker.setMaxDate(endDate);
-                endPicker.setEndRange(endDate);
-            },
-            startPicker = new Pikaday({
-                field: document.getElementById('checkIn'),
-                minDate: new Date(),
-                maxDate: new Date(2020, 12, 31),
-                format: 'YYYY-MM-D h:mm:ss',
-                onSelect: function() {
-                    startDate = this.getDate();
-                    updateStartDate();
-                }
-            }),
-            endPicker = new Pikaday({
-                field: document.getElementById('checkOut'),
-                minDate: new Date(),
-                maxDate: new Date(2020, 12, 31),
-                format: 'YYYY-MM-D h:mm:ss',
-                onSelect: function() {
-                    endDate = this.getDate();
-                    updateEndDate();
-
-                }
-            }),
-            _startDate = startPicker.getDate(),
-            _endDate = endPicker.getDate();
-
-        if (_startDate) {
-            startDate = _startDate;
-            updateStartDate();
-        }
-
-        if (_endDate) {
-            endDate = _endDate;
-            updateEndDate();
-        }
-    }());
-</script>
 
 </body>
 </html>

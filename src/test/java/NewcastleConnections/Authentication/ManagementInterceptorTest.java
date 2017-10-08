@@ -20,8 +20,6 @@ public class ManagementInterceptorTest extends StrutsJUnit4TestCase<CreateOffer>
         session.setAttribute("userPermissions", "1");
 
         ActionProxy proxy = getActionProxy("/createOffer.action");
-        CreateOffer action = (CreateOffer) proxy.getAction();
-
         String result = proxy.execute();
 
         assertTrue("Action should return SUCCESS", result.equals(ActionSupport.SUCCESS));
@@ -36,8 +34,6 @@ public class ManagementInterceptorTest extends StrutsJUnit4TestCase<CreateOffer>
         session.setAttribute("userPermissions", "0");
 
         ActionProxy proxy = getActionProxy("/createOffer.action");
-        CreateOffer action = (CreateOffer) proxy.getAction();
-
         String result = proxy.execute();
 
         assertTrue("Action should return DENIED", result.equals(ManagementInterceptor.DENIED));
@@ -45,14 +41,8 @@ public class ManagementInterceptorTest extends StrutsJUnit4TestCase<CreateOffer>
 
     @Test
     public void testNotLoggedIn() throws Exception {
-        // Set user loggedin
-        HttpSession session = request.getSession(true);
-
         ActionProxy proxy = getActionProxy("/createOffer.action");
-        CreateOffer action = (CreateOffer) proxy.getAction();
-
         String result = proxy.execute();
-
         assertTrue("Action should return LOGIN", result.equals(ManagementInterceptor.LOGIN));
     }
 

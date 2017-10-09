@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <constant name="struts.actionProxyFactory" value="NewcastleConnections.Session.ActionProxyFactory"/>
+    <bean name="cart" class="NewcastleConnections.Cart.Cart" scope="session" />
+
+    <!-- Default package -->
+    <package name="default" extends="struts-default">
+
+        <interceptors>
+            <interceptor name="authentication" class="NewcastleConnections.Authentication.AuthenticationInterceptor" />
+        </interceptors>
+
+        <global-results>
+            <result name="login" type="redirect">/login</result>
+        </global-results>
+
+        <!-- Begin actions -->
+        
+        <action name="home">
+            <result>WEB-INF/jsp/home.jsp</result>
+        </action>
+
+        <action name="results" class="NewcastleConnections.Actions.Results">
+            <result name="success">/WEB-INF/jsp/results.jsp</result>
+            <result name="error">/WEB-INF/jsp/exception.jsp</result>
+        </action>
+
+        <!-- Cart updaters -->
+        <action name="edit-cart" class="NewcastleConnections.Cart.Actions.UpdateCart">
+            <result type="redirect">results</result>
+        </action>
+
+        <action name="update-experience" class="NewcastleConnections.Cart.Actions.UpdateCartExperience">
+            <result name="success">/WEB-INF/jsp/cart-update/experience.jsp</result>
+            <result name="done" type="redirect">results</result>
+            <result name="error">/WEB-INF/jsp/exception.jsp</result>
+        </action>
+        <action name="update-hotel" class="NewcastleConnections.Cart.Actions.UpdateCartHotel">
+            <result name="success">/WEB-INF/jsp/cart-update/hotel.jsp</result>
+            <result name="done" type="redirect">results</result>
+            <result name="error">/WEB-INF/jsp/exception.jsp</result>
+        </action>
+        <action name="update-restaurant" class="NewcastleConnections.Cart.Actions.UpdateCartRestaurant">
+            <result name="success">/WEB-INF/jsp/cart-update/restaurant.jsp</result>
+            <result name="done" type="redirect">results</result>
+            <result name="error">/WEB-INF/jsp/exception.jsp</result>
+        </action>
+        <action name="update-transport" class="NewcastleConnections.Cart.Actions.UpdateCartTransport">
+            <result name="success">/WEB-INF/jsp/cart-update/transport.jsp</result>
+            <result name="done" type="redirect">results</result>
+            <result name="error">/WEB-INF/jsp/exception.jsp</result>
+        </action>
+        <!-- End Cart Updaters -->
+
+        <!-- Auth -->
+        <action name="login" class="NewcastleConnections.Authentication.LoginAction">
+            <result>WEB-INF/jsp/home.jsp</result>
+        </action>
+
+        <action name="callback" class="NewcastleConnections.Authentication.CallbackAction">
+            <result>WEB-INF/jsp/home.jsp</result>
+        </action>
+
+        <action name="logout" class="NewcastleConnections.Authentication.LogoutAction">
+            <result type="redirectAction">home</result>
+        </action>
+        <!-- End Auth -->
+
+        <!-- Payment -->
+        <action name="payment" class="NewcastleConnections.Cart.Actions.ViewCart">
+            <interceptor-ref name="authentication" />
+            <result>WEB-INF/jsp/payment.jsp</result>
+        </action>
+
+        <action name="complete" class="NewcastleConnections.Actions.Complete">
+            <result type="redirect">customerPortal</result>
+        </action>
+        <!-- End Payment -->
+
+        <!-- User Management Portal -->
+        <action name="customerPortal" class="NewcastleConnections.Invoices.Actions.GetUserInvoices">
+            <interceptor-ref name="authentication" />
+            <result>WEB-INF/jsp/customerPortal.jsp</result>
+        </action>
+
+        <action name="customerPortal-bookings" class="NewcastleConnections.Invoices.Actions.GetUserBooking">
+            <interceptor-ref name="authentication" />
+            <result>WEB-INF/jsp/customerPortal-bookings.jsp</result>
+        </action>
+        <!-- End User Management Portal -->
+
+    </package>
+
+    <!-- Management Portal Package -->
+    <package name="management" extends="struts-default">
+
+        <!-- Disable interceptor for direct testing <interceptors>
+            <interceptor name="management" class="NewcastleConnections.Authentication.ManagementInterceptor"/>
+            <interceptor-stack name="managementStack">
+                <interceptor-ref name="defaultStack"/>
+                <interceptor-ref name="management"/>
+            </interceptor-stack>
+        </interceptors>
+
+        <default-interceptor-ref name="managementStack"/> -->
+
+        <global-results>
+            <result name="login" type="redirect">/login</result>
+            <result name="denied" type="redirect">/home</result>
+            <result name="error">/WEB-INF/jsp/exception.jsp</result>
+        </global-results>
+
+        <action name="managementPortal" class="NewcastleConnections.Management.Actions.GetWeeklyStats">
+            <result name="success">/WEB-INF/jsp/management/dashboard.jsp</result>
+        </action>
+
+        <action name="createOffer" class="NewcastleConnections.Management.Actions.CreateOffer">
+            <result name="success">/WEB-INF/jsp/management/create-offer.jsp</result>
+        </action>
+
+        <action name="createExperience">
+            <result name="success">/WEB-INF/jsp/management/create-experience.jsp</result>
+        </action>
+
+        <action name="createHotel">
+            <result name="success">/WEB-INF/jsp/management/create-hotel.jsp</result>
+        </action>
+
+        <action name="createRestaurant">
+            <result name="success">/WEB-INF/jsp/management/create-restaurant.jsp</result>
+        </action>
+
+        <action name="displayProducts" class="NewcastleConnections.Management.Actions.GetOffers">
+            <result name="success">/WEB-INF/jsp/management/display-products.jsp</result>
+        </action>
+
+        <action name="editOffer" class="NewcastleConnections.Management.Actions.GetOfferByID">
+            <result name="success">/WEB-INF/jsp/management/edit-offer.jsp</result>
+        </action>
+
+        <action name="submitOffer" class="NewcastleConnections.Management.Actions.SubmitOffer">
+            <result name="success" type="redirect">/displayProducts</result>
+        </action>
+
+        <action name="analytics">
+            <result name="success">/WEB-INF/jsp/management/analytics.jsp</result>
+        </action>
+
+        <action name="invoice" class="NewcastleConnections.Management.Actions.GetInvoices">
+            <result name="success">/WEB-INF/jsp/management/invoice.jsp</result>
+        </action>
+        <!-- End Management Portal -->
+
+    </package>
+
+
+</struts>

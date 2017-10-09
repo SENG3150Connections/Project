@@ -6,8 +6,6 @@ import org.apache.struts2.StrutsJUnit4TestCase;
 import org.apache.struts2.dispatcher.SessionMap;
 import org.junit.Test;
 
-import javax.servlet.http.HttpSession;
-
 import static org.junit.Assert.*;
 
 /**
@@ -27,6 +25,7 @@ public class LogoutActionTest extends StrutsJUnit4TestCase<LogoutAction> {
 
         // Perform the action
         ActionProxy proxy = getActionProxy("/logout.action");
+        proxy.getInvocation().getInvocationContext().setSession(session);
         proxy.execute();
 
         // Session should now return null

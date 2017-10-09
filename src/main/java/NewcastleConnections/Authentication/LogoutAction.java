@@ -2,17 +2,22 @@ package NewcastleConnections.Authentication;
 
 /*
 LogoutAction.java
-Author: Seb Brown
+Author: Seb Brown, Scott Walker
 
 Description:
     Invalidate session when user logs out
 */
 
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.dispatcher.SessionMap;
+import org.apache.struts2.interceptor.SessionAware;
 
-public class LogoutAction extends ActionSupport {
+import java.util.Map;
+
+public class LogoutAction extends ActionSupport implements SessionAware {
+
+    // -- Private member data --
+    private Map<String, Object> session;
 
     // -- Public --
     //   Role: Implement the execute method for the action. Nullify the current users session.
@@ -21,7 +26,7 @@ public class LogoutAction extends ActionSupport {
     @Override
     public String execute() {
         // Get current session
-        SessionMap session = (SessionMap) ActionContext.getContext().getSession();
+        SessionMap session = (SessionMap) this.session;
 
         // Invalidate the session
         session.invalidate();
@@ -33,5 +38,12 @@ public class LogoutAction extends ActionSupport {
         session.entrySet();
 
         return SUCCESS;
+    }
+
+    // -- Public --
+    //   Role: Set the session map for the current action
+    //
+    public void setSession(Map<String, Object> map) {
+        session = map;
     }
 }

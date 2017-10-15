@@ -24,7 +24,7 @@ public class CreateOfferTest extends StrutsJUnit4TestCase<CreateOffer> {
         String result = proxy.execute();
 
         assertTrue("Action should return SUCCESS", result.equals(ActionSupport.SUCCESS));
-        assertTrue("OfferType should be 'hotel'", action.getOfferType().isEmpty());
+        assertTrue("OfferType should be empty", action.getOfferType().isEmpty());
     }
 
     @Test

@@ -1,5 +1,6 @@
 package NewcastleConnections.Cart.Actions;
 
+import NewcastleConnections.Cart.Cart;
 import com.opensymphony.xwork2.ActionProxy;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.StrutsJUnit4TestCase;
@@ -19,7 +20,7 @@ public class UpdateCartTest extends StrutsJUnit4TestCase<UpdateCart> {
 
     @Test
     public void testNoParams() throws Exception {
-        ActionProxy proxy = getActionProxy("/updateCart.action");
+        ActionProxy proxy = getActionProxy("/edit-cart.action");
         UpdateCart action = (UpdateCart) proxy.getAction();
         String result = proxy.execute();
 
@@ -29,7 +30,7 @@ public class UpdateCartTest extends StrutsJUnit4TestCase<UpdateCart> {
     @Test
     public void testMethod() throws Exception {
         request.setParameter("method", "add");
-        ActionProxy proxy = getActionProxy("/updateCart.action");
+        ActionProxy proxy = getActionProxy("/edit-cart.action");
         UpdateCart action = (UpdateCart) proxy.getAction();
         String result = proxy.execute();
 
@@ -39,7 +40,7 @@ public class UpdateCartTest extends StrutsJUnit4TestCase<UpdateCart> {
     @Test
     public void testType() throws Exception {
         request.setParameter("type", "experience");
-        ActionProxy proxy = getActionProxy("/updateCart.action");
+        ActionProxy proxy = getActionProxy("/edit-cart.action");
         UpdateCart action = (UpdateCart) proxy.getAction();
         String result = proxy.execute();
 
@@ -49,7 +50,7 @@ public class UpdateCartTest extends StrutsJUnit4TestCase<UpdateCart> {
     @Test
     public void testId() throws Exception {
         request.setParameter("id", "1");
-        ActionProxy proxy = getActionProxy("/updateCart.action");
+        ActionProxy proxy = getActionProxy("/edit-cart.action");
         UpdateCart action = (UpdateCart) proxy.getAction();
         String result = proxy.execute();
 
@@ -61,7 +62,7 @@ public class UpdateCartTest extends StrutsJUnit4TestCase<UpdateCart> {
         request.setParameter("method", "add");
         request.setParameter("type", "experience");
         request.setParameter("id", "1");
-        ActionProxy proxy = getActionProxy("/updateCart.action");
+        ActionProxy proxy = getActionProxy("/edit-cart.action");
         UpdateCart action = (UpdateCart) proxy.getAction();
         String result = proxy.execute();
 

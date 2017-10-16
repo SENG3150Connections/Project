@@ -7,7 +7,8 @@
 <struts>
 
     <constant name="struts.actionProxyFactory" value="NewcastleConnections.Session.ActionProxyFactory"/>
-    <bean name="cart" class="NewcastleConnections.Cart.Cart" scope="session" />
+    <!--<bean name="cart" class="NewcastleConnections.Cart.Cart" scope="session" />-->
+    <bean name="cart" class="NewcastleConnections.Cart.Cart"/>
 
     <!-- Default package -->
     <package name="default" extends="struts-default">
@@ -34,6 +35,7 @@
         <!-- Cart updaters -->
         <action name="edit-cart" class="NewcastleConnections.Cart.Actions.UpdateCart">
             <result type="redirect">results</result>
+            <result name="error">/WEB-INF/jsp/exception.jsp</result>
         </action>
 
         <action name="update-experience" class="NewcastleConnections.Cart.Actions.UpdateCartExperience">

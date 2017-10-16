@@ -17,18 +17,10 @@ public class UpdateCartTransportTest extends StrutsJUnit4TestCase<UpdateCartTran
     protected String getConfigPath() {
         return "struts-test.xml";
     }
-    
-    // -----------------------
-    // ----- ERROR TESTS -----
-    // -----------------------
 
     @Test
     public void testNoParams() throws Exception {
-        ActionProxy proxy = getActionProxy("/update-transport.action");
-        UpdateCart action = (UpdateCart) proxy.getAction();
-        String result = proxy.execute();
 
-        assertTrue("Action should return ERROR", result.equals(ActionSupport.ERROR));
     }
     
 }

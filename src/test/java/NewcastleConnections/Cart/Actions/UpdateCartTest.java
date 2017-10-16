@@ -1,6 +1,6 @@
 package NewcastleConnections.Cart.Actions;
 
-import NewcastleConnections.Cart.Cart;
+import NewcastleConnections.Cart.Actions.UpdateCart;
 import com.opensymphony.xwork2.ActionProxy;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.StrutsJUnit4TestCase;

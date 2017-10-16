@@ -17,18 +17,10 @@ public class ViewCartTest extends StrutsJUnit4TestCase<ViewCart> {
     protected String getConfigPath() {
         return "struts-test.xml";
     }
-    
-    // -----------------------
-    // ---- SUCCESS TESTS ----
-    // -----------------------
 
     @Test
     public void testNoParams() throws Exception {
-        ActionProxy proxy = getActionProxy("/payment.action");
-        UpdateCart action = (UpdateCart) proxy.getAction();
-        String result = proxy.execute();
 
-        assertTrue("Action should return SUCCESS", result.equals(ActionSupport.SUCCESS));
     }
     
 }

@@ -14,6 +14,11 @@ import static org.junit.Assert.*;
  */
 public class AuthenticationInterceptorTest extends StrutsJUnit4TestCase<AuthenticationInterceptor> {
 
+    @Override
+    protected String getConfigPath() {
+        return "struts-test.xml";
+    }
+
     @Test
     public void testLoggedIn() throws Exception {
         // Set user loggedin
@@ -22,7 +27,7 @@ public class AuthenticationInterceptorTest extends StrutsJUnit4TestCase<Authenti
         session.setAttribute("idToken", "123");
         session.setAttribute("userPermissions", "0");
 
-        ActionProxy proxy = getActionProxy("/customerPortal.action");
+        ActionProxy proxy = getActionProxy("/authenticationTest.action");
         String result = proxy.execute();
 
         assertTrue("Action should return SUCCESS", result.equals(ActionSupport.SUCCESS));
@@ -30,7 +35,7 @@ public class AuthenticationInterceptorTest extends StrutsJUnit4TestCase<Authenti
 
     @Test
     public void testNotLoggedIn() throws Exception {
-        ActionProxy proxy = getActionProxy("/customerPortal.action");
+        ActionProxy proxy = getActionProxy("/authenticationTest.action");
         String result = proxy.execute();
         assertTrue("Action should return LOGIN", result.equals(AuthenticationInterceptor.LOGIN));
     }

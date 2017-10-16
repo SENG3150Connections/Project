@@ -95,6 +95,12 @@
         </action>
         <!-- End User Management Portal -->
 
+        <!-- Explicit authentication test -->
+        <action name="authenticationTest">
+            <interceptor-ref name="authentication" />
+            <result>WEB-INF/jsp/customerPortal.jsp</result>
+        </action>
+
     </package>
 
     <!-- Management Portal Package -->

@@ -17,10 +17,10 @@ public class UpdateCartTest extends StrutsJUnit4TestCase<UpdateCart> {
     protected String getConfigPath() {
         return "struts-test.xml";
     }
-	
-	// -----------------------
-	// ----- ERROR TESTS -----
-	// -----------------------
+    
+    // -----------------------
+    // ----- ERROR TESTS -----
+    // -----------------------
 
     @Test
     public void testNoParams() throws Exception {
@@ -60,23 +60,21 @@ public class UpdateCartTest extends StrutsJUnit4TestCase<UpdateCart> {
 
         assertTrue("Action should return ERROR", result.equals(ActionSupport.ERROR));
     }
-	
-	// -----------------------
-	// --- END ERROR TESTS ---
-	// -----------------------
+    
+    // -----------------------
+    // --- END ERROR TESTS ---
+    // -----------------------
 
-	
-	// -----------------------
-	// ----- VALID TESTS -----
-	// -----------------------
-	
-	// --- TEMPLATE ---
-	@Test
+    
+    // -----------------------
+    // ----- VALID TESTS -----
+    // -----------------------
+    
+    // --- TEMPLATE ---
     public void testParams(String type, String method, int id) throws Exception {
-		testParams(type, method, id, "SUCCESS");
-	}
-	
-	@Test
+        testParams(type, method, id, "SUCCESS");
+    }
+    
     public void testParams(String type, String method, int id, String returnType) throws Exception {
         request.setParameter("type", type);
         request.setParameter("method", method);
@@ -84,71 +82,71 @@ public class UpdateCartTest extends StrutsJUnit4TestCase<UpdateCart> {
         ActionProxy proxy = getActionProxy("/edit-cart.action");
         UpdateCart action = (UpdateCart) proxy.getAction();
         String result = proxy.execute();
-		
-		if (returnType.equals("ERROR")) {
-			assertTrue("Action should return ERROR", result.equals(ActionSupport.ERROR));
-			return;
-		}
-		
-		assertTrue("Action should return SUCCESS", result.equals(ActionSupport.SUCCESS));
+        
+        if (returnType.equals("ERROR")) {
+            assertTrue("Action should return ERROR", result.equals(ActionSupport.ERROR));
+            return;
+        }
+        
+        assertTrue("Action should return SUCCESS", result.equals(ActionSupport.SUCCESS));
         assertTrue("Method should be '" + method + "'", action.getMethod().equals(method));
         assertTrue("Type should be '" + type + "'", action.getMethod().equals(type));
         assertTrue("Id should be '" + id + "'", action.getMethod().equals(id));
-	}
+    }
 
-	// --- TYPE: EXPERIENCE ---
+    // --- TYPE: EXPERIENCE ---
     @Test
     public void testTypeExperienceAdd() throws Exception {
-		testParams("experience", "add", 1);
-	}
-	
+        testParams("experience", "add", 1);
+    }
+    
     @Test
     public void testTypeExperienceRemove() throws Exception {
-		testParams("experience", "remove", 1);
-	}
-	
+        testParams("experience", "remove", 1);
+    }
+    
     @Test
     public void testTypeExperienceInvalid() throws Exception {
-		testParams("experience", "invalid", 1, "ERROR");
-	}
+        testParams("experience", "invalid", 1, "ERROR");
+    }
 
-	// --- TYPE: HOTEL ---
+    // --- TYPE: HOTEL ---
     @Test
     public void testTypeHotelAdd() throws Exception {
-		testParams("hotel", "add", 1);
-	}
-	
+        testParams("hotel", "add", 1);
+    }
+    
     @Test
     public void testTypeHotelRemove() throws Exception {
-		testParams("hotel", "remove", 1);
-	}
-	
+        testParams("hotel", "remove", 1);
+    }
+    
     @Test
     public void testTypeHotelInvalid() throws Exception {
-		testParams("hotel", "invalid", 1, "ERROR");
-	}
+        testParams("hotel", "invalid", 1, "ERROR");
+    }
 
-	// --- TYPE: RESTAURANT ---
+    // --- TYPE: RESTAURANT ---
     @Test
     public void testTypeRestaurantAdd() throws Exception {
-		testParams("restaurant", "add", 1);
-	}
-	
+        testParams("restaurant", "add", 1);
+    }
+    
     @Test
     public void testTypeRestaurantRemove() throws Exception {
-		testParams("restaurant", "remove", 1);
-	}
-	
+        testParams("restaurant", "remove", 1);
+    }
+    
     @Test
     public void testTypeRestaurantInvalid() throws Exception {
-		testParams("restaurant", "invalid", 1, "ERROR");
-	}
+        testParams("restaurant", "invalid", 1, "ERROR");
+    }
 
-	// --- TYPE: INVALID ---
-	
+    // --- TYPE: INVALID ---
+    
     @Test
     public void testTypeInvalid() throws Exception {
-		testParams("invalid", "add", 1, "ERROR");
-	}
+        testParams("invalid", "add", 1, "ERROR");
+    }
 
 }

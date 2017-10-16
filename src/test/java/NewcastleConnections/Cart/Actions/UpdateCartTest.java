@@ -114,40 +114,40 @@ public class UpdateCartTest extends StrutsJUnit4TestCase<UpdateCart> {
 
 	// --- TYPE: HOTEL ---
     @Test
-    public void testTypeExperienceAdd() throws Exception {
+    public void testTypeHotelAdd() throws Exception {
 		testParams("hotel", "add", 1);
 	}
 	
     @Test
-    public void testTypeExperienceRemove() throws Exception {
+    public void testTypeHotelRemove() throws Exception {
 		testParams("hotel", "remove", 1);
 	}
 	
     @Test
-    public void testTypeExperienceInvalid() throws Exception {
+    public void testTypeHotelInvalid() throws Exception {
 		testParams("hotel", "invalid", 1, "ERROR");
 	}
 
 	// --- TYPE: RESTAURANT ---
     @Test
-    public void testTypeExperienceAdd() throws Exception {
+    public void testTypeRestaurantAdd() throws Exception {
 		testParams("restaurant", "add", 1);
 	}
 	
     @Test
-    public void testTypeExperienceRemove() throws Exception {
+    public void testTypeRestaurantRemove() throws Exception {
 		testParams("restaurant", "remove", 1);
 	}
 	
     @Test
-    public void testTypeExperienceInvalid() throws Exception {
+    public void testTypeRestaurantInvalid() throws Exception {
 		testParams("restaurant", "invalid", 1, "ERROR");
 	}
 
 	// --- TYPE: INVALID ---
 	
     @Test
-    public void testTypeExperienceInvalid() throws Exception {
+    public void testTypeInvalid() throws Exception {
 		testParams("invalid", "add", 1, "ERROR");
 	}
 

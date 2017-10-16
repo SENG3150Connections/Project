@@ -1,115 +1,154 @@
 package NewcastleConnections.Cart.Actions;
 
-/*
-UpdateCart.java
-Author: Scott Walker, Harry Barden
-
-Description:
-    Action to update the contents of the cart, not edit the individual items.
-*/
-
-import NewcastleConnections.Cart.*;
+import NewcastleConnections.Cart.Cart;
+import com.opensymphony.xwork2.ActionProxy;
 import com.opensymphony.xwork2.ActionSupport;
-import com.opensymphony.xwork2.inject.Inject;
+import org.apache.struts2.StrutsJUnit4TestCase;
+import org.junit.Test;
 
-public class UpdateCart extends ActionSupport {
+import static org.junit.Assert.*;
 
-    private String method;
-    private String type;
-    private Integer id;
-
-    private Cart cart;
+/**
+ * Created by Harry on 15/10/2017.
+ */
+public class UpdateCartTest extends StrutsJUnit4TestCase<UpdateCart> {
 
     @Override
-    public String execute() {
-        if (getMethod() == null || getType() == null || id == null)
-            return ERROR; // Simply redirect back if not all parameters are supplied.
+    protected String getConfigPath() {
+        return "struts-test.xml";
+    }
+    
+    // -----------------------
+    // ----- ERROR TESTS -----
+    // -----------------------
 
-        boolean add = getMethod().equalsIgnoreCase("add");
-        boolean remove = getMethod().equalsIgnoreCase("remove");
+    @Test
+    public void testNoParams() throws Exception {
+        ActionProxy proxy = getActionProxy("/edit-cart.action");
+        UpdateCart action = (UpdateCart) proxy.getAction();
+        String result = proxy.execute();
 
-        switch(getType().toLowerCase()) {
-            // Get or remove an experience
-            case "experience":
-                if (add)
-                    getCart().getExperiences().add(new CartExperience(id));
-                else if (remove)
-                    getCart().removeExperience(id);
-                else
-                    return ERROR;
-                break;
+        assertTrue("Action should return ERROR", result.equals(ActionSupport.ERROR));
+    }
 
-            // Get or remove a hotel
-            case "hotel":
-                if (add)
-                    getCart().getHotels().add(new CartHotel(id));
-                else if (remove)
-                    getCart().removeHotel(id);
-                else
-                    return ERROR;
-                break;
+    @Test
+    public void testMethod() throws Exception {
+        request.setParameter("method", "add");
+        ActionProxy proxy = getActionProxy("/edit-cart.action");
+        UpdateCart action = (UpdateCart) proxy.getAction();
+        String result = proxy.execute();
 
-            // Get or remove a restaurant
-            case "restaurant":
-                if (add)
-                    getCart().getRestaurants().add(new CartRestaurant(id));
-                else if (remove)
-                    getCart().removeRestaurant(id);
-                else
-                    return ERROR;
-                break;
+        assertTrue("Action should return ERROR", result.equals(ActionSupport.ERROR));
+    }
 
-            // Get or remove transport
-            case "transport":
-                if (add)
-                    getCart().getTransport().add(new CartTransport(id));
-                else if (remove)
-                    getCart().removeTransport(id);
-                else
-                    return ERROR;
-                break;
+    @Test
+    public void testType() throws Exception {
+        request.setParameter("type", "experience");
+        ActionProxy proxy = getActionProxy("/edit-cart.action");
+        UpdateCart action = (UpdateCart) proxy.getAction();
+        String result = proxy.execute();
 
-            // Ignore anything else
-            default:
-                return ERROR;
+        assertTrue("Action should return ERROR", result.equals(ActionSupport.ERROR));
+    }
 
+    @Test
+    public void testId() throws Exception {
+        request.setParameter("id", "1");
+        ActionProxy proxy = getActionProxy("/edit-cart.action");
+        UpdateCart action = (UpdateCart) proxy.getAction();
+        String result = proxy.execute();
+
+        assertTrue("Action should return ERROR", result.equals(ActionSupport.ERROR));
+    }
+    
+    // -----------------------
+    // --- END ERROR TESTS ---
+    // -----------------------
+
+    
+    // -----------------------
+    // ----- VALID TESTS -----
+    // -----------------------
+    
+    // --- TEMPLATE ---
+    @Test
+    public void testParams(String type, String method, int id) throws Exception {
+        testParams(type, method, id, "SUCCESS");
+    }
+    
+    @Test
+    public void testParams(String type, String method, int id, String returnType) throws Exception {
+        request.setParameter("type", type);
+        request.setParameter("method", method);
+        request.setParameter("id", id + "");
+        ActionProxy proxy = getActionProxy("/edit-cart.action");
+        UpdateCart action = (UpdateCart) proxy.getAction();
+        String result = proxy.execute();
+        
+        if (returnType.equals("ERROR")) {
+            assertTrue("Action should return ERROR", result.equals(ActionSupport.ERROR));
+            return;
         }
-
-        return SUCCESS;
+        
+        assertTrue("Action should return SUCCESS", result.equals(ActionSupport.SUCCESS));
+        assertTrue("Method should be '" + method + "'", action.getMethod().equals(method));
+        assertTrue("Type should be '" + type + "'", action.getMethod().equals(type));
+        assertTrue("Id should be '" + id + "'", action.getMethod().equals(id));
     }
 
-    // -- Getters and Setters
-
-    public String getMethod() {
-        return method;
+    // --- TYPE: EXPERIENCE ---
+    @Test
+    public void testTypeExperienceAdd() throws Exception {
+        testParams("experience", "add", 1);
+    }
+    
+    @Test
+    public void testTypeExperienceRemove() throws Exception {
+        testParams("experience", "remove", 1);
+    }
+    
+    @Test
+    public void testTypeExperienceInvalid() throws Exception {
+        testParams("experience", "invalid", 1, "ERROR");
     }
 
-    public void setMethod(String method) {
-        this.method = method;
+    // --- TYPE: HOTEL ---
+    @Test
+    public void testTypeHotelAdd() throws Exception {
+        testParams("hotel", "add", 1);
+    }
+    
+    @Test
+    public void testTypeHotelRemove() throws Exception {
+        testParams("hotel", "remove", 1);
+    }
+    
+    @Test
+    public void testTypeHotelInvalid() throws Exception {
+        testParams("hotel", "invalid", 1, "ERROR");
     }
 
-    public String getType() {
-        return type;
+    // --- TYPE: RESTAURANT ---
+    @Test
+    public void testTypeRestaurantAdd() throws Exception {
+        testParams("restaurant", "add", 1);
+    }
+    
+    @Test
+    public void testTypeRestaurantRemove() throws Exception {
+        testParams("restaurant", "remove", 1);
+    }
+    
+    @Test
+    public void testTypeRestaurantInvalid() throws Exception {
+        testParams("restaurant", "invalid", 1, "ERROR");
     }
 
-    public void setType(String type) {
-        this.type = type;
+    // --- TYPE: INVALID ---
+    
+    @Test
+    public void testTypeInvalid() throws Exception {
+        testParams("invalid", "add", 1, "ERROR");
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Cart getCart() {
-        return cart;
-    }
-
-    @Inject("cart")
-    public void setCart(Cart cart) {
-        this.cart = cart;
-    }
 }

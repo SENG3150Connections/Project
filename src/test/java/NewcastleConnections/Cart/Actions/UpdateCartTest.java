@@ -17,6 +17,10 @@ public class UpdateCartTest extends StrutsJUnit4TestCase<UpdateCart> {
     protected String getConfigPath() {
         return "struts-test.xml";
     }
+	
+	// -----------------------
+	// ----- ERROR TESTS -----
+	// -----------------------
 
     @Test
     public void testNoParams() throws Exception {
@@ -56,20 +60,95 @@ public class UpdateCartTest extends StrutsJUnit4TestCase<UpdateCart> {
 
         assertTrue("Action should return ERROR", result.equals(ActionSupport.ERROR));
     }
+	
+	// -----------------------
+	// --- END ERROR TESTS ---
+	// -----------------------
 
-    @Test
-    public void testAllParams() throws Exception {
-        request.setParameter("method", "add");
-        request.setParameter("type", "experience");
-        request.setParameter("id", "1");
+	
+	// -----------------------
+	// ----- VALID TESTS -----
+	// -----------------------
+	
+	// --- TEMPLATE ---
+	@Test
+    public void testParams(String type, String method, int id) throws Exception {
+		testParams(type, method, id, "SUCCESS");
+	}
+	
+	@Test
+    public void testParams(String type, String method, int id, String returnType) throws Exception {
+        request.setParameter("type", type);
+        request.setParameter("method", method);
+        request.setParameter("id", id + "");
         ActionProxy proxy = getActionProxy("/edit-cart.action");
         UpdateCart action = (UpdateCart) proxy.getAction();
         String result = proxy.execute();
+		
+		if (returnType.equals("ERROR")) {
+			assertTrue("Action should return ERROR", result.equals(ActionSupport.ERROR));
+			return;
+		}
+		
+		assertTrue("Action should return SUCCESS", result.equals(ActionSupport.SUCCESS));
+        assertTrue("Method should be '" + method + "'", action.getMethod().equals(method));
+        assertTrue("Type should be '" + type + "'", action.getMethod().equals(type));
+        assertTrue("Id should be '" + id + "'", action.getMethod().equals(id));
+	}
 
-        assertTrue("Action should return SUCCESS", result.equals(ActionSupport.SUCCESS));
-        assertTrue("Method should be 'add'", action.getMethod().equals("add"));
-        assertTrue("Type should be 'experience'", action.getMethod().equals("experience"));
-        assertTrue("Id should be '1'", action.getMethod().equals(1));
-    }
+	// --- TYPE: EXPERIENCE ---
+    @Test
+    public void testTypeExperienceAdd() throws Exception {
+		testParams("experience", "add", 1);
+	}
+	
+    @Test
+    public void testTypeExperienceRemove() throws Exception {
+		testParams("experience", "remove", 1);
+	}
+	
+    @Test
+    public void testTypeExperienceInvalid() throws Exception {
+		testParams("experience", "invalid", 1, "ERROR");
+	}
+
+	// --- TYPE: HOTEL ---
+    @Test
+    public void testTypeExperienceAdd() throws Exception {
+		testParams("hotel", "add", 1);
+	}
+	
+    @Test
+    public void testTypeExperienceRemove() throws Exception {
+		testParams("hotel", "remove", 1);
+	}
+	
+    @Test
+    public void testTypeExperienceInvalid() throws Exception {
+		testParams("hotel", "invalid", 1, "ERROR");
+	}
+
+	// --- TYPE: RESTAURANT ---
+    @Test
+    public void testTypeExperienceAdd() throws Exception {
+		testParams("restaurant", "add", 1);
+	}
+	
+    @Test
+    public void testTypeExperienceRemove() throws Exception {
+		testParams("restaurant", "remove", 1);
+	}
+	
+    @Test
+    public void testTypeExperienceInvalid() throws Exception {
+		testParams("restaurant", "invalid", 1, "ERROR");
+	}
+
+	// --- TYPE: INVALID ---
+	
+    @Test
+    public void testTypeExperienceInvalid() throws Exception {
+		testParams("invalid", "add", 1, "ERROR");
+	}
 
 }

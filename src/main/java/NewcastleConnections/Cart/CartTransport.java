@@ -1,5 +1,13 @@
 package NewcastleConnections.Cart;
 
+/*
+CartExperience.java
+Author: Scott Walker
+
+Description:
+    The cart item to store Transport.
+*/
+
 import NewcastleConnections.DatabaseConnection;
 import NewcastleConnections.packagedeals.tables.records.InvoicetransportRecord;
 import NewcastleConnections.packagedeals.tables.records.TransportRecord;
@@ -10,16 +18,17 @@ import java.sql.Timestamp;
 
 import static NewcastleConnections.packagedeals.Tables.*;
 
-/**
- * Created by Scott on 22/08/2017.
- */
 public class CartTransport implements CartItem {
 
+    // private member data
     private TransportRecord transport = null;
     private InvoicetransportRecord invoice = null;
     private int tickets = 0;
     private Timestamp time = null;
 
+    // -- Constructor --
+    //   Role: Initialise the CartTransport of certain ID.
+    //
     public CartTransport(int transportID) {
         try {
             DatabaseConnection connection = new DatabaseConnection();
@@ -41,6 +50,7 @@ public class CartTransport implements CartItem {
     }
 
     public boolean getReady() {
+        // Must have at least 1 ticket and a time booked.
         return tickets > 0 && time != null;
     }
 
@@ -50,6 +60,9 @@ public class CartTransport implements CartItem {
 
     // -- Other methods --
 
+    // -- Public --
+    //   Role: Get the invoice for this cart item.
+    //
     public InvoicetransportRecord getInvoice() {
         if (!getReady()) {
             return null;

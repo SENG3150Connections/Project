@@ -1,5 +1,13 @@
 package NewcastleConnections.Cart;
 
+/*
+CartHotel.java
+Author: Scott Walker
+
+Description:
+    The cart item to store Hotels.
+*/
+
 import NewcastleConnections.DatabaseConnection;
 import NewcastleConnections.packagedeals.tables.records.HotelsRecord;
 import NewcastleConnections.packagedeals.tables.records.InvoicehotelRecord;
@@ -11,11 +19,9 @@ import java.sql.Timestamp;
 
 import static NewcastleConnections.packagedeals.Tables.*;
 
-/**
- * Created by Scott on 22/08/2017.
- */
 public class CartHotel implements CartItem {
 
+    // Private member data
     private HotelsRecord hotel = null;
     private RoomofferingsRecord room = null;
     private InvoicehotelRecord invoice = null;
@@ -25,7 +31,9 @@ public class CartHotel implements CartItem {
     private Timestamp checkOut = null;
     private Double price = null;
 
-
+    // -- Constructor --
+    //   Role: Initialise the CartHotel of certain ID.
+    //
     public CartHotel(int hotelID) {
         try {
             DatabaseConnection connection = new DatabaseConnection();
@@ -47,6 +55,7 @@ public class CartHotel implements CartItem {
     }
 
     public boolean getReady() {
+        // Must have a room with at least one adult, and check in/out times.
         return room != null && adults > 0 && children >= 0 && checkIn != null && checkOut != null;
     }
 
@@ -56,6 +65,9 @@ public class CartHotel implements CartItem {
 
     // -- Other methods --
 
+    // -- Public --
+    //   Role: Get the invoice for this cart item.
+    //
     public InvoicehotelRecord getInvoice() {
         if (!getReady()) {
             return null;
@@ -65,6 +77,7 @@ public class CartHotel implements CartItem {
             invoice = new InvoicehotelRecord();
         }
 
+        // Set data for the invoice
         invoice.setRoomid(room.getId());
         invoice.setAdults(adults);
         invoice.setChildren(children);
@@ -75,9 +88,12 @@ public class CartHotel implements CartItem {
         return invoice;
     }
 
+    // -- Public --
+    //   Role: Update the price of the hotel booking.
+    //
     public void updatePrice() {
         double rate = 150.0;
-        long divisor = 1000 * 60 * 60 * 24;
+        long divisor = 1000 * 60 * 60 * 24; // ms in a day
 
         if (checkIn == null || checkOut == null) {
             setPrice(0.0);

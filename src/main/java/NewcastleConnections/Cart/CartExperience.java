@@ -1,5 +1,13 @@
 package NewcastleConnections.Cart;
 
+/*
+CartExperience.java
+Author: Scott Walker
+
+Description:
+    The cart item to store Experiences.
+*/
+
 import NewcastleConnections.DatabaseConnection;
 import NewcastleConnections.packagedeals.tables.records.ExperiencesRecord;
 import NewcastleConnections.packagedeals.tables.records.ExperiencevoucherofferingsRecord;
@@ -12,10 +20,14 @@ import static NewcastleConnections.packagedeals.Tables.*;
 
 public class CartExperience implements CartItem {
 
+    // Private member data
     private ExperiencesRecord experience = null;
     private ExperiencevoucherofferingsRecord voucher = null;
     private InvoiceexperienceRecord invoice = null;
 
+    // -- Constructor --
+    //   Role: Initialise the CartExperience of certain ID.
+    //
     public CartExperience(int expID) {
         try {
             DatabaseConnection connection = new DatabaseConnection();
@@ -37,6 +49,7 @@ public class CartExperience implements CartItem {
     }
 
     public boolean getReady() {
+        // Must have a voucher to be complete.
         return voucher != null;
     }
 
@@ -46,6 +59,9 @@ public class CartExperience implements CartItem {
 
     // -- Other methods --
 
+    // -- Public --
+    //   Role: Get the invoice for this cart item.
+    //
     public InvoiceexperienceRecord getInvoice() {
         if (!getReady()) {
             return null;

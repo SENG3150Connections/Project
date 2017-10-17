@@ -1,28 +1,35 @@
 package NewcastleConnections.Authentication;
 
+/*
+LogoutAction.java
+Author: Seb Brown
+
+Description:
+    Invalidate session when user logs out
+*/
+
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.dispatcher.SessionMap;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 public class LogoutAction extends ActionSupport {
 
+    // -- Public --
+    //   Role: Implement the execute method for the action. Nullify the current users session.
+    // Return: Result string for struts.xml to process.
+    //
     @Override
     public String execute() {
-
-        HttpServletResponse response = ServletActionContext.getResponse();
-
-        // Invalidate the session
+        // Get current session
         SessionMap session = (SessionMap) ActionContext.getContext().getSession();
 
-        //invalidate
+        // Invalidate the session
         session.invalidate();
-        //renew servlet session
+
+        // Renew servlet session
         session.put("renewServletSession", null);
         session.remove("renewServletSession");
-        //populate the struts session
+        // Populate the struts session
         session.entrySet();
 
         return SUCCESS;

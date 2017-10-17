@@ -1,3 +1,11 @@
+<%--
+customerPortal.jsp
+Author: Jack Ratcliffe / Seb Brown
+
+Description:
+    The homepage for the customer portal. It displays their purchased items as invoices which may be viewed.
+--%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
@@ -116,23 +124,8 @@
 
 </main>
 </div>
-<footer id="footer-container">
-    <div class="container" style="height: 250px; flex-direction: column;justify-content: center;align-items: center">
-        <div>
-            <div class="homepage-social ">
-                <a href="#"><img src="../../img/fb-social.png" class="pointer hover"/></a>
-                <a href="#"><img src="../../img/tw-social.png" class="pointer hover"/></a>
-                <a href="#"><img src="../../img/ig-social.png" class="pointer hover"/></a>
-            </div>
-        </div>
-        <p id="terms-and-conditions">
-            Use of this Web site constitutes acceptance of the Newcastle Connections Terms and Conditions and Privacy Policy</a>.
-        </p>
-        <p id="copyright">
-            © Copyright 2017 – Newcastle Connections.
-        </p>
-    </div>
-</footer>
+<jsp:include page="helpers/footer.jsp"/>
+
 <script>window.jQuery || document.write('<script src="../../js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
 <script src="../../js/pikaday.js"></script>
 <script src="js/plugins.js"></script>

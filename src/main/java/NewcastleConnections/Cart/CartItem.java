@@ -1,8 +1,13 @@
 package NewcastleConnections.Cart;
 
-/**
- * Created by Scott on 25/08/2017.
- */
+/*
+CartItem.java
+Author: Scott Walker
+
+Description:
+    Interface class for Cart objects to implement.
+*/
+
 public interface CartItem {
     String getName();
     int getId();

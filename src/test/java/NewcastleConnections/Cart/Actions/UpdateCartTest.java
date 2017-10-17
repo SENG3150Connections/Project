@@ -90,8 +90,8 @@ public class UpdateCartTest extends StrutsJUnit4TestCase<UpdateCart> {
         
         assertTrue("Action should return SUCCESS", result.equals(ActionSupport.SUCCESS));
         assertTrue("Method should be '" + method + "'", action.getMethod().equals(method));
-        assertTrue("Type should be '" + type + "'", action.getMethod().equals(type));
-        assertTrue("Id should be '" + id + "'", action.getMethod().equals(id));
+        assertTrue("Type should be '" + type + "'", action.getType().equals(type));
+        assertTrue("Id should be '" + id + "'", action.getId().equals(id));
     }
 
     // --- TYPE: EXPERIENCE ---

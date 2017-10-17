@@ -25,7 +25,7 @@ public class UpdateCartExperienceTest extends StrutsJUnit4TestCase<UpdateCartExp
     @Test
     public void testNoParams() throws Exception {
         ActionProxy proxy = getActionProxy("/update-experience.action");
-        UpdateCart action = (UpdateCart) proxy.getAction();
+        UpdateCartExperience action = (UpdateCartExperience) proxy.getAction();
         String result = proxy.execute();
 
         assertTrue("Action should return ERROR", result.equals(ActionSupport.ERROR));

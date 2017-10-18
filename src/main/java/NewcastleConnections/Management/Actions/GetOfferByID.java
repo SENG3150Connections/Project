@@ -11,6 +11,7 @@ Description:
 import NewcastleConnections.DatabaseConnection;
 import NewcastleConnections.packagedeals.tables.records.HotelsRecord;
 import com.opensymphony.xwork2.ActionSupport;
+import org.jooq.Result;
 import org.jooq.types.UInteger;
 
 import java.sql.SQLException;
@@ -32,7 +33,14 @@ public class GetOfferByID extends ActionSupport {
             // Get connection
             DatabaseConnection connection = new DatabaseConnection();
             // Query
-            hotel = connection.getDSL().selectFrom(HOTELS).where(HOTELS.ID.eq(UInteger.valueOf(id))).fetch().get(0);
+            Result<HotelsRecord> hotelRecord = connection.getDSL().selectFrom(HOTELS).where(HOTELS.ID.eq(UInteger.valueOf(id))).fetch();
+
+            // If hotel exists assign, else return null
+            if (hotelRecord.size() != 0)
+                hotel = hotelRecord.get(0);
+            else
+                hotel = null;
+
             // Close connection
             connection.close();
 

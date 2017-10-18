@@ -23,7 +23,7 @@ public class GetOfferByIDTest extends StrutsJUnit4TestCase<GetOfferByID> {
         GetOfferByID action = (GetOfferByID) proxy.getAction();
         String result = proxy.execute();
 
-        assertTrue("Action should return SUCCESS", result.equals(ActionSupport.SUCCESS));
+        assertTrue("Action should return ERROR", result.equals(ActionSupport.ERROR));
         assertTrue("ID should be empty", action.getId() == null || action.getId().isEmpty());
         assertNull("Result should be empty", action.getHotel());
     }
@@ -35,7 +35,7 @@ public class GetOfferByIDTest extends StrutsJUnit4TestCase<GetOfferByID> {
         GetOfferByID action = (GetOfferByID) proxy.getAction();
         String result = proxy.execute();
 
-        assertTrue("Action should return SUCCESS", result.equals(ActionSupport.SUCCESS));
+        assertTrue("Action should return ERROR", result.equals(ActionSupport.ERROR));
         assertEquals("ID should be -1", action.getId(), "-1");
         assertNull("Result should be empty", action.getHotel());
     }

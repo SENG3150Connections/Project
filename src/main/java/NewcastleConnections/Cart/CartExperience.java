@@ -12,6 +12,7 @@ import NewcastleConnections.DatabaseConnection;
 import NewcastleConnections.packagedeals.tables.records.ExperiencesRecord;
 import NewcastleConnections.packagedeals.tables.records.ExperiencevoucherofferingsRecord;
 import NewcastleConnections.packagedeals.tables.records.InvoiceexperienceRecord;
+import org.jooq.Result;
 import org.jooq.types.UInteger;
 
 import java.sql.SQLException;
@@ -31,7 +32,12 @@ public class CartExperience implements CartItem {
     public CartExperience(int expID) {
         try {
             DatabaseConnection connection = new DatabaseConnection();
-            experience = connection.getDSL().selectFrom(EXPERIENCES).where(EXPERIENCES.ID.eq(UInteger.valueOf(expID))).fetch().get(0);
+            Result<ExperiencesRecord> records = connection.getDSL().selectFrom(EXPERIENCES).where(EXPERIENCES.ID.eq(UInteger.valueOf(expID))).fetch();
+            if (records.size() > 0)
+                experience = records.get(0);
+            else
+                experience = null;
+
             connection.close();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();

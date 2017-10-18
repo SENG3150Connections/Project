@@ -28,7 +28,7 @@ public class DatabaseConnection {
     //
     public DatabaseConnection() throws SQLException, ClassNotFoundException {
         Class.forName("com.mysql.jdbc.Driver");
-        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/PackageDeals", "newcastle", "connections");
+        connection = DriverManager.getConnection("jdbc:mysql://203.9.224.172:3306/PackageDeals", "newcastle", "connections");
     }
 
     // -- Public --

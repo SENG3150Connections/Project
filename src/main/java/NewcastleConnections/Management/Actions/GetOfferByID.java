@@ -33,13 +33,17 @@ public class GetOfferByID extends ActionSupport {
             // Get connection
             DatabaseConnection connection = new DatabaseConnection();
             // Query
-            Result<HotelsRecord> hotelRecord = connection.getDSL().selectFrom(HOTELS).where(HOTELS.ID.eq(UInteger.valueOf(id))).fetch();
-
-            // If hotel exists assign, else return null
-            if (hotelRecord.size() != 0)
-                hotel = hotelRecord.get(0);
-            else
-                hotel = null;
+            try {
+                Result<HotelsRecord> hotelRecord = connection.getDSL().selectFrom(HOTELS).where(HOTELS.ID.eq(UInteger.valueOf(id))).fetch();
+                // If hotel exists assign, else return null
+                if (hotelRecord.size() != 0)
+                    hotel = hotelRecord.get(0);
+                else
+                    hotel = null;
+            // If the id is negative and out off array
+            } catch (NumberFormatException e) {
+                return ERROR;
+            }
 
             // Close connection
             connection.close();

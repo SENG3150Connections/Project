@@ -16,6 +16,8 @@ import java.sql.Date;
 import java.sql.SQLException;
 
 public class SubmitOffer extends ActionSupport {
+    HotelsRecord hotel = null;
+
     private String name = "";
     private String contact = "";
     private String email = "";
@@ -35,7 +37,7 @@ public class SubmitOffer extends ActionSupport {
     //
     @Override
     public String execute() {
-        HotelsRecord hotel = new HotelsRecord();
+        hotel = new HotelsRecord();
 
         try {
             // Get connection
@@ -71,6 +73,10 @@ public class SubmitOffer extends ActionSupport {
     }
 
     // -- Getters and Setters --
+
+    public HotelsRecord getHotel() {
+        return hotel;
+    }
 
     public void setName(final String name) {
         this.name = name;

@@ -32,12 +32,15 @@ public class CartExperience implements CartItem {
     public CartExperience(int expID) {
         try {
             DatabaseConnection connection = new DatabaseConnection();
-            Result<ExperiencesRecord> records = connection.getDSL().selectFrom(EXPERIENCES).where(EXPERIENCES.ID.eq(UInteger.valueOf(expID))).fetch();
-            if (records.size() > 0)
-                experience = records.get(0);
-            else
-                experience = null;
 
+            try {
+                Result<ExperiencesRecord> records = connection.getDSL().selectFrom(EXPERIENCES).where(EXPERIENCES.ID.eq(UInteger.valueOf(expID))).fetch();
+                if (records.size() > 0)
+                    experience = records.get(0);
+            } catch (NumberFormatException e) {
+                return;
+            }
+            
             connection.close();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();

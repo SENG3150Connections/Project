@@ -11,6 +11,7 @@ Description:
 import NewcastleConnections.DatabaseConnection;
 import NewcastleConnections.packagedeals.tables.records.InvoicetransportRecord;
 import NewcastleConnections.packagedeals.tables.records.TransportRecord;
+import org.jooq.Result;
 import org.jooq.types.UInteger;
 
 import java.sql.SQLException;
@@ -32,7 +33,15 @@ public class CartTransport implements CartItem {
     public CartTransport(int transportID) {
         try {
             DatabaseConnection connection = new DatabaseConnection();
-            transport = connection.getDSL().selectFrom(TRANSPORT).where(TRANSPORT.ID.eq(UInteger.valueOf(transportID))).fetch().get(0);
+
+            try {
+                Result<TransportRecord> records  = connection.getDSL().selectFrom(TRANSPORT).where(TRANSPORT.ID.eq(UInteger.valueOf(transportID))).fetch();
+                if (records.size() > 0)
+                    transport = records.get(0);
+            } catch (NumberFormatException e) {
+                return;
+            }
+
             connection.close();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();

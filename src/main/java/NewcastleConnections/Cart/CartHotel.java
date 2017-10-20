@@ -12,6 +12,7 @@ import NewcastleConnections.DatabaseConnection;
 import NewcastleConnections.packagedeals.tables.records.HotelsRecord;
 import NewcastleConnections.packagedeals.tables.records.InvoicehotelRecord;
 import NewcastleConnections.packagedeals.tables.records.RoomofferingsRecord;
+import org.jooq.Result;
 import org.jooq.types.UInteger;
 
 import java.sql.SQLException;
@@ -37,7 +38,15 @@ public class CartHotel implements CartItem {
     public CartHotel(int hotelID) {
         try {
             DatabaseConnection connection = new DatabaseConnection();
-            hotel = connection.getDSL().selectFrom(HOTELS).where(HOTELS.ID.eq(UInteger.valueOf(hotelID))).fetch().get(0);
+
+            try {
+                Result<HotelsRecord> records = connection.getDSL().selectFrom(HOTELS).where(HOTELS.ID.eq(UInteger.valueOf(hotelID))).fetch();
+                if (records.size() > 0)
+                    hotel = records.get(0);
+            } catch (NumberFormatException e) {
+                return;
+            }
+
             connection.close();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();

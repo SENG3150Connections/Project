@@ -26,6 +26,7 @@ public class SubmitOfferTest extends StrutsJUnit4TestCase<SubmitOffer> {
     private Double longitude = 4.20;
     private Byte publicallyvisible = (byte) 1;
     private Byte releaseondate = (byte) 1;
+    private String releasedate = "01-01-2017";
     private String imageid = "Test image";
     private String category = "Test category";
 
@@ -56,6 +57,7 @@ public class SubmitOfferTest extends StrutsJUnit4TestCase<SubmitOffer> {
         request.setParameter("description", description);
         request.setParameter("latitude", "Invalid param");
         request.setParameter("longitude", "This is not a double");
+        request.setParameter("releasedate", releasedate);
         ActionProxy proxy = getActionProxy("/submitOffer.action");
         SubmitOffer action = (SubmitOffer) proxy.getAction();
         String result = proxy.execute();

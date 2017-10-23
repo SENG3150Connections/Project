@@ -1,5 +1,6 @@
 package NewcastleConnections.Management.Actions;
 
+import NewcastleConnections.packagedeals.tables.records.HotelsRecord;
 import com.opensymphony.xwork2.ActionProxy;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.StrutsJUnit4TestCase;
@@ -56,6 +57,22 @@ public class GetOfferByIDTest extends StrutsJUnit4TestCase<GetOfferByID> {
         assertEquals("Name should match", action.getHotel().getName(), "Novotel Newcastle Beach");
         assertEquals("Contact should match", action.getHotel().getContact(), "(02) 4032 3700");
         assertEquals("Email should match", action.getHotel().getEmail(), "H8771@accor.com");
+    }
+
+    @Test
+    public void testGettersSetters() throws Exception {
+        ActionProxy proxy = getActionProxy("/editOffer.action");
+        GetOfferByID action = (GetOfferByID) proxy.getAction();
+
+        HotelsRecord record = new HotelsRecord();
+        action.setId("1");
+        action.setHotel(record);
+
+        assertEquals("IDs match", action.getId(), "1");
+        assertEquals("Records match", action.getHotel(), record);
+
+        record.setContact("Test");
+        assertEquals("References properly", action.getHotel().getContact(), record.getContact());
     }
 
 }

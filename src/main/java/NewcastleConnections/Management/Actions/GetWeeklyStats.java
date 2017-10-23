@@ -102,7 +102,7 @@ public class GetWeeklyStats extends ActionSupport {
      |  Private inner class WeeklyStats  |
      *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 
-    private class WeeklyStats {
+    public class WeeklyStats {
         private double grossSales = 0.0;
         private double netSales = 0.0;
         private int ordersPlaced = 0;

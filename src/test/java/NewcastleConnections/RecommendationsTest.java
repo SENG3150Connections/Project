@@ -16,6 +16,18 @@ public class RecommendationsTest {
     private static final double LONGITUDE = 151.77647;
 
     @Test
+    public void testNoRecommendation() throws Exception {
+        Recommendations rec = new Recommendations();
+        assertTrue("Empty result set", rec.getRecommendedItem() == 0);
+        int eSize = rec.getExperiences().size();
+        int hSize = rec.getHotels().size();
+        int rSize = rec.getRestaurants().size();
+        assertEquals("Empty result set", eSize, 0);
+        assertEquals("Empty result set", hSize, 0);
+        assertEquals("Empty result set", rSize, 0);
+    }
+
+    @Test
     public void testZeroCoords() throws Exception {
         int results = 0;
         testExperience(0, 0, results);

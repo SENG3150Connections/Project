@@ -147,6 +147,7 @@
 
         <action name="submitOffer" class="NewcastleConnections.Management.Actions.SubmitOffer">
             <result name="success" type="redirect">/displayProducts</result>
+            <result name="input">/WEB-INF/jsp/exception.jsp</result>
         </action>
 
         <action name="analytics">

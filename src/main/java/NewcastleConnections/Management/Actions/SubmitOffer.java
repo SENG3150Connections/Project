@@ -46,7 +46,7 @@ public class SubmitOffer extends ActionSupport {
 
             // query
             hotel.setName(name);
-            hotel.setContact("Harry");
+            hotel.setContact(contact);
             hotel.setEmail(email);
             hotel.setAddress(address);
             hotel.setWebsite(website);

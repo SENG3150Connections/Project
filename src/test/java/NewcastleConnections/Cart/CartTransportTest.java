@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 /**
  * Created by Jack on 27/10/2017.
  */
-public class CartTransportTest extends StrutsJUnit4TestCase<Cart> {
+public class CartTransportTest extends StrutsJUnit4TestCase<CartTransport> {
 
     private CartTransport cartTransport = new CartTransport(001);
     private java.sql.Date date =  new java.sql.Date(2017,1,1);
@@ -52,11 +52,11 @@ public class CartTransportTest extends StrutsJUnit4TestCase<Cart> {
         assertEquals(false, cartTransport.getReady());
     }
 
-    @Ignore("Cannot set price to test")
     @Test
     public void getPrice() throws Exception {
-        double testDouble = 1;
-        //cartTransport.setPrice(testDouble);
+        double testDouble = 20.0;
+        cartTransport.setTickets(2);
+        cartTransport.setTransport(transport);
         assertTrue(testDouble == cartTransport.getPrice());
     }
 

@@ -64,6 +64,11 @@ public class CartRestaurantTest extends StrutsJUnit4TestCase<CartRestaurant> {
         assertTrue(testDouble == cartRestaurant.getPrice());
     }
 
+    @Test
+    public void getPriceNull() throws Exception {
+        assertNotNull(cartRestaurant.getPrice());
+    }
+
     @Ignore("Cannot set invoice to test")
     @Test
     public void getInvoice() throws Exception {
@@ -117,7 +122,7 @@ public class CartRestaurantTest extends StrutsJUnit4TestCase<CartRestaurant> {
     public void getVoucherPrice() throws Exception {
         double testDouble = 1;
         cartRestaurant.setVoucherPrice(testDouble);
-        assertTrue(testDouble == cartRestaurant.getPrice());
+        assertTrue(testDouble == cartRestaurant.getVoucherPrice());
 
     }
 
@@ -125,7 +130,7 @@ public class CartRestaurantTest extends StrutsJUnit4TestCase<CartRestaurant> {
     public void setVoucherPrice() throws Exception {
         double testDouble = 1;
         cartRestaurant.setVoucherPrice(testDouble);
-        assertTrue(testDouble == cartRestaurant.getPrice());
+        assertTrue(testDouble == cartRestaurant.getVoucherPrice());
     }
 
 }

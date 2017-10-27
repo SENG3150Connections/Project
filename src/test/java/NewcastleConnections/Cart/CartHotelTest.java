@@ -105,6 +105,11 @@ public class CartHotelTest extends StrutsJUnit4TestCase<CartHotel>{
     }
 
     @Test
+    public void getPriceNull() throws Exception{
+        assertNotNull(cartHotel.getPrice());
+    }
+
+    @Test
     public void updatePrice() throws Exception {
         cartHotel.updatePrice();
         assertTrue(0.0 == cartHotel.getPrice());

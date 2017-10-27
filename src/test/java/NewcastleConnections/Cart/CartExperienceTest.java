@@ -65,7 +65,8 @@ public class CartExperienceTest extends StrutsJUnit4TestCase<CartExperience>{
     @Test
     public void testGetPrice() throws Exception {
         cartExperience.setExperience(experience);
-        assertTrue(1.0 == cartExperience.getPrice());
+        cartExperience.setVoucher(voucher);
+        assertTrue(20.0 == cartExperience.getPrice());
     }
 
     @Test

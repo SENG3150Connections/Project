@@ -16,21 +16,21 @@ import java.sql.Date;
 import java.sql.SQLException;
 
 public class SubmitOffer extends ActionSupport {
-    HotelsRecord hotel = null;
+    HotelsRecord hotel;
 
-    private String name = "";
-    private String contact = "";
-    private String email = "";
-    private String address = "";
-    private String website = "";
-    private String description = "";
-    private double latitude = 0.0;
-    private double longitude = 0.0;
-    private byte publicallyvisible = (byte) 0;
-    private byte releaseondate = (byte) 0;
-    private Date releasedate = new Date(2017, 1, 1);
-    private String imageid = "";
-    private String category = "";
+    private String name;
+    private String contact;
+    private String email;
+    private String address;
+    private String website;
+    private String description;
+    private double latitude;
+    private double longitude;
+    private byte publicallyvisible;
+    private byte releaseondate;
+    private Date releasedate;
+    private String imageid;
+    private String category;
 
     // -- Public --
     //   Role: Method that is executed when the page is requested.

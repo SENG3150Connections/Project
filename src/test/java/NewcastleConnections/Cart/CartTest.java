@@ -1,9 +1,13 @@
 package NewcastleConnections.Cart;
 
+import NewcastleConnections.packagedeals.tables.records.*;
 import org.apache.struts2.StrutsJUnit4TestCase;
+import org.jooq.types.UInteger;
 import org.junit.Test;
 
 import javax.servlet.http.HttpSession;
+
+import java.sql.Timestamp;
 
 import static org.junit.Assert.*;
 
@@ -13,6 +17,27 @@ import static org.junit.Assert.*;
 public class CartTest extends StrutsJUnit4TestCase<Cart> {
 
     Cart cart = new Cart();
+    private java.sql.Date date =  new java.sql.Date(2017,1,1);
+    private Byte b = 0;
+    private java.sql.Timestamp timestamp = new Timestamp(1,1,1,1,1,1,1);
+    private InvoicesRecord invoice = new InvoicesRecord(UInteger.valueOf(3),"TestCustomerID",timestamp,1.0,UInteger.valueOf(4));
+
+    private CartExperience cartExperience = new CartExperience(007);
+    private ExperiencesRecord experience = new ExperiencesRecord(UInteger.valueOf(1),"TestName","TestOverview","TestDescription","TestLocation","TestInfo","TestGuidlines",UInteger.valueOf(2),100.0,-100.0,"TestImageID",1.0,"TestCategory",b,b,date);
+
+    private CartHotel cartHotel = new CartHotel(007);
+    private HotelsRecord hotel = new HotelsRecord(UInteger.valueOf(1),"TestName","TestContact","TestEmail","TestAddress","TestWebsite","TestDescription",100.0,-100.0,b,b,date,"TestImageID","TestCategory");
+
+    private RoomofferingsRecord room = new RoomofferingsRecord(UInteger.valueOf(2),UInteger.valueOf(3),UInteger.valueOf(4),UInteger.valueOf(10),"TestRoomDescription",UInteger.valueOf(5),UInteger.valueOf(6),"TestRoomTitle");
+
+    private CartRestaurant cartRestaurant = new CartRestaurant(001);
+    private Byte b2 = 1;
+    private Byte b3 = 2;
+    private Byte b4 = 3;
+    private ResturantsRecord restaurant = new ResturantsRecord(UInteger.valueOf(1), "TestName","TestAddress","TestContact","TestEmail","TestWebsite","TestDescription",b,b2,100.0,50.0,"TestImageID","TestCategory",b3,b4,date);
+
+    private CartTransport cartTransport = new CartTransport(001);
+    private TransportRecord transport = new TransportRecord(UInteger.valueOf(1), "TestName",10.0,b,"TestDescription",100.0,50.0,25.0,10.0);
 
     @Override
     protected String getConfigPath() {

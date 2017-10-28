@@ -70,7 +70,7 @@ public class GetUserBooking extends ActionSupport {
             // Close connection
             connection.close();
 
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch ( SQLException | ClassNotFoundException e) {
             e.printStackTrace();
             return ERROR;
         }

@@ -86,6 +86,7 @@
         <!-- End Payment -->
 
         <!-- User Management Portal -->
+
         <action name="customerPortal" class="NewcastleConnections.Invoices.Actions.GetUserInvoices">
             <interceptor-ref name="authentication" />
             <result>WEB-INF/jsp/customerPortal.jsp</result>

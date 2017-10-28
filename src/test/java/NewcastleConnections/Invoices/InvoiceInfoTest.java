@@ -54,4 +54,5 @@ public class InvoiceInfoTest extends StrutsJUnit4TestCase<InvoiceInfo> {
     }
 
 
+
 }

@@ -30,7 +30,7 @@ public class CartHotel implements CartItem {
     private int children = 0;
     private Timestamp checkIn = null;
     private Timestamp checkOut = null;
-    private Double price = null;
+    private double price = 0.0;
 
     // -- Constructor --
     //   Role: Initialise the CartHotel of certain ID.

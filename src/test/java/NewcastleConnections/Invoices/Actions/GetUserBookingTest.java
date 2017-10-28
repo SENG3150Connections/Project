@@ -22,39 +22,79 @@ public class GetUserBookingTest extends StrutsJUnit4TestCase<GetUserBooking> {
         return "struts-test.xml";
     }
 
-    @Test
+
+    @Test(expected = Exception.class)
     public void testNoParams() throws Exception {
-       // request.setParameter("invoiceID", "1");
         ActionProxy proxy = getActionProxy("/customerPortal-bookings-AuthDisabled.action");
         GetUserBooking action = (GetUserBooking) proxy.getAction();
         String result = proxy.execute();
 
-        assertTrue("Action should return ERROR", result.equals(ActionSupport.ERROR));
-       // assertTrue("Invoice list should be empty", action.getInvoices().isEmpty());
     }
 
     @Test
-    public void getInvoice() {
+    public void testExampleBooking() throws Exception {
+        request.setParameter("invoiceID", "124");
+        ActionProxy proxy = getActionProxy("/customerPortal-bookings-AuthDisabled.action");
+        GetUserBooking action = (GetUserBooking) proxy.getAction();
+        String result = proxy.execute();
 
+        assertTrue("Action should return SUCCESS", result.equals(ActionSupport.SUCCESS));
+        assertTrue("Should return a invoice object", action.getInvoice() != null);
     }
 
     @Test
-    public void getHotels() {
+    public void getInvoice() throws Exception {
 
-    }
-    @Test
-    public void getExperiences() {
+        request.setParameter("invoiceID", "124");
+        ActionProxy proxy = getActionProxy("/customerPortal-bookings-AuthDisabled.action");
+        GetUserBooking action = (GetUserBooking) proxy.getAction();
+        String result = proxy.execute();
 
-    }
-
-    @Test
-    public void getRestaurants() {
-
+        assertTrue("Should not return null", action.getInvoice() != null);
     }
 
     @Test
-    public void getTransports() {
+    public void getHotels() throws Exception {
 
+        request.setParameter("invoiceID", "124");
+        ActionProxy proxy = getActionProxy("/customerPortal-bookings-AuthDisabled.action");
+        GetUserBooking action = (GetUserBooking) proxy.getAction();
+        String result = proxy.execute();
+
+        assertTrue("Should not return null", action.getHotels() != null);
+
+    }
+    @Test
+    public void getExperiences() throws Exception {
+
+        request.setParameter("invoiceID", "124");
+        ActionProxy proxy = getActionProxy("/customerPortal-bookings-AuthDisabled.action");
+        GetUserBooking action = (GetUserBooking) proxy.getAction();
+        String result = proxy.execute();
+
+        assertTrue("Should not return null", action.getExperiences() != null);
+    }
+
+    @Test
+    public void getRestaurants() throws Exception {
+
+        request.setParameter("invoiceID", "124");
+        ActionProxy proxy = getActionProxy("/customerPortal-bookings-AuthDisabled.action");
+        GetUserBooking action = (GetUserBooking) proxy.getAction();
+        String result = proxy.execute();
+
+        assertTrue("Should not return null", action.getRestaurants() != null);
+    }
+
+    @Test
+    public void getTransports() throws Exception {
+
+        request.setParameter("invoiceID", "124");
+        ActionProxy proxy = getActionProxy("/customerPortal-bookings-AuthDisabled.action");
+        GetUserBooking action = (GetUserBooking) proxy.getAction();
+        String result = proxy.execute();
+
+        assertTrue("Should not return null", action.getTransports() != null);
     }
 
 }

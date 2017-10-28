@@ -43,7 +43,6 @@ public class GetUserBooking extends ActionSupport {
             HttpServletRequest request = ServletActionContext.getRequest();
 
             String invoiceID = request.getParameter("invoiceID");
-
             // Get connection
             DatabaseConnection connection = new DatabaseConnection();
 
@@ -70,7 +69,7 @@ public class GetUserBooking extends ActionSupport {
             // Close connection
             connection.close();
 
-        } catch ( SQLException | ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
             return ERROR;
         }

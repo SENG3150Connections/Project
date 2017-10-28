@@ -85,6 +85,8 @@
         </action>
         <!-- End Payment -->
 
+
+
         <!-- User Management Portal -->
 
         <action name="customerPortal" class="NewcastleConnections.Invoices.Actions.GetUserInvoices">
@@ -97,6 +99,17 @@
             <result>WEB-INF/jsp/customerPortal-bookings.jsp</result>
         </action>
         <!-- End User Management Portal -->
+
+
+        <!-- Authentication removed for testing -->
+        <action name="customerPortal-AuthDisabled" class="NewcastleConnections.Invoices.Actions.GetUserInvoices">
+            <result>WEB-INF/jsp/customerPortal.jsp</result>
+        </action>
+
+        <action name="customerPortal-bookings-AuthDisabled" class="NewcastleConnections.Invoices.Actions.GetUserBooking">
+            <result>WEB-INF/jsp/customerPortal-bookings.jsp</result>
+        </action>
+        <!--  -->
 
         <!-- Explicit authentication test -->
         <action name="authenticationTest">

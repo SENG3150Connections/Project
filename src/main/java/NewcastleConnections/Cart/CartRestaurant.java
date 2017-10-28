@@ -26,7 +26,7 @@ public class CartRestaurant implements CartItem {
     private InvoicerestaurantRecord invoice = null;
     private int seats = 0;
     private Timestamp time = null;
-    private Double voucherPrice = null;
+    private double voucherPrice = 0.0;
 
     // -- Constructor --
     //   Role: Initialise the CartRestaurant of certain ID.

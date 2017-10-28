@@ -118,6 +118,9 @@ public class Cart {
     //   Role: Check if all the items in the cart are properly edited.
     //
     public boolean getReadyToPay() {
+        if (getAll().size() == 0)
+            return false;
+
         for (CartItem i : getAll()) {
             if (!i.getReady()) return false;
         }

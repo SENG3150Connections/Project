@@ -8,10 +8,10 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by Harry on 16/10/2017.
- */
 public class ViewCartTest extends StrutsJUnit4TestCase<ViewCart> {
+
+    ViewCart viewCart = new ViewCart();
+    Cart cart = new Cart();
 
     @Override
     protected String getConfigPath() {
@@ -19,8 +19,20 @@ public class ViewCartTest extends StrutsJUnit4TestCase<ViewCart> {
     }
 
     @Test
-    public void testNoParams() throws Exception {
+    public void execute() throws Exception {
+        assertEquals(ActionSupport.SUCCESS,viewCart.execute());
+    }
 
+    @Test
+    public void getCart() throws Exception {
+        viewCart.setCart(cart);
+        assertEquals(cart,viewCart.getCart());
+    }
+
+    @Test
+    public void setCart() throws Exception {
+        viewCart.setCart(cart);
+        assertEquals(cart,viewCart.getCart());
     }
     
 }

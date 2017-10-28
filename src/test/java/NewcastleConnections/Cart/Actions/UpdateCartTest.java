@@ -142,8 +142,24 @@ public class UpdateCartTest extends StrutsJUnit4TestCase<UpdateCart> {
         testParams("restaurant", "invalid", 1, "ERROR");
     }
 
+    // --- TYPE: Transport ---
+    @Test
+    public void testTypeTransportAdd() throws Exception {
+        testParams("transport", "add", 1);
+    }
+
+    @Test
+    public void testTypeTransportRemove() throws Exception {
+        testParams("transport", "remove", 1);
+    }
+
+    @Test
+    public void testTypeTransportInvalid() throws Exception {
+        testParams("transport", "invalid", 1, "ERROR");
+    }
+
     // --- TYPE: INVALID ---
-    
+
     @Test
     public void testTypeInvalid() throws Exception {
         testParams("invalid", "add", 1, "ERROR");

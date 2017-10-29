@@ -7,7 +7,8 @@
 <struts>
 
     <constant name="struts.actionProxyFactory" value="NewcastleConnections.Session.ActionProxyFactory"/>
-    <bean name="cart" class="NewcastleConnections.Cart.Cart" scope="session" />
+    <!--<bean name="cart" class="NewcastleConnections.Cart.Cart" scope="session" />-->
+    <bean name="cart" class="NewcastleConnections.Cart.Cart"/>
 
     <!-- Default package -->
     <package name="default" extends="struts-default">
@@ -84,7 +85,10 @@
         </action>
         <!-- End Payment -->
 
+
+
         <!-- User Management Portal -->
+
         <action name="customerPortal" class="NewcastleConnections.Invoices.Actions.GetUserInvoices">
             <interceptor-ref name="authentication" />
             <result>WEB-INF/jsp/customerPortal.jsp</result>
@@ -96,12 +100,29 @@
         </action>
         <!-- End User Management Portal -->
 
+
+        <!-- Authentication removed for testing -->
+        <action name="customerPortal-AuthDisabled" class="NewcastleConnections.Invoices.Actions.GetUserInvoices">
+            <result>WEB-INF/jsp/customerPortal.jsp</result>
+        </action>
+
+        <action name="customerPortal-bookings-AuthDisabled" class="NewcastleConnections.Invoices.Actions.GetUserBooking">
+            <result>WEB-INF/jsp/customerPortal-bookings.jsp</result>
+        </action>
+        <!--  -->
+
+        <!-- Explicit authentication test -->
+        <action name="authenticationTest">
+            <interceptor-ref name="authentication" />
+            <result>WEB-INF/jsp/customerPortal.jsp</result>
+        </action>
+
     </package>
 
     <!-- Management Portal Package -->
     <package name="management" extends="struts-default">
 
-        <interceptors>
+        <!-- Disable interceptor for direct testing <interceptors>
             <interceptor name="management" class="NewcastleConnections.Authentication.ManagementInterceptor"/>
             <interceptor-stack name="managementStack">
                 <interceptor-ref name="defaultStack"/>
@@ -109,7 +130,7 @@
             </interceptor-stack>
         </interceptors>
 
-        <default-interceptor-ref name="managementStack"/>
+        <default-interceptor-ref name="managementStack"/> -->
 
         <global-results>
             <result name="login" type="redirect">/login</result>

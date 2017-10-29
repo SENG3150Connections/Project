@@ -52,6 +52,7 @@ public class LoginAction extends ActionSupport {
             response.sendRedirect(authorizeUrl);
         } catch (Exception e) {
             e.printStackTrace();
+            return ERROR;
         }
 
         return SUCCESS;

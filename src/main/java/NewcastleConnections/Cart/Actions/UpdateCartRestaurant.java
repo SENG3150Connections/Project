@@ -52,8 +52,6 @@ public class UpdateCartRestaurant extends ActionSupport {
                 recommendations = new Recommendations(cart.getLastExperience().getExperience(), numberOfResults);
             } else if (cart.getRestaurants().size() != 0) {
                 recommendations = new Recommendations(cart.getLastRestaurant().getRestaurant(), numberOfResults);
-            } else {
-                recommendations = new Recommendations();
             }
 
             return SUCCESS;

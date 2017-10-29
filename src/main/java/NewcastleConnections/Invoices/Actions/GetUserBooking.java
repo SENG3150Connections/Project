@@ -43,7 +43,6 @@ public class GetUserBooking extends ActionSupport {
             HttpServletRequest request = ServletActionContext.getRequest();
 
             String invoiceID = request.getParameter("invoiceID");
-
             // Get connection
             DatabaseConnection connection = new DatabaseConnection();
 

@@ -10,6 +10,7 @@ Description:
 
 import NewcastleConnections.DatabaseConnection;
 import com.auth0.AuthenticationController;
+import com.auth0.InvalidRequestException;
 import com.auth0.SessionUtils;
 import com.auth0.Tokens;
 import com.opensymphony.xwork2.ActionSupport;
@@ -63,46 +64,50 @@ public class CallbackAction extends ActionSupport {
     private String handle(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
         // Set initial tokens
-        Tokens tokens = authenticationController.handle(request);
-        SessionUtils.set(request, "accessToken", tokens.getAccessToken());
-        SessionUtils.set(request, "idToken", tokens.getIdToken());
+        try {
+            Tokens tokens = authenticationController.handle(request);
+            SessionUtils.set(request, "accessToken", tokens.getAccessToken());
+            SessionUtils.set(request, "idToken", tokens.getIdToken());
 
-        // Now parse the string to a json object and get the value of role attribute (if it exists)
-        JSONParser parser = new JSONParser();
-        JSONObject json = (JSONObject) parser.parse(getUserInfo(tokens.getAccessToken()));
+            // Now parse the string to a json object and get the value of role attribute (if it exists)
+            JSONParser parser = new JSONParser();
+            JSONObject json = (JSONObject) parser.parse(getUserInfo(tokens.getAccessToken()));
 
-        // Now store user data as session attributes to be referenced.
-        SessionUtils.set(request, "userId", json.get("user_id"));
-        SessionUtils.set(request, "userNickname", json.get("nickname"));
-        SessionUtils.set(request, "userEmail", json.get("email"));
+            // Now store user data as session attributes to be referenced.
+            SessionUtils.set(request, "userId", json.get("user_id"));
+            SessionUtils.set(request, "userNickname", json.get("nickname"));
+            SessionUtils.set(request, "userEmail", json.get("email"));
 
-        // Check to see if there is a user in the DB with a matching ID
-        DatabaseConnection connection = new DatabaseConnection();
-        Result<UsersRecord> users = connection.getDSL().selectFrom(USERS).where("userId= '" + json.get("user_id") + "'").fetch();
+            // Check to see if there is a user in the DB with a matching ID
+            DatabaseConnection connection = new DatabaseConnection();
+            Result<UsersRecord> users = connection.getDSL().selectFrom(USERS).where("userId= '" + json.get("user_id") + "'").fetch();
 
-        // If there is not, store one.
-        if (users.isEmpty()) {
-            UsersRecord newUser = new UsersRecord();
-            connection.getDSL().attach(newUser);
+            // If there is not, store one.
+            if (users.isEmpty()) {
+                UsersRecord newUser = new UsersRecord();
+                connection.getDSL().attach(newUser);
 
-            newUser.setUserid(json.get("user_id").toString());
-            newUser.setEmail(json.get("email").toString());
-            // Could potentially store more statistics here if required.
-            newUser.store();
-        }
-        connection.close();
+                newUser.setUserid(json.get("user_id").toString());
+                newUser.setEmail(json.get("email").toString());
+                // Could potentially store more statistics here if required.
+                newUser.store();
+            }
+            connection.close();
 
-        // Store role as session attribute, else "0" if undefined.
-        String role = "0";
-        if (json.get("role") != null) {
-            role = json.get("role").toString();
-        }
-        SessionUtils.set(request, "userPermissions", role);
+            // Store role as session attribute, else "0" if undefined.
+            String role = "0";
+            if (json.get("role") != null) {
+                role = json.get("role").toString();
+            }
+            SessionUtils.set(request, "userPermissions", role);
 
-        if (role.equals("1")) { // If admin, redirect to management portal upon login
-            response.sendRedirect("managementPortal");
-        } else { // Else redirect back to the page they were on.
-            response.sendRedirect(SessionUtils.get(request, "authSourceUrl").toString());
+            if (role.equals("1")) { // If admin, redirect to management portal upon login
+                response.sendRedirect("managementPortal");
+            } else { // Else redirect back to the page they were on.
+                response.sendRedirect(SessionUtils.get(request, "authSourceUrl").toString());
+            }
+        } catch (InvalidRequestException e) {
+            return LOGIN;
         }
 
         return SUCCESS;

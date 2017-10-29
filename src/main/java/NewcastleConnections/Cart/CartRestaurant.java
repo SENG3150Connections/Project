@@ -11,6 +11,7 @@ Description:
 import NewcastleConnections.DatabaseConnection;
 import NewcastleConnections.packagedeals.tables.records.InvoicerestaurantRecord;
 import NewcastleConnections.packagedeals.tables.records.ResturantsRecord;
+import org.jooq.Result;
 import org.jooq.types.UInteger;
 
 import java.sql.SQLException;
@@ -25,7 +26,7 @@ public class CartRestaurant implements CartItem {
     private InvoicerestaurantRecord invoice = null;
     private int seats = 0;
     private Timestamp time = null;
-    private Double voucherPrice = null;
+    private double voucherPrice = 0.0;
 
     // -- Constructor --
     //   Role: Initialise the CartRestaurant of certain ID.
@@ -33,7 +34,13 @@ public class CartRestaurant implements CartItem {
     public CartRestaurant(int restaurantID) {
         try {
             DatabaseConnection connection = new DatabaseConnection();
-            restaurant = connection.getDSL().selectFrom(RESTURANTS).where(RESTURANTS.ID.eq(UInteger.valueOf(restaurantID))).fetch().get(0);
+            try {
+                Result<ResturantsRecord> records  = connection.getDSL().selectFrom(RESTURANTS).where(RESTURANTS.ID.eq(UInteger.valueOf(restaurantID))).fetch();
+                if (records.size() > 0)
+                    restaurant = records.get(0);
+            } catch (NumberFormatException e) {
+                return;
+            }
             connection.close();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();

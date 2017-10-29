@@ -2,7 +2,7 @@ package NewcastleConnections.Cart.Actions;
 
 /*
 UpdateCart.java
-Author: Scott Walker
+Author: Scott Walker, Harry Barden
 
 Description:
     Action to update the contents of the cart, not edit the individual items.
@@ -23,7 +23,7 @@ public class UpdateCart extends ActionSupport {
     @Override
     public String execute() {
         if (getMethod() == null || getType() == null || id == null)
-            return SUCCESS; // Simply redirect back if not all parameters are supplied.
+            return ERROR; // Simply redirect back if not all parameters are supplied.
 
         boolean add = getMethod().equalsIgnoreCase("add");
         boolean remove = getMethod().equalsIgnoreCase("remove");
@@ -35,6 +35,8 @@ public class UpdateCart extends ActionSupport {
                     getCart().getExperiences().add(new CartExperience(id));
                 else if (remove)
                     getCart().removeExperience(id);
+                else
+                    return ERROR;
                 break;
 
             // Get or remove a hotel
@@ -43,6 +45,8 @@ public class UpdateCart extends ActionSupport {
                     getCart().getHotels().add(new CartHotel(id));
                 else if (remove)
                     getCart().removeHotel(id);
+                else
+                    return ERROR;
                 break;
 
             // Get or remove a restaurant
@@ -51,6 +55,8 @@ public class UpdateCart extends ActionSupport {
                     getCart().getRestaurants().add(new CartRestaurant(id));
                 else if (remove)
                     getCart().removeRestaurant(id);
+                else
+                    return ERROR;
                 break;
 
             // Get or remove transport
@@ -59,11 +65,13 @@ public class UpdateCart extends ActionSupport {
                     getCart().getTransport().add(new CartTransport(id));
                 else if (remove)
                     getCart().removeTransport(id);
+                else
+                    return ERROR;
                 break;
 
             // Ignore anything else
             default:
-                break;
+                return ERROR;
 
         }
 
